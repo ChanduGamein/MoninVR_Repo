@@ -8,6 +8,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject activePrepareBtn, inActivePrepareBtn;
     [SerializeField] Image inGameRecipeImage;
     [SerializeField] Text inGameRecipeName;
+    [SerializeField] Text tutorialTxt;
+    [SerializeField] Image tutorialPickUpImage;
+    [SerializeField] Text tutorialPickUpTxt;
+    [SerializeField] RecipeStepUI recipeStepUI;
+    [SerializeField] Transform stepsParent;
+
     #region testing
     public GameObject grabButton;
     public GameObject pumpButton;
@@ -31,12 +37,51 @@ public class UIManager : MonoBehaviour
     {
         
     }
+    #region SideSteps
+    List<RecipeStepUI> currentRecipeSteps = new List<RecipeStepUI>();
+    int currentStepIndex=0;
+    public void SetStepsUI(int numOfSteps)
+    {
+        for (int i = 0; i < numOfSteps; i++)
+        {
+            RecipeStepUI stepUI = Instantiate(recipeStepUI, stepsParent);
+            stepUI.stepText.text = "Step#" + (i+1).ToString();
+            currentRecipeSteps.Add(stepUI);
+        }
+        SetCurrentRecipce();
+    }
+    public void SetCurrentRecipce()
+    {
+        currentRecipeSteps[currentStepIndex].SetCurrentStep();
+      // index+=1;
+    }
+    public void SetCurrentStepCompleted()
+    {
+        currentRecipeSteps[currentStepIndex].SetStepCompleted();
+        if (currentStepIndex < currentRecipeSteps.Count-1)
+        {
+            currentStepIndex += 1;
+            SetCurrentRecipce();
+        }
+
+    }
+    #endregion
+    #region Turorial
+    public void SetTutorialText(string instruction)
+    {
+        tutorialTxt.text = instruction;
+    }
+    public void SetTutorialPickUpItem(Sprite itemSprite,string instruction)
+    {
+        tutorialPickUpImage.sprite = itemSprite;
+        tutorialPickUpTxt.text = instruction;
+    }
     public void SetInGameRecipeImage(Sprite recipeSprite,string recipeName)
     {
         inGameRecipeImage.sprite = recipeSprite;
         inGameRecipeName.text = recipeName;
     }
-
+    #endregion
     public void ActivatePrepareBtn()
     {
         activePrepareBtn.SetActive(true);

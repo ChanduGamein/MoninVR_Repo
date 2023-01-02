@@ -25,6 +25,7 @@ public enum items { IceCubes, LemonFlavor,LemonBase, Water,shakerLid,sparklingWa
 public class Recipe
 {
     public List<Item> RecipeItems = new List<Item>();
+    public int numOfSteps;
 }
 
 public class SceneController : MonoBehaviour
