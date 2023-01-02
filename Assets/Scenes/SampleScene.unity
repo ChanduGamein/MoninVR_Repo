@@ -12892,7 +12892,6 @@ GameObject:
   - component: {fileID: 1221478141}
   - component: {fileID: 1221478140}
   - component: {fileID: 1221478139}
-  - component: {fileID: 1221478142}
   m_Layer: 5
   m_Name: staticCanvas
   m_TagString: Untagged
@@ -12908,8 +12907,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1221478137}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -8.7}
-  m_LocalScale: {x: 0.033583, y: 0.033583, z: 167.915}
+  m_LocalPosition: {x: 0, y: 0, z: 9.5}
+  m_LocalScale: {x: 0.055734348, y: 0.055734348, z: 278.67172}
   m_Children:
   - {fileID: 102472799}
   m_Father: {fileID: 1719034799}
@@ -12917,7 +12916,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -53, y: 161.21}
+  m_AnchoredPosition: {x: -53, y: 11.1}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1221478139
@@ -12981,21 +12980,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &1221478142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1221478137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368e02b11400fd14f81cb1804d5c284b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Camera2Follow: {fileID: 112944226}
-  CameraDistance: 0.56
-  smoothTime: 0.1
 --- !u!1 &1229092566
 GameObject:
   m_ObjectHideFlags: 0
@@ -20027,7 +20011,7 @@ GameObject:
   - component: {fileID: 1991057289}
   - component: {fileID: 1991057288}
   m_Layer: 5
-  m_Name: Drop Ice (1)
+  m_Name: test side steps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
