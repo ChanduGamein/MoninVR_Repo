@@ -25,6 +25,7 @@ public enum items { IceCubes, LemonFlavor,LemonBase, Water,shakerLid,sparklingWa
 public class Recipe
 {
     public List<Item> RecipeItems = new List<Item>();
+    public int numOfSteps;
 }
 
 public class SceneController : MonoBehaviour
@@ -35,16 +36,21 @@ public class SceneController : MonoBehaviour
     public TextMeshProUGUI shakerCountTXT;
     public int currentAddedAmount = 0;
     public HandHolder handHolderLeft, handHolderRigh;
+    int recipeIndex;
     public int recipeStepIndex = 0;
     private void Awake()
     {
         instance = this;
-        currentRecipe = userSelectedRecipe[0];
+     //   currentRecipe = userSelectedRecipe[0];
+    }
+    public void ChooseRecipe(int id)
+    {
+        recipeIndex = id;
     }
     public void InvokeCurrentStep()
     {
-        userSelectedRecipe[0].RecipeItems[recipeStepIndex].myEvent.Invoke();
-        userSelectedRecipe[0].RecipeItems[recipeStepIndex].NeXtStep();
+        userSelectedRecipe[recipeIndex].RecipeItems[recipeStepIndex].myEvent.Invoke();
+        userSelectedRecipe[recipeIndex].RecipeItems[recipeStepIndex].NeXtStep();
     }
     public void OnClickUnGrabLeft()
     {
