@@ -38,23 +38,12 @@ public class IceScoop : Holder
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "IceBox")
-        {
-            // UIManager.instance.PickUpIceButton.SetActive(true);
-            PickUpIce();
-        }
-        if(other.tag=="end")
-        {
-            UnGrab();
-        }
-    }
-    private void OnCollisionEnter(Collision other)
-    {
+        Debug.Log("Collider");
         if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
         {
-            //   hand = other.GetComponent<HandHolder>();
-
-            //    UIManager.instance.ActivateGrab(hand.scoopPositon, hand,this.transform);
+            hand = other.gameObject.GetComponent<HandHolder>();
+            UIManager.instance.grabButton.SetActive(true);
+            UIManager.instance.ActivateGrab(hand.scoopPositon, hand, this.transform);
         }
 
         if (other.gameObject.tag == "Shaker")
@@ -67,10 +56,29 @@ public class IceScoop : Holder
 
             }
         }
+        if (other.gameObject.tag == "IceBox")
+        {
+            // UIManager.instance.PickUpIceButton.SetActive(true);
+            PickUpIce();
+        }
+        if(other.tag=="end")
+        {
+            UnGrab();
+        }
+    }
+    private void OnCollisionEnter(Collision other)
+    {
+
+    }
+    private void OnCollisionExit(Collision other)
+    {
     }
     private void OnTriggerExit(Collider other)
     {
 
-
+        if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
+        {
+            UIManager.instance.grabButton.SetActive(false);
+        }
     }
 }

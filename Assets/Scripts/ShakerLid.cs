@@ -32,27 +32,28 @@ public class ShakerLid : Holder
         {
             UnGrab();
         }
+        if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
+        {
+            hand = other.GetComponent<HandHolder>();
+            UIManager.instance.grabButton.SetActive(true);
+            UIManager.instance.ActivateGrab(hand.shakerPositon, hand, this.transform);
+        }
     }
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
-        {
-            //hand = other.GetComponent<HandHolder>();
 
-            //UIManager.instance.ActivateGrab(hand.shakerPositon, hand,this.transform);
-        }
-        if (other.gameObject.tag == "Shaker")
-        {
-            Shake();
-            // UIManager.instance.shakeButton.SetActive(true);
-        }
+        //if (other.gameObject.tag == "Shaker")
+        //{
+        //    Shake();
+        //    // UIManager.instance.shakeButton.SetActive(true);
+        //}
     }
     private void OnTriggerExit(Collider other)
     {
 
         if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
         {
-           // UIManager.instance.grabButton.SetActive(false);
+            UIManager.instance.grabButton.SetActive(false);
         }
     }
 

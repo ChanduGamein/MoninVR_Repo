@@ -92,30 +92,31 @@ public class UIManager : MonoBehaviour
         activePrepareBtn.SetActive(false);
         inActivePrepareBtn.SetActive(true);
     }
-    //public void ActivateGrab(Transform _handTransform,HandHolder _handHolder,Transform _itemToGrab)
-    //{
-    //    handTransform = _handTransform;
-    //    itemToGrab = _itemToGrab;
-    //    handHolder = _handHolder;
-    //}
+    public void ActivateGrab(Transform _handTransform, HandHolder _handHolder, Transform _itemToGrab)
+    {
+        handTransform = _handTransform;
+        itemToGrab = _itemToGrab;
+        handHolder = _handHolder;
+    }
     //public void ActivatePump(Pump _pump)
     //{
     //    pumpButton.SetActive(true);
     //    pump = _pump;
     //}
-    
+
     //public void OnClickPump()
     //{
     //    pump.PlayPumpAnimation();
     //}
-    //public void OnClickGrab()
-    //{
-    //    itemToGrab.parent = handTransform;
-    //    itemToGrab.localPosition = Vector3.zero;
-    //    itemToGrab.GetComponent<Holder>().hand = handHolder;
-    //    itemToGrab.GetComponent<Holder>().grabed=true ;
-    //    handHolder.handCollider.enabled = false;
-    //    handHolder.currentHolder = itemToGrab.GetComponent<Holder>();
-    //}
+    public void OnClickGrab()
+    {
+        itemToGrab.parent = handTransform;
+        itemToGrab.localPosition = Vector3.zero;
+        itemToGrab.GetComponent<Holder>().hand = handHolder;
+        itemToGrab.GetComponent<Holder>().grabed = true;
+        handHolder.handCollider.enabled = false;
+        handHolder.currentHolder = itemToGrab.GetComponent<Holder>();
+        grabButton.SetActive(false);
+    }
 
 }

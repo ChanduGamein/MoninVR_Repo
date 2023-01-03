@@ -42,7 +42,7 @@ public class Holder : MonoBehaviour
         transform.position = originalPosition;
         transform.rotation = originalRotation;
         grabed = false;
-        _rb.isKinematic = false;
+      //  _rb.isKinematic = false;
     }
     public void UnGrab()
     {

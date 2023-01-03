@@ -9,6 +9,7 @@ public class HandHolder : MonoBehaviour
     public Transform scoopPositon;
     public Transform shakerPositon;
     public Transform garnishPosition;
+    public Transform glassPosition;
     public Collider handCollider;
     public bool hasGarnish;
     void Start()
@@ -20,6 +21,10 @@ public class HandHolder : MonoBehaviour
     void Update()
     {
         
+    }
+    public void Ungrab()
+    {
+        currentHolder.UnGrab();
     }
     private void OnTriggerEnter(Collider other)
     {

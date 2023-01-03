@@ -32,29 +32,30 @@ public class GlassDrink : Holder
         {
             UnGrab();
         }
-    }
-    private void OnCollisionEnter(Collision other)
-    {
         if (!poured)
             if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
             {
-                //hand = other.GetComponent<HandHolder>();
-
-                //UIManager.instance.ActivateGrab(hand.shakerPositon, hand,this.transform);
+                hand = other.GetComponent<HandHolder>();
+                UIManager.instance.grabButton.SetActive(true);
+                UIManager.instance.ActivateGrab(hand.glassPosition, hand, this.transform);
             }
         if (other.gameObject.tag == "Shaker")
         {
             PourIntoGlass();
-            //  UIManager.instance.pourButton.SetActive(true);
+            UIManager.instance.pourButton.SetActive(true);
             shaker = other.transform;
         }
+    }
+    private void OnCollisionEnter(Collision other)
+    {
+
     }
     private void OnTriggerExit(Collider other)
     {
 
         if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
         {
-        //    UIManager.instance.grabButton.SetActive(false);
+            UIManager.instance.grabButton.SetActive(false);
         }
 
     }

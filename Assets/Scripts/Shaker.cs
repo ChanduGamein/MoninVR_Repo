@@ -6,12 +6,13 @@ public class Shaker : Holder
 {
     private void OnTriggerEnter(Collider other)
     {
-        //if (!grabed)
-        //    if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
-        //    {
-        //        hand = other.GetComponent<HandHolder>();
-        //        UIManager.instance.ActivateGrab(hand.shakerPositon, hand, this.transform);
-        //    }
+        if (!grabed)
+            if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
+            {
+                hand = other.GetComponent<HandHolder>();
+                UIManager.instance.ActivateGrab(hand.shakerPositon, hand, this.transform);
+                UIManager.instance.grabButton.SetActive(true);
+            }
         if (other.tag == "end")
         {
             UnGrab();
@@ -22,6 +23,8 @@ public class Shaker : Holder
 
         if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
         {
+            UIManager.instance.grabButton.SetActive(false);
+
         }
     }
 
