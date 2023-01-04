@@ -25,6 +25,7 @@ public class UIManager : MonoBehaviour
     public Transform itemToGrab;
     Pump pump;
     public HandHolder handHolder;
+    public bool canGrab;
     #endregion
     // Start is called before the first frame update
     void Start()
@@ -98,6 +99,10 @@ public class UIManager : MonoBehaviour
         itemToGrab = _itemToGrab;
         handHolder = _handHolder;
     }
+    public void ResetGrabbedItems()
+    {
+
+    }
     //public void ActivatePump(Pump _pump)
     //{
     //    pumpButton.SetActive(true);
@@ -110,13 +115,16 @@ public class UIManager : MonoBehaviour
     //}
     public void OnClickGrab()
     {
-        itemToGrab.parent = handTransform;
-        itemToGrab.localPosition = Vector3.zero;
-        itemToGrab.GetComponent<Holder>().hand = handHolder;
-        itemToGrab.GetComponent<Holder>().grabed = true;
-        handHolder.handCollider.enabled = false;
-        handHolder.currentHolder = itemToGrab.GetComponent<Holder>();
-        grabButton.SetActive(false);
+        if (canGrab)
+        {
+            itemToGrab.parent = handTransform;
+            itemToGrab.localPosition = Vector3.zero;
+            itemToGrab.GetComponent<Holder>().hand = handHolder;
+            itemToGrab.GetComponent<Holder>().grabed = true;
+            handHolder.handCollider.enabled = false;
+            handHolder.currentHolder = itemToGrab.GetComponent<Holder>();
+            grabButton.SetActive(false);
+        }
     }
 
 }

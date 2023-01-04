@@ -11,7 +11,8 @@ public class Shaker : Holder
             {
                 hand = other.GetComponent<HandHolder>();
                 UIManager.instance.ActivateGrab(hand.shakerPositon, hand, this.transform);
-                UIManager.instance.grabButton.SetActive(true);
+                //   UIManager.instance.grabButton.SetActive(true);
+                UIManager.instance.canGrab = true;
             }
         if (other.tag == "end")
         {
@@ -24,6 +25,7 @@ public class Shaker : Holder
         if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
         {
             UIManager.instance.grabButton.SetActive(false);
+            UIManager.instance.canGrab = false;
 
         }
     }
