@@ -13,15 +13,29 @@ public class FillLiquidUI : MonoBehaviour
     float calculatedAmount = 0;
     public void SetAmount(string _drinkName,int _fullAmount)
     {
-        drinkName.tag = _drinkName;
+        drinkName.text = _drinkName;
         fullAmount.text = _fullAmount.ToString()+"ml";
         totalAmount = _fullAmount;
     }
     public void InCreaseAmount( float amountTtAdd = 3)
     {
-        calculatedAmount += amountTtAdd;
-        fillImage.fillAmount = (calculatedAmount /(float) totalAmount);
-        currentAmount.text = calculatedAmount.ToString();
+        if (calculatedAmount < totalAmount)
+        {
+            calculatedAmount += amountTtAdd;
+            fillImage.fillAmount = (calculatedAmount / (float)totalAmount);
+            currentAmount.text = calculatedAmount.ToString();
+        }
+        else
+        {
+          //  SceneController.instance.ResetShakerLiquidUI();
+
+        }
+        
+    }
+    public void ResetValues()
+    {
+        calculatedAmount = 0;
+        fillImage.fillAmount = 0;
     }
     public void Test()
     {

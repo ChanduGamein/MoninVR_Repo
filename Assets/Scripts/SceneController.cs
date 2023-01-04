@@ -38,10 +38,28 @@ public class SceneController : MonoBehaviour
     public HandHolder handHolderLeft, handHolderRigh;
     int recipeIndex;
     public int recipeStepIndex = 0;
+    public FillLiquidUI ShakerFillLiquidUI;
     private void Awake()
     {
         instance = this;
-     //   currentRecipe = userSelectedRecipe[0];
+        currentRecipe = userSelectedRecipe[0];
+    }
+    public bool setLiquidAmount;
+    public void SetShakerLiquidAmount(string drinkName, int fullAmount, int addedAmount)
+    {
+        if (!setLiquidAmount)
+        {
+            ShakerFillLiquidUI.gameObject.SetActive(true);
+            ShakerFillLiquidUI.SetAmount(drinkName, fullAmount);
+            setLiquidAmount = true;
+        }
+        ShakerFillLiquidUI.InCreaseAmount(addedAmount);
+    }
+    public void ResetShakerLiquidUI()
+    {
+        setLiquidAmount = false;
+        ShakerFillLiquidUI.gameObject.SetActive(false);
+        ShakerFillLiquidUI.ResetValues();
     }
     public void ChooseRecipe(int id)
     {

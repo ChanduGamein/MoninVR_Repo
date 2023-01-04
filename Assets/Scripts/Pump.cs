@@ -5,9 +5,11 @@ using DG.Tweening;
 public class Pump : MonoBehaviour
 {
     public int liquidMLPerPump;
+    public int liquidMLFullAmount;
     public items itemType;
     public bool handOnItem;
     public bool shakerInPlace;
+    public string itemName;
     [SerializeField] Transform bottlePump;
 
     // Start is called before the first frame update
@@ -27,7 +29,7 @@ public class Pump : MonoBehaviour
     }
     IEnumerator PumpAnimation()
     {
-          bottlePump.DOLocalMove(Vector3.zero,.5f).OnComplete (() => bottlePump.DOLocalMove(new Vector3(0, 5.12f, 0), .5f));
+          bottlePump.DOLocalMoveY(0.196f, .5f).OnComplete (() => bottlePump.DOLocalMoveY(0.27f, .5f));
         //currentAddedAmount += liquidMLPerPump;
         //SceneController.instance.shakerCountTXT.text = currentAddedAmount.ToString();
         SceneController.instance.AddTextAmount(liquidMLPerPump);
@@ -41,7 +43,11 @@ public class Pump : MonoBehaviour
                 {
                     GetComponent<Collider>().enabled = false;
                     SceneController.instance.currentAddedAmount = 0;
-                    UIManager.instance.pumpButton.SetActive(false);
+                    //  UIManager.instance.pumpButton.SetActive(false);
+                    yield return new WaitForSeconds(.5f);
+
+                    SceneController.instance.ResetShakerLiquidUI();
+
                     SceneController.instance.InvokeCurrentStep();
                     //   Invoke(nameof(ReturnObjectToOriginalTransform),.5f);
                 }
@@ -64,6 +70,7 @@ public class Pump : MonoBehaviour
         if(handOnItem&&shakerInPlace)
         {
             PlayPumpAnimation();
+            SceneController.instance.SetShakerLiquidAmount(itemName, liquidMLFullAmount, liquidMLPerPump);
            // UIManager.instance.ActivatePump(this);
         }
     }
@@ -79,7 +86,7 @@ public class Pump : MonoBehaviour
         }
         if (!handOnItem || !shakerInPlace)
         {
-            UIManager.instance.pumpButton.SetActive(false);
+        //    UIManager.instance.pumpButton.SetActive(false);
            // UIManager.instance.ActivatePump(this);
         }
     }
