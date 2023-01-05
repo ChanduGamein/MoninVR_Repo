@@ -42,8 +42,10 @@ public class IceScoop : Holder
         if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
         {
             hand = other.gameObject.GetComponent<HandHolder>();
-            UIManager.instance.grabButton.SetActive(true);
+          //  UIManager.instance.grabButton.SetActive(true);
             UIManager.instance.ActivateGrab(hand.scoopPositon, hand, this.transform);
+            UIManager.instance.canGrab = true;
+
         }
 
         if (other.gameObject.tag == "Shaker")
@@ -78,7 +80,8 @@ public class IceScoop : Holder
 
         if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
         {
-            UIManager.instance.grabButton.SetActive(false);
+            UIManager.instance.canGrab = true;
+
         }
     }
 }

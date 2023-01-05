@@ -24,7 +24,7 @@ public class Shaker : Holder
 
         if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
         {
-            UIManager.instance.grabButton.SetActive(false);
+         //   UIManager.instance.grabButton.SetActive(false);
             UIManager.instance.canGrab = false;
 
         }

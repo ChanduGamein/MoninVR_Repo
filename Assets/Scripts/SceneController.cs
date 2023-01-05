@@ -39,10 +39,15 @@ public class SceneController : MonoBehaviour
     int recipeIndex;
     public int recipeStepIndex = 0;
     public FillLiquidUI ShakerFillLiquidUI;
+    public FillLiquidUI fillLiquidGlass;
     private void Awake()
     {
         instance = this;
         currentRecipe = userSelectedRecipe[0];
+    }
+    private void Start()
+    {
+        UIManager.instance.SetStepsUI(currentRecipe.numOfSteps);
     }
     public bool setLiquidAmount;
     public void SetShakerLiquidAmount(string drinkName, int fullAmount, int addedAmount)
@@ -61,6 +66,22 @@ public class SceneController : MonoBehaviour
         ShakerFillLiquidUI.gameObject.SetActive(false);
         ShakerFillLiquidUI.ResetValues();
     }
+    public void SetGlassLiquidAmount(string drinkName, int fullAmount, int addedAmount)
+    {
+        if (!setLiquidAmount)
+        {
+            fillLiquidGlass.gameObject.SetActive(true);
+            fillLiquidGlass.SetAmount(drinkName, fullAmount);
+            setLiquidAmount = true;
+        }
+        fillLiquidGlass.InCreaseAmount(addedAmount);
+    }
+    public void ResetGlassLiquidUI()
+    {
+        setLiquidAmount = false;
+        fillLiquidGlass.gameObject.SetActive(false);
+        fillLiquidGlass.ResetValues();
+    }
     public void ChooseRecipe(int id)
     {
         recipeIndex = id;
@@ -69,6 +90,7 @@ public class SceneController : MonoBehaviour
     {
         userSelectedRecipe[recipeIndex].RecipeItems[recipeStepIndex].myEvent.Invoke();
         userSelectedRecipe[recipeIndex].RecipeItems[recipeStepIndex].NeXtStep();
+        UIManager.instance.SetCurrentStepCompleted();
     }
     public void OnClickUnGrabLeft()
     {

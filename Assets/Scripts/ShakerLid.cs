@@ -10,7 +10,7 @@ public class ShakerLid : Holder
     {
         _rb.isKinematic = true;
         shaker.GetComponent<Rigidbody>().isKinematic = true;
-        UIManager.instance.shakeButton.SetActive(false);
+       // UIManager.instance.shakeButton.SetActive(false);
 
         transform.parent = shaker.transform;
         transform.DOMove(shakerClosePosition.position,1);
@@ -21,7 +21,7 @@ public class ShakerLid : Holder
     {
 
         transform.parent = transform.parent.parent;
-        shaker.GetComponent<Rigidbody>().isKinematic = false;
+       // shaker.GetComponent<Rigidbody>().isKinematic = false;
 
         UnGrab();
         SceneController.instance.InvokeCurrentStep();
@@ -35,25 +35,29 @@ public class ShakerLid : Holder
         if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
         {
             hand = other.GetComponent<HandHolder>();
-            UIManager.instance.grabButton.SetActive(true);
+            //   UIManager.instance.grabButton.SetActive(true);
+            UIManager.instance.canGrab = true;
             UIManager.instance.ActivateGrab(hand.shakerPositon, hand, this.transform);
+        }
+        if (other.gameObject.tag == "Shaker")
+        {
+            Shake();
+            // UIManager.instance.shakeButton.SetActive(true);
         }
     }
     private void OnCollisionEnter(Collision other)
     {
 
-        //if (other.gameObject.tag == "Shaker")
-        //{
-        //    Shake();
-        //    // UIManager.instance.shakeButton.SetActive(true);
-        //}
+
     }
     private void OnTriggerExit(Collider other)
     {
 
         if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
         {
-            UIManager.instance.grabButton.SetActive(false);
+         //   UIManager.instance.grabButton.SetActive(false);
+            UIManager.instance.canGrab = true;
+
         }
     }
 

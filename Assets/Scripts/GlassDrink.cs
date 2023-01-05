@@ -13,9 +13,9 @@ public class GlassDrink : Holder
     {
         poured = true;
 
-        UIManager.instance.pourButton.SetActive(false);
+     //   UIManager.instance.pourButton.SetActive(false);
         shaker.GetComponent<Rigidbody>().isKinematic = true;
-
+        shaker.transform.parent = this.transform;
         shaker.DOMove(shakerPourPosition.position,1);
         shaker.DORotate(shakerPourPosition.rotation.eulerAngles,1);
         StartCoroutine(RetrunShaker());
@@ -36,13 +36,14 @@ public class GlassDrink : Holder
             if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
             {
                 hand = other.GetComponent<HandHolder>();
-                UIManager.instance.grabButton.SetActive(true);
+              //  UIManager.instance.grabButton.SetActive(true);
                 UIManager.instance.ActivateGrab(hand.glassPosition, hand, this.transform);
+                UIManager.instance.canGrab = true;
             }
         if (other.gameObject.tag == "Shaker")
         {
             PourIntoGlass();
-            UIManager.instance.pourButton.SetActive(true);
+           // UIManager.instance.pourButton.SetActive(true);
             shaker = other.transform;
         }
     }
@@ -55,7 +56,9 @@ public class GlassDrink : Holder
 
         if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
         {
-            UIManager.instance.grabButton.SetActive(false);
+            UIManager.instance.canGrab = false;
+
+            //  UIManager.instance.grabButton.SetActive(false);
         }
 
     }

@@ -29,7 +29,7 @@ public class Holder : MonoBehaviour
     {
         yield return new WaitForSeconds(.3f);
         _rb.isKinematic = true;
-        // hand.handCollider.enabled = true;
+         hand.handCollider.enabled = true;
         //  hand.transform.rotation= new Quaternion(0,0,0,0);
         if (originalParent != null)
         {

@@ -25,6 +25,7 @@ public class HandHolder : MonoBehaviour
     public void Ungrab()
     {
         currentHolder.UnGrab();
+        UIManager.instance.canGrab = false;
     }
     private void OnTriggerEnter(Collider other)
     {

@@ -28,16 +28,12 @@ public class UIManager : MonoBehaviour
     public bool canGrab;
     #endregion
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         instance = this;
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     #region SideSteps
     List<RecipeStepUI> currentRecipeSteps = new List<RecipeStepUI>();
     int currentStepIndex=0;
@@ -123,7 +119,7 @@ public class UIManager : MonoBehaviour
             itemToGrab.GetComponent<Holder>().grabed = true;
             handHolder.handCollider.enabled = false;
             handHolder.currentHolder = itemToGrab.GetComponent<Holder>();
-            grabButton.SetActive(false);
+           // grabButton.SetActive(false);
         }
     }
 
