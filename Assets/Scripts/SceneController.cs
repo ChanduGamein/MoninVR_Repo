@@ -97,6 +97,7 @@ public class SceneController : MonoBehaviour
     {
         if (handHolderLeft.currentHolder != null)
             handHolderLeft.currentHolder.UnGrab();
+        
     } 
     public void OnClickUnGrabRight()
     {

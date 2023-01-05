@@ -33,7 +33,7 @@ public class IceScoop : Holder
             //child is your child transform
         }
         pickedIce = true;
-
+      //  AudioManagerMain.instance.PlaySFX("iceBucketScoop");
     }
 
     private void OnTriggerEnter(Collider other)

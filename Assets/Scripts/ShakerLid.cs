@@ -14,12 +14,13 @@ public class ShakerLid : Holder
 
         transform.parent = shaker.transform;
         transform.DOMove(shakerClosePosition.position,1);
+        AudioManagerMain.instance.PlaySFX("shakerSound");
         transform.DORotate(shakerClosePosition.rotation.eulerAngles, 1).OnComplete(() =>
-        shaker.transform.DOShakePosition(3, 1).OnComplete(() => FinishShake()));
+        shaker.transform.DOShakePosition(9.5f,1).OnComplete(() => FinishShake()));
     }
     public void FinishShake()
     {
-
+        AudioManagerMain.instance.PlaySFX("shakerMixerOpen");
         transform.parent = transform.parent.parent;
        // shaker.GetComponent<Rigidbody>().isKinematic = false;
 

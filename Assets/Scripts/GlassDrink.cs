@@ -18,11 +18,12 @@ public class GlassDrink : Holder
         shaker.transform.parent = this.transform;
         shaker.DOMove(shakerPourPosition.position,1);
         shaker.DORotate(shakerPourPosition.rotation.eulerAngles,1);
+        AudioManagerMain.instance.PlaySFX("pouringOnIce");
         StartCoroutine(RetrunShaker());
     }
     IEnumerator RetrunShaker()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
         SceneController.instance.InvokeCurrentStep();
         shaker.GetComponent<Shaker>().UnGrab();
     }

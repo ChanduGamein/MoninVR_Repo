@@ -69551,6 +69551,100 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6436505183851849207, guid: a564d471c3e5be54ab3940a72f50a15c, type: 3}
   m_PrefabInstance: {fileID: 2105781035}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2111221751
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2111221753}
+  - component: {fileID: 2111221752}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2111221752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111221751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d1930374adba8e4b8503659b56b776b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicMuted: 0
+  soundClips:
+  - clip: {fileID: 8300000, guid: 5ddc304acb11be34db2c846c402d2936, type: 3}
+    clipName: DongClosing
+    Volume: 1
+    audioSource: {fileID: 0}
+  - clip: {fileID: 8300000, guid: c2844bfbbdba2a348ab7401dedeca4cf, type: 3}
+    clipName: iceBucket2
+    Volume: 1
+    audioSource: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 280714ea698be07478d516d952edf411, type: 3}
+    clipName: iceBucketScoop
+    Volume: 1
+    audioSource: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 436827cab5031074c823c09eab40b3a9, type: 3}
+    clipName: jiggerTable
+    Volume: 1
+    audioSource: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 436827cab5031074c823c09eab40b3a9, type: 3}
+    clipName: jiggerTable
+    Volume: 1
+    audioSource: {fileID: 0}
+  - clip: {fileID: 8300000, guid: bded2947d263c82499854739c2c7c9be, type: 3}
+    clipName: pouringOnIce
+    Volume: 1
+    audioSource: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 7c64da886e4f8374596e6d254208a5f6, type: 3}
+    clipName: pouringLiquid
+    Volume: 1
+    audioSource: {fileID: 0}
+  - clip: {fileID: 8300000, guid: e740a31d68c42dd44a56baebcb148718, type: 3}
+    clipName: shakerMixerOpen
+    Volume: 1
+    audioSource: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 99345ee309176724cbf733204b9be74b, type: 3}
+    clipName: shakerSound
+    Volume: 1
+    audioSource: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 0c5976f2634bc9749a452d1568c28fd9, type: 3}
+    clipName: stirGlass
+    Volume: 1
+    audioSource: {fileID: 0}
+  clipsRandom: []
+  effectsSource: {fileID: 0}
+  musicSource: {fileID: 0}
+  lowPitchRange: 0.95
+  highPitchRange: 1.05
+  normalMixer: {fileID: 0}
+  lowMixer: {fileID: 0}
+  audiosources: []
+  currentPlaying: {fileID: 0}
+--- !u!4 &2111221753
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111221751}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.087, y: 2.9959998, z: 1.305}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2112430319
 PrefabInstance:
   m_ObjectHideFlags: 0
