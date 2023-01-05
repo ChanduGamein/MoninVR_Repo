@@ -11,6 +11,7 @@ public class Pump : MonoBehaviour
     public bool shakerInPlace;
     public string itemName;
     [SerializeField] Transform bottlePump;
+    [SerializeField] ParticleSystem liquidParticle;
 
     // Start is called before the first frame update
     void Start()
@@ -29,10 +30,11 @@ public class Pump : MonoBehaviour
     }
     IEnumerator PumpAnimation()
     {
-          bottlePump.DOLocalMoveY(0.196f, .5f).OnComplete (() => bottlePump.DOLocalMoveY(0.27f, .5f));
+          bottlePump.DOLocalMoveY(0.196f, .8f).OnComplete (() => bottlePump.DOLocalMoveY(0.27f, .8f));
         //currentAddedAmount += liquidMLPerPump;
         //SceneController.instance.shakerCountTXT.text = currentAddedAmount.ToString();
-    //    SceneController.instance.AddTextAmount(liquidMLPerPump);
+        //    SceneController.instance.AddTextAmount(liquidMLPerPump);
+        liquidParticle.Play();
         for (int i = 0; i < SceneController.instance.currentRecipe.RecipeItems.Count; i++)
         {
 
@@ -44,7 +46,7 @@ public class Pump : MonoBehaviour
                     GetComponent<Collider>().enabled = false;
                     SceneController.instance.currentAddedAmount = 0;
                     //  UIManager.instance.pumpButton.SetActive(false);
-                    yield return new WaitForSeconds(.5f);
+                    yield return new WaitForSeconds(.8f);
 
                     SceneController.instance.ResetShakerLiquidUI();
 

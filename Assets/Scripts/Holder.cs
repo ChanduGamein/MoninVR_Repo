@@ -4,6 +4,8 @@ using UnityEngine;
 using DG.Tweening;
 public class Holder : MonoBehaviour
 {
+    public Transform liquid;
+
     public bool grabed;
     Vector3 originalPosition;
     Quaternion originalRotation;
