@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 public class SprinkleWater : Holder
 {
     [SerializeField]Transform shaker;
@@ -13,9 +14,10 @@ public class SprinkleWater : Holder
     public int liquidMLPerPump;
     public int liquidMLFullAmount;
     public string itemName;
+    [SerializeField] Image fillImage;
 
     RaycastHit hit;
-    bool poured;
+    [SerializeField]bool poured;
     public void PourIntoGlass()
     {
         poured = true;
@@ -54,6 +56,12 @@ public class SprinkleWater : Holder
             {
                 Debug.Log(hit.transform.gameObject.name);
                 SceneController.instance.SetGlassLiquidAmount(itemName,liquidMLFullAmount,liquidMLPerPump);
+                if(fillImage.fillAmount>=1)
+                {
+                    grabed = false;
+                    SceneController.instance.InvokeCurrentStep();
+                    SceneController.instance.fillLiquidGlass.gameObject.SetActive(false);
+                }
             }
         }
     }
@@ -63,7 +71,7 @@ public class SprinkleWater : Holder
         {
             UnGrab();
         }
-        if (!poured)
+
             if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
             {
                 hand = other.GetComponent<HandHolder>();

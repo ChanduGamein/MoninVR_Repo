@@ -48,6 +48,7 @@ public class SceneController : MonoBehaviour
     private void Start()
     {
         UIManager.instance.SetStepsUI(currentRecipe.numOfSteps);
+        UIManager.instance.SetTutorialText("Pick Up Shaker");
     }
     public bool setLiquidAmount;
     public void SetShakerLiquidAmount(string drinkName, int fullAmount, int addedAmount)

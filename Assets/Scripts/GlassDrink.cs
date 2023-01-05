@@ -32,7 +32,6 @@ public class GlassDrink : Holder
         {
             UnGrab();
         }
-        if (!poured)
             if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
             {
                 hand = other.GetComponent<HandHolder>();

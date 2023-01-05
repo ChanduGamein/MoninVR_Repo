@@ -32,7 +32,7 @@ public class Pump : MonoBehaviour
           bottlePump.DOLocalMoveY(0.196f, .5f).OnComplete (() => bottlePump.DOLocalMoveY(0.27f, .5f));
         //currentAddedAmount += liquidMLPerPump;
         //SceneController.instance.shakerCountTXT.text = currentAddedAmount.ToString();
-        SceneController.instance.AddTextAmount(liquidMLPerPump);
+    //    SceneController.instance.AddTextAmount(liquidMLPerPump);
         for (int i = 0; i < SceneController.instance.currentRecipe.RecipeItems.Count; i++)
         {
 
@@ -53,9 +53,9 @@ public class Pump : MonoBehaviour
                 }
             }
         }
-        yield return new WaitForSeconds(.5f);
+      //  yield return new WaitForSeconds(.5f);
 
-        SceneController.instance.shakerCountTXT.gameObject.SetActive(false);
+     //   SceneController.instance.shakerCountTXT.gameObject.SetActive(false);
     }
     private void OnTriggerEnter(Collider other)
     {

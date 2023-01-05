@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Text tutorialPickUpTxt;
     [SerializeField] RecipeStepUI recipeStepUI;
     [SerializeField] Transform stepsParent;
+    public GameObject tutorialStepsPanel;
 
     #region testing
     public GameObject grabButton;
@@ -66,6 +67,7 @@ public class UIManager : MonoBehaviour
     #region Turorial
     public void SetTutorialText(string instruction)
     {
+        tutorialStepsPanel.SetActive(true);
         tutorialTxt.text = instruction;
     }
     public void SetTutorialPickUpItem(Sprite itemSprite,string instruction)
@@ -113,6 +115,11 @@ public class UIManager : MonoBehaviour
     {
         if (canGrab)
         {
+            if(itemToGrab.TryGetComponent(out Shaker _shaker))
+            {
+                SetTutorialText("Add Base");
+            }
+            Debug.Log("clicked");
             itemToGrab.parent = handTransform;
             itemToGrab.localPosition = Vector3.zero;
             itemToGrab.GetComponent<Holder>().hand = handHolder;

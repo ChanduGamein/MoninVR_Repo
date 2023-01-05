@@ -42,6 +42,7 @@ public class Holder : MonoBehaviour
         transform.position = originalPosition;
         transform.rotation = originalRotation;
         grabed = false;
+        UIManager.instance.canGrab = false;
       //  _rb.isKinematic = false;
     }
     public void UnGrab()
