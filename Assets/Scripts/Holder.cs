@@ -15,6 +15,11 @@ public class Holder : MonoBehaviour
     public HandHolder hand;
     // Start is called before the first frame update
     public Rigidbody _rb;
+    public void IncreaseLiquidScale()
+    {
+        liquid.transform.localScale =new Vector3 (1, liquid.transform.localScale.y+.1f,1);
+            
+    }
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
