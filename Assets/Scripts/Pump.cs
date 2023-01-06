@@ -12,7 +12,7 @@ public class Pump : MonoBehaviour
     public string itemName;
     [SerializeField] Transform bottlePump;
     [SerializeField] ParticleSystem liquidParticle;
-
+    [SerializeField] Shaker shaker;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +34,8 @@ public class Pump : MonoBehaviour
         //currentAddedAmount += liquidMLPerPump;
         //SceneController.instance.shakerCountTXT.text = currentAddedAmount.ToString();
         //    SceneController.instance.AddTextAmount(liquidMLPerPump);
-       // liquidParticle.Play();
+         liquidParticle.Play();
+        shaker.IncreaseLiquidScale();
         for (int i = 0; i < SceneController.instance.currentRecipe.RecipeItems.Count; i++)
         {
 
