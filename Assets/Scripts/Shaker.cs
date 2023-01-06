@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Shaker : Holder
 {
-    [SerializeField] Transform liquid;
     private void OnTriggerEnter(Collider other)
     {
         if (!grabed)

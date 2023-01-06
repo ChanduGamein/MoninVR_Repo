@@ -5,6 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - Shootable
+  - Lhand
+  - Rhand
+  - end
+  - Garnish
+  - Cup
+  - IceBox
+  - Shaker
   layers:
   - Default
   - TransparentFX
@@ -17,7 +24,7 @@ TagManager:
   - Lighting
   - Ground
   - Postprocessing
-  - 
+  - Cup
   - 
   - 
   - 

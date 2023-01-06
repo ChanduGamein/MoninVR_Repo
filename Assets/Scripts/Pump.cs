@@ -45,12 +45,13 @@ public class Pump : MonoBehaviour
                 {
                     GetComponent<Collider>().enabled = false;
                     SceneController.instance.currentAddedAmount = 0;
+                    SceneController.instance.InvokeCurrentStep();
+
                     //  UIManager.instance.pumpButton.SetActive(false);
                     yield return new WaitForSeconds(.8f);
 
                     SceneController.instance.ResetShakerLiquidUI();
 
-                    SceneController.instance.InvokeCurrentStep();
                     //   Invoke(nameof(ReturnObjectToOriginalTransform),.5f);
                 }
             }

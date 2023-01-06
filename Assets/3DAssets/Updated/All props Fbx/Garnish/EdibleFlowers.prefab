@@ -96,5 +96,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 2048
   hand: {fileID: 0}
