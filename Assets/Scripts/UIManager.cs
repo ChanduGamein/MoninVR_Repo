@@ -111,12 +111,14 @@ public class UIManager : MonoBehaviour
     //{
     //    pump.PlayPumpAnimation();
     //}
+    bool called = false;
     public void OnClickGrab()
     {
         if (canGrab)
         {
-            if(itemToGrab.TryGetComponent(out Shaker _shaker))
+            if(itemToGrab.TryGetComponent(out Shaker _shaker)&&!called)
             {
+                called = true;
                 SetTutorialText("Add Base");
             }
             Debug.Log("clicked");

@@ -22,10 +22,10 @@ public class ShakerLid : Holder
     {
         AudioManagerMain.instance.PlaySFX("shakerMixerOpen");
         transform.parent = transform.parent.parent;
-       // shaker.GetComponent<Rigidbody>().isKinematic = false;
+        // shaker.GetComponent<Rigidbody>().isKinematic = false;
+        SceneController.instance.InvokeCurrentStep();
 
         UnGrab();
-        SceneController.instance.InvokeCurrentStep();
     }
     private void OnTriggerEnter(Collider other)
     {

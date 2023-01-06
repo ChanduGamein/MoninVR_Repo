@@ -15,9 +15,9 @@ public class Holder : MonoBehaviour
     public HandHolder hand;
     // Start is called before the first frame update
     public Rigidbody _rb;
-    public void IncreaseLiquidScale()
+    public void IncreaseLiquidScale(float addedAmount)
     {
-        liquid.transform.localScale =new Vector3 (1, liquid.transform.localScale.y+.1f,1);
+        liquid.transform.localScale =new Vector3 (1, liquid.transform.localScale.y+ addedAmount, 1);
             
     }
     void Start()
@@ -50,7 +50,9 @@ public class Holder : MonoBehaviour
         transform.rotation = originalRotation;
         grabed = false;
         UIManager.instance.canGrab = false;
-      //  _rb.isKinematic = false;
+        hand.handCollider.enabled = true;
+
+        //  _rb.isKinematic = false;
     }
     public void UnGrab()
     {

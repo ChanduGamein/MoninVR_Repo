@@ -9,6 +9,7 @@ public class GlassDrink : Holder
     [SerializeField] Transform shakerPourPosition;
     [SerializeField]Transform shaker;
     bool poured;
+    public GameObject garnish;
     public void PourIntoGlass()
     {
         poured = true;
@@ -19,6 +20,7 @@ public class GlassDrink : Holder
         shaker.DOMove(shakerPourPosition.position,1);
         shaker.DORotate(shakerPourPosition.rotation.eulerAngles,1);
         AudioManagerMain.instance.PlaySFX("pouringOnIce");
+        IncreaseLiquidScale(.8f);
         StartCoroutine(RetrunShaker());
     }
     IEnumerator RetrunShaker()
