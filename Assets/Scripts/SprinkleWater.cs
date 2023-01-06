@@ -61,6 +61,7 @@ public class SprinkleWater : Holder
                     grabed = false;
                     SceneController.instance.InvokeCurrentStep();
                     SceneController.instance.fillLiquidGlass.gameObject.SetActive(false);
+                    glassDrink.IncreaseLiquidScale(.2f);
                 }
             }
         }

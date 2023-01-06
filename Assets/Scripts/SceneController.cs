@@ -40,6 +40,8 @@ public class SceneController : MonoBehaviour
     public int recipeStepIndex = 0;
     public FillLiquidUI ShakerFillLiquidUI;
     public FillLiquidUI fillLiquidGlass;
+    public GlassDrink glassDrink;
+
     private void Awake()
     {
         instance = this;

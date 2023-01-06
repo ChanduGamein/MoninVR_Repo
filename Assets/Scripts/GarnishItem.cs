@@ -26,6 +26,7 @@ public class GarnishItem : MonoBehaviour
             hand.handCollider.enabled = true;
             hand.hasGarnish = false;
             gameObject.SetActive(false);
+            SceneController.instance.glassDrink.garnish.SetActive(true);
         }
     }
     public void LeaveHAnd()

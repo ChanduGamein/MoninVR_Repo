@@ -35,7 +35,7 @@ public class Pump : MonoBehaviour
         //SceneController.instance.shakerCountTXT.text = currentAddedAmount.ToString();
         //    SceneController.instance.AddTextAmount(liquidMLPerPump);
          liquidParticle.Play();
-        shaker.IncreaseLiquidScale();
+        shaker.IncreaseLiquidScale(+.1f);
         for (int i = 0; i < SceneController.instance.currentRecipe.RecipeItems.Count; i++)
         {
 
