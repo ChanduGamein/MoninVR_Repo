@@ -56,12 +56,13 @@ public class SprinkleWater : Holder
             {
                 Debug.Log(hit.transform.gameObject.name);
                 SceneController.instance.SetGlassLiquidAmount(itemName,liquidMLFullAmount,liquidMLPerPump);
-                if(fillImage.fillAmount>=1)
+                glassDrink.IncreseLiquidGradually(1);
+
+                if (fillImage.fillAmount>=1)
                 {
                     grabed = false;
                     SceneController.instance.InvokeCurrentStep();
                     SceneController.instance.fillLiquidGlass.gameObject.SetActive(false);
-                    glassDrink.IncreaseLiquidScale(.2f);
                 }
             }
         }

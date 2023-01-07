@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3323260386721014263}
   - component: {fileID: 718993739736077629}
   - component: {fileID: 2178604632699324862}
+  - component: {fileID: 5555613021420389819}
   m_Layer: 0
   m_Name: FreshLime
   m_TagString: Untagged
@@ -40,7 +41,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1367577574890108136}
-  m_Mesh: {fileID: -7429283185796074493, guid: 8b87be025925b044dbcac1e607a731df, type: 3}
+  m_Mesh: {fileID: -7429283185796074493, guid: 56ab767badce2e14ba44ef224741cbd6, type: 3}
 --- !u!23 &718993739736077629
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -98,3 +99,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   hand: {fileID: 0}
+--- !u!65 &5555613021420389819
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367577574890108136}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0372814, y: 0.037959687, z: 0.00390598}
+  m_Center: {x: 0.000059359707, y: 0.018979553, z: 0}

@@ -9,7 +9,7 @@ public class GlassDrink : Holder
     [SerializeField] Transform shakerPourPosition;
     [SerializeField]Transform shaker;
     bool poured;
-    public GameObject garnish;
+    public List<Transform> garnishPositions = new List<Transform>();
     public void PourIntoGlass()
     {
         poured = true;
@@ -22,6 +22,22 @@ public class GlassDrink : Holder
         AudioManagerMain.instance.PlaySFX("pouringOnIce");
         IncreaseLiquidScale(.8f);
         StartCoroutine(RetrunShaker());
+    }
+    bool called;
+    public void IncreseLiquidGradually(float maxAddedAmount)
+    {
+        if(liquid.localScale.y<maxAddedAmount)
+        IncreaseLiquidScale(.01f);
+        else
+        {
+            shaker.GetComponent<Shaker>().PourToGlass = false;
+            if (!called)
+            {
+                SceneController.instance.InvokeCurrentStep();
+                called = true;
+            }
+
+        }
     }
     IEnumerator RetrunShaker()
     {
@@ -44,9 +60,9 @@ public class GlassDrink : Holder
             }
         if (other.gameObject.tag == "Shaker")
         {
-            PourIntoGlass();
+          //  PourIntoGlass();
            // UIManager.instance.pourButton.SetActive(true);
-            shaker = other.transform;
+          //  shaker = other.transform;
         }
     }
     private void OnCollisionEnter(Collision other)

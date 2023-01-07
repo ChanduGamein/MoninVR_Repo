@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum HandType
+{
+    left,right
+}
 public class HandHolder : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -12,6 +16,7 @@ public class HandHolder : MonoBehaviour
     public Transform glassPosition;
     public Collider handCollider;
     public bool hasGarnish;
+    public HandType handType;
     void Start()
     {
         
@@ -36,6 +41,7 @@ public class HandHolder : MonoBehaviour
                 garnishItem.hand = this;
                 handCollider.enabled = false;
             hasGarnish = true;
+            
         }
     }
 }

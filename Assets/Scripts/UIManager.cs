@@ -112,24 +112,43 @@ public class UIManager : MonoBehaviour
     //    pump.PlayPumpAnimation();
     //}
     bool called = false;
-    public void OnClickGrab()
+    public void OnClickGrab(bool isLeft)
     {
-        if (canGrab)
+        if (handHolder != null)
         {
-            if(itemToGrab.TryGetComponent(out Shaker _shaker)&&!called)
+            if (handHolder.handType == HandType.right && !isLeft)
             {
-                called = true;
-                SetTutorialText("Add Base");
+                if(!handHolder.hasGarnish)
+                if (canGrab)
+                {
+                    Grab();
+                }
             }
-            Debug.Log("clicked");
-            itemToGrab.parent = handTransform;
-            itemToGrab.localPosition = Vector3.zero;
-            itemToGrab.GetComponent<Holder>().hand = handHolder;
-            itemToGrab.GetComponent<Holder>().grabed = true;
-            handHolder.handCollider.enabled = false;
-            handHolder.currentHolder = itemToGrab.GetComponent<Holder>();
-           // grabButton.SetActive(false);
+            if (handHolder.handType == HandType.left && isLeft)
+            {
+                if (!handHolder.hasGarnish)
+
+                    if (canGrab)
+                {
+                    Grab();
+                }
+            }
         }
     }
-
+    public void Grab()
+    {
+        if (itemToGrab.TryGetComponent(out Shaker _shaker) && !called)
+        {
+            called = true;
+            SetTutorialText("Add Base");
+        }
+        Debug.Log("clicked");
+        itemToGrab.parent = handTransform;
+        itemToGrab.localPosition = Vector3.zero;
+        itemToGrab.GetComponent<Holder>().hand = handHolder;
+        itemToGrab.GetComponent<Holder>().grabed = true;
+        handHolder.handCollider.enabled = false;
+        handHolder.currentHolder = itemToGrab.GetComponent<Holder>();
+        // grabButton.SetActive(false);
+    }
 }

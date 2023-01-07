@@ -6,6 +6,15 @@ public class Shaker : Holder
 {
     public GameObject dummyLid;
     public GameObject shakerLid;
+    public bool PourToGlass;
+    public Transform pourPosition;
+    [SerializeField] LayerMask targetLayer;
+    [SerializeField] GlassDrink glassDrink;
+    RaycastHit hit;
+    public void SetPourToGlass()
+    {
+        PourToGlass = true;
+    }
     public void Shake()
     {
         dummyLid.SetActive(true);
@@ -22,6 +31,19 @@ public class Shaker : Holder
         SceneController.instance.InvokeCurrentStep();
         shakerLid.SetActive(true);
         shakerLid.SetActive(true);
+
+    }
+    private void Update()
+    {
+        if(PourToGlass)
+        if (grabed)
+        {
+
+            if (Physics.Raycast(pourPosition.position, Vector3.down, out hit, 20, targetLayer))
+            {
+                    glassDrink.IncreseLiquidGradually(.3f);
+            }
+        }
 
     }
     private void OnTriggerEnter(Collider other)

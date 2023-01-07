@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2146107032046075549}
   - component: {fileID: 4191856952936106583}
   - component: {fileID: -4739825680611562579}
+  - component: {fileID: 556647650324736961}
   m_Layer: 0
   m_Name: Coffee_Bean
   m_TagString: Untagged
@@ -98,3 +99,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   hand: {fileID: 0}
+--- !u!65 &556647650324736961
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2390439160112327554}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.007898979, y: 0.005206179, z: 0.011677263}
+  m_Center: {x: -0.00012033257, y: 0.0026030894, z: 0.0002975282}
