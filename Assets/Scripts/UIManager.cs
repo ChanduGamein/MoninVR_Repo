@@ -147,7 +147,8 @@ public class UIManager : MonoBehaviour
         itemToGrab.localPosition = Vector3.zero;
         itemToGrab.GetComponent<Holder>().hand = handHolder;
         itemToGrab.GetComponent<Holder>().grabed = true;
-        handHolder.handCollider.enabled = false;
+        //    handHolder.handCollider.enabled = false;
+        handHolder.grabbing = true;
         handHolder.currentHolder = itemToGrab.GetComponent<Holder>();
         // grabButton.SetActive(false);
     }

@@ -6,9 +6,10 @@ public class IceScoop : Holder
 {
     [SerializeField] List<Rigidbody> _rbs = new List<Rigidbody>();
     [SerializeField] Transform placeICeTarget;
+    [SerializeField] Shaker shaker;
     
     bool pickedIce;
-
+    bool called;
     public void ActivatePhysicsOnCubes()
     {
         //transform.GetChild(0).parent = null;
@@ -16,24 +17,29 @@ public class IceScoop : Holder
         {
             item.gameObject.SetActive(false);
         }
-        SceneController.instance.InvokeCurrentStep();
-
-
+        if (!called)
+        {
+            SceneController.instance.InvokeCurrentStep();
+            called = true;
+        }
+        pickedIce = false;
+        if(shaker.iceCubes.Count>=3)
+        for (int i = 0; i < 3; i++)
+        {
+            shaker.iceCubes[0].SetActive(true);
+            shaker.iceCubes.RemoveAt(0);
+        }
     }
     public void PickUpIce()
     {
         Debug.Log("pickupIce");
-      //  transform.DORotate(new Vector3(21.701f, 0,0), 1).OnComplete(()=>
-      //  transform.DORotate(new Vector3(0, 0, 0), 1));
-     //   UIManager.instance.PickUpIceButton.SetActive(false);
 
-        foreach (Transform child in transform)
+
+        foreach (Rigidbody item in _rbs)
         {
-            child.gameObject.SetActive(true);
-            //child is your child transform
+            item.gameObject.SetActive(true);
         }
         pickedIce = true;
-      //  AudioManagerMain.instance.PlaySFX("iceBucketScoop");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -52,8 +58,7 @@ public class IceScoop : Holder
         {
             if (pickedIce == true)
             {
-                //    transform.DOMove(placeICeTarget.position, .5f);
-                //  transform.DORotate(placeICeTarget.rotation.eulerAngles, .5f).OnComplete(()=>
+
                 ActivatePhysicsOnCubes();
 
             }

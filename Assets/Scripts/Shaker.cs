@@ -11,6 +11,7 @@ public class Shaker : Holder
     [SerializeField] LayerMask targetLayer;
     [SerializeField] GlassDrink glassDrink;
     RaycastHit hit;
+    public List<GameObject> iceCubes = new List<GameObject>();
     public void SetPourToGlass()
     {
         PourToGlass = true;

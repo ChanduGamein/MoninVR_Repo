@@ -11,6 +11,8 @@ public class ShakerLid : Holder
         _rb.isKinematic = true;
         shaker.GetComponent<Rigidbody>().isKinematic = true;
         // UIManager.instance.shakeButton.SetActive(false);
+        UnGrab();
+
         shaker.GetComponent<Shaker>().Shake();
         AudioManagerMain.instance.PlaySFX("shakerSound");
         GetComponent<BoxCollider>().enabled = false;

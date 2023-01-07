@@ -17,6 +17,7 @@ public class HandHolder : MonoBehaviour
     public Collider handCollider;
     public bool hasGarnish;
     public HandType handType;
+    public bool grabbing;
     void Start()
     {
         
@@ -30,11 +31,13 @@ public class HandHolder : MonoBehaviour
     public void Ungrab()
     {
         currentHolder.UnGrab();
+        grabbing = false;
+
         UIManager.instance.canGrab = false;
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(!hasGarnish)
+        if(!hasGarnish&&!grabbing)
         if(other.tag=="Garnish")
         {
          GarnishItem garnishItem=  Instantiate(other.GetComponent<Garnish>().garnish,garnishPosition);

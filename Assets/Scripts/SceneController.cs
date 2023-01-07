@@ -91,9 +91,12 @@ public class SceneController : MonoBehaviour
     }
     public void InvokeCurrentStep()
     {
-        userSelectedRecipe[recipeIndex].RecipeItems[recipeStepIndex].myEvent.Invoke();
-        userSelectedRecipe[recipeIndex].RecipeItems[recipeStepIndex].NeXtStep();
-        UIManager.instance.SetCurrentStepCompleted();
+        if (!(recipeStepIndex > userSelectedRecipe[recipeIndex].RecipeItems.Count - 1))
+        {
+            userSelectedRecipe[recipeIndex].RecipeItems[recipeStepIndex].myEvent.Invoke();
+            userSelectedRecipe[recipeIndex].RecipeItems[recipeStepIndex].NeXtStep();
+            UIManager.instance.SetCurrentStepCompleted();
+        }
     }
     public void OnClickUnGrabLeft()
     {

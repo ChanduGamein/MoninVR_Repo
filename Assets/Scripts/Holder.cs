@@ -34,9 +34,10 @@ public class Holder : MonoBehaviour
     }
     IEnumerator ReturnBottle()
     {
-        yield return new WaitForSeconds(.3f);
+        yield return new WaitForSeconds(0);
         _rb.isKinematic = true;
          hand.handCollider.enabled = true;
+        hand.grabbing = false;
         //  hand.transform.rotation= new Quaternion(0,0,0,0);
         if (originalParent != null)
         {
@@ -56,8 +57,24 @@ public class Holder : MonoBehaviour
     }
     public void UnGrab()
     {
-
-        StartCoroutine(ReturnBottle());
+        _rb.isKinematic = true;
+        hand.handCollider.enabled = true;
+        hand.grabbing = false;
+        //  hand.transform.rotation= new Quaternion(0,0,0,0);
+        if (originalParent != null)
+        {
+            transform.parent = originalParent;
+        }
+        else
+        {
+            transform.parent = null;
+        }
+        transform.position = originalPosition;
+        transform.rotation = originalRotation;
+        grabed = false;
+        UIManager.instance.canGrab = false;
+        hand.handCollider.enabled = true;
+     //   StartCoroutine(ReturnBottle());
     }
 
 }
