@@ -9,15 +9,24 @@ public class SprinkleWater : Holder
     [SerializeField]GlassDrink glassDrink;
     [SerializeField] Transform shakerPourPosition;
     [SerializeField] int amountToPour;
-    [SerializeField] LayerMask targetLayer;
+    public LayerMask targetLayerCup;
+    public LayerMask targetLayerShaker;
     [SerializeField] Transform spellPoint;
     public int liquidMLPerPump;
     public int liquidMLFullAmount;
     public string itemName;
     [SerializeField] Image fillImage;
-
+    LayerMask targetLayer;
     RaycastHit hit;
     [SerializeField]bool poured;
+    public void SetTargetLayerToCup()
+    {
+        targetLayer = targetLayerCup;
+    }
+    public void SetTargetLayerToShaker()
+    {
+        targetLayer = targetLayerShaker;
+    }
     public void PourIntoGlass()
     {
         poured = true;
