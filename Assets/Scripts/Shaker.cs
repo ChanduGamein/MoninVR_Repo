@@ -39,7 +39,7 @@ public class Shaker : Holder
         if(PourToGlass)
         if (grabed)
         {
-
+                Debug.DrawRay(pourPosition.position,Vector3.down,Color.green);
             if (Physics.Raycast(pourPosition.position, Vector3.down, out hit, 20, targetLayer))
             {
                     glassDrink.IncreseLiquidGradually(.3f);

@@ -12,6 +12,7 @@ TagManager:
   - Cup
   - IceBox
   - Shaker
+  - Scoop
   layers:
   - Default
   - TransparentFX

@@ -30,7 +30,7 @@ public class Recipe
 
 public class SceneController : MonoBehaviour
 {
-    public List <Recipe> userSelectedRecipe =new List<Recipe>();
+    public List<Recipe> userSelectedRecipe = new List<Recipe>();
     public static SceneController instance;
     public Recipe currentRecipe;
     public TextMeshProUGUI shakerCountTXT;
@@ -38,8 +38,7 @@ public class SceneController : MonoBehaviour
     public HandHolder handHolderLeft, handHolderRigh;
     int recipeIndex;
     public int recipeStepIndex = 0;
-    public FillLiquidUI ShakerFillLiquidUI;
-    public FillLiquidUI fillLiquidGlass;
+    public FillLiquidUI fillLiquidUI;
     public GlassDrink glassDrink;
 
     private void Awake()
@@ -53,38 +52,44 @@ public class SceneController : MonoBehaviour
         UIManager.instance.SetTutorialText("Pick Up Shaker");
     }
     public bool setLiquidAmount;
+    public void SetLiquidCanvasParent(Transform _parent)
+    {
+        fillLiquidUI.transform.parent = _parent;
+        fillLiquidUI.transform.localRotation = Quaternion.identity;
+        fillLiquidUI.transform.localPosition = Vector3.zero;
+    }
     public void SetShakerLiquidAmount(string drinkName, int fullAmount, int addedAmount)
     {
         if (!setLiquidAmount)
         {
-            ShakerFillLiquidUI.gameObject.SetActive(true);
-            ShakerFillLiquidUI.SetAmount(drinkName, fullAmount);
+            fillLiquidUI.gameObject.SetActive(true);
+            fillLiquidUI.SetAmount(drinkName, fullAmount);
             setLiquidAmount = true;
         }
-        ShakerFillLiquidUI.InCreaseAmount(addedAmount);
+        fillLiquidUI.InCreaseAmount(addedAmount);
     }
     public void ResetShakerLiquidUI()
     {
         setLiquidAmount = false;
-        ShakerFillLiquidUI.gameObject.SetActive(false);
-        ShakerFillLiquidUI.ResetValues();
+        fillLiquidUI.gameObject.SetActive(false);
+        fillLiquidUI.ResetValues();
     }
-    public void SetGlassLiquidAmount(string drinkName, int fullAmount, int addedAmount)
-    {
-        if (!setLiquidAmount)
-        {
-            fillLiquidGlass.gameObject.SetActive(true);
-            fillLiquidGlass.SetAmount(drinkName, fullAmount);
-            setLiquidAmount = true;
-        }
-        fillLiquidGlass.InCreaseAmount(addedAmount);
-    }
-    public void ResetGlassLiquidUI()
-    {
-        setLiquidAmount = false;
-        fillLiquidGlass.gameObject.SetActive(false);
-        fillLiquidGlass.ResetValues();
-    }
+    //public void SetGlassLiquidAmount(string drinkName, int fullAmount, int addedAmount)
+    //{
+    //    if (!setLiquidAmount)
+    //    {
+    //        fillLiquidGlass.gameObject.SetActive(true);
+    //        fillLiquidGlass.SetAmount(drinkName, fullAmount);
+    //        setLiquidAmount = true;
+    //    }
+    //    fillLiquidGlass.InCreaseAmount(addedAmount);
+    //}
+    //public void ResetGlassLiquidUI()
+    //{
+    //    setLiquidAmount = false;
+    //    fillLiquidGlass.gameObject.SetActive(false);
+    //    fillLiquidGlass.ResetValues();
+    //}
     public void ChooseRecipe(int id)
     {
         recipeIndex = id;

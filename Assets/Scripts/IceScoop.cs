@@ -7,16 +7,17 @@ public class IceScoop : Holder
     [SerializeField] List<Rigidbody> _rbs = new List<Rigidbody>();
     [SerializeField] Transform placeICeTarget;
     [SerializeField] Shaker shaker;
-    
+    [SerializeField] PooledObjects iceCube;
     bool pickedIce;
     bool called;
     public void ActivatePhysicsOnCubes()
     {
         //transform.GetChild(0).parent = null;
-        foreach (Rigidbody item in _rbs)
-        {
-            item.gameObject.SetActive(false);
-        }
+        AudioManagerMain.instance.PlaySFX("IceIntoGlass");
+        //foreach (Rigidbody item in _rbs)
+        //{
+        //    item.gameObject.SetActive(false);
+        //}
         if (!called)
         {
             SceneController.instance.InvokeCurrentStep();
@@ -33,12 +34,15 @@ public class IceScoop : Holder
     public void PickUpIce()
     {
         Debug.Log("pickupIce");
-
-
-        foreach (Rigidbody item in _rbs)
+        for (int i = 0; i < 4; i++)
         {
-            item.gameObject.SetActive(true);
+            iceCube.GetPooledObject(placeICeTarget.transform.position);
         }
+        AudioManagerMain.instance.PlaySFX("iceBucketScoop");
+        //foreach (Rigidbody item in _rbs)
+        //{
+        //    item.gameObject.SetActive(true);
+        //}
         pickedIce = true;
     }
 
@@ -85,7 +89,7 @@ public class IceScoop : Holder
 
         if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
         {
-            UIManager.instance.canGrab = true;
+            UIManager.instance.canGrab = false;
 
         }
     }
