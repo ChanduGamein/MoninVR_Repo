@@ -13,16 +13,22 @@ public class Pump : MonoBehaviour
     [SerializeField] Transform bottlePump;
     [SerializeField] ParticleSystem liquidParticle;
     [SerializeField] Shaker shaker;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
+    [SerializeField] Transform spellPoint;
+    [SerializeField] LayerMask targetLayer;
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.DrawRay(spellPoint.position, Vector3.down,Color.green);
+        if(Physics.Raycast(spellPoint.position,Vector3.down,10,targetLayer))
+        {
+              shakerInPlace = true;
+
+        }
+        else
+        {
+            shakerInPlace = false;
+
+        }
     }
     public void PlayPumpAnimation()
     {
@@ -35,7 +41,7 @@ public class Pump : MonoBehaviour
         //SceneController.instance.shakerCountTXT.text = currentAddedAmount.ToString();
         //    SceneController.instance.AddTextAmount(liquidMLPerPump);
          liquidParticle.Play();
-        shaker.IncreaseLiquidScale(+.1f);
+        shaker.IncreaseLiquid(.3f);
         for (int i = 0; i < SceneController.instance.currentRecipe.RecipeItems.Count; i++)
         {
 
@@ -44,7 +50,7 @@ public class Pump : MonoBehaviour
                 SceneController.instance.currentRecipe.RecipeItems[i].numberOfItemsRequired -= 1;
                 if (SceneController.instance.currentRecipe.RecipeItems[i].numberOfItemsRequired <= 0)
                 {
-                    GetComponent<Collider>().enabled = false;
+                  //  GetComponent<Collider>().enabled = false;
                     SceneController.instance.currentAddedAmount = 0;
                     SceneController.instance.InvokeCurrentStep();
 
@@ -67,10 +73,10 @@ public class Pump : MonoBehaviour
         {
             handOnItem = true;
         }
-        if (other.gameObject.tag=="Shaker")
-        {
-            shakerInPlace = true;
-        }
+        //if (other.gameObject.tag=="Shaker")
+        //{
+        //    shakerInPlace = true;
+        //}
         if(handOnItem&&shakerInPlace)
         {
             PlayPumpAnimation();

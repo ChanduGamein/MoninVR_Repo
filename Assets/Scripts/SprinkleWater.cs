@@ -65,7 +65,8 @@ public class SprinkleWater : Holder
             {
                 Debug.Log(hit.transform.gameObject.name);
                 SceneController.instance.SetShakerLiquidAmount(itemName,liquidMLFullAmount,liquidMLPerPump);
-                glassDrink.IncreseLiquidGradually(1);
+                //   glassDrink.IncreseLiquidGradually(1);
+                glassDrink.IncreaseLiquid(.01f);
 
                 if (fillImage.fillAmount>=1)
                 {
