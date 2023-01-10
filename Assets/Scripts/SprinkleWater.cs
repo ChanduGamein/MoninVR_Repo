@@ -9,43 +9,52 @@ public class SprinkleWater : Holder
     [SerializeField]GlassDrink glassDrink;
     [SerializeField] Transform shakerPourPosition;
     [SerializeField] int amountToPour;
-    [SerializeField] LayerMask targetLayer;
+    public LayerMask targetLayerCup;
+    public LayerMask targetLayerShaker;
     [SerializeField] Transform spellPoint;
     public int liquidMLPerPump;
     public int liquidMLFullAmount;
     public string itemName;
     [SerializeField] Image fillImage;
-
+    LayerMask targetLayer;
     RaycastHit hit;
     [SerializeField]bool poured;
-    public void PourIntoGlass()
+    public void SetTargetLayerToCup()
     {
-        poured = true;
-        _rb.isKinematic = true;
-        shaker.GetComponent<Rigidbody>().isKinematic = true;
-
-        UIManager.instance.pourSparklinButton.SetActive(false);
-        transform.DOMove(shakerPourPosition.position, 1);
-        transform.DORotate(shakerPourPosition.rotation.eulerAngles, 1);
-        StartCoroutine(LiquidCounter());
+        targetLayer = targetLayerCup;
     }
-    IEnumerator LiquidCounter()
+    public void SetTargetLayerToShaker()
     {
-        int counter = 0;
-        yield return new WaitForSeconds(1);
-        while (counter<amountToPour)
-        {
-            counter += 1;
-            glassDrink.amountTxt.text = counter.ToString();
-            yield return new WaitForSeconds(.05f);
-        }
-        yield return new WaitForSeconds(1);
-        glassDrink.amountTxt.gameObject.SetActive(false);
-        SceneController.instance.InvokeCurrentStep();
-        UnGrab();
-        shaker.GetComponent<Rigidbody>().isKinematic = false;
-
+        targetLayer = targetLayerShaker;
     }
+    //public void PourIntoGlass()
+    //{
+    //    poured = true;
+    //    _rb.isKinematic = true;
+    //    shaker.GetComponent<Rigidbody>().isKinematic = true;
+
+    //    UIManager.instance.pourSparklinButton.SetActive(false);
+    //    transform.DOMove(shakerPourPosition.position, 1);
+    //    transform.DORotate(shakerPourPosition.rotation.eulerAngles, 1);
+    //    StartCoroutine(LiquidCounter());
+    //}
+    //IEnumerator LiquidCounter()
+    //{
+    //    int counter = 0;
+    //    yield return new WaitForSeconds(1);
+    //    while (counter<amountToPour)
+    //    {
+    //        counter += 1;
+    //        glassDrink.amountTxt.text = counter.ToString();
+    //        yield return new WaitForSeconds(.05f);
+    //    }
+    //    yield return new WaitForSeconds(1);
+    //    glassDrink.amountTxt.gameObject.SetActive(false);
+    //    SceneController.instance.InvokeCurrentStep();
+    //    UnGrab();
+    //    shaker.GetComponent<Rigidbody>().isKinematic = false;
+
+    //}
     private void Update()
     {
         Debug.DrawRay(spellPoint.position, Vector3.down, Color.green);
@@ -55,14 +64,15 @@ public class SprinkleWater : Holder
             if (Physics.Raycast(spellPoint.position,Vector3.down,out hit,20,targetLayer))
             {
                 Debug.Log(hit.transform.gameObject.name);
-                SceneController.instance.SetGlassLiquidAmount(itemName,liquidMLFullAmount,liquidMLPerPump);
-                glassDrink.IncreseLiquidGradually(1);
+                SceneController.instance.SetShakerLiquidAmount(itemName,liquidMLFullAmount,liquidMLPerPump);
+                //   glassDrink.IncreseLiquidGradually(1);
+                glassDrink.IncreaseLiquid(.01f);
 
                 if (fillImage.fillAmount>=1)
                 {
                     grabed = false;
                     SceneController.instance.InvokeCurrentStep();
-                    SceneController.instance.fillLiquidGlass.gameObject.SetActive(false);
+                    SceneController.instance.fillLiquidUI.gameObject.SetActive(false);
                 }
             }
         }

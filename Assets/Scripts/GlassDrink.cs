@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
+using LiquidVolumeFX;
+
 public class GlassDrink : Holder
 {
     public TextMeshProUGUI amountTxt;
@@ -10,19 +12,12 @@ public class GlassDrink : Holder
     [SerializeField]Transform shaker;
     bool poured;
     public List<Transform> garnishPositions = new List<Transform>();
-    public void PourIntoGlass()
+    [SerializeField] LiquidVolume liquidVolume;
+    public void IncreaseLiquid(float value)
     {
-        poured = true;
-
-     //   UIManager.instance.pourButton.SetActive(false);
-        shaker.GetComponent<Rigidbody>().isKinematic = true;
-        shaker.transform.parent = this.transform;
-        shaker.DOMove(shakerPourPosition.position,1);
-        shaker.DORotate(shakerPourPosition.rotation.eulerAngles,1);
-        AudioManagerMain.instance.PlaySFX("pouringOnIce");
-        IncreaseLiquidScale(.8f);
-        StartCoroutine(RetrunShaker());
+        liquidVolume.level += value;
     }
+
     bool called;
     public void IncreseLiquidGradually(float maxAddedAmount)
     {
@@ -39,12 +34,7 @@ public class GlassDrink : Holder
 
         }
     }
-    IEnumerator RetrunShaker()
-    {
-        yield return new WaitForSeconds(3);
-        SceneController.instance.InvokeCurrentStep();
-        shaker.GetComponent<Shaker>().UnGrab();
-    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "end")

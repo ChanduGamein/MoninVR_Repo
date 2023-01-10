@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using LiquidVolumeFX;
 public class Shaker : Holder
 {
     public GameObject dummyLid;
@@ -12,6 +13,11 @@ public class Shaker : Holder
     [SerializeField] GlassDrink glassDrink;
     RaycastHit hit;
     public List<GameObject> iceCubes = new List<GameObject>();
+    [SerializeField] LiquidVolume liquidVolume;
+    public void IncreaseLiquid(float value)
+    {
+        liquidVolume.level += value;
+    }
     public void SetPourToGlass()
     {
         PourToGlass = true;
@@ -34,15 +40,26 @@ public class Shaker : Holder
         shakerLid.SetActive(true);
 
     }
+    float Counter;
     private void Update()
     {
         if(PourToGlass)
         if (grabed)
         {
-
+                Debug.DrawRay(pourPosition.position,Vector3.down,Color.green);
             if (Physics.Raycast(pourPosition.position, Vector3.down, out hit, 20, targetLayer))
             {
-                    glassDrink.IncreseLiquidGradually(.3f);
+                    if (Counter < .4f)
+                    {
+                        glassDrink.IncreaseLiquid(.01f);
+                        Counter += .01f;
+
+                    }
+                    else
+                    {
+                        PourToGlass = false;
+                        SceneController.instance.InvokeCurrentStep();
+                    }
             }
         }
 
