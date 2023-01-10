@@ -42,7 +42,7 @@ public class HandHolder : MonoBehaviour
         {
          GarnishItem garnishItem=  Instantiate(other.GetComponent<Garnish>().garnish,garnishPosition);
                 garnishItem.hand = this;
-                handCollider.enabled = false;
+            //    handCollider.enabled = false;
             hasGarnish = true;
             
         }

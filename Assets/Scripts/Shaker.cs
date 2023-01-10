@@ -18,6 +18,11 @@ public class Shaker : Holder
     {
         liquidVolume.level += value;
     }
+    public void DecreaseLiquid(float value)
+    {
+        if(liquidVolume.level>0)
+        liquidVolume.level -= value;
+    }
     public void SetPourToGlass()
     {
         PourToGlass = true;
@@ -53,7 +58,7 @@ public class Shaker : Holder
                     {
                         glassDrink.IncreaseLiquid(.01f);
                         Counter += .01f;
-
+                        DecreaseLiquid(.1f);
                     }
                     else
                     {

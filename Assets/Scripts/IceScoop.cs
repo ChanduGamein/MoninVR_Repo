@@ -36,7 +36,10 @@ public class IceScoop : Holder
         Debug.Log("pickupIce");
         for (int i = 0; i < 4; i++)
         {
-            iceCube.GetPooledObject(placeICeTarget.transform.position);
+            if(iceCube.GetPooledObject(placeICeTarget.transform.position))
+            {
+
+            }
         }
         AudioManagerMain.instance.PlaySFX("iceBucketScoop");
         //foreach (Rigidbody item in _rbs)
