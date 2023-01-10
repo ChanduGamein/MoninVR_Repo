@@ -15,6 +15,7 @@ public class GlassDrink : Holder
     [SerializeField] LiquidVolume liquidVolume;
     public void IncreaseLiquid(float value)
     {
+        liquidVolume.gameObject.SetActive(true);
         liquidVolume.level += value;
     }
 

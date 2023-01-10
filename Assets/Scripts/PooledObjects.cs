@@ -7,6 +7,7 @@ public class PooledObjects : MonoBehaviour
     [SerializeField] GameObject iceCubePrefab;
     List<GameObject> _pool_IceCubes = new List<GameObject>();
     // Start is called before the first frame update
+    int counter = 0;
     private GameObject SpawnedObjectsFromPool(GameObject objPrefab,List<GameObject> pool,Vector3 location)
     {
         for (int i = 0; i < pool.Count; i++)
@@ -19,9 +20,14 @@ public class PooledObjects : MonoBehaviour
                 
             }
         }
-        GameObject obj = Instantiate(objPrefab, location, Quaternion.identity);
-        pool.Add(obj);
-        return obj;
+        if (counter <= 4)
+        {
+            GameObject obj = Instantiate(objPrefab, location, Quaternion.identity);
+            pool.Add(obj);
+            counter++;
+            return obj;
+        }
+        return null;
     }
     public GameObject GetPooledObject(Vector3 location)
     {
