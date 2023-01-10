@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2960186968336509868}
   - component: {fileID: 658766512054687358}
   - component: {fileID: 658766512054687346}
-  - component: {fileID: 6621024118159235194}
+  - component: {fileID: 377240075472939186}
   m_Layer: 0
   m_Name: Icecube (16)
   m_TagString: Untagged
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bc884be30838fc4fbf3dbc1fca497ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &6621024118159235194
+--- !u!65 &377240075472939186
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -18,6 +18,8 @@ public class IceScoop : Holder
         //{
         //    item.gameObject.SetActive(false);
         //}
+        placeICeTarget.gameObject.SetActive(false);
+
         if (!called)
         {
             SceneController.instance.InvokeCurrentStep();
@@ -33,14 +35,15 @@ public class IceScoop : Holder
     }
     public void PickUpIce()
     {
+        placeICeTarget.gameObject.SetActive(true);
         Debug.Log("pickupIce");
-        for (int i = 0; i < 4; i++)
-        {
-            if(iceCube.GetPooledObject(placeICeTarget.transform.position))
-            {
+        //for (int i = 0; i < 4; i++)
+        //{
+        //    if(iceCube.GetPooledObject(placeICeTarget.transform.position))
+        //    {
 
-            }
-        }
+        //    }
+        //}
         AudioManagerMain.instance.PlaySFX("iceBucketScoop");
         //foreach (Rigidbody item in _rbs)
         //{

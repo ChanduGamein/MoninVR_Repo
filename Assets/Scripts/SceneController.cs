@@ -58,7 +58,7 @@ public class SceneController : MonoBehaviour
         fillLiquidUI.transform.localRotation = Quaternion.identity;
         fillLiquidUI.transform.localPosition = Vector3.zero;
     }
-    public void SetShakerLiquidAmount(string drinkName, int fullAmount, int addedAmount)
+    public void SetShakerLiquidAmount(string drinkName, float fullAmount, float addedAmount)
     {
         if (!setLiquidAmount)
         {

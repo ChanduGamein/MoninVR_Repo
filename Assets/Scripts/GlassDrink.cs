@@ -12,11 +12,24 @@ public class GlassDrink : Holder
     [SerializeField]Transform shaker;
     bool poured;
     public List<Transform> garnishPositions = new List<Transform>();
-    [SerializeField] LiquidVolume liquidVolume;
+    public LiquidVolume liquidVolume;
+    int counter = 0;
+    public void SetGarnishTransform(Transform garnish)
+    {
+        if (counter < garnishPositions.Count)
+        {
+            garnish.parent = transform;
+            garnish.position = garnishPositions[counter].position;
+            garnish.rotation = garnishPositions[counter].rotation;
+            garnish.localScale = garnishPositions[counter].localScale;
+            counter++;
+        }
+    }
     public void IncreaseLiquid(float value)
     {
-        liquidVolume.gameObject.SetActive(true);
+        liquidVolume.GetComponent<MeshRenderer>().enabled=true;
         liquidVolume.level += value;
+
     }
 
     bool called;

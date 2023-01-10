@@ -7,11 +7,11 @@ public class FillLiquidUI : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] Text currentAmount;
     [SerializeField] Text fullAmount;
-    [SerializeField] int totalAmount;
+    [SerializeField] float totalAmount;
     [SerializeField] Text drinkName;
     [SerializeField] Image fillImage;
     float calculatedAmount = 0;
-    public void SetAmount(string _drinkName,int _fullAmount)
+    public void SetAmount(string _drinkName,float _fullAmount)
     {
         drinkName.text = _drinkName;
         fullAmount.text = _fullAmount.ToString()+"ml";
@@ -23,7 +23,7 @@ public class FillLiquidUI : MonoBehaviour
         {
             calculatedAmount += amountTtAdd;
             fillImage.fillAmount = (calculatedAmount / (float)totalAmount);
-            currentAmount.text = calculatedAmount.ToString();
+            currentAmount.text = ((int)calculatedAmount).ToString();
         }
         else
         {
@@ -31,6 +31,12 @@ public class FillLiquidUI : MonoBehaviour
 
         }
         
+    }
+    public void SetFillAmount(float currentLevel,float fullLevel)
+    {
+        fillImage.fillAmount = (currentLevel / (float)fullLevel);
+        currentAmount.text = ((int)(currentLevel*200)).ToString();
+
     }
     public void ResetValues()
     {

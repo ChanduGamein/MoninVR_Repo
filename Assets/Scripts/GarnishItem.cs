@@ -36,10 +36,7 @@ public class GarnishItem : MonoBehaviour
         {
             GlassDrink glass = other.GetComponent<GlassDrink>();
             int rnd = Random.Range(0, glass.garnishPositions.Count);
-            transform.parent = glass.transform;
-            transform.position = glass.garnishPositions[rnd].position;
-            transform.rotation = glass.garnishPositions[rnd].rotation;
-            transform.localScale = glass.garnishPositions[rnd].localScale;
+            glass.SetGarnishTransform(this.transform);
             hand.handCollider.enabled = true;
             hand.hasGarnish = false;
             for (int i = 0; i < SceneController.instance.currentRecipe.RecipeItems.Count; i++)
