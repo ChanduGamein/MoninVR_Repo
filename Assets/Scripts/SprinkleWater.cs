@@ -19,6 +19,8 @@ public class SprinkleWater : Holder
     LayerMask targetLayer;
     RaycastHit hit;
     [SerializeField]bool poured;
+    [SerializeField] FillLiquidUI liquidUI;
+    [SerializeField] ParticleSystem liquidParticle;
     public void SetTargetLayerToCup()
     {
         targetLayer = targetLayerCup;
@@ -27,50 +29,26 @@ public class SprinkleWater : Holder
     {
         targetLayer = targetLayerShaker;
     }
-    //public void PourIntoGlass()
-    //{
-    //    poured = true;
-    //    _rb.isKinematic = true;
-    //    shaker.GetComponent<Rigidbody>().isKinematic = true;
 
-    //    UIManager.instance.pourSparklinButton.SetActive(false);
-    //    transform.DOMove(shakerPourPosition.position, 1);
-    //    transform.DORotate(shakerPourPosition.rotation.eulerAngles, 1);
-    //    StartCoroutine(LiquidCounter());
-    //}
-    //IEnumerator LiquidCounter()
-    //{
-    //    int counter = 0;
-    //    yield return new WaitForSeconds(1);
-    //    while (counter<amountToPour)
-    //    {
-    //        counter += 1;
-    //        glassDrink.amountTxt.text = counter.ToString();
-    //        yield return new WaitForSeconds(.05f);
-    //    }
-    //    yield return new WaitForSeconds(1);
-    //    glassDrink.amountTxt.gameObject.SetActive(false);
-    //    SceneController.instance.InvokeCurrentStep();
-    //    UnGrab();
-    //    shaker.GetComponent<Rigidbody>().isKinematic = false;
-
-    //}
     private void Update()
     {
-        Debug.DrawRay(spellPoint.position, Vector3.down, Color.green);
         if(grabed)
         {
 
             if (Physics.Raycast(spellPoint.position,Vector3.down,out hit,20,targetLayer))
             {
+                liquidParticle.Play();
                 Debug.Log(hit.transform.gameObject.name);
-                SceneController.instance.SetShakerLiquidAmount(itemName,liquidMLFullAmount,liquidMLPerPump);
                 //   glassDrink.IncreseLiquidGradually(1);
-                glassDrink.IncreaseLiquid(.01f);
-
+                glassDrink.IncreaseLiquid(.01f*Time.deltaTime*10);
+                liquidUI.gameObject.SetActive(true);
+                liquidUI.SetAmount(itemName,liquidMLFullAmount);
+                // SceneController.instance.SetShakerLiquidAmount(itemName, liquidMLFullAmount, .1f);
+                liquidUI.SetFillAmount(glassDrink.liquidVolume.level,.731f);
                 if (fillImage.fillAmount>=1)
                 {
                     grabed = false;
+                    liquidParticle.Stop();
                     SceneController.instance.InvokeCurrentStep();
                     SceneController.instance.fillLiquidUI.gameObject.SetActive(false);
                 }

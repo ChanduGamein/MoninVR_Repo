@@ -7,7 +7,10 @@ public class CheckColiision : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-
+        if (collision.gameObject.tag == "Scoop")
+        {
+            gameObject.SetActive(false);
+        }
     }
     private void OnTriggerExit(Collider other)
     {

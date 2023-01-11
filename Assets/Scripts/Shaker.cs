@@ -42,7 +42,6 @@ public class Shaker : Holder
         // shaker.GetComponent<Rigidbody>().isKinematic = false;
         SceneController.instance.InvokeCurrentStep();
         shakerLid.SetActive(true);
-        shakerLid.SetActive(true);
 
     }
     float Counter;
@@ -51,8 +50,7 @@ public class Shaker : Holder
         if(PourToGlass)
         if (grabed)
         {
-                Debug.DrawRay(pourPosition.position,Vector3.down,Color.green);
-            if (Physics.Raycast(pourPosition.position, Vector3.down, out hit, 20, targetLayer))
+            if (Physics.Raycast(pourPosition.position, Vector3.down, out hit, 10, targetLayer))
             {
                     if (Counter < .4f)
                     {

@@ -20,7 +20,7 @@ public class PooledObjects : MonoBehaviour
                 
             }
         }
-        if (counter <= 4)
+        if (counter < 2)
         {
             GameObject obj = Instantiate(objPrefab, location, Quaternion.identity);
             pool.Add(obj);
