@@ -14,6 +14,7 @@ public class GlassDrink : Holder
     public List<Transform> garnishPositions = new List<Transform>();
     public LiquidVolume liquidVolume;
     int counter = 0;
+    [SerializeField] Transform drinkServingPosition;
     public void SetGarnishTransform(Transform garnish)
     {
         if (counter < garnishPositions.Count)
@@ -25,6 +26,11 @@ public class GlassDrink : Holder
             counter++;
         }
     }
+    //public override void UnGrab()
+    //{
+    //    base.UnGrab();
+
+    //}
     public void IncreaseLiquid(float value)
     {
         liquidVolume.GetComponent<MeshRenderer>().enabled=true;
@@ -62,12 +68,7 @@ public class GlassDrink : Holder
                 UIManager.instance.ActivateGrab(hand.glassPosition, hand, this.transform);
                 UIManager.instance.canGrab = true;
             }
-        if (other.gameObject.tag == "Shaker")
-        {
-          //  PourIntoGlass();
-           // UIManager.instance.pourButton.SetActive(true);
-          //  shaker = other.transform;
-        }
+
     }
     private void OnCollisionEnter(Collision other)
     {

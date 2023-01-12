@@ -140,7 +140,7 @@ public class UIManager : MonoBehaviour
         if (itemToGrab.TryGetComponent(out Shaker _shaker) && !called)
         {
             called = true;
-            SetTutorialText("Add Base");
+            SetTutorialText("Add Base MONIN Cloudy Lemonade Concentrate");
         }
         Debug.Log("clicked");
         itemToGrab.parent = handTransform;

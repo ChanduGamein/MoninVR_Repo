@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using LiquidVolumeFX;
+using UnityEngine.XR.Interaction.Toolkit;
+
 public class Shaker : Holder
 {
     public GameObject dummyLid;
@@ -17,6 +19,7 @@ public class Shaker : Holder
     public void IncreaseLiquid(float value)
     {
         liquidVolume.level += value;
+        hand.GetComponent<XRController>().SendHapticImpulse(.5f,.5f);
     }
     public void DecreaseLiquid(float value)
     {

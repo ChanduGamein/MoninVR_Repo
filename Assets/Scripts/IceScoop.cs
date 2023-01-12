@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.XR.Interaction.Toolkit;
+
 public class IceScoop : Holder
 {
     [SerializeField] List<Rigidbody> _rbs = new List<Rigidbody>();
@@ -29,6 +31,7 @@ public class IceScoop : Holder
         if(shaker.iceCubes.Count>=3)
         for (int i = 0; i < 3; i++)
         {
+                shaker.hand.GetComponent<XRController>().SendHapticImpulse(.5f,.5f);
             shaker.iceCubes[0].SetActive(true);
             shaker.iceCubes.RemoveAt(0);
         }
@@ -44,6 +47,8 @@ public class IceScoop : Holder
     public void PickUpIce()
     {
         placeICeTarget.gameObject.SetActive(true);
+        hand.GetComponent<XRController>().SendHapticImpulse(.5f, .5f);
+
         Debug.Log("pickupIce");
         //for (int i = 0; i < 4; i++)
         //{
