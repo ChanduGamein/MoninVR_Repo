@@ -30,13 +30,13 @@ public class Shaker : Holder
     public void Shake()
     {
         dummyLid.SetActive(true);
-        transform.DOShakePosition(9.5f, 1).OnComplete(() => FinishShake());
+        transform.DOShakePosition(9.5f, 1.2f).OnComplete(() => FinishShake());
     }
     public void FinishShake()
     {
        dummyLid.SetActive(false);
 
-
+      //  AudioManagerMain.instance.StopSound("shakerMixerOpen");
         AudioManagerMain.instance.PlaySFX("shakerMixerOpen");
         //  transform.parent = transform.parent.parent;
         // shaker.GetComponent<Rigidbody>().isKinematic = false;

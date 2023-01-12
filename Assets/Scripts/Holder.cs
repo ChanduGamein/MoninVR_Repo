@@ -55,7 +55,7 @@ public class Holder : MonoBehaviour
 
         //  _rb.isKinematic = false;
     }
-    public void UnGrab()
+    public virtual void UnGrab()
     {
         _rb.isKinematic = true;
         hand.handCollider.enabled = true;

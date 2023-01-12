@@ -33,6 +33,14 @@ public class IceScoop : Holder
             shaker.iceCubes.RemoveAt(0);
         }
     }
+    public override void UnGrab()
+    {
+        base.UnGrab();
+        placeICeTarget.gameObject.SetActive(false);
+        pickedIce = false;
+
+
+    }
     public void PickUpIce()
     {
         placeICeTarget.gameObject.SetActive(true);
