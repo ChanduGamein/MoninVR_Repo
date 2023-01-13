@@ -39,6 +39,7 @@ public class SceneController : MonoBehaviour
     int recipeIndex;
     public int recipeStepIndex = 0;
     public FillLiquidUI fillLiquidUI;
+    public FillLiquidUI fillLiquidStatic;
     public GlassDrink glassDrink;
 
     private void Awake()
@@ -64,15 +65,20 @@ public class SceneController : MonoBehaviour
         {
             fillLiquidUI.gameObject.SetActive(true);
             fillLiquidUI.SetAmount(drinkName, fullAmount);
+            fillLiquidStatic.gameObject.SetActive(true);
+            fillLiquidStatic.SetAmount(drinkName, fullAmount);
             setLiquidAmount = true;
         }
         fillLiquidUI.InCreaseAmount(addedAmount);
+        fillLiquidStatic.InCreaseAmount(addedAmount);
     }
     public void ResetShakerLiquidUI()
     {
         setLiquidAmount = false;
         fillLiquidUI.gameObject.SetActive(false);
         fillLiquidUI.ResetValues();
+        fillLiquidStatic.gameObject.SetActive(false);
+        fillLiquidStatic.ResetValues();
     }
     //public void SetGlassLiquidAmount(string drinkName, int fullAmount, int addedAmount)
     //{

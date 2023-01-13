@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
-using LiquidVolumeFX;
+using SoftKitty.LiquidContainer;
 
 public class GlassDrink : Holder
 {
@@ -12,9 +12,11 @@ public class GlassDrink : Holder
     [SerializeField]Transform shaker;
     bool poured;
     public List<Transform> garnishPositions = new List<Transform>();
-    public LiquidVolume liquidVolume;
+    public LiquidControl liquidVolume;
     int counter = 0;
     [SerializeField] Transform drinkServingPosition;
+    [SerializeField] Color topColor, botttomColor;
+
     public void SetGarnishTransform(Transform garnish)
     {
         if (counter < garnishPositions.Count)
@@ -33,8 +35,9 @@ public class GlassDrink : Holder
     //}
     public void IncreaseLiquid(float value)
     {
-        liquidVolume.GetComponent<MeshRenderer>().enabled=true;
-        liquidVolume.level += value;
+        Debug.Log("increase");
+       // liquidVolume.GetComponent<MeshRenderer>().enabled=true;
+        liquidVolume.FillInLiquid(value,topColor,botttomColor);
 
     }
 
@@ -65,7 +68,7 @@ public class GlassDrink : Holder
             {
                 hand = other.GetComponent<HandHolder>();
               //  UIManager.instance.grabButton.SetActive(true);
-                UIManager.instance.ActivateGrab(hand.glassPosition, hand, this.transform);
+                UIManager.instance.ActivateGrab(hand.glassPosition, hand, this.transform, "MasonJar");
                 UIManager.instance.canGrab = true;
             }
 

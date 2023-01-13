@@ -45,7 +45,7 @@ public class ShakerLid : Holder
             hand = other.GetComponent<HandHolder>();
             //   UIManager.instance.grabButton.SetActive(true);
             UIManager.instance.canGrab = true;
-            UIManager.instance.ActivateGrab(hand.shakerPositon, hand, this.transform);
+            UIManager.instance.ActivateGrab(hand.shakerPositon, hand, this.transform,"Shaker");
         }
         if (other.gameObject.tag == "Shaker")
         {

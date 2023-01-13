@@ -16,7 +16,7 @@ public class SprinkleWater : Holder
     public int liquidMLFullAmount;
     public string itemName;
     [SerializeField] Image fillImage;
-    LayerMask targetLayer;
+    [SerializeField]LayerMask targetLayer;
     RaycastHit hit;
     [SerializeField]bool poured;
     [SerializeField] FillLiquidUI liquidUI;
@@ -34,23 +34,28 @@ public class SprinkleWater : Holder
     {
         if(grabed)
         {
-
+            Debug.DrawRay(spellPoint.position,Vector3.down,Color.green);
             if (Physics.Raycast(spellPoint.position,Vector3.down,out hit,20,targetLayer))
             {
                 liquidParticle.Play();
                 Debug.Log(hit.transform.gameObject.name);
                 //   glassDrink.IncreseLiquidGradually(1);
-                glassDrink.IncreaseLiquid(.01f*Time.deltaTime*10);
+                glassDrink.IncreaseLiquid(.1f);
                 liquidUI.gameObject.SetActive(true);
                 liquidUI.SetAmount(itemName,liquidMLFullAmount);
+                SceneController.instance.fillLiquidStatic.SetAmount(itemName,liquidMLFullAmount);
                 // SceneController.instance.SetShakerLiquidAmount(itemName, liquidMLFullAmount, .1f);
-                liquidUI.SetFillAmount(glassDrink.liquidVolume.level,.731f);
+                liquidUI.SetFillAmount(glassDrink.liquidVolume.Volumn,.731f);
+                Debug.Log("Volume "+ glassDrink.liquidVolume.Volumn);
+                SceneController.instance.fillLiquidStatic.SetFillAmount(glassDrink.liquidVolume.Volumn,.731f);
+                SceneController.instance.fillLiquidStatic.gameObject.SetActive(true) ;
                 if (fillImage.fillAmount>=1)
                 {
                     grabed = false;
                     liquidParticle.Stop();
                     SceneController.instance.InvokeCurrentStep();
                     SceneController.instance.fillLiquidUI.gameObject.SetActive(false);
+                    SceneController.instance.fillLiquidStatic.gameObject.SetActive(false);
                 }
             }
         }
@@ -65,7 +70,7 @@ public class SprinkleWater : Holder
             if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
             {
                 hand = other.GetComponent<HandHolder>();
-                UIManager.instance.ActivateGrab(hand.shakerPositon, hand, this.transform);
+                UIManager.instance.ActivateGrab(hand.shakerPositon, hand, this.transform, "SmallBottle");
                 UIManager.instance.canGrab = true;
             }
         if (other.gameObject.tag == "Cup")

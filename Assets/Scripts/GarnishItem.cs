@@ -8,8 +8,8 @@ public class GarnishItem : MonoBehaviour
     [SerializeField] LayerMask layer;
     RaycastHit hit;
     Rigidbody _rb;
-    public HandHolder hand;
     [SerializeField] items itemType;
+    public Tweezers tweezers;
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -37,8 +37,7 @@ public class GarnishItem : MonoBehaviour
             GlassDrink glass = other.GetComponent<GlassDrink>();
             int rnd = Random.Range(0, glass.garnishPositions.Count);
             glass.SetGarnishTransform(this.transform);
-            hand.handCollider.enabled = true;
-            hand.hasGarnish = false;
+            tweezers.hasGarnish = false;
             for (int i = 0; i < SceneController.instance.currentRecipe.RecipeItems.Count; i++)
             {
 

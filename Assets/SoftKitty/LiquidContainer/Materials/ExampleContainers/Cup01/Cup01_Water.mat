@@ -2,15 +2,14 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 8
+  serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Cup01_Water
   m_Shader: {fileID: 4800000, guid: 6344b01e5384cb74b97e0c4160b8217f, type: 3}
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
+  m_ShaderKeywords: 
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -68,7 +67,6 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    m_Ints: []
     m_Floats:
     - _BumpScale: 1
     - _ColorBlend: 0.605
@@ -97,7 +95,7 @@ Material:
     - _SrcBlend: 1
     - _Stencil: 2
     - _UVSec: 0
-    - _WaterLine: 0.6226415
+    - _WaterLine: 0.3978577
     - _WaveHeright: 0.0339
     - _WaveIntensity: 0
     - _WaveTile: 1.7

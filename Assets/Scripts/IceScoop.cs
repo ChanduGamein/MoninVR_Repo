@@ -68,11 +68,12 @@ public class IceScoop : Holder
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Collider");
+        if(!grabed)
         if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
         {
             hand = other.gameObject.GetComponent<HandHolder>();
           //  UIManager.instance.grabButton.SetActive(true);
-            UIManager.instance.ActivateGrab(hand.scoopPositon, hand, this.transform);
+            UIManager.instance.ActivateGrab(hand.scoopPositon, hand, this.transform, "IceScoop");
             UIManager.instance.canGrab = true;
 
         }
