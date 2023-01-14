@@ -40,14 +40,13 @@ public class SprinkleWater : Holder
                 liquidParticle.Play();
                 Debug.Log(hit.transform.gameObject.name);
                 //   glassDrink.IncreseLiquidGradually(1);
-                glassDrink.IncreaseLiquid(.1f);
+                glassDrink.IncreaseLiquid(.01f*Time.deltaTime*10);
                 liquidUI.gameObject.SetActive(true);
                 liquidUI.SetAmount(itemName,liquidMLFullAmount);
                 SceneController.instance.fillLiquidStatic.SetAmount(itemName,liquidMLFullAmount);
                 // SceneController.instance.SetShakerLiquidAmount(itemName, liquidMLFullAmount, .1f);
-                liquidUI.SetFillAmount(glassDrink.liquidVolume.Volumn,.731f);
-                Debug.Log("Volume "+ glassDrink.liquidVolume.Volumn);
-                SceneController.instance.fillLiquidStatic.SetFillAmount(glassDrink.liquidVolume.Volumn,.731f);
+                liquidUI.SetFillAmount(glassDrink.liquidVolume.level,.731f);
+                SceneController.instance.fillLiquidStatic.SetFillAmount(glassDrink.liquidVolume.level,.731f);
                 SceneController.instance.fillLiquidStatic.gameObject.SetActive(true) ;
                 if (fillImage.fillAmount>=1)
                 {

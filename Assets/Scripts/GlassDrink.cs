@@ -3,19 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
-using SoftKitty.LiquidContainer;
-
+using LiquidVolumeFX;
 public class GlassDrink : Holder
 {
     public TextMeshProUGUI amountTxt;
-    [SerializeField] Transform shakerPourPosition;
     [SerializeField]Transform shaker;
     bool poured;
     public List<Transform> garnishPositions = new List<Transform>();
-    public LiquidControl liquidVolume;
+    public LiquidVolume liquidVolume;
     int counter = 0;
     [SerializeField] Transform drinkServingPosition;
-    [SerializeField] Color topColor, botttomColor;
 
     public void SetGarnishTransform(Transform garnish)
     {
@@ -36,8 +33,8 @@ public class GlassDrink : Holder
     public void IncreaseLiquid(float value)
     {
         Debug.Log("increase");
-       // liquidVolume.GetComponent<MeshRenderer>().enabled=true;
-        liquidVolume.FillInLiquid(value,topColor,botttomColor);
+        liquidVolume.GetComponent<MeshRenderer>().enabled=true;
+        liquidVolume.level+=value;
 
     }
 

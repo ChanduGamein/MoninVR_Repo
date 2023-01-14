@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.XR.Interaction.Toolkit;
-using SoftKitty.LiquidContainer;
-
+using LiquidVolumeFX;
 public class Shaker : Holder
 {
     public GameObject dummyLid;
@@ -15,17 +14,17 @@ public class Shaker : Holder
     [SerializeField] GlassDrink glassDrink;
     RaycastHit hit;
     public List<GameObject> iceCubes = new List<GameObject>();
-    [SerializeField] LiquidControl liquidVolume;
-    [SerializeField] Color topColor, botttomColor;
+    [SerializeField] LiquidVolume liquidVolume;
+
     public void IncreaseLiquid(float value)
     {
-        liquidVolume.FillInLiquid(value,topColor,botttomColor);
+        liquidVolume.level+=value;
         hand.GetComponent<XRController>().SendHapticImpulse(.5f,.5f);
     }
     public void DecreaseLiquid(float value)
     {
-        if(liquidVolume.Volumn>0)
-        liquidVolume.Volumn -= value;
+        if (liquidVolume.level > 0)
+            liquidVolume.level -= value;
     }
     public void SetPourToGlass()
     {
