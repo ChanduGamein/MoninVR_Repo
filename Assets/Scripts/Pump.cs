@@ -15,7 +15,12 @@ public class Pump : MonoBehaviour
     [SerializeField] Shaker shaker;
     [SerializeField] Transform spellPoint;
     [SerializeField] LayerMask targetLayer;
+    [SerializeField] float pumpPressedPositionY;
+    [SerializeField] float pumpOriginalPosition;
     // Update is called once per frame
+    private void Start()
+    {
+    }
     void Update()
     {
         Debug.DrawRay(spellPoint.position, Vector3.down,Color.green);
@@ -36,7 +41,7 @@ public class Pump : MonoBehaviour
     }
     IEnumerator PumpAnimation()
     {
-          bottlePump.DOLocalMoveY(0.196f, .8f).OnComplete (() => bottlePump.DOLocalMoveY(0.27f, .8f));
+          bottlePump.DOLocalMoveY(pumpPressedPositionY, .8f).OnComplete (() => bottlePump.DOLocalMoveY(pumpOriginalPosition, .8f));
         //currentAddedAmount += liquidMLPerPump;
         //SceneController.instance.shakerCountTXT.text = currentAddedAmount.ToString();
         //    SceneController.instance.AddTextAmount(liquidMLPerPump);

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+
 public class Holder : MonoBehaviour
 {
     public Transform liquid;
@@ -55,7 +56,7 @@ public class Holder : MonoBehaviour
 
         //  _rb.isKinematic = false;
     }
-    public void UnGrab()
+    public virtual void UnGrab()
     {
         _rb.isKinematic = true;
         hand.handCollider.enabled = true;

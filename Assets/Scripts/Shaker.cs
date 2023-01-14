@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using LiquidVolumeFX;
+using UnityEngine.XR.Interaction.Toolkit;
+using SoftKitty.LiquidContainer;
+
 public class Shaker : Holder
 {
     public GameObject dummyLid;
@@ -13,15 +15,17 @@ public class Shaker : Holder
     [SerializeField] GlassDrink glassDrink;
     RaycastHit hit;
     public List<GameObject> iceCubes = new List<GameObject>();
-    [SerializeField] LiquidVolume liquidVolume;
+    [SerializeField] LiquidControl liquidVolume;
+    [SerializeField] Color topColor, botttomColor;
     public void IncreaseLiquid(float value)
     {
-        liquidVolume.level += value;
+        liquidVolume.FillInLiquid(value,topColor,botttomColor);
+        hand.GetComponent<XRController>().SendHapticImpulse(.5f,.5f);
     }
     public void DecreaseLiquid(float value)
     {
-        if(liquidVolume.level>0)
-        liquidVolume.level -= value;
+        if(liquidVolume.Volumn>0)
+        liquidVolume.Volumn -= value;
     }
     public void SetPourToGlass()
     {
@@ -30,13 +34,13 @@ public class Shaker : Holder
     public void Shake()
     {
         dummyLid.SetActive(true);
-        transform.DOShakePosition(9.5f, 1).OnComplete(() => FinishShake());
+        transform.DOShakePosition(9.5f, 1.2f).OnComplete(() => FinishShake());
     }
     public void FinishShake()
     {
        dummyLid.SetActive(false);
 
-
+      //  AudioManagerMain.instance.StopSound("shakerMixerOpen");
         AudioManagerMain.instance.PlaySFX("shakerMixerOpen");
         //  transform.parent = transform.parent.parent;
         // shaker.GetComponent<Rigidbody>().isKinematic = false;
@@ -50,6 +54,7 @@ public class Shaker : Holder
         if(PourToGlass)
         if (grabed)
         {
+                Debug.DrawRay(pourPosition.position, Vector3.down,Color.green);
             if (Physics.Raycast(pourPosition.position, Vector3.down, out hit, 10, targetLayer))
             {
                     if (Counter < .4f)
@@ -73,7 +78,7 @@ public class Shaker : Holder
             if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
             {
                 hand = other.GetComponent<HandHolder>();
-                UIManager.instance.ActivateGrab(hand.shakerPositon, hand, this.transform);
+                UIManager.instance.ActivateGrab(hand.shakerPositon, hand, this.transform,"Shaker");
                 //   UIManager.instance.grabButton.SetActive(true);
                 UIManager.instance.canGrab = true;
             }

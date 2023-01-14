@@ -163,13 +163,13 @@ public class AudioManagerMain : MonoBehaviour
 
     public void StopSound(string name) // for stooping looping sounds
     {
-        //SoundClips s = Array.Find(soundClips, sound => sound.clipName == name); // Lambada expression
-        //if (s == null)
-        //{
-        //    Debug.Log("Sound " + name + " not Found");
-        //    return;
-        //}
-        //s.audioSource.Stop();
+        SoundClips s = Array.Find(soundClips, sound => sound.clipName == name); // Lambada expression
+        if (s == null)
+        {
+            Debug.Log("Sound " + name + " not Found");
+            return;
+        }
+        s.audioSource.Stop();
     }
 
     public void StopMainMusic()

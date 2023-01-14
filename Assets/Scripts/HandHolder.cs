@@ -12,12 +12,11 @@ public class HandHolder : MonoBehaviour
     public Holder currentHolder;
     public Transform scoopPositon;
     public Transform shakerPositon;
-    public Transform garnishPosition;
     public Transform glassPosition;
     public Collider handCollider;
-    public bool hasGarnish;
     public HandType handType;
     public bool grabbing;
+    public Animator animator;
     void Start()
     {
         
@@ -28,6 +27,10 @@ public class HandHolder : MonoBehaviour
     {
         
     }
+    public void SetAnimatorTigger(string triggerName)
+    {
+        animator.SetTrigger(triggerName);
+    }
     public void Ungrab()
     {
         currentHolder.UnGrab();
@@ -37,14 +40,6 @@ public class HandHolder : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(!hasGarnish&&!grabbing)
-        if(other.tag=="Garnish")
-        {
-         GarnishItem garnishItem=  Instantiate(other.GetComponent<Garnish>().garnish,garnishPosition);
-                garnishItem.hand = this;
-            //    handCollider.enabled = false;
-            hasGarnish = true;
-            
-        }
+
     }
 }

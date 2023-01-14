@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.XR.Interaction.Toolkit;
+
 public class IceScoop : Holder
 {
     [SerializeField] List<Rigidbody> _rbs = new List<Rigidbody>();
@@ -29,13 +31,24 @@ public class IceScoop : Holder
         if(shaker.iceCubes.Count>=3)
         for (int i = 0; i < 3; i++)
         {
+                shaker.hand.GetComponent<XRController>().SendHapticImpulse(.5f,.5f);
             shaker.iceCubes[0].SetActive(true);
             shaker.iceCubes.RemoveAt(0);
         }
     }
+    public override void UnGrab()
+    {
+        base.UnGrab();
+        placeICeTarget.gameObject.SetActive(false);
+        pickedIce = false;
+
+
+    }
     public void PickUpIce()
     {
         placeICeTarget.gameObject.SetActive(true);
+        hand.GetComponent<XRController>().SendHapticImpulse(.5f, .5f);
+
         Debug.Log("pickupIce");
         //for (int i = 0; i < 4; i++)
         //{
@@ -55,11 +68,12 @@ public class IceScoop : Holder
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Collider");
+        if(!grabed)
         if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
         {
             hand = other.gameObject.GetComponent<HandHolder>();
           //  UIManager.instance.grabButton.SetActive(true);
-            UIManager.instance.ActivateGrab(hand.scoopPositon, hand, this.transform);
+            UIManager.instance.ActivateGrab(hand.scoopPositon, hand, this.transform, "IceScoop");
             UIManager.instance.canGrab = true;
 
         }

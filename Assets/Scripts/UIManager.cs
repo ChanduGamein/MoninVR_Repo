@@ -91,11 +91,13 @@ public class UIManager : MonoBehaviour
         activePrepareBtn.SetActive(false);
         inActivePrepareBtn.SetActive(true);
     }
-    public void ActivateGrab(Transform _handTransform, HandHolder _handHolder, Transform _itemToGrab)
+    string triggerName;
+    public void ActivateGrab(Transform _handTransform, HandHolder _handHolder, Transform _itemToGrab,string _triggerName)
     {
         handTransform = _handTransform;
         itemToGrab = _itemToGrab;
         handHolder = _handHolder;
+        triggerName = _triggerName;
     }
     public void ResetGrabbedItems()
     {
@@ -118,7 +120,6 @@ public class UIManager : MonoBehaviour
         {
             if (handHolder.handType == HandType.right && !isLeft)
             {
-                if(!handHolder.hasGarnish)
                 if (canGrab)
                 {
                     Grab();
@@ -126,7 +127,6 @@ public class UIManager : MonoBehaviour
             }
             if (handHolder.handType == HandType.left && isLeft)
             {
-                if (!handHolder.hasGarnish)
 
                     if (canGrab)
                 {
@@ -140,15 +140,17 @@ public class UIManager : MonoBehaviour
         if (itemToGrab.TryGetComponent(out Shaker _shaker) && !called)
         {
             called = true;
-            SetTutorialText("Add Base");
+            SetTutorialText("Add Base MONIN Cloudy Lemonade Concentrate");
         }
         Debug.Log("clicked");
         itemToGrab.parent = handTransform;
         itemToGrab.localPosition = Vector3.zero;
+        itemToGrab.localRotation = Quaternion.identity;
         itemToGrab.GetComponent<Holder>().hand = handHolder;
         itemToGrab.GetComponent<Holder>().grabed = true;
         //    handHolder.handCollider.enabled = false;
         handHolder.grabbing = true;
+        handHolder.SetAnimatorTigger(triggerName);
         handHolder.currentHolder = itemToGrab.GetComponent<Holder>();
         // grabButton.SetActive(false);
     }
