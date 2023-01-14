@@ -36,7 +36,7 @@ public class SceneController : MonoBehaviour
     public TextMeshProUGUI shakerCountTXT;
     public int currentAddedAmount = 0;
     public HandHolder handHolderLeft, handHolderRigh;
-    int recipeIndex;
+    [SerializeField]int recipeIndex;
     public int recipeStepIndex = 0;
     public FillLiquidUI fillLiquidUI;
     public FillLiquidUI fillLiquidStatic;
@@ -45,7 +45,7 @@ public class SceneController : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        currentRecipe = userSelectedRecipe[0];
+        currentRecipe = userSelectedRecipe[1];
     }
     private void Start()
     {

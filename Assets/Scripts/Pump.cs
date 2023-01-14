@@ -58,7 +58,7 @@ public class Pump : MonoBehaviour
                   //  GetComponent<Collider>().enabled = false;
                     SceneController.instance.currentAddedAmount = 0;
                     SceneController.instance.InvokeCurrentStep();
-
+                    Debug.Log("invokeeed");
                     //  UIManager.instance.pumpButton.SetActive(false);
                     yield return new WaitForSeconds(.8f);
 

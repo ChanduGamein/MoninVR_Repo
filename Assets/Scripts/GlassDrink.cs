@@ -10,7 +10,6 @@ public class GlassDrink : Holder
     [SerializeField]Transform shaker;
     bool poured;
     public List<Transform> garnishPositions = new List<Transform>();
-    public LiquidVolume liquidVolume;
     int counter = 0;
     [SerializeField] Transform drinkServingPosition;
 
@@ -30,11 +29,11 @@ public class GlassDrink : Holder
     //    base.UnGrab();
 
     //}
-    public void IncreaseLiquid(float value)
+    public override void IncreaseLiquid(float value)
     {
-        Debug.Log("increase");
+        base.IncreaseLiquid(value);
         liquidVolume.GetComponent<MeshRenderer>().enabled=true;
-        liquidVolume.level+=value;
+      //  liquidVolume.level+=value;
 
     }
 

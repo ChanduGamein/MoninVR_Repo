@@ -14,18 +14,11 @@ public class Shaker : Holder
     [SerializeField] GlassDrink glassDrink;
     RaycastHit hit;
     public List<GameObject> iceCubes = new List<GameObject>();
-    [SerializeField] LiquidVolume liquidVolume;
+    public void SetCounter(float _value)
+    {
+        value = _value;
+    }
 
-    public void IncreaseLiquid(float value)
-    {
-        liquidVolume.level+=value;
-        hand.GetComponent<XRController>().SendHapticImpulse(.5f,.5f);
-    }
-    public void DecreaseLiquid(float value)
-    {
-        if (liquidVolume.level > 0)
-            liquidVolume.level -= value;
-    }
     public void SetPourToGlass()
     {
         PourToGlass = true;
@@ -48,6 +41,7 @@ public class Shaker : Holder
 
     }
     float Counter;
+    float value;
     private void Update()
     {
         if(PourToGlass)
@@ -56,7 +50,7 @@ public class Shaker : Holder
                 Debug.DrawRay(pourPosition.position, Vector3.down,Color.green);
             if (Physics.Raycast(pourPosition.position, Vector3.down, out hit, 10, targetLayer))
             {
-                    if (Counter < .4f)
+                    if (Counter < value)
                     {
                         glassDrink.IncreaseLiquid(.01f);
                         Counter += .01f;

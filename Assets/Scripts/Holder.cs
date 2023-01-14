@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using LiquidVolumeFX;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class Holder : MonoBehaviour
 {
@@ -16,6 +18,17 @@ public class Holder : MonoBehaviour
     public HandHolder hand;
     // Start is called before the first frame update
     public Rigidbody _rb;
+    public LiquidVolume liquidVolume;
+    public virtual void IncreaseLiquid(float value)
+    {
+        liquidVolume.level += value;
+        hand.GetComponent<XRController>().SendHapticImpulse(.5f, .5f);
+    }
+    public void DecreaseLiquid(float value)
+    {
+        if (liquidVolume.level > 0)
+            liquidVolume.level -= value;
+    }
     public void IncreaseLiquidScale(float addedAmount)
     {
         liquid.transform.localScale =new Vector3 (1, liquid.transform.localScale.y+ addedAmount, 1);

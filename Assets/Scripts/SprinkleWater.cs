@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using LiquidVolumeFX;
 public class SprinkleWater : Holder
 {
-    [SerializeField]Transform shaker;
     [SerializeField]GlassDrink glassDrink;
-    [SerializeField] Transform shakerPourPosition;
-    [SerializeField] int amountToPour;
+    [SerializeField]Shaker shakerVolume;
     public LayerMask targetLayerCup;
     public LayerMask targetLayerShaker;
     [SerializeField] Transform spellPoint;
@@ -18,16 +17,18 @@ public class SprinkleWater : Holder
     [SerializeField] Image fillImage;
     [SerializeField]LayerMask targetLayer;
     RaycastHit hit;
-    [SerializeField]bool poured;
     [SerializeField] FillLiquidUI liquidUI;
     [SerializeField] ParticleSystem liquidParticle;
+    Holder _liquidVolume;
     public void SetTargetLayerToCup()
     {
         targetLayer = targetLayerCup;
+        _liquidVolume = glassDrink;
     }
     public void SetTargetLayerToShaker()
     {
         targetLayer = targetLayerShaker;
+        _liquidVolume = shakerVolume;
     }
 
     private void Update()
@@ -40,13 +41,15 @@ public class SprinkleWater : Holder
                 liquidParticle.Play();
                 Debug.Log(hit.transform.gameObject.name);
                 //   glassDrink.IncreseLiquidGradually(1);
-                glassDrink.IncreaseLiquid(.01f*Time.deltaTime*10);
+                _liquidVolume.IncreaseLiquid(.01f * Time.deltaTime * 10);
+
+
                 liquidUI.gameObject.SetActive(true);
                 liquidUI.SetAmount(itemName,liquidMLFullAmount);
                 SceneController.instance.fillLiquidStatic.SetAmount(itemName,liquidMLFullAmount);
                 // SceneController.instance.SetShakerLiquidAmount(itemName, liquidMLFullAmount, .1f);
-                liquidUI.SetFillAmount(glassDrink.liquidVolume.level,.731f);
-                SceneController.instance.fillLiquidStatic.SetFillAmount(glassDrink.liquidVolume.level,.731f);
+                liquidUI.SetFillAmount(_liquidVolume.liquidVolume.level,.731f);
+                SceneController.instance.fillLiquidStatic.SetFillAmount(_liquidVolume.liquidVolume.level,.731f);
                 SceneController.instance.fillLiquidStatic.gameObject.SetActive(true) ;
                 if (fillImage.fillAmount>=1)
                 {
