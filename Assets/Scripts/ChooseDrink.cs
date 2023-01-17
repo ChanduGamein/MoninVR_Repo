@@ -21,7 +21,8 @@ public class ChooseDrink : MonoBehaviour
             Debug.Log("onn");
             UIManager.instance.ActivatePrepareBtn();
             UIManager.instance.SetInGameRecipeImage(drinkSprite,drinkName);
-            SceneController.instance.ChooseRecipe(id);
+            UIManager.instance.drinkId = id;
+          //  SceneController.instance.ChooseRecipe(id);
         }
         else
         {

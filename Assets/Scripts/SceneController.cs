@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Events;
 
-public enum items { IceCubes, LemonFlavor,LemonBase, Water,shakerLid,sparklingWater,garnich,pourIntoGlass }
+public enum items { IceCubes, LemonFlavor,LemonBase, Water,shakerLid,sparklingWater,garnich,pourIntoGlass,Shaker,LongGlass }
 
  [System.Serializable]
  public class Item
@@ -26,6 +26,7 @@ public class Recipe
 {
     public List<Item> RecipeItems = new List<Item>();
     public int numOfSteps;
+    public List<GameObject> itemsToUseinRecipe = new List<GameObject>();
 }
 
 public class SceneController : MonoBehaviour
@@ -33,7 +34,6 @@ public class SceneController : MonoBehaviour
     public List<Recipe> userSelectedRecipe = new List<Recipe>();
     public static SceneController instance;
     public Recipe currentRecipe;
-    public TextMeshProUGUI shakerCountTXT;
     public int currentAddedAmount = 0;
     public HandHolder handHolderLeft, handHolderRigh;
     [SerializeField]int recipeIndex;
@@ -45,12 +45,11 @@ public class SceneController : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        currentRecipe = userSelectedRecipe[1];
+      //  currentRecipe = userSelectedRecipe[1];
     }
     private void Start()
     {
-        UIManager.instance.SetStepsUI(currentRecipe.numOfSteps);
-        UIManager.instance.SetTutorialText("Pick Up Shaker");
+
     }
     public bool setLiquidAmount;
     public void SetLiquidCanvasParent(Transform _parent)
@@ -58,6 +57,7 @@ public class SceneController : MonoBehaviour
         fillLiquidUI.transform.parent = _parent;
         fillLiquidUI.transform.localRotation = Quaternion.identity;
         fillLiquidUI.transform.localPosition = Vector3.zero;
+        fillLiquidUI.transform.localScale = Vector3.one;
     }
     public void SetShakerLiquidAmount(string drinkName, float fullAmount, float addedAmount)
     {
@@ -99,6 +99,13 @@ public class SceneController : MonoBehaviour
     public void ChooseRecipe(int id)
     {
         recipeIndex = id;
+        currentRecipe = userSelectedRecipe[id];
+        for (int i = 0; i < userSelectedRecipe[id].itemsToUseinRecipe.Count; i++)
+        {
+            userSelectedRecipe[id].itemsToUseinRecipe[i].SetActive(true);
+        }
+        UIManager.instance.SetStepsUI(currentRecipe.numOfSteps);
+        UIManager.instance.SetTutorialText("Pick Up Shaker");
     }
     public void InvokeCurrentStep()
     {
@@ -120,11 +127,6 @@ public class SceneController : MonoBehaviour
         if (handHolderRigh.currentHolder != null)
         handHolderRigh.currentHolder.UnGrab();
     }
-    public void AddTextAmount(int value)
-    {
-        shakerCountTXT.gameObject.SetActive(true);
-        currentAddedAmount += value;
-        shakerCountTXT.text = currentAddedAmount.ToString();
-    }
+
 }
 

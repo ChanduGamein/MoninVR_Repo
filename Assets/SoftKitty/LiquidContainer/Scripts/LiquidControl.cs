@@ -342,11 +342,12 @@ namespace SoftKitty.LiquidContainer
                             PondingObj.GetComponent<MeshRenderer>().material.SetColor("_TopColor", colorTop);
                             PondingObj.GetComponent<MeshRenderer>().material.SetColor("_BottomColor", colorBottom);
                             PondingObj.GetComponentInChildren<ParticleSystemRenderer>().material.SetColor("_Color", Color.Lerp(colorBottom, Color.white, 0.3F));
-
+                            
                         }
                         else
                         {
-                            PondingObj.SetActive(true);
+                            // PondingObj.SetActive(true);
+                            PondingObj.SetActive(false);
                             PondingObj.transform.position = Vector3.Lerp(PondingObj.transform.position, flow_hit.point, Time.deltaTime * 12F);
                             PondingObj.transform.up = flow_hit.normal;
                             PondingObj.transform.localScale = Vector3.Lerp(PondingObj.transform.localScale, Vector3.one * PondingSize, Time.deltaTime * 1F);

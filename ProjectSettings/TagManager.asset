@@ -13,6 +13,7 @@ TagManager:
   - IceBox
   - Shaker
   - Scoop
+  - LongGlass
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - Postprocessing
   - Cup
   - Shaker
-  - 
+  - LongGlass
   - 
   - 
   - 

@@ -95,10 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a5ecaace4d0e584a8d140eebd718aa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layer:
-    serializedVersion: 2
-    m_Bits: 2048
-  hand: {fileID: 0}
+  itemType: 6
+  tweezers: {fileID: 0}
 --- !u!65 &5555613021420389819
 BoxCollider:
   m_ObjectHideFlags: 0

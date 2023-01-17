@@ -8,8 +8,10 @@ public class SprinkleWater : Holder
 {
     [SerializeField]GlassDrink glassDrink;
     [SerializeField]Shaker shakerVolume;
+    [SerializeField]LongGlass longGlassVolume;
     public LayerMask targetLayerCup;
     public LayerMask targetLayerShaker;
+    public LayerMask targetLayerLongGlass;
     [SerializeField] Transform spellPoint;
     public int liquidMLPerPump;
     public int liquidMLFullAmount;
@@ -20,6 +22,10 @@ public class SprinkleWater : Holder
     [SerializeField] FillLiquidUI liquidUI;
     [SerializeField] ParticleSystem liquidParticle;
     Holder _liquidVolume;
+    public void SetTargetLayer(LayerMask layerMask)
+    {
+        targetLayer = layerMask;
+    }
     public void SetTargetLayerToCup()
     {
         targetLayer = targetLayerCup;
@@ -29,6 +35,11 @@ public class SprinkleWater : Holder
     {
         targetLayer = targetLayerShaker;
         _liquidVolume = shakerVolume;
+    }
+    public void SetTargetLayerToLongGlass()
+    {
+        targetLayer = targetLayerLongGlass;
+        _liquidVolume = longGlassVolume;
     }
 
     private void Update()
@@ -72,7 +83,7 @@ public class SprinkleWater : Holder
             if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
             {
                 hand = other.GetComponent<HandHolder>();
-                UIManager.instance.ActivateGrab(hand.shakerPositon, hand, this.transform, "SmallBottle");
+                UIManager.instance.ActivateGrab(hand.smallBottlePosition, hand, this.transform, "SmallBottle");
                 UIManager.instance.canGrab = true;
             }
         if (other.gameObject.tag == "Cup")

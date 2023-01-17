@@ -5,15 +5,9 @@ using UnityEngine;
 public class GarnishItem : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] LayerMask layer;
-    RaycastHit hit;
-    Rigidbody _rb;
     [SerializeField] items itemType;
     public Tweezers tweezers;
-    void Start()
-    {
-        _rb = GetComponent<Rigidbody>();
-    }
+
 
     // Update is called once per frame
     void Update()
@@ -32,12 +26,14 @@ public class GarnishItem : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag=="Cup")
+        if(other.gameObject.tag=="Cup"|| other.gameObject.tag == "LongGlass")
         {
-            GlassDrink glass = other.GetComponent<GlassDrink>();
+            HolderGlass glass = other.GetComponent<HolderGlass>();
             int rnd = Random.Range(0, glass.garnishPositions.Count);
             glass.SetGarnishTransform(this.transform);
             tweezers.hasGarnish = false;
+            tweezers.hand.hasGrarnish = false;
+            tweezers.gameObject.SetActive(false);
             for (int i = 0; i < SceneController.instance.currentRecipe.RecipeItems.Count; i++)
             {
 
@@ -57,9 +53,5 @@ public class GarnishItem : MonoBehaviour
             }
         }
     }
-    public void LeaveHAnd()
-    {
-       // _rb.isKinematic = false;
 
-    }
 }

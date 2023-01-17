@@ -19,6 +19,8 @@ public class Holder : MonoBehaviour
     // Start is called before the first frame update
     public Rigidbody _rb;
     public LiquidVolume liquidVolume;
+    public bool picked;
+
     public virtual void IncreaseLiquid(float value)
     {
         liquidVolume.level += value;
@@ -33,6 +35,10 @@ public class Holder : MonoBehaviour
     {
         liquid.transform.localScale =new Vector3 (1, liquid.transform.localScale.y+ addedAmount, 1);
             
+    }
+    public virtual void Grab()
+    {
+
     }
     void Start()
     {

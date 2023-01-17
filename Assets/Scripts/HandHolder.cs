@@ -13,10 +13,13 @@ public class HandHolder : MonoBehaviour
     public Transform scoopPositon;
     public Transform shakerPositon;
     public Transform glassPosition;
+    public Transform smallBottlePosition;
     public Collider handCollider;
     public HandType handType;
     public bool grabbing;
     public Animator animator;
+    public Tweezers tweezers;
+    public bool hasGrarnish;
     void Start()
     {
         
@@ -41,5 +44,13 @@ public class HandHolder : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
+        if (other.gameObject.tag=="Garnish")
+        {
+            Debug.Log("garnishhhhh");
+            hasGrarnish = true;
+            tweezers.gameObject.SetActive(true);
+            tweezers.grabed = true;
+            tweezers.SpawnGarnish(other.GetComponent<Garnish>().garnish);
+        }
     }
 }

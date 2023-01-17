@@ -88,14 +88,14 @@ Material:
     - _OpacityBottom: 1
     - _OpacityTop: 1
     - _Parallax: 0.02
-    - _Size: 0.2019592
+    - _Size: 0.11148292
     - _SmoothnessTextureChannel: 0
     - _Specular: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Stencil: 2
     - _UVSec: 0
-    - _WaterLine: 1
+    - _WaterLine: 0.3978577
     - _WaveHeright: 0.0339
     - _WaveIntensity: 0
     - _WaveTile: 1.7

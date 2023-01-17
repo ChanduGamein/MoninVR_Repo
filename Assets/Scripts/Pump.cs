@@ -12,14 +12,17 @@ public class Pump : MonoBehaviour
     public string itemName;
     [SerializeField] Transform bottlePump;
     [SerializeField] ParticleSystem liquidParticle;
-    [SerializeField] Shaker shaker;
+    [SerializeField] Holder itemToFill;
+    [SerializeField] float amountToAdd;
     [SerializeField] Transform spellPoint;
     [SerializeField] LayerMask targetLayer;
     [SerializeField] float pumpPressedPositionY;
     [SerializeField] float pumpOriginalPosition;
+    [SerializeField] Collider objectCollider;
     // Update is called once per frame
     private void Start()
     {
+        
     }
     void Update()
     {
@@ -41,12 +44,14 @@ public class Pump : MonoBehaviour
     }
     IEnumerator PumpAnimation()
     {
+       // objectCollider.enabled = false;
+
           bottlePump.DOLocalMoveY(pumpPressedPositionY, .8f).OnComplete (() => bottlePump.DOLocalMoveY(pumpOriginalPosition, .8f));
         //currentAddedAmount += liquidMLPerPump;
         //SceneController.instance.shakerCountTXT.text = currentAddedAmount.ToString();
         //    SceneController.instance.AddTextAmount(liquidMLPerPump);
          liquidParticle.Play();
-        shaker.IncreaseLiquid(.1f);
+        itemToFill.IncreaseLiquid(amountToAdd);
         for (int i = 0; i < SceneController.instance.currentRecipe.RecipeItems.Count; i++)
         {
 
@@ -68,9 +73,12 @@ public class Pump : MonoBehaviour
                 }
             }
         }
-      //  yield return new WaitForSeconds(.5f);
+        //yield return new WaitForSeconds(1.4f);
+        //objectCollider.enabled = true;
 
-     //   SceneController.instance.shakerCountTXT.gameObject.SetActive(false);
+        //  yield return new WaitForSeconds(.5f);
+
+        //   SceneController.instance.shakerCountTXT.gameObject.SetActive(false);
     }
     private void OnTriggerEnter(Collider other)
     {

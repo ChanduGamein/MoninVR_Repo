@@ -4,26 +4,15 @@ using UnityEngine;
 using DG.Tweening;
 using TMPro;
 using LiquidVolumeFX;
-public class GlassDrink : Holder
+public class GlassDrink : HolderGlass
 {
     public TextMeshProUGUI amountTxt;
     [SerializeField]Transform shaker;
     bool poured;
-    public List<Transform> garnishPositions = new List<Transform>();
-    int counter = 0;
+
     [SerializeField] Transform drinkServingPosition;
 
-    public void SetGarnishTransform(Transform garnish)
-    {
-        if (counter < garnishPositions.Count)
-        {
-            garnish.parent = transform;
-            garnish.position = garnishPositions[counter].position;
-            garnish.rotation = garnishPositions[counter].rotation;
-            garnish.localScale = garnishPositions[counter].localScale;
-            counter++;
-        }
-    }
+
     //public override void UnGrab()
     //{
     //    base.UnGrab();

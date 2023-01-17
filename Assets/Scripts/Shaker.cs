@@ -18,7 +18,15 @@ public class Shaker : Holder
     {
         value = _value;
     }
-
+    public override void Grab()
+    {
+        base.Grab();
+        if(!picked)
+        {
+            SceneController.instance.InvokeCurrentStep();
+            picked = true;
+        }
+    }
     public void SetPourToGlass()
     {
         PourToGlass = true;
