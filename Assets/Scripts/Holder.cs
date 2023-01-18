@@ -20,7 +20,7 @@ public class Holder : MonoBehaviour
     public Rigidbody _rb;
     public LiquidVolume liquidVolume;
     public bool picked;
-
+    public LineRenderer flowRenderer;
     public virtual void IncreaseLiquid(float value)
     {
         liquidVolume.level += value;

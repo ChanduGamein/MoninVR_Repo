@@ -505,7 +505,7 @@ namespace SoftKitty.LiquidContainer
 
                 if (flow_size > 0F)
                 {
-                    LiquidFlow.enabled = true;
+                 //   LiquidFlow.enabled = true;
                     _pos.Clear();
                     Vector3 _down = Vector3.Cross(Vector3.Cross(ContainerMouth.up, Vector3.down), ContainerMouth.up);
                     _pos.Add(ContainerMouth.position + _down * (OpenningRadius - 0.01F) - ContainerMouth.up * 0.02F);
@@ -519,7 +519,7 @@ namespace SoftKitty.LiquidContainer
                 }
                 else
                 {
-                    LiquidFlow.enabled = false;
+                 //   LiquidFlow.enabled = false;
                     if (PondingObj)
                     {
                         if (PondingObj.transform.localScale.x > 0F)
