@@ -14,6 +14,12 @@ public class HandHolder : MonoBehaviour
     public Transform shakerPositon;
     public Transform glassPosition;
     public Transform smallBottlePosition;
+    public Transform shakerLidPosition;
+    public Transform spoonPosition;
+    public Transform jiggerPosition;
+    public Transform waterBottlePosition;
+    public Transform bottleOpenerPosition;
+    public Transform strainerPosition;
     public Collider handCollider;
     public HandType handType;
     public bool grabbing;
@@ -50,6 +56,7 @@ public class HandHolder : MonoBehaviour
             hasGrarnish = true;
             tweezers.gameObject.SetActive(true);
             tweezers.grabed = true;
+            animator.SetTrigger("Tweezer");
             tweezers.SpawnGarnish(other.GetComponent<Garnish>().garnish);
         }
     }

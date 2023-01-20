@@ -13,6 +13,10 @@ public class IceScoop : Holder
     [SerializeField] PooledObjects iceCube;
     bool pickedIce;
     bool called;
+    public void SetShaker(Shaker _shaker)
+    {
+        shaker = _shaker;
+    }
     public void ActivatePhysicsOnCubesShaker()
     {
         //transform.GetChild(0).parent = null;

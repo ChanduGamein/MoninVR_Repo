@@ -15,6 +15,7 @@ namespace SoftKitty.LiquidContainer
         SerializedProperty WaterLineOffset;
         SerializedProperty CorkModel;
         SerializedProperty FlowHitMask;
+        SerializedProperty holder;
         Texture banner;
         Texture volumnHelp;
         Texture check;
@@ -24,6 +25,7 @@ namespace SoftKitty.LiquidContainer
         Vector2 oldOffset = Vector2.zero;
         bool showHelp = false;
         Transform AddNewFollowObj;
+        Holder holderItem;
         Rigidbody AddNewRigi;
 
         void OnEnable()
@@ -202,6 +204,15 @@ namespace SoftKitty.LiquidContainer
                 if (GUILayout.Button("Add"))
                 {
                     _script.FollowSurfaceObjs.Add(AddNewFollowObj);
+                }
+                GUI.color = Color.white;
+                GUILayout.EndHorizontal();
+                GUILayout.BeginHorizontal();
+                holderItem = (Holder)EditorGUILayout.ObjectField("Select a holder", holderItem, typeof(Holder), true);
+                GUI.color = new Color(1F, 0.7F, 0F, 1F);
+                if (GUILayout.Button("Add"))
+                {
+                    _script.holder= holderItem;
                 }
                 GUI.color = Color.white;
                 GUILayout.EndHorizontal();

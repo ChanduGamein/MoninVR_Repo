@@ -69,6 +69,7 @@ public class UIManager : MonoBehaviour
     }
     #endregion
     #region Turorial
+
     public void SetTutorialText(string instruction)
     {
         tutorialStepsPanel.SetActive(true);
@@ -116,18 +117,18 @@ public class UIManager : MonoBehaviour
             if (handHolder.handType == HandType.right && !isLeft)
             {
                 if(!handHolder.hasGrarnish)
-                if (canGrab)
-                {
+                //if (canGrab)
+                //{
                     Grab();
-                }
+              //  }
             }
             if (handHolder.handType == HandType.left && isLeft)
             {
                 if (!handHolder.hasGrarnish)
-                if (canGrab)
-                {
+                //if (canGrab)
+                //{
                     Grab();
-                }
+               // }
             }
         }
     }

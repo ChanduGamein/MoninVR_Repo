@@ -14,6 +14,12 @@ public class Shaker : Holder
     [SerializeField] GlassDrink glassDrink;
     RaycastHit hit;
     public List<GameObject> iceCubes = new List<GameObject>();
+    [SerializeField] GameObject StrainerDummy;
+    public void AddStrainer()
+    {
+        StrainerDummy.SetActive(true);
+        SceneController.instance.InvokeCurrentStep();
+    }
     public void SetCounter(float _value)
     {
         value = _value;
@@ -21,6 +27,7 @@ public class Shaker : Holder
     public override void Grab()
     {
         base.Grab();
+        if(callTutoral)
         if(!picked)
         {
             SceneController.instance.InvokeCurrentStep();
@@ -34,13 +41,13 @@ public class Shaker : Holder
     public void Shake()
     {
         dummyLid.SetActive(true);
-        transform.DOShakePosition(9.5f, 1.2f).OnComplete(() => FinishShake());
+        transform.DOShakePosition(3.5f, 10).OnComplete(() => FinishShake());
     }
     public void FinishShake()
     {
        dummyLid.SetActive(false);
 
-      //  AudioManagerMain.instance.StopSound("shakerMixerOpen");
+        AudioManagerMain.instance.StopSound("shakerSound");
         AudioManagerMain.instance.PlaySFX("shakerMixerOpen");
         //  transform.parent = transform.parent.parent;
         // shaker.GetComponent<Rigidbody>().isKinematic = false;

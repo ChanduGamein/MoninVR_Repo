@@ -21,7 +21,7 @@ public class Spoon : Holder
             if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
             {
                 hand = other.GetComponent<HandHolder>();
-                UIManager.instance.ActivateGrab(hand.shakerPositon, hand, this.transform, "Shaker");
+                UIManager.instance.ActivateGrab(hand.spoonPosition, hand, this.transform, "Spoon");
                 //   UIManager.instance.grabButton.SetActive(true);
                 UIManager.instance.canGrab = true;
             }
@@ -34,6 +34,16 @@ public class Spoon : Holder
             UnGrab();
             longGlass.Stir();
             gameObject.SetActive(false);
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+
+        if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
+        {
+            //   UIManager.instance.grabButton.SetActive(false);
+            UIManager.instance.canGrab = false;
+
         }
     }
 

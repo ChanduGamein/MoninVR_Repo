@@ -41,7 +41,9 @@ public class SprinkleWater : Holder
         targetLayer = targetLayerLongGlass;
         _liquidVolume = longGlassVolume;
     }
-
+    float counter = 0;
+    float curreentliquidAmount;
+    bool called;
     private void Update()
     {
         if(grabed)
@@ -49,20 +51,33 @@ public class SprinkleWater : Holder
             Debug.DrawRay(spellPoint.position,Vector3.down,Color.green);
             if (Physics.Raycast(spellPoint.position,Vector3.down,out hit,20,targetLayer))
             {
+                if (!called)
+                {
+                    curreentliquidAmount = _liquidVolume.liquidVolume.level;
+                    called = true;
+                }
                 liquidParticle.Play();
                 Debug.Log(hit.transform.gameObject.name);
                 //   glassDrink.IncreseLiquidGradually(1);
-                _liquidVolume.IncreaseLiquid(.01f * Time.deltaTime * 10);
+                _liquidVolume.IncreaseLiquid(.01f * Time.deltaTime *10);
 
 
                 liquidUI.gameObject.SetActive(true);
                 liquidUI.SetAmount(itemName,liquidMLFullAmount);
                 SceneController.instance.fillLiquidStatic.SetAmount(itemName,liquidMLFullAmount);
                 // SceneController.instance.SetShakerLiquidAmount(itemName, liquidMLFullAmount, .1f);
-                liquidUI.SetFillAmount(_liquidVolume.liquidVolume.level,.731f);
-                SceneController.instance.fillLiquidStatic.SetFillAmount(_liquidVolume.liquidVolume.level,.731f);
+                if(counter<=liquidMLFullAmount)
+                {
+
+                    liquidUI.SetFillAmount(counter, liquidMLFullAmount, liquidMLFullAmount);
+                    SceneController.instance.fillLiquidStatic.SetFillAmount(counter, liquidMLFullAmount, liquidMLFullAmount);
+                    counter+= (_liquidVolume.liquidVolume.level-curreentliquidAmount)*(.731f*5.4f);
+                }
+                 //liquidUI.SetFillAmount(_liquidVolume.liquidVolume.level, .731f,liquidMLFullAmount);
+                 //SceneController.instance.fillLiquidStatic.SetFillAmount(_liquidVolume.liquidVolume.level, .731f,liquidMLFullAmount);
+                
                 SceneController.instance.fillLiquidStatic.gameObject.SetActive(true) ;
-                if (fillImage.fillAmount>=1)
+                if (_liquidVolume.liquidVolume.level>=.731f)
                 {
                     grabed = false;
                     liquidParticle.Stop();
@@ -83,7 +98,7 @@ public class SprinkleWater : Holder
             if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
             {
                 hand = other.GetComponent<HandHolder>();
-                UIManager.instance.ActivateGrab(hand.smallBottlePosition, hand, this.transform, "SmallBottle");
+                UIManager.instance.ActivateGrab(hand.waterBottlePosition, hand, this.transform, "Shaker");
                 UIManager.instance.canGrab = true;
             }
         if (other.gameObject.tag == "Cup")

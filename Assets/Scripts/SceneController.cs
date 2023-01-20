@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Events;
 
-public enum items { IceCubes, LemonFlavor,LemonBase, Water,shakerLid,sparklingWater,garnich,pourIntoGlass,Shaker,LongGlass }
+public enum items { IceCubes, LemonFlavor,LemonBase, Water,shakerLid,sparklingWater,garnich,pourIntoGlass,Shaker,LongGlass,LemonBase2,Jigger }
 
  [System.Serializable]
  public class Item
@@ -14,9 +14,12 @@ public enum items { IceCubes, LemonFlavor,LemonBase, Water,shakerLid,sparklingWa
     public int numberOfItemsRequired=1;
     public bool itemCollected;
     public UnityEvent myEvent;
+    [TextArea]
+    public string myText;
     public void NeXtStep()
     {
         SceneController.instance.recipeStepIndex += 1;
+        UIManager.instance.SetTutorialText(myText);
     }
 
 }
@@ -27,6 +30,9 @@ public class Recipe
     public List<Item> RecipeItems = new List<Item>();
     public int numOfSteps;
     public List<GameObject> itemsToUseinRecipe = new List<GameObject>();
+    public Holder firstItem;
+    [TextArea]
+    public string myText;
 }
 
 public class SceneController : MonoBehaviour
@@ -41,7 +47,7 @@ public class SceneController : MonoBehaviour
     public FillLiquidUI fillLiquidUI;
     public FillLiquidUI fillLiquidStatic;
     public GlassDrink glassDrink;
-
+    public bool isFridgeOpen;
     private void Awake()
     {
         instance = this;
@@ -105,7 +111,10 @@ public class SceneController : MonoBehaviour
             userSelectedRecipe[id].itemsToUseinRecipe[i].SetActive(true);
         }
         UIManager.instance.SetStepsUI(currentRecipe.numOfSteps);
-        UIManager.instance.SetTutorialText("Pick Up Shaker");
+        userSelectedRecipe[id].firstItem.callTutoral = true;
+      //  InvokeCurrentStep();
+      //  UIManager.instance.SetTutorialText("Pick Up Shaker");
+        UIManager.instance.SetTutorialText(userSelectedRecipe[id].myText);
     }
     public void InvokeCurrentStep()
     {

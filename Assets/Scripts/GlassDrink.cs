@@ -6,11 +6,9 @@ using TMPro;
 using LiquidVolumeFX;
 public class GlassDrink : HolderGlass
 {
-    public TextMeshProUGUI amountTxt;
     [SerializeField]Transform shaker;
     bool poured;
 
-    [SerializeField] Transform drinkServingPosition;
 
 
     //public override void UnGrab()
@@ -22,26 +20,10 @@ public class GlassDrink : HolderGlass
     {
         base.IncreaseLiquid(value);
         liquidVolume.GetComponent<MeshRenderer>().enabled=true;
-      //  liquidVolume.level+=value;
-
     }
 
     bool called;
-    public void IncreseLiquidGradually(float maxAddedAmount)
-    {
-        if(liquid.localScale.y<maxAddedAmount)
-        IncreaseLiquidScale(.01f);
-        else
-        {
-            shaker.GetComponent<Shaker>().PourToGlass = false;
-            if (!called)
-            {
-                SceneController.instance.InvokeCurrentStep();
-                called = true;
-            }
 
-        }
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -58,10 +40,7 @@ public class GlassDrink : HolderGlass
             }
 
     }
-    private void OnCollisionEnter(Collision other)
-    {
 
-    }
     private void OnTriggerExit(Collider other)
     {
 

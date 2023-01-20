@@ -40,6 +40,7 @@ namespace SoftKitty.LiquidContainer
         public List<Rigidbody> FloatingRigibodies = new List<Rigidbody>();
         public float FollowSpeed = 0.5F;
         public float FollowWave = 1F;
+        public Holder holder;
         #endregion
 
         #region Internal Variables
@@ -270,7 +271,7 @@ namespace SoftKitty.LiquidContainer
         #region Internal Calculation
         private Vector3 FindFlowHitPoint(Vector3 _pos2)
         {
-            if (Physics.Raycast(_pos2, Vector3.down, out flow_hit, FlowLengthLimit, MouthMask, QueryTriggerInteraction.Collide))
+            if (Physics.Raycast(_pos2, Vector3.down, out flow_hit, FlowLengthLimit, MouthMask, QueryTriggerInteraction.UseGlobal))
             {
                 if (flow_hit.collider.isTrigger && flow_hit.collider.GetComponentInParent<LiquidControl>() && WaterLine > 0F)
                 {
@@ -279,17 +280,17 @@ namespace SoftKitty.LiquidContainer
                     _planePos.y = flow_hit.point.y;
                     if (Vector3.Distance(flow_hit.point, _planePos) > flow_hit.collider.GetComponent<SphereCollider>().radius * 0.2F)
                     {
-                        if (!SprayObj)
-                        {
-                            SprayObj = Instantiate(Resources.Load<GameObject>("LiquidContainer/Spray"), flow_hit.point, Quaternion.identity) as GameObject;
-                        }
-                        else
-                        {
-                            SprayObj.GetComponent<ParticleSystemRenderer>().material.SetColor("_Color", Color.Lerp(colorBottom, Color.white, 0.3F));
-                            SprayObj.transform.position = flow_hit.point - Vector3.up * flow_hit.collider.GetComponent<SphereCollider>().radius * 0.7F;
-                            SprayObj.transform.forward = flow_hit.normal;
-                            if (!SprayObj.GetComponent<ParticleSystem>().isPlaying) SprayObj.GetComponent<ParticleSystem>().Play();
-                        }
+                        //if (!SprayObj)
+                        //{
+                        //    SprayObj = Instantiate(Resources.Load<GameObject>("LiquidContainer/Spray"), flow_hit.point, Quaternion.identity) as GameObject;
+                        //}
+                        //else
+                        //{
+                        //    SprayObj.GetComponent<ParticleSystemRenderer>().material.SetColor("_Color", Color.Lerp(colorBottom, Color.white, 0.3F));
+                        //    SprayObj.transform.position = flow_hit.point - Vector3.up * flow_hit.collider.GetComponent<SphereCollider>().radius * 0.7F;
+                        //    SprayObj.transform.forward = flow_hit.normal;
+                        //    if (!SprayObj.GetComponent<ParticleSystem>().isPlaying) SprayObj.GetComponent<ParticleSystem>().Play();
+                        //}
 
                         Vector3 _midPos = _pos2 - Vector3.up * (flow_hit.distance + 0.02F);
                         _pos.Add(_midPos);
@@ -308,17 +309,17 @@ namespace SoftKitty.LiquidContainer
                 else
                 {
                     DoSomethingWhenHitWaterTrigger(flow_hit.collider.gameObject);
-                    if (!SprayObj)
-                    {
-                        SprayObj = Instantiate(Resources.Load<GameObject>("LiquidContainer/Spray"), flow_hit.point, Quaternion.identity) as GameObject;
-                    }
-                    else
-                    {
-                        SprayObj.GetComponent<ParticleSystemRenderer>().material.SetColor("_Color", Color.Lerp(colorBottom, Color.white, 0.3F));
-                        SprayObj.transform.position = flow_hit.point;
-                        SprayObj.transform.forward = flow_hit.normal;
-                        if (!SprayObj.GetComponent<ParticleSystem>().isPlaying) SprayObj.GetComponent<ParticleSystem>().Play();
-                    }
+                    //if (!SprayObj)
+                    //{
+                    //    SprayObj = Instantiate(Resources.Load<GameObject>("LiquidContainer/Spray"), flow_hit.point, Quaternion.identity) as GameObject;
+                    //}
+                    //else
+                    //{
+                    //    SprayObj.GetComponent<ParticleSystemRenderer>().material.SetColor("_Color", Color.Lerp(colorBottom, Color.white, 0.3F));
+                    //    SprayObj.transform.position = flow_hit.point;
+                    //    SprayObj.transform.forward = flow_hit.normal;
+                    //    if (!SprayObj.GetComponent<ParticleSystem>().isPlaying) SprayObj.GetComponent<ParticleSystem>().Play();
+                    //}
                     Vector3 _endPos = _pos2;
                     _endPos.y = flow_hit.point.y;
                     return _endPos;
@@ -367,17 +368,17 @@ namespace SoftKitty.LiquidContainer
                         }
                     }
 
-                    if (!SprayObj)
-                    {
-                        SprayObj = Instantiate(Resources.Load<GameObject>("LiquidContainer/Spray"), flow_hit.point, Quaternion.identity) as GameObject;
-                    }
-                    else
-                    {
-                        SprayObj.GetComponent<ParticleSystemRenderer>().material.SetColor("_Color", Color.Lerp(colorBottom, Color.white, 0.3F));
-                        SprayObj.transform.position = flow_hit.point;
-                        SprayObj.transform.forward = flow_hit.normal;
-                        if (!SprayObj.GetComponent<ParticleSystem>().isPlaying) SprayObj.GetComponent<ParticleSystem>().Play();
-                    }
+                    //if (!SprayObj)
+                    //{
+                    //    SprayObj = Instantiate(Resources.Load<GameObject>("LiquidContainer/Spray"), flow_hit.point, Quaternion.identity) as GameObject;
+                    //}
+                    //else
+                    //{
+                    //    SprayObj.GetComponent<ParticleSystemRenderer>().material.SetColor("_Color", Color.Lerp(colorBottom, Color.white, 0.3F));
+                    //    SprayObj.transform.position = flow_hit.point;
+                    //    SprayObj.transform.forward = flow_hit.normal;
+                    //    if (!SprayObj.GetComponent<ParticleSystem>().isPlaying) SprayObj.GetComponent<ParticleSystem>().Play();
+                    //}
                 }
 
                 return _pos2 - Vector3.up * flow_hit.distance;
@@ -393,7 +394,7 @@ namespace SoftKitty.LiquidContainer
 
                     if (PondingObj.GetComponentInChildren<ParticleSystem>().isPlaying) PondingObj.GetComponentInChildren<ParticleSystem>().Stop();
                 }
-                if (SprayObj && SprayObj.GetComponent<ParticleSystem>().isPlaying) SprayObj.GetComponent<ParticleSystem>().Stop();
+              //  if (SprayObj && SprayObj.GetComponent<ParticleSystem>().isPlaying) SprayObj.GetComponent<ParticleSystem>().Stop();
             }
             return _pos2 - Vector3.up * (FlowLengthLimit * 0.7F + 0.3F * FlowLengthLimit * flow_size);
         }
@@ -467,6 +468,8 @@ namespace SoftKitty.LiquidContainer
                     LiquidObj.transform.localEulerAngles = Vector3.zero;
                     LiquidObj.transform.localScale = Vector3.one;
                     LiquidFlow = LiquidObj.GetComponent<LineRenderer>();
+                    if(holder!=null)
+                    holder.flowRenderer = LiquidFlow;
                     LiquidFlow.enabled = false;
                 }
                 else
@@ -516,10 +519,12 @@ namespace SoftKitty.LiquidContainer
                     LiquidFlow.widthMultiplier = flow_size * 0.08F;
                     AddLiquid(-Time.deltaTime * 0.1F * FlowOutSpeed * Volumn, colorTop, colorBottom, true);
                     WaterLine = Mathf.MoveTowards(WaterLine, 0F, Time.deltaTime * 0.1F * FlowOutSpeed);
+                    flow_size = 1;
                 }
                 else
                 {
                  //   LiquidFlow.enabled = false;
+                 
                     if (PondingObj)
                     {
                         if (PondingObj.transform.localScale.x > 0F)
@@ -529,7 +534,7 @@ namespace SoftKitty.LiquidContainer
 
                         if (PondingObj.GetComponentInChildren<ParticleSystem>().isPlaying) PondingObj.GetComponentInChildren<ParticleSystem>().Stop();
                     }
-                    if (SprayObj && SprayObj.GetComponent<ParticleSystem>().isPlaying) SprayObj.GetComponent<ParticleSystem>().Stop();
+                   // if (SprayObj && SprayObj.GetComponent<ParticleSystem>().isPlaying) SprayObj.GetComponent<ParticleSystem>().Stop();
                 }
             }
             else
@@ -548,7 +553,7 @@ namespace SoftKitty.LiquidContainer
 
                     if (PondingObj.GetComponentInChildren<ParticleSystem>().isPlaying) PondingObj.GetComponentInChildren<ParticleSystem>().Stop();
                 }
-                if (SprayObj && SprayObj.GetComponent<ParticleSystem>().isPlaying) SprayObj.GetComponent<ParticleSystem>().Stop();
+              //  if (SprayObj && SprayObj.GetComponent<ParticleSystem>().isPlaying) SprayObj.GetComponent<ParticleSystem>().Stop();
             }
         }
 

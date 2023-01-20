@@ -14,6 +14,10 @@ TagManager:
   - Shaker
   - Scoop
   - LongGlass
+  - BottleFridge
+  - Opener
+  - BottleCap
+  - Jigger
   layers:
   - Default
   - TransparentFX
@@ -29,7 +33,7 @@ TagManager:
   - Cup
   - Shaker
   - LongGlass
-  - 
+  - Jigger
   - 
   - 
   - 

@@ -7,20 +7,23 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class Holder : MonoBehaviour
 {
-    public Transform liquid;
-
+    [HideInInspector]
     public bool grabed;
     Vector3 originalPosition;
     Quaternion originalRotation;
     public items itemType;
     //[SerializeField] Colider parentColider;
     [SerializeField]Transform originalParent;
+    [HideInInspector]
     public HandHolder hand;
     // Start is called before the first frame update
-    public Rigidbody _rb;
     public LiquidVolume liquidVolume;
+    [HideInInspector]
     public bool picked;
+    [HideInInspector]
     public LineRenderer flowRenderer;
+    [HideInInspector]
+    public bool callTutoral;
     public virtual void IncreaseLiquid(float value)
     {
         liquidVolume.level += value;
@@ -31,18 +34,18 @@ public class Holder : MonoBehaviour
         if (liquidVolume.level > 0)
             liquidVolume.level -= value;
     }
-    public void IncreaseLiquidScale(float addedAmount)
-    {
-        liquid.transform.localScale =new Vector3 (1, liquid.transform.localScale.y+ addedAmount, 1);
+    //public void IncreaseLiquidScale(float addedAmount)
+    //{
+    //    liquid.transform.localScale =new Vector3 (1, liquid.transform.localScale.y+ addedAmount, 1);
             
-    }
+    //}
     public virtual void Grab()
     {
 
     }
     void Start()
     {
-        _rb = GetComponent<Rigidbody>();
+       // _rb = GetComponent<Rigidbody>();
         originalPosition = transform.position;
         originalRotation = transform.rotation;
         if(transform.parent!=null)
@@ -55,7 +58,7 @@ public class Holder : MonoBehaviour
     IEnumerator ReturnBottle()
     {
         yield return new WaitForSeconds(0);
-        _rb.isKinematic = true;
+      //  _rb.isKinematic = true;
          hand.handCollider.enabled = true;
         hand.grabbing = false;
         //  hand.transform.rotation= new Quaternion(0,0,0,0);
@@ -77,7 +80,7 @@ public class Holder : MonoBehaviour
     }
     public virtual void UnGrab()
     {
-        _rb.isKinematic = true;
+      //  _rb.isKinematic = true;
         hand.handCollider.enabled = true;
         hand.grabbing = false;
         //  hand.transform.rotation= new Quaternion(0,0,0,0);
