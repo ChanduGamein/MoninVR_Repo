@@ -88,7 +88,7 @@ Material:
     - _OpacityBottom: 1
     - _OpacityTop: 1
     - _Parallax: 0.02
-    - _Size: 0.13453104
+    - _Size: 0.27716744
     - _SmoothnessTextureChannel: 0
     - _Specular: 0
     - _SpecularHighlights: 1
@@ -102,7 +102,7 @@ Material:
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:
-    - _BottomColor: {r: 0.350304, g: 0.7921569, b: 0.08627448, a: 1}
+    - _BottomColor: {r: 0.7921569, g: 0.6411998, b: 0.08627448, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EdgeColor: {r: 0.2924528, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

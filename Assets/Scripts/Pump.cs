@@ -50,9 +50,9 @@ public class Pump : MonoBehaviour
     bool called = false;
     IEnumerator PumpAnimation()
     {
-        objectCollider.enabled = false;
+       // objectCollider.enabled = false;
 
-          bottlePump.DOLocalMoveY(pumpPressedPositionY, .8f).OnComplete (() => bottlePump.DOLocalMoveY(pumpOriginalPosition, .8f).OnComplete(()=> ActivateCollider()));
+          bottlePump.DOLocalMoveY(pumpPressedPositionY, .8f).OnComplete (() => bottlePump.DOLocalMoveY(pumpOriginalPosition, .8f));
         //currentAddedAmount += liquidMLPerPump;
         //SceneController.instance.shakerCountTXT.text = currentAddedAmount.ToString();
         //    SceneController.instance.AddTextAmount(liquidMLPerPump);

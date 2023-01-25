@@ -29,6 +29,7 @@ public class EspressoCup : Holder
                         called = true;
                         SceneController.instance.InvokeCurrentStep();
                         flowRenderer.enabled = false;
+                        liquidVolume.GetComponent<MeshRenderer>().enabled = false;
                     }
 
                 }
