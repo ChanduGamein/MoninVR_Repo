@@ -351,7 +351,7 @@ namespace SoftKitty.LiquidContainer
 
                     GUILayout.BeginHorizontal();
                     GUILayout.Label("Size:", GUILayout.Width(140));
-                    OpenningRadius.floatValue = GUILayout.HorizontalSlider(OpenningRadius.floatValue, 0.005F, 0.1F);
+                    OpenningRadius.floatValue = GUILayout.HorizontalSlider(OpenningRadius.floatValue, 0.001F, 0.1F);
                     GUILayout.Label(OpenningRadius.floatValue.ToString("0.00"), GUILayout.Width(60));
                     GUILayout.EndHorizontal();
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
@@ -25,10 +26,18 @@ public class UIManager : MonoBehaviour
     public GameObject pourSparklinButton;
     public Transform handTransform;
     public Transform itemToGrab;
+    public Transform itemToGrabRight;
+    public Transform itemToGrabLeft;
     Pump pump;
     public HandHolder handHolder;
+    public GameObject pointerTutorial;
     public bool canGrab;
     #endregion
+    public void Reload()
+    {
+
+        SceneManager.LoadScene(0);
+    }
     // Start is called before the first frame update
     private void Awake()
     {
@@ -103,6 +112,14 @@ public class UIManager : MonoBehaviour
         itemToGrab = _itemToGrab;
         handHolder = _handHolder;
         triggerName = _triggerName;
+        if(handHolder.handType==HandType.left)
+        {
+            itemToGrabLeft = itemToGrab;
+        }
+        else
+        {
+            itemToGrabRight = itemToGrab;
+        }
     }
     public void ResetGrabbedItems()
     {
@@ -114,35 +131,38 @@ public class UIManager : MonoBehaviour
     {
         if (handHolder != null)
         {
-            if (handHolder.handType == HandType.right && !isLeft)
+            if (handHolder.handType == HandType.right && !isLeft &&!handHolder.triggerGarnish)
             {
                 if(!handHolder.hasGrarnish)
                 //if (canGrab)
                 //{
-                    Grab();
+                if(itemToGrabRight!=null)
+                    Grab(itemToGrabRight);
               //  }
             }
-            if (handHolder.handType == HandType.left && isLeft)
+            if (handHolder.handType == HandType.left && isLeft &&!handHolder.triggerGarnish)
             {
                 if (!handHolder.hasGrarnish)
-                //if (canGrab)
-                //{
-                    Grab();
+                    //if (canGrab)
+                    //{
+                    if (itemToGrabLeft != null)
+
+                        Grab(itemToGrabLeft);
                // }
             }
         }
     }
-    public void Grab()
+    public void Grab(Transform _itemToGrab)
     {
-        itemToGrab.parent = handTransform;
-        itemToGrab.localPosition = Vector3.zero;
-        itemToGrab.localRotation = Quaternion.identity;
-        itemToGrab.GetComponent<Holder>().hand = handHolder;
-        itemToGrab.GetComponent<Holder>().grabed = true;
-        itemToGrab.GetComponent<Holder>().Grab ();
+        _itemToGrab.parent = handTransform;
+        _itemToGrab.localPosition = Vector3.zero;
+        _itemToGrab.localRotation = Quaternion.identity;
+        _itemToGrab.GetComponent<Holder>().hand = handHolder;
+        _itemToGrab.GetComponent<Holder>().grabed = true;
+        _itemToGrab.GetComponent<Holder>().Grab ();
         //    handHolder.handCollider.enabled = false;
         handHolder.grabbing = true;
         handHolder.SetAnimatorTigger(triggerName);
-        handHolder.currentHolder = itemToGrab.GetComponent<Holder>();
+        handHolder.currentHolder = _itemToGrab.GetComponent<Holder>();
     }
 }

@@ -1,65 +1,11 @@
 fileFormatVersion: 2
-guid: dc789956fe23a1941adff98b407addf0
+guid: 325a6ad5c9eda4b43bb87844bee556cc
 ModelImporter:
   serializedVersion: 20200
-  internalIDToNameTable:
-  - first:
-      1: 100000
-    second: Flake01
-  - first:
-      1: 100002
-    second: Flake02
-  - first:
-      1: 100004
-    second: Flake03
-  - first:
-      1: 100006
-    second: //RootNode
-  - first:
-      4: 400000
-    second: Flake01
-  - first:
-      4: 400002
-    second: Flake02
-  - first:
-      4: 400004
-    second: Flake03
-  - first:
-      4: 400006
-    second: //RootNode
-  - first:
-      21: 2100000
-    second: lambert1
-  - first:
-      23: 2300000
-    second: Flake01
-  - first:
-      23: 2300002
-    second: Flake02
-  - first:
-      23: 2300004
-    second: Flake03
-  - first:
-      33: 3300000
-    second: Flake01
-  - first:
-      33: 3300002
-    second: Flake02
-  - first:
-      33: 3300004
-    second: Flake03
-  - first:
-      43: 4300000
-    second: Flake01
-  - first:
-      43: 4300002
-    second: Flake02
-  - first:
-      43: 4300004
-    second: Flake03
+  internalIDToNameTable: []
   externalObjects: {}
   materials:
-    materialImportMode: 0
+    materialImportMode: 2
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -85,7 +31,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1
@@ -93,11 +39,11 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
-    importVisibility: 0
-    importBlendShapes: 0
-    importCameras: 0
-    importLights: 0
-    fileIdsGeneration: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -113,11 +59,11 @@ ModelImporter:
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
-    secondaryUVMarginMethod: 0
+    secondaryUVMarginMethod: 1
     secondaryUVMinLightmapResolution: 40
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
-    useFileScale: 0
+    useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -127,7 +73,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 0
+  importAnimation: 1
   humanDescription:
     serializedVersion: 3
     human: []
@@ -146,10 +92,10 @@ ModelImporter:
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   avatarSetup: 0
-  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

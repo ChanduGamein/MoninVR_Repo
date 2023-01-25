@@ -42,11 +42,15 @@ public class Pump : MonoBehaviour
     {
         StartCoroutine(PumpAnimation());
     }
+    public void ActivateCollider()
+    {
+        objectCollider.enabled = true;
+    }
     IEnumerator PumpAnimation()
     {
-       // objectCollider.enabled = false;
+        objectCollider.enabled = false;
 
-          bottlePump.DOLocalMoveY(pumpPressedPositionY, .8f).OnComplete (() => bottlePump.DOLocalMoveY(pumpOriginalPosition, .8f));
+          bottlePump.DOLocalMoveY(pumpPressedPositionY, .8f).OnComplete (() => bottlePump.DOLocalMoveY(pumpOriginalPosition, .8f).OnComplete(()=> ActivateCollider()));
         //currentAddedAmount += liquidMLPerPump;
         //SceneController.instance.shakerCountTXT.text = currentAddedAmount.ToString();
         //    SceneController.instance.AddTextAmount(liquidMLPerPump);

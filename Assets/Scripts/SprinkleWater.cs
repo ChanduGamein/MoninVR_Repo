@@ -22,6 +22,7 @@ public class SprinkleWater : Holder
     [SerializeField] FillLiquidUI liquidUI;
     [SerializeField] ParticleSystem liquidParticle;
     Holder _liquidVolume;
+    [SerializeField] float speed;
     public void SetTargetLayer(LayerMask layerMask)
     {
         targetLayer = layerMask;
@@ -60,7 +61,7 @@ public class SprinkleWater : Holder
                 Debug.Log(hit.transform.gameObject.name);
                 //   glassDrink.IncreseLiquidGradually(1);
                 _liquidVolume.IncreaseLiquid(.01f * Time.deltaTime *10);
-
+                flowRenderer.enabled = true;
 
                 liquidUI.gameObject.SetActive(true);
                 liquidUI.SetAmount(itemName,liquidMLFullAmount);
@@ -71,7 +72,7 @@ public class SprinkleWater : Holder
 
                     liquidUI.SetFillAmount(counter, liquidMLFullAmount, liquidMLFullAmount);
                     SceneController.instance.fillLiquidStatic.SetFillAmount(counter, liquidMLFullAmount, liquidMLFullAmount);
-                    counter+= (_liquidVolume.liquidVolume.level-curreentliquidAmount)*(.731f*5.4f);
+                    counter+= (_liquidVolume.liquidVolume.level-curreentliquidAmount)*(.731f*speed);
                 }
                  //liquidUI.SetFillAmount(_liquidVolume.liquidVolume.level, .731f,liquidMLFullAmount);
                  //SceneController.instance.fillLiquidStatic.SetFillAmount(_liquidVolume.liquidVolume.level, .731f,liquidMLFullAmount);
@@ -84,7 +85,14 @@ public class SprinkleWater : Holder
                     SceneController.instance.InvokeCurrentStep();
                     SceneController.instance.fillLiquidUI.gameObject.SetActive(false);
                     SceneController.instance.fillLiquidStatic.gameObject.SetActive(false);
+                    flowRenderer.enabled = false;
+
                 }
+            }
+            else
+            {
+                flowRenderer.enabled = false;
+
             }
         }
     }
@@ -109,10 +117,7 @@ public class SprinkleWater : Holder
             //   shaker = other.transform;
         }
     }
-    private void OnCollisionEnter(Collision other)
-    {
 
-    }
     private void OnTriggerExit(Collider other)
     {
 

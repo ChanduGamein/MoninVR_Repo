@@ -20,12 +20,18 @@ public class HandHolder : MonoBehaviour
     public Transform waterBottlePosition;
     public Transform bottleOpenerPosition;
     public Transform strainerPosition;
+    public Transform tikkiPosition;
+    public Transform cupPosition;
+    public Transform coupePosition;
     public Collider handCollider;
     public HandType handType;
     public bool grabbing;
     public Animator animator;
     public Tweezers tweezers;
     public bool hasGrarnish;
+    public bool triggerGarnish;
+    Garnish garnish;
+    public bool hasTweezer;
     void Start()
     {
         
@@ -40,24 +46,51 @@ public class HandHolder : MonoBehaviour
     {
         animator.SetTrigger(triggerName);
     }
+    public void OnclickGrab()
+    {
+        if (triggerGarnish)
+        {
+            hasTweezer = true;
+            hasGrarnish = true;
+            tweezers.gameObject.SetActive(true);
+            tweezers.grabed = true;
+            animator.SetTrigger("Tweezer");
+            tweezers.SpawnGarnish(garnish.garnish);
+            grabbing = true;
+        }
+    }
     public void Ungrab()
     {
-        currentHolder.UnGrab();
-        grabbing = false;
+        if(hasTweezer)
+        {
+            hasTweezer = false;
+            hasGrarnish = false;
 
-        UIManager.instance.canGrab = false;
+            tweezers.gameObject.SetActive(false);
+            tweezers.grabed = false;
+        //    tweezers.SpawnGarnish(garnish.garnish);
+          //  grabbing = true;
+        }
+        //currentHolder.UnGrab();
+        
+        //grabbing = false;
+
+        //UIManager.instance.canGrab = false;
     }
     private void OnTriggerEnter(Collider other)
     {
 
         if (other.gameObject.tag=="Garnish")
         {
-            Debug.Log("garnishhhhh");
-            hasGrarnish = true;
-            tweezers.gameObject.SetActive(true);
-            tweezers.grabed = true;
-            animator.SetTrigger("Tweezer");
-            tweezers.SpawnGarnish(other.GetComponent<Garnish>().garnish);
+            triggerGarnish = true;
+            garnish = other.GetComponent<Garnish>();
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Garnish")
+        {
+            triggerGarnish = false;
         }
     }
 }

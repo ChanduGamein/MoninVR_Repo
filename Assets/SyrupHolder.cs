@@ -56,7 +56,7 @@ public class SyrupHolder : Holder
                 {
                     checkPouring = false;
                     flowRenderer.enabled = false;
-                    jigger.shakerLevel = shakerLevel;
+                  //  jigger.shakerLevel = shakerLevel;
                     jigger.haveLiquid = true;
                     SceneController.instance.fillLiquidUI.gameObject.SetActive(false);
                     SceneController.instance.fillLiquidStatic.gameObject.SetActive(false);

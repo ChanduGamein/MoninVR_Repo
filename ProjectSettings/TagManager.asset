@@ -18,6 +18,7 @@ TagManager:
   - Opener
   - BottleCap
   - Jigger
+  - IceBoxSmall
   layers:
   - Default
   - TransparentFX

@@ -231,7 +231,7 @@ namespace SoftKitty.LiquidContainer
 
         void Update()
         {
-            CheckWaterLine();
+           // CheckWaterLine();
             CheckOpen();
             CalVelocity();
             FollowWaterSurface();
@@ -271,9 +271,9 @@ namespace SoftKitty.LiquidContainer
         #region Internal Calculation
         private Vector3 FindFlowHitPoint(Vector3 _pos2)
         {
-            if (Physics.Raycast(_pos2, Vector3.down, out flow_hit, FlowLengthLimit, MouthMask, QueryTriggerInteraction.UseGlobal))
+            if (Physics.Raycast(_pos2, Vector3.down, out flow_hit, FlowLengthLimit, MouthMask))
             {
-                if (flow_hit.collider.isTrigger && flow_hit.collider.GetComponentInParent<LiquidControl>() && WaterLine > 0F)
+                if (  flow_hit.collider.GetComponentInParent<LiquidControl>() && WaterLine > 0F)
                 {
                     flow_hit.collider.GetComponentInParent<LiquidControl>().FillInLiquid(Time.deltaTime * 0.1F * FlowOutSpeed * Volumn, colorBottom, colorTop);
                     Vector3 _planePos = flow_hit.collider.transform.position;
@@ -325,15 +325,15 @@ namespace SoftKitty.LiquidContainer
                     return _endPos;
                 }
             }
-            else if (Physics.Raycast(_pos2, Vector3.down, out flow_hit, FlowLengthLimit, FlowHitMask, QueryTriggerInteraction.Ignore) && ContainerMouth.transform.up.y < 0.9F)
+            else if (Physics.Raycast(_pos2, Vector3.down, out flow_hit, FlowLengthLimit, FlowHitMask) && ContainerMouth.transform.up.y < 0.9F)
             {
-                if (!flow_hit.collider.isTrigger)
+                //if (!flow_hit.collider.isTrigger)
                 {
                     if (hasFlowPonding && flow_hit.normal.y >= 0.9F
-                        && Physics.Raycast(_pos2 + Vector3.forward * PondingSize * 0.02F, Vector3.down, flow_hit.distance + 0.2F, FlowHitMask, QueryTriggerInteraction.Ignore)
-                        && Physics.Raycast(_pos2 - Vector3.forward * PondingSize * 0.02F, Vector3.down, flow_hit.distance + 0.2F, FlowHitMask, QueryTriggerInteraction.Ignore)
-                        && Physics.Raycast(_pos2 + Vector3.right * PondingSize * 0.02F, Vector3.down, flow_hit.distance + 0.2F, FlowHitMask, QueryTriggerInteraction.Ignore)
-                        && Physics.Raycast(_pos2 - Vector3.right * PondingSize * 0.02F, Vector3.down, flow_hit.distance + 0.2F, FlowHitMask, QueryTriggerInteraction.Ignore)
+                        && Physics.Raycast(_pos2 + Vector3.forward * PondingSize * 0.02F, Vector3.down, flow_hit.distance + 0.2F, FlowHitMask)
+                        && Physics.Raycast(_pos2 - Vector3.forward * PondingSize * 0.02F, Vector3.down, flow_hit.distance + 0.2F, FlowHitMask)
+                        && Physics.Raycast(_pos2 + Vector3.right * PondingSize * 0.02F, Vector3.down, flow_hit.distance + 0.2F, FlowHitMask)
+                        && Physics.Raycast(_pos2 - Vector3.right * PondingSize * 0.02F, Vector3.down, flow_hit.distance + 0.2F, FlowHitMask)
                         )
                     {
                         if (!PondingObj)
@@ -355,18 +355,18 @@ namespace SoftKitty.LiquidContainer
                             if (!PondingObj.GetComponentInChildren<ParticleSystem>().isPlaying) PondingObj.GetComponentInChildren<ParticleSystem>().Play();
                         }
                     }
-                    else
-                    {
-                        if (PondingObj)
-                        {
-                            if (PondingObj.transform.localScale.x > 0F)
-                                PondingObj.transform.localScale = Vector3.Lerp(PondingObj.transform.localScale, Vector3.zero, Time.deltaTime * 10F);
-                            else
-                                PondingObj.SetActive(false);
+                    //else
+                    //{
+                    //    if (PondingObj)
+                    //    {
+                    //        if (PondingObj.transform.localScale.x > 0F)
+                    //            PondingObj.transform.localScale = Vector3.Lerp(PondingObj.transform.localScale, Vector3.zero, Time.deltaTime * 10F);
+                    //        else
+                    //            PondingObj.SetActive(false);
 
-                            if (PondingObj.GetComponentInChildren<ParticleSystem>().isPlaying) PondingObj.GetComponentInChildren<ParticleSystem>().Stop();
-                        }
-                    }
+                    //        if (PondingObj.GetComponentInChildren<ParticleSystem>().isPlaying) PondingObj.GetComponentInChildren<ParticleSystem>().Stop();
+                    //    }
+                    //}
 
                     //if (!SprayObj)
                     //{
@@ -385,15 +385,15 @@ namespace SoftKitty.LiquidContainer
             }
             else
             {
-                if (PondingObj)
-                {
-                    if (PondingObj.transform.localScale.x > 0F)
-                        PondingObj.transform.localScale = Vector3.Lerp(PondingObj.transform.localScale, Vector3.zero, Time.deltaTime * 3F);
-                    else
-                        PondingObj.SetActive(false);
+                //if (PondingObj)
+                //{
+                //    if (PondingObj.transform.localScale.x > 0F)
+                //        PondingObj.transform.localScale = Vector3.Lerp(PondingObj.transform.localScale, Vector3.zero, Time.deltaTime * 3F);
+                //    else
+                //        PondingObj.SetActive(false);
 
-                    if (PondingObj.GetComponentInChildren<ParticleSystem>().isPlaying) PondingObj.GetComponentInChildren<ParticleSystem>().Stop();
-                }
+                //    if (PondingObj.GetComponentInChildren<ParticleSystem>().isPlaying) PondingObj.GetComponentInChildren<ParticleSystem>().Stop();
+                //}
               //  if (SprayObj && SprayObj.GetComponent<ParticleSystem>().isPlaying) SprayObj.GetComponent<ParticleSystem>().Stop();
             }
             return _pos2 - Vector3.up * (FlowLengthLimit * 0.7F + 0.3F * FlowLengthLimit * flow_size);
@@ -497,13 +497,13 @@ namespace SoftKitty.LiquidContainer
                     }
                     else
                     {
-                        flow_size = Mathf.MoveTowards(flow_size, 0F, Time.deltaTime * (isCorkSet() ? 20F : 2F));
+                      //  flow_size = Mathf.MoveTowards(flow_size, 0F, Time.deltaTime * (isCorkSet() ? 20F : 2F));
                     }
 
                 }
                 else
                 {
-                    flow_size = Mathf.MoveTowards(flow_size, 0F, Time.deltaTime * (isCorkSet() ? 20F : 2F));
+                   // flow_size = Mathf.MoveTowards(flow_size, 0F, Time.deltaTime * (isCorkSet() ? 20F : 2F));
                 }
 
                 if (flow_size > 0F)
@@ -541,7 +541,7 @@ namespace SoftKitty.LiquidContainer
             {
                 if (LiquidFlow && flow_size > 0F)
                 {
-                    flow_size = Mathf.MoveTowards(flow_size, 0F, Time.deltaTime * 20F);
+                  //  flow_size = Mathf.MoveTowards(flow_size, 0F, Time.deltaTime * 20F);
                     LiquidFlow.widthMultiplier = flow_size * 0.08F;
                 }
                 if (PondingObj)

@@ -6,7 +6,7 @@ public class HolderGlass : Holder
 {
     public List<Transform> garnishPositions = new List<Transform>();
     int counter = 0;
-    public void SetGarnishTransform(Transform garnish)
+    public virtual void SetGarnishTransform(Transform garnish)
     {
         if (counter < garnishPositions.Count)
         {

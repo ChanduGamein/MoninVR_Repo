@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TIKKIMug : Holder
+public class TIKKIMug : HolderGlass
 {
-    [SerializeField] Transform shaker;
     bool poured;
 
 
@@ -33,15 +32,12 @@ public class TIKKIMug : Holder
         {
             hand = other.GetComponent<HandHolder>();
             //  UIManager.instance.grabButton.SetActive(true);
-            UIManager.instance.ActivateGrab(hand.glassPosition, hand, this.transform, "MasonJar");
+            UIManager.instance.ActivateGrab(hand.tikkiPosition, hand, this.transform, "Tikki");
             UIManager.instance.canGrab = true;
         }
 
     }
-    private void OnCollisionEnter(Collision other)
-    {
 
-    }
     private void OnTriggerExit(Collider other)
     {
 

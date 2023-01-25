@@ -89,7 +89,7 @@ Material:
     - _OcclusionStrength: 1
     - _Opa_Power: 0.656
     - _Opa_Spec: 0.81
-    - _Opacity: 0.128
+    - _Opacity: 0.192
     - _OpacityIntensity: 0.747
     - _Parallax: 0.02
     - _Ref_Power: 0.343

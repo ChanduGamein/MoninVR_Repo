@@ -88,7 +88,7 @@ Material:
     - _OpacityBottom: 1
     - _OpacityTop: 1
     - _Parallax: 0.02
-    - _Size: 0.063321665
+    - _Size: 0.13453104
     - _SmoothnessTextureChannel: 0
     - _Specular: 0
     - _SpecularHighlights: 1
@@ -108,5 +108,5 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GlowColor: {r: 0.16037738, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 1, g: 1, b: 1, a: 1}
-    - _TopColor: {r: 0, g: 0, b: 0, a: 0.9647059}
+    - _TopColor: {r: 0.9433962, g: 0.45745817, b: 0.45745817, a: 0.9647059}
   m_BuildTextureStacks: []

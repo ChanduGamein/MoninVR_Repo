@@ -5,10 +5,9 @@ using UnityEngine;
 public class Jigger : Holder
 {
     [SerializeField] Transform rayCastPoint;
-    public float shakerLevel;
     [SerializeField] Shaker shaker;
     [SerializeField] LayerMask targetLayer;
-    public bool haveLiquid;
+    [SerializeField] float value;
     RaycastHit hit;
     public override void Grab()
     {
@@ -46,7 +45,7 @@ public class Jigger : Holder
                     flowRenderer.enabled = true;
                 if (liquidVolume.level > 0)
                 {
-                    shaker.liquidVolume.level += .03f * Time.deltaTime;
+                    shaker.liquidVolume.level += value * Time.deltaTime;
                     liquidVolume.level -= .1f * Time.deltaTime;
                     flowRenderer.enabled = true;
                 }

@@ -11,10 +11,12 @@ public class Shaker : Holder
     public bool PourToGlass;
     public Transform pourPosition;
     [SerializeField] LayerMask targetLayer;
-    [SerializeField] GlassDrink glassDrink;
+    [SerializeField] HolderGlass glassDrink;
     RaycastHit hit;
     public List<GameObject> iceCubes = new List<GameObject>();
     [SerializeField] GameObject StrainerDummy;
+    [SerializeField] float amountToAdd;
+    [SerializeField] float shakeSpeed=3.5f;
     public void AddStrainer()
     {
         StrainerDummy.SetActive(true);
@@ -41,7 +43,7 @@ public class Shaker : Holder
     public void Shake()
     {
         dummyLid.SetActive(true);
-        transform.DOShakePosition(3.5f, 10).OnComplete(() => FinishShake());
+        transform.DOShakePosition(shakeSpeed, 10).OnComplete(() => FinishShake());
     }
     public void FinishShake()
     {
@@ -65,14 +67,17 @@ public class Shaker : Holder
                 Debug.DrawRay(pourPosition.position, Vector3.down,Color.green);
             if (Physics.Raycast(pourPosition.position, Vector3.down, out hit, 10, targetLayer))
             {
-                    if (Counter < value)
+                    if (liquidVolume.level > 0)
                     {
-                        glassDrink.IncreaseLiquid(.01f);
-                        Counter += .01f;
-                        DecreaseLiquid(.1f);
+                        glassDrink.IncreaseLiquid(amountToAdd * Time.deltaTime);
+                        liquidVolume.level -= .1f * Time.deltaTime;
+                        if(flowRenderer!=null)
+                        flowRenderer.enabled = true;
                     }
                     else
                     {
+                        if(flowRenderer!=null)
+                        flowRenderer.enabled = false;
                         PourToGlass = false;
                         SceneController.instance.InvokeCurrentStep();
                     }

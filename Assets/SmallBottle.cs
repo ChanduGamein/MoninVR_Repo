@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class SmallBottle : Holder
 {
-    [SerializeField] GameObject cap;
     public bool isCapRemoved;
     [SerializeField] Transform pourPoint;
-    [SerializeField] Jigger jigger;
+    [SerializeField] Holder jigger;
     [SerializeField] LayerMask targetLayer;
     [SerializeField] float liquidLevel;
     [SerializeField] float shakerLevel;
@@ -17,6 +16,12 @@ public class SmallBottle : Holder
     public int liquidMLPerPump;
     public int liquidMLFullAmount;
     public string itemName;
+    public override void Grab()
+    {
+        base.Grab();
+        if(!isCapRemoved)
+        UIManager.instance.pointerTutorial.SetActive(true);
+    }
     private void Update()
     {
         if (grabed && checkPouring&& isCapRemoved)
@@ -28,27 +33,37 @@ public class SmallBottle : Holder
                 if (jigger.liquidVolume.level < liquidLevel)
                 {
                     jigger.liquidVolume.level += .1f * Time.deltaTime;
-                    liquidUI.gameObject.SetActive(true);
-                    liquidUI.SetAmount(itemName, liquidMLFullAmount);
-                    SceneController.instance.fillLiquidStatic.SetAmount(itemName, liquidMLFullAmount);
-                    // SceneController.instance.SetShakerLiquidAmount(itemName, liquidMLFullAmount, .1f);
+                    if(liquidUI!=null)
+                    {
+                        liquidUI.gameObject.SetActive(true);
+                        liquidUI.SetAmount(itemName, liquidMLFullAmount);
+                        SceneController.instance.fillLiquidStatic.SetAmount(itemName, liquidMLFullAmount);
+                        // SceneController.instance.SetShakerLiquidAmount(itemName, liquidMLFullAmount, .1f);
 
-                    liquidUI.SetFillAmount(jigger.liquidVolume.level, liquidLevel, liquidMLFullAmount);
-                    SceneController.instance.fillLiquidStatic.SetFillAmount(jigger.liquidVolume.level, liquidLevel, liquidMLFullAmount);
+                        liquidUI.SetFillAmount(jigger.liquidVolume.level, liquidLevel, liquidMLFullAmount);
+                        SceneController.instance.fillLiquidStatic.SetFillAmount(jigger.liquidVolume.level, liquidLevel, liquidMLFullAmount);
 
-                    SceneController.instance.fillLiquidStatic.gameObject.SetActive(true);
+                        SceneController.instance.fillLiquidStatic.gameObject.SetActive(true);
+                    }
+
                 }
                 else
                 {
                     checkPouring = false;
                     if(flowRenderer!=null)
                     flowRenderer.enabled = false;
-                    jigger.shakerLevel = shakerLevel;
                     jigger.haveLiquid = true;
                     SceneController.instance.fillLiquidUI.gameObject.SetActive(false);
                     SceneController.instance.fillLiquidStatic.gameObject.SetActive(false);
                     SceneController.instance.InvokeCurrentStep();
                 }
+            }
+            else
+            {
+                if (flowRenderer != null)
+
+                    flowRenderer.enabled = false;
+
             }
 
         }

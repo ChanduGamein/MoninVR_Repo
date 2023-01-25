@@ -34,24 +34,20 @@ public class GarnishItem : MonoBehaviour
             tweezers.hasGarnish = false;
             tweezers.hand.hasGrarnish = false;
             tweezers.gameObject.SetActive(false);
-            for (int i = 0; i < SceneController.instance.currentRecipe.RecipeItems.Count; i++)
-            {
 
-                if (SceneController.instance.currentRecipe.RecipeItems[i].itemType == itemType)
+
+                if (SceneController.instance.currentRecipe.RecipeItems[SceneController.instance.recipeStepIndex].itemType == itemType)
                 {
-                    SceneController.instance.currentRecipe.RecipeItems[i].numberOfItemsRequired -= 1;
-                    if (SceneController.instance.currentRecipe.RecipeItems[i].numberOfItemsRequired <= 0)
+                    Debug.Log("nammme "+SceneController.instance.currentRecipe.RecipeItems[SceneController.instance.recipeStepIndex].itemType+"    "+ itemType);
+                    SceneController.instance.currentRecipe.RecipeItems[SceneController.instance.recipeStepIndex].numberOfItemsRequired -= 1;
+                    if (SceneController.instance.currentRecipe.RecipeItems[SceneController.instance.recipeStepIndex].numberOfItemsRequired <= 0)
                     {
                         SceneController.instance.InvokeCurrentStep();
-
-                        //  UIManager.instance.pumpButton.SetActive(false);
-
-
-                        //   Invoke(nameof(ReturnObjectToOriginalTransform),.5f);
+                        Debug.Log("invoke garnish");
                     }
                 }
             }
-        }
+        
     }
 
 }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 05d2a2c1534b0574eb4a417eaf1d9b26
+guid: 87baf8c0b9c69f74987c1e18a7802bb2
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
@@ -9,9 +9,9 @@ ModelImporter:
   externalObjects: {}
   materials:
     materialImportMode: 2
-    materialName: 2
-    materialSearch: 2
-    materialLocation: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -34,7 +34,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1

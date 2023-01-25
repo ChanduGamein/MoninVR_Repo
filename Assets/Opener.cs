@@ -19,6 +19,11 @@ public class Opener : Holder
             UnGrab();
         }
     }
+    public override void Grab()
+    {
+        base.Grab();
+        UIManager.instance.pointerTutorial.SetActive(false);
+    }
     private void OnTriggerExit(Collider other)
     {
 

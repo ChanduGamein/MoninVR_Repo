@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2390439160112327554}
   m_LocalRotation: {x: -0, y: 0.92164516, z: -0, w: 0.38803375}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.00018039, y: -0.0015816, z: 0.000074046}
+  m_LocalScale: {x: 1.6076258, y: 1.6076258, z: 1.6076258}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -95,10 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a5ecaace4d0e584a8d140eebd718aa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layer:
-    serializedVersion: 2
-    m_Bits: 2048
-  hand: {fileID: 0}
+  itemType: 6
+  tweezers: {fileID: 0}
 --- !u!65 &556647650324736961
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -107,7 +105,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2390439160112327554}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.007898979, y: 0.005206179, z: 0.011677263}

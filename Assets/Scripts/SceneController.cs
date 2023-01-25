@@ -128,13 +128,22 @@ public class SceneController : MonoBehaviour
     public void OnClickUnGrabLeft()
     {
         if (handHolderLeft.currentHolder != null)
+        {
             handHolderLeft.currentHolder.UnGrab();
-        
+            handHolderLeft.currentHolder = null;
+            UIManager.instance.itemToGrabLeft = null;
+        }
+
     } 
     public void OnClickUnGrabRight()
     {
         if (handHolderRigh.currentHolder != null)
-        handHolderRigh.currentHolder.UnGrab();
+        {
+            handHolderRigh.currentHolder.UnGrab();
+            handHolderRigh.currentHolder = null;
+            UIManager.instance.itemToGrabRight = null;
+
+        }
     }
 
 }

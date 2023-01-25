@@ -339,6 +339,36 @@ Transform:
   m_Father: {fileID: 5754627516356407312}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1088426195492407979
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6563271979332508258}
+  m_Layer: 0
+  m_Name: Tikki Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6563271979332508258
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088426195492407979}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: -0.5}
+  m_LocalPosition: {x: 0.087, y: -0.008, z: 0.0432}
+  m_LocalScale: {x: 0.0025747723, y: 0.002574772, z: 0.002574772}
+  m_Children: []
+  m_Father: {fileID: 8033237833201938205}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: -90, y: -180, z: -90}
 --- !u!1 &1116023554669705053
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,6 +953,36 @@ Transform:
   m_Father: {fileID: 7068099132324615248}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5509748605408200575
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 442429092976085013}
+  m_Layer: 0
+  m_Name: Coupe Posirion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &442429092976085013
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5509748605408200575}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0.0737, y: -0.0025, z: 0.0477}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8033237833201938205}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &5517221242733298126
 GameObject:
   m_ObjectHideFlags: 0
@@ -1292,6 +1352,36 @@ Transform:
   m_Father: {fileID: 5908983324130614405}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.36491287}
+--- !u!1 &6830308111522442840
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2723559773887645794}
+  m_Layer: 0
+  m_Name: Cupposition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2723559773887645794
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6830308111522442840}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0.0373, y: -0.0532, z: 0.0415}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8033237833201938205}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &6893950330349034050
 GameObject:
   m_ObjectHideFlags: 0
@@ -1502,6 +1592,9 @@ Transform:
   - {fileID: 4680257758185634501}
   - {fileID: 5738759674969713025}
   - {fileID: 7658768976273259575}
+  - {fileID: 6563271979332508258}
+  - {fileID: 2723559773887645794}
+  - {fileID: 442429092976085013}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
@@ -2015,15 +2108,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7a0e9f42379ae045a14cce95ff73eef, type: 3}
---- !u!4 &8033237832057558081 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1531272092080328192, guid: a7a0e9f42379ae045a14cce95ff73eef,
-    type: 3}
-  m_PrefabInstance: {fileID: 8807880774145530433}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7219300523176185595 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2165100531521590458, guid: a7a0e9f42379ae045a14cce95ff73eef,
+    type: 3}
+  m_PrefabInstance: {fileID: 8807880774145530433}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8033237832057558081 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1531272092080328192, guid: a7a0e9f42379ae045a14cce95ff73eef,
     type: 3}
   m_PrefabInstance: {fileID: 8807880774145530433}
   m_PrefabAsset: {fileID: 0}
@@ -2068,15 +2161,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a26f37c1a4b8414dbcd5772d050143b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  liquid: {fileID: 0}
   grabed: 0
   itemType: 6
   originalParent: {fileID: 0}
   hand: {fileID: 0}
-  _rb: {fileID: 0}
   liquidVolume: {fileID: 0}
   picked: 0
   flowRenderer: {fileID: 0}
   callTutoral: 0
+  haveLiquid: 0
   hasGarnish: 0
   garnishPosition: {fileID: 7561950878217741631}
