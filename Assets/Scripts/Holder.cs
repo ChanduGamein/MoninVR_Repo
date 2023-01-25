@@ -28,6 +28,7 @@ public class Holder : MonoBehaviour
     public virtual void IncreaseLiquid(float value)
     {
         liquidVolume.level += value;
+        if(hand!=null)
         hand.GetComponent<XRController>().SendHapticImpulse(.5f, .5f);
     }
     public void DecreaseLiquid(float value)

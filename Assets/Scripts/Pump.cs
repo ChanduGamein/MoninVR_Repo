@@ -44,8 +44,10 @@ public class Pump : MonoBehaviour
     }
     public void ActivateCollider()
     {
+        if(!called)
         objectCollider.enabled = true;
     }
+    bool called = false;
     IEnumerator PumpAnimation()
     {
         objectCollider.enabled = false;
@@ -67,7 +69,7 @@ public class Pump : MonoBehaviour
                   //  GetComponent<Collider>().enabled = false;
                     SceneController.instance.currentAddedAmount = 0;
                     SceneController.instance.InvokeCurrentStep();
-                    Debug.Log("invokeeed");
+                    called = true;
                     //  UIManager.instance.pumpButton.SetActive(false);
                     yield return new WaitForSeconds(.8f);
 

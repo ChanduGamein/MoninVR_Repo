@@ -336,24 +336,24 @@ namespace SoftKitty.LiquidContainer
                         && Physics.Raycast(_pos2 - Vector3.right * PondingSize * 0.02F, Vector3.down, flow_hit.distance + 0.2F, FlowHitMask)
                         )
                     {
-                        if (!PondingObj)
-                        {
-                            PondingObj = Instantiate(Resources.Load<GameObject>("LiquidContainer/Ponding"), flow_hit.point, Quaternion.identity) as GameObject;
-                            PondingObj.transform.up = flow_hit.normal;
-                            PondingObj.GetComponent<MeshRenderer>().material.SetColor("_TopColor", colorTop);
-                            PondingObj.GetComponent<MeshRenderer>().material.SetColor("_BottomColor", colorBottom);
-                            PondingObj.GetComponentInChildren<ParticleSystemRenderer>().material.SetColor("_Color", Color.Lerp(colorBottom, Color.white, 0.3F));
+                        //if (!PondingObj)
+                        //{
+                        //    PondingObj = Instantiate(Resources.Load<GameObject>("LiquidContainer/Ponding"), flow_hit.point, Quaternion.identity) as GameObject;
+                        //    PondingObj.transform.up = flow_hit.normal;
+                        //    PondingObj.GetComponent<MeshRenderer>().material.SetColor("_TopColor", colorTop);
+                        //    PondingObj.GetComponent<MeshRenderer>().material.SetColor("_BottomColor", colorBottom);
+                        //    PondingObj.GetComponentInChildren<ParticleSystemRenderer>().material.SetColor("_Color", Color.Lerp(colorBottom, Color.white, 0.3F));
                             
-                        }
-                        else
-                        {
-                            // PondingObj.SetActive(true);
-                            PondingObj.SetActive(false);
-                            PondingObj.transform.position = Vector3.Lerp(PondingObj.transform.position, flow_hit.point, Time.deltaTime * 12F);
-                            PondingObj.transform.up = flow_hit.normal;
-                            PondingObj.transform.localScale = Vector3.Lerp(PondingObj.transform.localScale, Vector3.one * PondingSize, Time.deltaTime * 1F);
-                            if (!PondingObj.GetComponentInChildren<ParticleSystem>().isPlaying) PondingObj.GetComponentInChildren<ParticleSystem>().Play();
-                        }
+                        //}
+                        //else
+                        //{
+                        //    // PondingObj.SetActive(true);
+                        //    PondingObj.SetActive(false);
+                        //    PondingObj.transform.position = Vector3.Lerp(PondingObj.transform.position, flow_hit.point, Time.deltaTime * 12F);
+                        //    PondingObj.transform.up = flow_hit.normal;
+                        //    PondingObj.transform.localScale = Vector3.Lerp(PondingObj.transform.localScale, Vector3.one * PondingSize, Time.deltaTime * 1F);
+                        //    if (!PondingObj.GetComponentInChildren<ParticleSystem>().isPlaying) PondingObj.GetComponentInChildren<ParticleSystem>().Play();
+                        //}
                     }
                     //else
                     //{
@@ -525,15 +525,15 @@ namespace SoftKitty.LiquidContainer
                 {
                  //   LiquidFlow.enabled = false;
                  
-                    if (PondingObj)
-                    {
-                        if (PondingObj.transform.localScale.x > 0F)
-                            PondingObj.transform.localScale = Vector3.Lerp(PondingObj.transform.localScale, Vector3.zero, Time.deltaTime);
-                        else
-                            PondingObj.SetActive(false);
+                    //if (PondingObj)
+                    //{
+                    //    if (PondingObj.transform.localScale.x > 0F)
+                    //        PondingObj.transform.localScale = Vector3.Lerp(PondingObj.transform.localScale, Vector3.zero, Time.deltaTime);
+                    //    else
+                    //        PondingObj.SetActive(false);
 
-                        if (PondingObj.GetComponentInChildren<ParticleSystem>().isPlaying) PondingObj.GetComponentInChildren<ParticleSystem>().Stop();
-                    }
+                    //    if (PondingObj.GetComponentInChildren<ParticleSystem>().isPlaying) PondingObj.GetComponentInChildren<ParticleSystem>().Stop();
+                    //}
                    // if (SprayObj && SprayObj.GetComponent<ParticleSystem>().isPlaying) SprayObj.GetComponent<ParticleSystem>().Stop();
                 }
             }
@@ -544,15 +544,15 @@ namespace SoftKitty.LiquidContainer
                   //  flow_size = Mathf.MoveTowards(flow_size, 0F, Time.deltaTime * 20F);
                     LiquidFlow.widthMultiplier = flow_size * 0.08F;
                 }
-                if (PondingObj)
-                {
-                    if (PondingObj.transform.localScale.x > 0F)
-                        PondingObj.transform.localScale = Vector3.Lerp(PondingObj.transform.localScale, Vector3.zero, Time.deltaTime);
-                    else
-                        PondingObj.SetActive(false);
+                //if (PondingObj)
+                //{
+                //    if (PondingObj.transform.localScale.x > 0F)
+                //        PondingObj.transform.localScale = Vector3.Lerp(PondingObj.transform.localScale, Vector3.zero, Time.deltaTime);
+                //    else
+                //        PondingObj.SetActive(false);
 
-                    if (PondingObj.GetComponentInChildren<ParticleSystem>().isPlaying) PondingObj.GetComponentInChildren<ParticleSystem>().Stop();
-                }
+                //    if (PondingObj.GetComponentInChildren<ParticleSystem>().isPlaying) PondingObj.GetComponentInChildren<ParticleSystem>().Stop();
+                //}
               //  if (SprayObj && SprayObj.GetComponent<ParticleSystem>().isPlaying) SprayObj.GetComponent<ParticleSystem>().Stop();
             }
         }
