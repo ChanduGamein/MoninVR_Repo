@@ -88,14 +88,14 @@ Material:
     - _OpacityBottom: 1
     - _OpacityTop: 1
     - _Parallax: 0.02
-    - _Size: 0.13453104
+    - _Size: 0.31139845
     - _SmoothnessTextureChannel: 0
     - _Specular: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Stencil: 2
     - _UVSec: 0
-    - _WaterLine: 1
+    - _WaterLine: 0.3978577
     - _WaveHeright: 0.0339
     - _WaveIntensity: 0
     - _WaveTile: 1.7
@@ -108,5 +108,5 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GlowColor: {r: 0.16037738, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 1, g: 1, b: 1, a: 1}
-    - _TopColor: {r: 0.9433962, g: 0.45745817, b: 0.45745817, a: 0.9647059}
+    - _TopColor: {r: 0, g: 0, b: 0, a: 0.9647059}
   m_BuildTextureStacks: []

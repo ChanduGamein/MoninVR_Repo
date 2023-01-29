@@ -37,8 +37,7 @@ public class SyrupHolder : Holder
         {
             if (Physics.Raycast(pourPoint.position, Vector3.down, out hit, 20, targetLayer))
             {
-                if(flowRenderer!=null)
-                flowRenderer.enabled = true;
+
                 if (jigger.liquidVolume.level < liquidLevel)
                 {
                     jigger.liquidVolume.level += .1f * Time.deltaTime;
@@ -55,7 +54,6 @@ public class SyrupHolder : Holder
                 else
                 {
                     checkPouring = false;
-                    flowRenderer.enabled = false;
                   //  jigger.shakerLevel = shakerLevel;
                     jigger.haveLiquid = true;
                     SceneController.instance.fillLiquidUI.gameObject.SetActive(false);

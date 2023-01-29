@@ -19,6 +19,7 @@ TagManager:
   - BottleCap
   - Jigger
   - IceBoxSmall
+  - Soda
   layers:
   - Default
   - TransparentFX

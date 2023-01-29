@@ -15,7 +15,6 @@ namespace SoftKitty.LiquidContainer
         SerializedProperty WaterLineOffset;
         SerializedProperty CorkModel;
         SerializedProperty FlowHitMask;
-        SerializedProperty holder;
         Texture banner;
         Texture volumnHelp;
         Texture check;
@@ -25,7 +24,6 @@ namespace SoftKitty.LiquidContainer
         Vector2 oldOffset = Vector2.zero;
         bool showHelp = false;
         Transform AddNewFollowObj;
-        Holder holderItem;
         Rigidbody AddNewRigi;
 
         void OnEnable()
@@ -44,6 +42,13 @@ namespace SoftKitty.LiquidContainer
             banner = (Texture)AssetDatabase.LoadAssetAtPath(path.Replace("LiquidControlEditor.cs", "Banner.png"), typeof(Texture));
             volumnHelp = (Texture)AssetDatabase.LoadAssetAtPath(path.Replace("LiquidControlEditor.cs", "volumn.png"), typeof(Texture));
             check = (Texture)AssetDatabase.LoadAssetAtPath(path.Replace("LiquidControlEditor.cs", "check.png"), typeof(Texture));
+        }
+
+        public void SetScriptDirty()
+        {
+            if (Application.isPlaying) return;
+            UnityEditor.EditorUtility.SetDirty(scriptObject);
+            UnityEditor.EditorUtility.SetDirty(_script);
         }
 
         public override void OnInspectorGUI()
@@ -87,6 +92,7 @@ namespace SoftKitty.LiquidContainer
                                 _script.LiquidMaskMesh.name = "LiquidMask(DoNotModify)";
                                 _script.LiquidMaskMesh.GetComponent<MeshRenderer>().sharedMaterial = Resources.Load<Material>("LiquidContainer/LiquidMask");
                                 _script.LiquidMeshFilter.GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_Size", _script.CalSize());
+                                SetScriptDirty();
                             }
                         }
                     }
@@ -109,15 +115,19 @@ namespace SoftKitty.LiquidContainer
                 GUILayout.EndHorizontal();
 
                 GUILayout.BeginHorizontal();
-                GUI.color = _script.LiquidMeshFilter.GetComponent<MeshRenderer>().sharedMaterial.shader.name.Contains("Mobile")? Color.white: new Color(0F, 1F, 0.2F, 1F);
+                GUI.color = _script.isMobile? Color.white: new Color(0F, 1F, 0.2F, 1F);
                 if (GUILayout.Button("Tessellation Shader"))
                 {
                     _script.LiquidMeshFilter.GetComponent<MeshRenderer>().sharedMaterial.shader = Shader.Find("SoftKitty/Liquid");
+                    _script.isMobile = false;
+                    SetScriptDirty();
                 }
-                GUI.color = _script.LiquidMeshFilter.GetComponent<MeshRenderer>().sharedMaterial.shader.name.Contains("Mobile") ? new Color(0F, 1F, 0.2F, 1F) : Color.white;
-                if (GUILayout.Button("Mobile Shader"))
+                GUI.color = _script.isMobile ? new Color(0F, 1F, 0.2F, 1F) : Color.white;
+                if (GUILayout.Button("Mobile/VR Shader"))
                 {
                     _script.LiquidMeshFilter.GetComponent<MeshRenderer>().sharedMaterial.shader = Shader.Find("SoftKitty/LiquidMobile");
+                    _script.isMobile = true;
+                    SetScriptDirty();
                 }
                 GUILayout.EndHorizontal();
 
@@ -190,6 +200,7 @@ namespace SoftKitty.LiquidContainer
                     if (GUILayout.Button("X", GUILayout.Width(20)))
                     {
                         _script.FollowSurfaceObjs.RemoveAt(i);
+                        SetScriptDirty();
                     }
                     GUI.color = new Color(0.4F, 0.7F, 1F, 1F);
                     GUILayout.Label("[Transform]"+_script.FollowSurfaceObjs[i].name);
@@ -204,15 +215,7 @@ namespace SoftKitty.LiquidContainer
                 if (GUILayout.Button("Add"))
                 {
                     _script.FollowSurfaceObjs.Add(AddNewFollowObj);
-                }
-                GUI.color = Color.white;
-                GUILayout.EndHorizontal();
-                GUILayout.BeginHorizontal();
-                holderItem = (Holder)EditorGUILayout.ObjectField("Select a holder", holderItem, typeof(Holder), true);
-                GUI.color = new Color(1F, 0.7F, 0F, 1F);
-                if (GUILayout.Button("Add"))
-                {
-                    _script.holder= holderItem;
+                    SetScriptDirty();
                 }
                 GUI.color = Color.white;
                 GUILayout.EndHorizontal();
@@ -254,6 +257,7 @@ namespace SoftKitty.LiquidContainer
                     if (GUILayout.Button("X", GUILayout.Width(20)))
                     {
                         _script.FloatingRigibodies.RemoveAt(i);
+                        SetScriptDirty();
                     }
                     GUI.color = new Color(0.4F, 1F, 0.2F, 1F);
                     GUILayout.Label("[Rigibody]" + _script.FloatingRigibodies[i].name);
@@ -273,6 +277,7 @@ namespace SoftKitty.LiquidContainer
                     AddNewRigi.isKinematic = false;
                     AddNewRigi.drag = 15F;
                     AddNewRigi.angularDrag = 5F;
+                    SetScriptDirty();
                 }
                
                 GUILayout.EndHorizontal();
@@ -321,6 +326,7 @@ namespace SoftKitty.LiquidContainer
                         sc.radius = 0.1F;
                         sc.enabled = false;
                         _script.ContainerMouth = newObj.transform;
+                        SetScriptDirty();
                     }
                     GUI.color = Color.white;
                 }
@@ -351,7 +357,7 @@ namespace SoftKitty.LiquidContainer
 
                     GUILayout.BeginHorizontal();
                     GUILayout.Label("Size:", GUILayout.Width(140));
-                    OpenningRadius.floatValue = GUILayout.HorizontalSlider(OpenningRadius.floatValue, 0.001F, 0.1F);
+                    OpenningRadius.floatValue = GUILayout.HorizontalSlider(OpenningRadius.floatValue, 0.005F, 0.1F);
                     GUILayout.Label(OpenningRadius.floatValue.ToString("0.00"), GUILayout.Width(60));
                     GUILayout.EndHorizontal();
 

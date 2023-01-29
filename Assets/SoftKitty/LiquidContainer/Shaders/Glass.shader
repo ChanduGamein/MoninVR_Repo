@@ -154,5 +154,4 @@ Shader "SoftKitty/Glass"
 		}
 	}
 	Fallback "Diffuse"
-	CustomEditor "ASEMaterialInspector"
 }

@@ -21,6 +21,7 @@ namespace SoftKitty.LiquidContainer
     public class LiquidControl : MonoBehaviour
     {
         #region Settings
+        public bool isMobile = false;
         public bool ShowOpenningHelper = true;
         public bool Opened = false;
         public Vector2 WaterLineOffset = Vector2.zero;
@@ -40,7 +41,6 @@ namespace SoftKitty.LiquidContainer
         public List<Rigidbody> FloatingRigibodies = new List<Rigidbody>();
         public float FollowSpeed = 0.5F;
         public float FollowWave = 1F;
-        public Holder holder;
         #endregion
 
         #region Internal Variables
@@ -231,7 +231,7 @@ namespace SoftKitty.LiquidContainer
 
         void Update()
         {
-           // CheckWaterLine();
+            CheckWaterLine();
             CheckOpen();
             CalVelocity();
             FollowWaterSurface();
@@ -271,26 +271,26 @@ namespace SoftKitty.LiquidContainer
         #region Internal Calculation
         private Vector3 FindFlowHitPoint(Vector3 _pos2)
         {
-            if (Physics.Raycast(_pos2, Vector3.down, out flow_hit, FlowLengthLimit, MouthMask))
+            if (Physics.Raycast(_pos2, Vector3.down, out flow_hit, FlowLengthLimit, MouthMask, QueryTriggerInteraction.Collide))
             {
-                if (  flow_hit.collider.GetComponentInParent<LiquidControl>() && WaterLine > 0F)
+                if (flow_hit.collider.isTrigger && flow_hit.collider.GetComponentInParent<LiquidControl>() && WaterLine > 0F)
                 {
                     flow_hit.collider.GetComponentInParent<LiquidControl>().FillInLiquid(Time.deltaTime * 0.1F * FlowOutSpeed * Volumn, colorBottom, colorTop);
                     Vector3 _planePos = flow_hit.collider.transform.position;
                     _planePos.y = flow_hit.point.y;
                     if (Vector3.Distance(flow_hit.point, _planePos) > flow_hit.collider.GetComponent<SphereCollider>().radius * 0.2F)
                     {
-                        //if (!SprayObj)
-                        //{
-                        //    SprayObj = Instantiate(Resources.Load<GameObject>("LiquidContainer/Spray"), flow_hit.point, Quaternion.identity) as GameObject;
-                        //}
-                        //else
-                        //{
-                        //    SprayObj.GetComponent<ParticleSystemRenderer>().material.SetColor("_Color", Color.Lerp(colorBottom, Color.white, 0.3F));
-                        //    SprayObj.transform.position = flow_hit.point - Vector3.up * flow_hit.collider.GetComponent<SphereCollider>().radius * 0.7F;
-                        //    SprayObj.transform.forward = flow_hit.normal;
-                        //    if (!SprayObj.GetComponent<ParticleSystem>().isPlaying) SprayObj.GetComponent<ParticleSystem>().Play();
-                        //}
+                        if (!SprayObj)
+                        {
+                            SprayObj = Instantiate(Resources.Load<GameObject>("LiquidContainer/Spray"), flow_hit.point, Quaternion.identity) as GameObject;
+                        }
+                        else
+                        {
+                            SprayObj.GetComponent<ParticleSystemRenderer>().material.SetColor("_Color", Color.Lerp(colorBottom, Color.white, 0.3F));
+                            SprayObj.transform.position = flow_hit.point - Vector3.up * flow_hit.collider.GetComponent<SphereCollider>().radius * 0.7F;
+                            SprayObj.transform.forward = flow_hit.normal;
+                            if (!SprayObj.GetComponent<ParticleSystem>().isPlaying) SprayObj.GetComponent<ParticleSystem>().Play();
+                        }
 
                         Vector3 _midPos = _pos2 - Vector3.up * (flow_hit.distance + 0.02F);
                         _pos.Add(_midPos);
@@ -309,92 +309,91 @@ namespace SoftKitty.LiquidContainer
                 else
                 {
                     DoSomethingWhenHitWaterTrigger(flow_hit.collider.gameObject);
-                    //if (!SprayObj)
-                    //{
-                    //    SprayObj = Instantiate(Resources.Load<GameObject>("LiquidContainer/Spray"), flow_hit.point, Quaternion.identity) as GameObject;
-                    //}
-                    //else
-                    //{
-                    //    SprayObj.GetComponent<ParticleSystemRenderer>().material.SetColor("_Color", Color.Lerp(colorBottom, Color.white, 0.3F));
-                    //    SprayObj.transform.position = flow_hit.point;
-                    //    SprayObj.transform.forward = flow_hit.normal;
-                    //    if (!SprayObj.GetComponent<ParticleSystem>().isPlaying) SprayObj.GetComponent<ParticleSystem>().Play();
-                    //}
+                    if (!SprayObj)
+                    {
+                        SprayObj = Instantiate(Resources.Load<GameObject>("LiquidContainer/Spray"), flow_hit.point, Quaternion.identity) as GameObject;
+                    }
+                    else
+                    {
+                        SprayObj.GetComponent<ParticleSystemRenderer>().material.SetColor("_Color", Color.Lerp(colorBottom, Color.white, 0.3F));
+                        SprayObj.transform.position = flow_hit.point;
+                        SprayObj.transform.forward = flow_hit.normal;
+                        if (!SprayObj.GetComponent<ParticleSystem>().isPlaying) SprayObj.GetComponent<ParticleSystem>().Play();
+                    }
                     Vector3 _endPos = _pos2;
                     _endPos.y = flow_hit.point.y;
                     return _endPos;
                 }
             }
-            else if (Physics.Raycast(_pos2, Vector3.down, out flow_hit, FlowLengthLimit, FlowHitMask) && ContainerMouth.transform.up.y < 0.9F)
+            else if (Physics.Raycast(_pos2, Vector3.down, out flow_hit, FlowLengthLimit, FlowHitMask, QueryTriggerInteraction.Ignore) && ContainerMouth.transform.up.y < 0.9F)
             {
-                //if (!flow_hit.collider.isTrigger)
+                if (!flow_hit.collider.isTrigger)
                 {
                     if (hasFlowPonding && flow_hit.normal.y >= 0.9F
-                        && Physics.Raycast(_pos2 + Vector3.forward * PondingSize * 0.02F, Vector3.down, flow_hit.distance + 0.2F, FlowHitMask)
-                        && Physics.Raycast(_pos2 - Vector3.forward * PondingSize * 0.02F, Vector3.down, flow_hit.distance + 0.2F, FlowHitMask)
-                        && Physics.Raycast(_pos2 + Vector3.right * PondingSize * 0.02F, Vector3.down, flow_hit.distance + 0.2F, FlowHitMask)
-                        && Physics.Raycast(_pos2 - Vector3.right * PondingSize * 0.02F, Vector3.down, flow_hit.distance + 0.2F, FlowHitMask)
+                        && Physics.Raycast(_pos2 + Vector3.forward * PondingSize * 0.02F, Vector3.down, flow_hit.distance + 0.2F, FlowHitMask, QueryTriggerInteraction.Ignore)
+                        && Physics.Raycast(_pos2 - Vector3.forward * PondingSize * 0.02F, Vector3.down, flow_hit.distance + 0.2F, FlowHitMask, QueryTriggerInteraction.Ignore)
+                        && Physics.Raycast(_pos2 + Vector3.right * PondingSize * 0.02F, Vector3.down, flow_hit.distance + 0.2F, FlowHitMask, QueryTriggerInteraction.Ignore)
+                        && Physics.Raycast(_pos2 - Vector3.right * PondingSize * 0.02F, Vector3.down, flow_hit.distance + 0.2F, FlowHitMask, QueryTriggerInteraction.Ignore)
                         )
                     {
-                        //if (!PondingObj)
-                        //{
-                        //    PondingObj = Instantiate(Resources.Load<GameObject>("LiquidContainer/Ponding"), flow_hit.point, Quaternion.identity) as GameObject;
-                        //    PondingObj.transform.up = flow_hit.normal;
-                        //    PondingObj.GetComponent<MeshRenderer>().material.SetColor("_TopColor", colorTop);
-                        //    PondingObj.GetComponent<MeshRenderer>().material.SetColor("_BottomColor", colorBottom);
-                        //    PondingObj.GetComponentInChildren<ParticleSystemRenderer>().material.SetColor("_Color", Color.Lerp(colorBottom, Color.white, 0.3F));
-                            
-                        //}
-                        //else
-                        //{
-                        //    // PondingObj.SetActive(true);
-                        //    PondingObj.SetActive(false);
-                        //    PondingObj.transform.position = Vector3.Lerp(PondingObj.transform.position, flow_hit.point, Time.deltaTime * 12F);
-                        //    PondingObj.transform.up = flow_hit.normal;
-                        //    PondingObj.transform.localScale = Vector3.Lerp(PondingObj.transform.localScale, Vector3.one * PondingSize, Time.deltaTime * 1F);
-                        //    if (!PondingObj.GetComponentInChildren<ParticleSystem>().isPlaying) PondingObj.GetComponentInChildren<ParticleSystem>().Play();
-                        //}
+                        if (!PondingObj)
+                        {
+                            PondingObj = Instantiate(Resources.Load<GameObject>("LiquidContainer/"+ (isMobile? "PondingMobile" : "Ponding")), flow_hit.point, Quaternion.identity) as GameObject;
+                            PondingObj.transform.up = flow_hit.normal;
+                            PondingObj.GetComponent<MeshRenderer>().material.SetColor("_TopColor", colorTop);
+                            PondingObj.GetComponent<MeshRenderer>().material.SetColor("_BottomColor", colorBottom);
+                            PondingObj.GetComponentInChildren<ParticleSystemRenderer>().material.SetColor("_Color", Color.Lerp(colorBottom, Color.white, 0.3F));
+
+                        }
+                        else
+                        {
+                            PondingObj.SetActive(true);
+                            PondingObj.transform.position = Vector3.Lerp(PondingObj.transform.position, flow_hit.point, Time.deltaTime * 12F);
+                            PondingObj.transform.up = flow_hit.normal;
+                            PondingObj.transform.localScale = Vector3.Lerp(PondingObj.transform.localScale, Vector3.one * PondingSize, Time.deltaTime * 1F);
+                            if (!PondingObj.GetComponentInChildren<ParticleSystem>().isPlaying) PondingObj.GetComponentInChildren<ParticleSystem>().Play();
+                        }
                     }
-                    //else
-                    //{
-                    //    if (PondingObj)
-                    //    {
-                    //        if (PondingObj.transform.localScale.x > 0F)
-                    //            PondingObj.transform.localScale = Vector3.Lerp(PondingObj.transform.localScale, Vector3.zero, Time.deltaTime * 10F);
-                    //        else
-                    //            PondingObj.SetActive(false);
+                    else
+                    {
+                        if (PondingObj)
+                        {
+                            if (PondingObj.transform.localScale.x > 0F)
+                                PondingObj.transform.localScale = Vector3.Lerp(PondingObj.transform.localScale, Vector3.zero, Time.deltaTime * 10F);
+                            else
+                                PondingObj.SetActive(false);
 
-                    //        if (PondingObj.GetComponentInChildren<ParticleSystem>().isPlaying) PondingObj.GetComponentInChildren<ParticleSystem>().Stop();
-                    //    }
-                    //}
+                            if (PondingObj.GetComponentInChildren<ParticleSystem>().isPlaying) PondingObj.GetComponentInChildren<ParticleSystem>().Stop();
+                        }
+                    }
 
-                    //if (!SprayObj)
-                    //{
-                    //    SprayObj = Instantiate(Resources.Load<GameObject>("LiquidContainer/Spray"), flow_hit.point, Quaternion.identity) as GameObject;
-                    //}
-                    //else
-                    //{
-                    //    SprayObj.GetComponent<ParticleSystemRenderer>().material.SetColor("_Color", Color.Lerp(colorBottom, Color.white, 0.3F));
-                    //    SprayObj.transform.position = flow_hit.point;
-                    //    SprayObj.transform.forward = flow_hit.normal;
-                    //    if (!SprayObj.GetComponent<ParticleSystem>().isPlaying) SprayObj.GetComponent<ParticleSystem>().Play();
-                    //}
+                    if (!SprayObj)
+                    {
+                        SprayObj = Instantiate(Resources.Load<GameObject>("LiquidContainer/Spray"), flow_hit.point, Quaternion.identity) as GameObject;
+                    }
+                    else
+                    {
+                        SprayObj.GetComponent<ParticleSystemRenderer>().material.SetColor("_Color", Color.Lerp(colorBottom, Color.white, 0.3F));
+                        SprayObj.transform.position = flow_hit.point;
+                        SprayObj.transform.forward = flow_hit.normal;
+                        if (!SprayObj.GetComponent<ParticleSystem>().isPlaying) SprayObj.GetComponent<ParticleSystem>().Play();
+                    }
                 }
 
                 return _pos2 - Vector3.up * flow_hit.distance;
             }
             else
             {
-                //if (PondingObj)
-                //{
-                //    if (PondingObj.transform.localScale.x > 0F)
-                //        PondingObj.transform.localScale = Vector3.Lerp(PondingObj.transform.localScale, Vector3.zero, Time.deltaTime * 3F);
-                //    else
-                //        PondingObj.SetActive(false);
+                if (PondingObj)
+                {
+                    if (PondingObj.transform.localScale.x > 0F)
+                        PondingObj.transform.localScale = Vector3.Lerp(PondingObj.transform.localScale, Vector3.zero, Time.deltaTime * 3F);
+                    else
+                        PondingObj.SetActive(false);
 
-                //    if (PondingObj.GetComponentInChildren<ParticleSystem>().isPlaying) PondingObj.GetComponentInChildren<ParticleSystem>().Stop();
-                //}
-              //  if (SprayObj && SprayObj.GetComponent<ParticleSystem>().isPlaying) SprayObj.GetComponent<ParticleSystem>().Stop();
+                    if (PondingObj.GetComponentInChildren<ParticleSystem>().isPlaying) PondingObj.GetComponentInChildren<ParticleSystem>().Stop();
+                }
+                if (SprayObj && SprayObj.GetComponent<ParticleSystem>().isPlaying) SprayObj.GetComponent<ParticleSystem>().Stop();
             }
             return _pos2 - Vector3.up * (FlowLengthLimit * 0.7F + 0.3F * FlowLengthLimit * flow_size);
         }
@@ -463,13 +462,11 @@ namespace SoftKitty.LiquidContainer
             {
                 if (LiquidFlow == null)
                 {
-                    GameObject LiquidObj = Instantiate(Resources.Load<GameObject>("LiquidContainer/Flow"), transform) as GameObject;
+                    GameObject LiquidObj = Instantiate(Resources.Load<GameObject>("LiquidContainer/"+(isMobile? "FlowMobile" : "Flow")), transform) as GameObject;
                     LiquidObj.transform.localPosition = Vector3.zero;
                     LiquidObj.transform.localEulerAngles = Vector3.zero;
                     LiquidObj.transform.localScale = Vector3.one;
                     LiquidFlow = LiquidObj.GetComponent<LineRenderer>();
-                    if(holder!=null)
-                    holder.flowRenderer = LiquidFlow;
                     LiquidFlow.enabled = false;
                 }
                 else
@@ -497,18 +494,18 @@ namespace SoftKitty.LiquidContainer
                     }
                     else
                     {
-                      //  flow_size = Mathf.MoveTowards(flow_size, 0F, Time.deltaTime * (isCorkSet() ? 20F : 2F));
+                        flow_size = Mathf.MoveTowards(flow_size, 0F, Time.deltaTime * (isCorkSet() ? 20F : 2F));
                     }
 
                 }
                 else
                 {
-                   // flow_size = Mathf.MoveTowards(flow_size, 0F, Time.deltaTime * (isCorkSet() ? 20F : 2F));
+                    flow_size = Mathf.MoveTowards(flow_size, 0F, Time.deltaTime * (isCorkSet() ? 20F : 2F));
                 }
 
                 if (flow_size > 0F)
                 {
-                 //   LiquidFlow.enabled = true;
+                    LiquidFlow.enabled = true;
                     _pos.Clear();
                     Vector3 _down = Vector3.Cross(Vector3.Cross(ContainerMouth.up, Vector3.down), ContainerMouth.up);
                     _pos.Add(ContainerMouth.position + _down * (OpenningRadius - 0.01F) - ContainerMouth.up * 0.02F);
@@ -519,41 +516,39 @@ namespace SoftKitty.LiquidContainer
                     LiquidFlow.widthMultiplier = flow_size * 0.08F;
                     AddLiquid(-Time.deltaTime * 0.1F * FlowOutSpeed * Volumn, colorTop, colorBottom, true);
                     WaterLine = Mathf.MoveTowards(WaterLine, 0F, Time.deltaTime * 0.1F * FlowOutSpeed);
-                    flow_size = 1;
                 }
                 else
                 {
-                 //   LiquidFlow.enabled = false;
-                 
-                    //if (PondingObj)
-                    //{
-                    //    if (PondingObj.transform.localScale.x > 0F)
-                    //        PondingObj.transform.localScale = Vector3.Lerp(PondingObj.transform.localScale, Vector3.zero, Time.deltaTime);
-                    //    else
-                    //        PondingObj.SetActive(false);
+                    LiquidFlow.enabled = false;
+                    if (PondingObj)
+                    {
+                        if (PondingObj.transform.localScale.x > 0F)
+                            PondingObj.transform.localScale = Vector3.Lerp(PondingObj.transform.localScale, Vector3.zero, Time.deltaTime);
+                        else
+                            PondingObj.SetActive(false);
 
-                    //    if (PondingObj.GetComponentInChildren<ParticleSystem>().isPlaying) PondingObj.GetComponentInChildren<ParticleSystem>().Stop();
-                    //}
-                   // if (SprayObj && SprayObj.GetComponent<ParticleSystem>().isPlaying) SprayObj.GetComponent<ParticleSystem>().Stop();
+                        if (PondingObj.GetComponentInChildren<ParticleSystem>().isPlaying) PondingObj.GetComponentInChildren<ParticleSystem>().Stop();
+                    }
+                    if (SprayObj && SprayObj.GetComponent<ParticleSystem>().isPlaying) SprayObj.GetComponent<ParticleSystem>().Stop();
                 }
             }
             else
             {
                 if (LiquidFlow && flow_size > 0F)
                 {
-                  //  flow_size = Mathf.MoveTowards(flow_size, 0F, Time.deltaTime * 20F);
+                    flow_size = Mathf.MoveTowards(flow_size, 0F, Time.deltaTime * 20F);
                     LiquidFlow.widthMultiplier = flow_size * 0.08F;
                 }
-                //if (PondingObj)
-                //{
-                //    if (PondingObj.transform.localScale.x > 0F)
-                //        PondingObj.transform.localScale = Vector3.Lerp(PondingObj.transform.localScale, Vector3.zero, Time.deltaTime);
-                //    else
-                //        PondingObj.SetActive(false);
+                if (PondingObj)
+                {
+                    if (PondingObj.transform.localScale.x > 0F)
+                        PondingObj.transform.localScale = Vector3.Lerp(PondingObj.transform.localScale, Vector3.zero, Time.deltaTime);
+                    else
+                        PondingObj.SetActive(false);
 
-                //    if (PondingObj.GetComponentInChildren<ParticleSystem>().isPlaying) PondingObj.GetComponentInChildren<ParticleSystem>().Stop();
-                //}
-              //  if (SprayObj && SprayObj.GetComponent<ParticleSystem>().isPlaying) SprayObj.GetComponent<ParticleSystem>().Stop();
+                    if (PondingObj.GetComponentInChildren<ParticleSystem>().isPlaying) PondingObj.GetComponentInChildren<ParticleSystem>().Stop();
+                }
+                if (SprayObj && SprayObj.GetComponent<ParticleSystem>().isPlaying) SprayObj.GetComponent<ParticleSystem>().Stop();
             }
         }
 

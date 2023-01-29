@@ -6,10 +6,7 @@ public class Spoon : Holder
 {
     [SerializeField] LongGlass longGlass;
     // Start is called before the first frame update
-    public void SetLongGlass(LongGlass _longGlass)
-    {
-        longGlass = _longGlass;
-    }    
+    
     public override void Grab()
     {
         base.Grab();

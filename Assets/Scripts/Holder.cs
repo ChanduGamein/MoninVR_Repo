@@ -20,11 +20,10 @@ public class Holder : MonoBehaviour
     public LiquidVolume liquidVolume;
     [HideInInspector]
     public bool picked;
-    public LineRenderer flowRenderer;
     [HideInInspector]
     public bool callTutoral;
     public bool haveLiquid;
-
+    public ParticleSystem liquidParticle;
     public virtual void IncreaseLiquid(float value)
     {
         liquidVolume.level += value;

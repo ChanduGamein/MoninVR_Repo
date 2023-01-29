@@ -6,12 +6,7 @@ using UnityEngine.UI;
 using LiquidVolumeFX;
 public class SprinkleWater : Holder
 {
-    [SerializeField]GlassDrink glassDrink;
-    [SerializeField]Shaker shakerVolume;
-    [SerializeField]LongGlass longGlassVolume;
-    public LayerMask targetLayerCup;
-    public LayerMask targetLayerShaker;
-    public LayerMask targetLayerLongGlass;
+
     [SerializeField] Transform spellPoint;
     public int liquidMLPerPump;
     public int liquidMLFullAmount;
@@ -20,48 +15,43 @@ public class SprinkleWater : Holder
     [SerializeField]LayerMask targetLayer;
     RaycastHit hit;
     [SerializeField] FillLiquidUI liquidUI;
-    [SerializeField] ParticleSystem liquidParticle;
-    Holder _liquidVolume;
+    [SerializeField] Holder _liquidVolume;
     [SerializeField] float speed;
-    public void SetTargetLayer(LayerMask layerMask)
-    {
-        targetLayer = layerMask;
-    }
-    public void SetTargetLayerToCup()
-    {
-        targetLayer = targetLayerCup;
-        _liquidVolume = glassDrink;
-    }
-    public void SetTargetLayerToShaker()
-    {
-        targetLayer = targetLayerShaker;
-        _liquidVolume = shakerVolume;
-    }
-    public void SetTargetLayerToLongGlass()
-    {
-        targetLayer = targetLayerLongGlass;
-        _liquidVolume = longGlassVolume;
-    }
+
+
     float counter = 0;
     float curreentliquidAmount;
     bool called;
-    private void Update()
+    IEnumerator ParticleEffect()
+    {
+        liquidParticle.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(.1f);
+        liquidParticle.gameObject.SetActive(false);
+        yield return new WaitForSeconds(.1f);
+
+        liquidParticle.gameObject.SetActive(true);
+
+    }
+    protected virtual void Update()
     {
         if(grabed)
         {
             Debug.DrawRay(spellPoint.position,Vector3.down,Color.green);
             if (Physics.Raycast(spellPoint.position,Vector3.down,out hit,20,targetLayer))
             {
+                _liquidVolume = hit.collider.GetComponent<Holder>();
                 if (!called)
                 {
                     curreentliquidAmount = _liquidVolume.liquidVolume.level;
                     called = true;
                 }
-                liquidParticle.Play();
+                StartCoroutine(ParticleEffect());
+
                 Debug.Log(hit.transform.gameObject.name);
                 //   glassDrink.IncreseLiquidGradually(1);
                 _liquidVolume.IncreaseLiquid(.01f * Time.deltaTime *10);
-                flowRenderer.enabled = true;
+
 
                 liquidUI.gameObject.SetActive(true);
                 liquidUI.SetAmount(itemName,liquidMLFullAmount);
@@ -81,19 +71,22 @@ public class SprinkleWater : Holder
                 if (_liquidVolume.liquidVolume.level>=.731f)
                 {
                     grabed = false;
-                    liquidParticle.Stop();
+                    liquidParticle.gameObject.SetActive(false);
                     SceneController.instance.InvokeCurrentStep();
                     SceneController.instance.fillLiquidUI.gameObject.SetActive(false);
                     SceneController.instance.fillLiquidStatic.gameObject.SetActive(false);
-                    flowRenderer.enabled = false;
 
                 }
             }
             else
             {
-                flowRenderer.enabled = false;
-
+              //  liquidParticle.gameObject.SetActive(false);
             }
+        }
+        else
+        {
+          //  liquidParticle.gameObject.SetActive(false);
+
         }
     }
     private void OnTriggerEnter(Collider other)

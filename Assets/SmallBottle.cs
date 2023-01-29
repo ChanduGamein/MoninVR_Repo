@@ -6,7 +6,7 @@ public class SmallBottle : Holder
 {
     public bool isCapRemoved;
     [SerializeField] Transform pourPoint;
-    [SerializeField] Holder jigger;
+    [SerializeField] Holder holder;
     [SerializeField] LayerMask targetLayer;
     [SerializeField] float liquidLevel;
     [SerializeField] float shakerLevel;
@@ -22,17 +22,16 @@ public class SmallBottle : Holder
         if(!isCapRemoved)
         UIManager.instance.pointerTutorial.SetActive(true);
     }
-    private void Update()
+    protected  void Update()
     {
         if (grabed && checkPouring&& isCapRemoved)
         {
             if (Physics.Raycast(pourPoint.position, Vector3.down, out hit, 20, targetLayer))
             {
-                if (flowRenderer != null)
-                    flowRenderer.enabled = true;
-                if (jigger.liquidVolume.level < liquidLevel)
+
+                if (holder.liquidVolume.level < liquidLevel)
                 {
-                    jigger.liquidVolume.level += .1f * Time.deltaTime;
+                    holder.liquidVolume.level += .1f * Time.deltaTime;
                     if(liquidUI!=null)
                     {
                         liquidUI.gameObject.SetActive(true);
@@ -40,8 +39,8 @@ public class SmallBottle : Holder
                         SceneController.instance.fillLiquidStatic.SetAmount(itemName, liquidMLFullAmount);
                         // SceneController.instance.SetShakerLiquidAmount(itemName, liquidMLFullAmount, .1f);
 
-                        liquidUI.SetFillAmount(jigger.liquidVolume.level, liquidLevel, liquidMLFullAmount);
-                        SceneController.instance.fillLiquidStatic.SetFillAmount(jigger.liquidVolume.level, liquidLevel, liquidMLFullAmount);
+                        liquidUI.SetFillAmount(holder.liquidVolume.level, liquidLevel, liquidMLFullAmount);
+                        SceneController.instance.fillLiquidStatic.SetFillAmount(holder.liquidVolume.level, liquidLevel, liquidMLFullAmount);
 
                         SceneController.instance.fillLiquidStatic.gameObject.SetActive(true);
                     }
@@ -50,9 +49,8 @@ public class SmallBottle : Holder
                 else
                 {
                     checkPouring = false;
-                    if(flowRenderer!=null)
-                    flowRenderer.enabled = false;
-                    jigger.haveLiquid = true;
+
+                    holder.haveLiquid = true;
                     SceneController.instance.fillLiquidUI.gameObject.SetActive(false);
                     SceneController.instance.fillLiquidStatic.gameObject.SetActive(false);
                     SceneController.instance.InvokeCurrentStep();
@@ -60,9 +58,7 @@ public class SmallBottle : Holder
             }
             else
             {
-                if (flowRenderer != null)
 
-                    flowRenderer.enabled = false;
 
             }
 

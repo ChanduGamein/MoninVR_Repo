@@ -41,25 +41,21 @@ public class Jigger : Holder
         {
             if (Physics.Raycast(rayCastPoint.position, Vector3.down, out hit, 20, targetLayer))
             {
-                if (flowRenderer != null)
-                    flowRenderer.enabled = true;
+
                 if (liquidVolume.level > 0)
                 {
                     shaker.liquidVolume.level += value * Time.deltaTime;
                     liquidVolume.level -= .1f * Time.deltaTime;
-                    flowRenderer.enabled = true;
                 }
                 else
                 {
                     haveLiquid = false;
                     SceneController.instance.InvokeCurrentStep();
-                    flowRenderer.enabled = false;
 
                 }
             }
             else
             {
-                flowRenderer.enabled = false;
 
             }
 

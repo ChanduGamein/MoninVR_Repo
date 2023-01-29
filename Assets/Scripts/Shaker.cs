@@ -22,10 +22,7 @@ public class Shaker : Holder
         StrainerDummy.SetActive(true);
         SceneController.instance.InvokeCurrentStep();
     }
-    public void SetCounter(float _value)
-    {
-        value = _value;
-    }
+
     public override void Grab()
     {
         base.Grab();
@@ -58,7 +55,6 @@ public class Shaker : Holder
 
     }
     float Counter;
-    float value;
     private void Update()
     {
         if(PourToGlass)
@@ -71,13 +67,11 @@ public class Shaker : Holder
                     {
                         glassDrink.IncreaseLiquid(amountToAdd * Time.deltaTime);
                         liquidVolume.level -= .1f * Time.deltaTime;
-                        if(flowRenderer!=null)
-                        flowRenderer.enabled = true;
+
                     }
                     else
                     {
-                        if(flowRenderer!=null)
-                        flowRenderer.enabled = false;
+
                         PourToGlass = false;
                         SceneController.instance.InvokeCurrentStep();
                     }

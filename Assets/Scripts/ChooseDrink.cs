@@ -9,9 +9,13 @@ public class ChooseDrink : MonoBehaviour
     [SerializeField]Toggle toggle;
     [SerializeField] Sprite drinkSprite;
     [SerializeField] string drinkName;
+    [SerializeField] Image drinkImage;
+    [SerializeField] Text drinkTxt;
     void Start()
     {
         toggle = GetComponent<Toggle>();
+        drinkImage.sprite = drinkSprite;
+        drinkTxt.text = drinkName;
     }
 
     public void OnClickDrink()

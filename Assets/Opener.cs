@@ -18,6 +18,11 @@ public class Opener : Holder
         {
             UnGrab();
         }
+        if (other.tag=="Soda")
+        {
+            Debug.Log("sodaa");
+            other.GetComponent<Soda>().RemoveCap();
+        }
     }
     public override void Grab()
     {

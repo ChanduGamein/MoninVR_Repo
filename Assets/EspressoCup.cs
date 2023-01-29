@@ -20,7 +20,6 @@ public class EspressoCup : Holder
                 {
                     shaker.liquidVolume.level += value * Time.deltaTime;
                     liquidVolume.level -= .1f * Time.deltaTime;
-                    flowRenderer.enabled = true;
                 }
                 else
                 {
@@ -28,7 +27,6 @@ public class EspressoCup : Holder
                     {
                         called = true;
                         SceneController.instance.InvokeCurrentStep();
-                        flowRenderer.enabled = false;
                         liquidVolume.GetComponent<MeshRenderer>().enabled = false;
                     }
 
@@ -36,7 +34,6 @@ public class EspressoCup : Holder
             }
             else
             {
-                flowRenderer.enabled = false;
 
             }
 
