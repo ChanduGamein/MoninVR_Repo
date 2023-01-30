@@ -88,6 +88,7 @@ public class LongGlass : HolderGlass
             picked = true;
         }
     }
+    bool called;
     private void OnTriggerEnter(Collider other)
     {
         if (!grabed)
@@ -101,6 +102,26 @@ public class LongGlass : HolderGlass
         if (other.tag == "end")
         {
             UnGrab();
+        }
+        if (other.tag == "Ice")
+        {
+            // shaker.hand.GetComponent<XRController>().SendHapticImpulse(.5f,.5f);
+            if (iceCubes.Count > 0)
+            {
+                iceCubes[0].SetActive(true);
+                iceCubes.RemoveAt(0);
+                other.gameObject.SetActive(false);
+                if (!called)
+                {
+                    called = true;
+                    SceneController.instance.InvokeCurrentStep();
+                }
+            }
+            else
+            {
+                other.gameObject.SetActive(false);
+
+            }
         }
     }
     private void OnTriggerExit(Collider other)

@@ -17,7 +17,7 @@ public class Shaker : Holder
     [SerializeField] GameObject StrainerDummy;
     [SerializeField] float amountToAdd;
     [SerializeField] float shakeSpeed=3.5f;
-    public void AddStrainer()
+        public void AddStrainer()
     {
         StrainerDummy.SetActive(true);
         SceneController.instance.InvokeCurrentStep();
@@ -33,6 +33,10 @@ public class Shaker : Holder
             picked = true;
         }
     }
+        public void SetCalled()
+    {
+        called = false;
+    }
     public void SetPourToGlass()
     {
         PourToGlass = true;
@@ -40,7 +44,13 @@ public class Shaker : Holder
     public void Shake()
     {
         dummyLid.SetActive(true);
-        transform.DOShakePosition(shakeSpeed, 10).OnComplete(() => FinishShake());
+        hand.GetComponent<ShakeDetector>().Detectshake = true;
+        hand.GetComponent<ShakeDetector>().SetShaker(this);
+    }
+    public void ShakerAnimation()
+    {
+         transform.DOShakePosition(shakeSpeed, 10).OnComplete(() => FinishShake());
+
     }
     public void FinishShake()
     {
@@ -67,16 +77,24 @@ public class Shaker : Holder
                     {
                         glassDrink.IncreaseLiquid(amountToAdd * Time.deltaTime);
                         liquidVolume.level -= .1f * Time.deltaTime;
+                        liquidParticle.gameObject.SetActive(true);
 
                     }
                     else
                     {
 
                         PourToGlass = false;
+                        liquidParticle.gameObject.SetActive(false);
+
                         SceneController.instance.InvokeCurrentStep();
                     }
             }
-        }
+            else
+                {
+                    liquidParticle.gameObject.SetActive(false);
+
+                }
+            }
 
     }
     private void OnTriggerEnter(Collider other)
@@ -93,7 +111,28 @@ public class Shaker : Holder
         {
             UnGrab();
         }
+        if (other.tag == "Ice")
+        {
+            // shaker.hand.GetComponent<XRController>().SendHapticImpulse(.5f,.5f);
+            if (iceCubes.Count > 0)
+            {
+                iceCubes[0].SetActive(true);
+                iceCubes.RemoveAt(0);
+                other.gameObject.SetActive(false);
+                if(!called)
+                {
+                    called = true;
+                    SceneController.instance.InvokeCurrentStep();
+                }
+            }
+            else
+            {
+                other.gameObject.SetActive(false);
+
+            }
+        }
     }
+    bool called;
     private void OnTriggerExit(Collider other)
     {
 

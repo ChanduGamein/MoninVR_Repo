@@ -19,8 +19,8 @@ public class SmallBottle : Holder
     public override void Grab()
     {
         base.Grab();
-        if(!isCapRemoved)
-        UIManager.instance.pointerTutorial.SetActive(true);
+        //if(!isCapRemoved)
+        //UIManager.instance.pointerTutorial.SetActive(true);
     }
     protected  void Update()
     {
@@ -31,7 +31,8 @@ public class SmallBottle : Holder
 
                 if (holder.liquidVolume.level < liquidLevel)
                 {
-                    holder.liquidVolume.level += .1f * Time.deltaTime;
+                    liquidParticle.gameObject.SetActive(true);
+                    holder.liquidVolume.level += .2f * Time.deltaTime;
                     if(liquidUI!=null)
                     {
                         liquidUI.gameObject.SetActive(true);
@@ -41,7 +42,6 @@ public class SmallBottle : Holder
 
                         liquidUI.SetFillAmount(holder.liquidVolume.level, liquidLevel, liquidMLFullAmount);
                         SceneController.instance.fillLiquidStatic.SetFillAmount(holder.liquidVolume.level, liquidLevel, liquidMLFullAmount);
-
                         SceneController.instance.fillLiquidStatic.gameObject.SetActive(true);
                     }
 
@@ -49,6 +49,7 @@ public class SmallBottle : Holder
                 else
                 {
                     checkPouring = false;
+                    liquidParticle.gameObject.SetActive(false);
 
                     holder.haveLiquid = true;
                     SceneController.instance.fillLiquidUI.gameObject.SetActive(false);
@@ -58,6 +59,7 @@ public class SmallBottle : Holder
             }
             else
             {
+                liquidParticle.gameObject.SetActive(false);
 
 
             }

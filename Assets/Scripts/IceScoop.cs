@@ -13,10 +13,7 @@ public class IceScoop : Holder
     [SerializeField] PooledObjects iceCube;
     bool pickedIce;
     bool called;
-    public void SetCalled()
-    {
-        called = false;
-    }
+
     public void SetShaker(Shaker _shaker)
     {
         shaker = _shaker;
@@ -28,41 +25,41 @@ public class IceScoop : Holder
 
         placeICeTarget.gameObject.SetActive(false);
 
-        if (!called)
-        {
-            SceneController.instance.InvokeCurrentStep();
-            called = true;
-        }
+        //if (!called)
+        //{
+        //    SceneController.instance.InvokeCurrentStep();
+        //    called = true;
+        //}
         pickedIce = false;
-        if(shaker.iceCubes.Count>=4)
-        for (int i = 0; i < 4; i++)
-        {
-                shaker.hand.GetComponent<XRController>().SendHapticImpulse(.5f,.5f);
-            shaker.iceCubes[0].SetActive(true);
-            shaker.iceCubes.RemoveAt(0);
-        }
+        //if(shaker.iceCubes.Count>=4)
+        //for (int i = 0; i < 4; i++)
+        //{
+        //        shaker.hand.GetComponent<XRController>().SendHapticImpulse(.5f,.5f);
+        //    shaker.iceCubes[0].SetActive(true);
+        //    shaker.iceCubes.RemoveAt(0);
+        //}
     }
     public void ActivatePhysicsOnCubesLongGlass()
     {
         //transform.GetChild(0).parent = null;
         AudioManagerMain.instance.PlaySFX("IceIntoGlass");
 
-        placeICeTarget.gameObject.SetActive(false);
-        placeICeTargetSmall.gameObject.SetActive(false);
+      //  placeICeTarget.gameObject.SetActive(false);
+        //placeICeTargetSmall.gameObject.SetActive(false);
 
-        if (!called)
-        {
-            SceneController.instance.InvokeCurrentStep();
-            called = true;
-        }
-        pickedIce = false;
-        if(longGlass.iceCubes.Count>=3)
-        for (int i = 0; i < 3; i++)
-        {
-         //   longGlass.hand.GetComponent<XRController>().SendHapticImpulse(.5f,.5f);
-            longGlass.iceCubes[0].SetActive(true);
-            longGlass.iceCubes.RemoveAt(0);
-        }
+        //if (!called)
+        //{
+        //    SceneController.instance.InvokeCurrentStep();
+        //    called = true;
+        //}
+        //pickedIce = false;
+        //if(longGlass.iceCubes.Count>=3)
+        //for (int i = 0; i < 3; i++)
+        //{
+        // //   longGlass.hand.GetComponent<XRController>().SendHapticImpulse(.5f,.5f);
+        //    longGlass.iceCubes[0].SetActive(true);
+        //    longGlass.iceCubes.RemoveAt(0);
+        //}
     }
     public override void UnGrab()
     {
@@ -74,10 +71,10 @@ public class IceScoop : Holder
     }
     public void PickUpIce()
     {
-        placeICeTarget.gameObject.SetActive(true);
+      //  placeICeTarget.gameObject.SetActive(true);
         hand.GetComponent<XRController>().SendHapticImpulse(.5f, .5f);
 
-
+        GetComponent<SpawnerManager>().Spawn();
         AudioManagerMain.instance.PlaySFX("iceBucketScoop");
 
         pickedIce = true;
@@ -129,11 +126,11 @@ public class IceScoop : Holder
             // UIManager.instance.PickUpIceButton.SetActive(true);
             PickUpIce();
         }
-        if (other.gameObject.tag == "IceBoxSmall")
-        {
-            // UIManager.instance.PickUpIceButton.SetActive(true);
-            PickUpIceSmall();
-        }
+        //if (other.gameObject.tag == "IceBoxSmall")
+        //{
+        //    // UIManager.instance.PickUpIceButton.SetActive(true);
+        //    PickUpIceSmall();
+        //}
         if(other.tag=="end")
         {
             UnGrab();

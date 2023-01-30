@@ -50,6 +50,7 @@ public class SyrupHolder : Holder
                     SceneController.instance.fillLiquidStatic.SetFillAmount(jigger.liquidVolume.level, liquidLevel, liquidMLFullAmount);
 
                     SceneController.instance.fillLiquidStatic.gameObject.SetActive(true);
+                    liquidParticle.gameObject.SetActive(true);
                 }
                 else
                 {
@@ -59,7 +60,14 @@ public class SyrupHolder : Holder
                     SceneController.instance.fillLiquidUI.gameObject.SetActive(false);
                     SceneController.instance.fillLiquidStatic.gameObject.SetActive(false);
                     SceneController.instance.InvokeCurrentStep();
+                    liquidParticle.gameObject.SetActive(false);
+
                 }
+            }
+            else
+            {
+                liquidParticle.gameObject.SetActive(false);
+
             }
 
         }

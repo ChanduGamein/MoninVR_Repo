@@ -46,7 +46,9 @@ public class SprinkleWater : Holder
                     curreentliquidAmount = _liquidVolume.liquidVolume.level;
                     called = true;
                 }
-                StartCoroutine(ParticleEffect());
+                liquidParticle.gameObject.SetActive(true);
+
+              //  StartCoroutine(ParticleEffect());
 
                 Debug.Log(hit.transform.gameObject.name);
                 //   glassDrink.IncreseLiquidGradually(1);
@@ -80,12 +82,12 @@ public class SprinkleWater : Holder
             }
             else
             {
-              //  liquidParticle.gameObject.SetActive(false);
+                liquidParticle.gameObject.SetActive(false);
             }
         }
         else
         {
-          //  liquidParticle.gameObject.SetActive(false);
+            liquidParticle.gameObject.SetActive(false);
 
         }
     }

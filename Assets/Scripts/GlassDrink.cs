@@ -6,7 +6,6 @@ using TMPro;
 using LiquidVolumeFX;
 public class GlassDrink : HolderGlass
 {
-    [SerializeField]Transform shaker;
     bool poured;
 
 

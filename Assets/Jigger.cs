@@ -46,16 +46,19 @@ public class Jigger : Holder
                 {
                     shaker.liquidVolume.level += value * Time.deltaTime;
                     liquidVolume.level -= .1f * Time.deltaTime;
+                    liquidParticle.gameObject.SetActive(true);
                 }
                 else
                 {
                     haveLiquid = false;
                     SceneController.instance.InvokeCurrentStep();
+                    liquidParticle.gameObject.SetActive(false);
 
                 }
             }
             else
             {
+                liquidParticle.gameObject.SetActive(false);
 
             }
 
