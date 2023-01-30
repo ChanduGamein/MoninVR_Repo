@@ -6,28 +6,28 @@ public class Tweezers : Holder
 {
     public bool hasGarnish;
     public Transform garnishPosition;
+    public GameObject _garnish;
+    public void SpawnGarnish(GarnishItem grnish)
+    {
+        if(_garnish!=null)
+        {
+            _garnish.SetActive(false);
+        }
+        GarnishItem garnishItem = Instantiate(grnish, garnishPosition);
+        _garnish = garnishItem.gameObject;
+        garnishItem.tweezers = this;
+        
+       // hasGarnish = true;
 
+    }
     private void OnTriggerEnter(Collider other)
     {
-        if (!grabed)
-            if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
-            {
-                hand = other.GetComponent<HandHolder>();
-                UIManager.instance.ActivateGrab(hand.scoopPositon, hand, this.transform,"IceScoop");
-                UIManager.instance.canGrab = true;
-            }
-        if (other.tag == "end")
-        {
-            UnGrab();
-        }
-        if (!hasGarnish )
-            if (other.tag == "Garnish")
-            {
-                GarnishItem garnishItem = Instantiate(other.GetComponent<Garnish>().garnish, garnishPosition);
-                garnishItem.tweezers = this;
-                hasGarnish = true;
 
-            }
+        //if (!hasGarnish )
+        //    if (other.tag == "Garnish")
+        //    {
+
+        //    }
     }
     private void OnTriggerExit(Collider other)
     {

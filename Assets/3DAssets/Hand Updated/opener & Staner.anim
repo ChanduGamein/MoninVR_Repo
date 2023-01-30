@@ -1,0 +1,958 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!74 &7400000
+AnimationClip:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: opener & Staner
+  serializedVersion: 6
+  m_Legacy: 0
+  m_Compressed: 0
+  m_UseHighQualityCurve: 1
+  m_RotationCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: 0.00034403102, y: -0.0026431913, z: 0.002365794, w: 1.0004638}
+        inSlope: {x: -0.0000027090314, y: -0.016906869, z: 0.013525702, w: 0.0053921705}
+        outSlope: {x: -0.0000027090314, y: -0.016906869, z: 0.013525702, w: 0.0053921705}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.29166675
+        value: {x: -0.013516104, y: 0.034023833, z: -0.037191637, w: 0.9986373}
+        inSlope: {x: -0.123556, y: 0.35295627, z: -0.37360942, w: -0.028817657}
+        outSlope: {x: -0.123556, y: 0.35295627, z: -0.37360942, w: -0.028817657}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.54166675
+        value: {x: -0.038545884, y: 0.14683272, z: -0.14635287, w: 0.9775148}
+        inSlope: {x: -0.036613557, y: 0.37045395, z: -0.32717216, w: -0.1048795}
+        outSlope: {x: -0.036613557, y: 0.37045395, z: -0.32717216, w: -0.1048795}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.8333335
+        value: {x: -0.04109049, y: 0.18504162, z: -0.17929024, w: 0.96580493}
+        inSlope: {x: 0.005974691, y: -0.01238111, z: 0.014048872, w: 0.00006294249}
+        outSlope: {x: 0.005974691, y: -0.01238111, z: 0.014048872, w: 0.00006294249}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: hands:r_hand_world/hands:b_r_hand/hands:b_r_pinky0/hands:b_r_pinky1_G
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: 0.000032331795, y: -0.00003260689, z: 0.0031798473, w: 1.0001421}
+        inSlope: {x: 0.00042242778, y: -0.00045035605, z: 0.03914602, w: 0.0024261475}
+        outSlope: {x: 0.00042242778, y: -0.00045035605, z: 0.03914602, w: 0.0024261475}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.16666675
+        value: {x: -0.00023931851, y: 0.00020485361, z: -0.01927729, w: 0.99981415}
+        inSlope: {x: -0.005096378, y: 0.0046287244, z: -0.42111385, w: -0.010252467}
+        outSlope: {x: -0.005096378, y: 0.0046287244, z: -0.42111385, w: -0.010252467}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.37500024
+        value: {x: -0.0024018995, y: 0.00326699, z: -0.2456035, w: 0.9693619}
+        inSlope: {x: -0.0104460195, y: 0.02570656, z: -1.5981281, w: -0.4088601}
+        outSlope: {x: -0.0104460195, y: 0.02570656, z: -1.5981281, w: -0.4088601}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.50000024
+        value: {x: -0.0030798058, y: 0.00679894, z: -0.44102803, w: 0.8974623}
+        inSlope: {x: -0.000108066364, y: 0.026786532, z: -1.3443452, w: -0.65383804}
+        outSlope: {x: -0.000108066364, y: 0.026786532, z: -1.3443452, w: -0.65383804}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.7083335
+        value: {x: -0.0025583706, y: 0.009998458, z: -0.5903767, w: 0.8070619}
+        inSlope: {x: 0.0012446125, y: 0.0039298646, z: -0.17283693, w: -0.12552571}
+        outSlope: {x: 0.0012446125, y: 0.0039298646, z: -0.17283693, w: -0.12552571}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.8333335
+        value: {x: -0.0024989136, y: 0.010183593, z: -0.5985069, w: 0.8011279}
+        inSlope: {x: -0.00006439816, y: -0.00023454055, z: 0.010460377, w: 0.0072455406}
+        outSlope: {x: -0.00006439816, y: -0.00023454055, z: 0.010460377, w: 0.0072455406}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: hands:r_hand_world/hands:b_r_hand/hands:b_r_pinky0/hands:b_r_pinky1_G/hands:b_r_pinky1/hands:b_r_pinky2_G
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: 0.00040297414, y: 0.00033832534, z: 0.0035276883, w: 1.0001026}
+        inSlope: {x: -0.0031949831, y: -0.0027034124, z: -0.03515333, w: -0.0017913578}
+        outSlope: {x: -0.0031949831, y: -0.0027034124, z: -0.03515333, w: -0.0017913578}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.08333349
+        value: {x: -0.00023453338, y: -0.00020001816, z: -0.0014091918, w: 0.999999}
+        inSlope: {x: -0.01281837, y: -0.010817924, z: -0.07669063, w: -0.0002646441}
+        outSlope: {x: -0.01281837, y: -0.010817924, z: -0.07669063, w: -0.0002646441}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.29166675
+        value: {x: -0.02146676, y: -0.014355928, z: -0.1180986, w: 0.992666}
+        inSlope: {x: -0.23765051, y: -0.11807731, z: -1.2022674, w: -0.15681411}
+        outSlope: {x: -0.23765051, y: -0.11807731, z: -1.2022674, w: -0.15681411}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.4583335
+        value: {x: -0.07695126, y: -0.026716864, z: -0.36644986, w: 0.9268653}
+        inSlope: {x: -0.36538702, y: 0.0077205226, z: -1.4790827, w: -0.611089}
+        outSlope: {x: -0.36538702, y: 0.0077205226, z: -1.4790827, w: -0.611089}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.66666675
+        value: {x: -0.12794924, y: -0.014783638, z: -0.56027937, w: 0.81822824}
+        inSlope: {x: -0.09222077, y: 0.040805887, z: -0.33379972, w: -0.23962897}
+        outSlope: {x: -0.09222077, y: 0.040805887, z: -0.33379972, w: -0.23962897}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.8333335
+        value: {x: -0.13276581, y: -0.012559367, z: -0.57765627, w: 0.80549514}
+        inSlope: {x: 0.008357048, y: -0.0030280128, z: 0.030659437, w: 0.020148754}
+        outSlope: {x: 0.008357048, y: -0.0030280128, z: 0.030659437, w: 0.020148754}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: hands:r_hand_world/hands:b_r_hand/hands:b_r_pinky0/hands:b_r_pinky1_G/hands:b_r_pinky1/hands:b_r_pinky2_G/hands:b_r_pinky2/hands:b_r_pinky3_G
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: 0, y: -0, z: -0, w: 1}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.8333335
+        value: {x: 0, y: -0, z: -0, w: 1}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: hands:r_hand_world/hands:b_r_hand/hands:b_r_pinky0/hands:b_r_pinky1_G/hands:b_r_pinky1/hands:b_r_pinky2_G/hands:b_r_pinky2/hands:b_r_pinky3_G/hands:b_r_pinky3/hands:b_r_pinky_ignore_G
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: -0.00020698165, y: 0.0026552272, z: 0.0029464331, w: 1.0000418}
+        inSlope: {x: 0.0003274715, y: -0.0067130453, z: -0.005587795, w: -0.000110353714}
+        outSlope: {x: 0.0003274715, y: -0.0067130453, z: -0.005587795, w: -0.000110353714}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.12500024
+        value: {x: 0.00024424033, y: -0.0021997767, z: -0.002892603, w: 0.9999934}
+        inSlope: {x: 0.007281386, y: -0.069347166, z: -0.09109147, w: -0.0006394406}
+        outSlope: {x: 0.007281386, y: -0.069347166, z: -0.09109147, w: -0.0006394406}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.37500024
+        value: {x: 0.00059606, y: -0.08088992, z: -0.104584865, w: 0.9912207}
+        inSlope: {x: -0.054302994, y: -0.53700364, z: -0.68324935, w: -0.11690442}
+        outSlope: {x: -0.054302994, y: -0.53700364, z: -0.68324935, w: -0.11690442}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.62500024
+        value: {x: -0.02744301, y: -0.19142681, z: -0.24287969, w: 0.9505852}
+        inSlope: {x: -0.08673606, y: -0.20962937, z: -0.25867572, w: -0.109611556}
+        outSlope: {x: -0.08673606, y: -0.20962937, z: -0.25867572, w: -0.109611556}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.8333335
+        value: {x: -0.033807017, y: -0.20623648, z: -0.261137, w: 0.94261515}
+        inSlope: {x: 0.004867417, y: 0.015289489, z: 0.01897386, w: 0.0065982356}
+        outSlope: {x: 0.004867417, y: 0.015289489, z: 0.01897386, w: 0.0065982356}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: hands:r_hand_world/hands:b_r_hand/hands:b_r_ring1_G
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: 0.000625769, y: 0.000059778868, z: 0.0016189477, w: 1.0000316}
+        inSlope: {x: -0.0065390207, y: -0.00063349557, z: -0.020605816, w: -0.00059015094}
+        outSlope: {x: -0.0065390207, y: -0.00063349557, z: -0.020605816, w: -0.00059015094}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.08333349
+        value: {x: -0.00029468787, y: -0.000029250561, z: -0.0007040766, w: 0.9999997}
+        inSlope: {x: -0.016039638, y: -0.0015502356, z: -0.03831431, w: -0.0000736712}
+        outSlope: {x: -0.016039638, y: -0.0015502356, z: -0.03831431, w: -0.0000736712}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.3333335
+        value: {x: -0.03648859, y: -0.00046770155, z: -0.08674409, w: 0.9955621}
+        inSlope: {x: -0.3005915, y: 0.023465097, z: -0.7126057, w: -0.07481203}
+        outSlope: {x: -0.3005915, y: 0.023465097, z: -0.7126057, w: -0.07481203}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.5833335
+        value: {x: -0.11107071, y: 0.018982258, z: -0.26480427, w: 0.957696}
+        inSlope: {x: -0.18410522, y: 0.083923936, z: -0.44684836, w: -0.14484403}
+        outSlope: {x: -0.18410522, y: 0.083923936, z: -0.44684836, w: -0.14484403}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.8333335
+        value: {x: -0.12589751, y: 0.02635056, z: -0.30098844, w: 0.9451482}
+        inSlope: {x: 0.009732218, y: -0.001998263, z: 0.022831416, w: 0.004125596}
+        outSlope: {x: 0.009732218, y: -0.001998263, z: 0.022831416, w: 0.004125596}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: hands:r_hand_world/hands:b_r_hand/hands:b_r_ring1_G/hands:b_r_ring1/hands:b_r_ring2_G
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: 0, y: 0, z: 0.0028538234, w: 1.0000215}
+        inSlope: {x: 0, y: 0, z: -0.018560072, w: -0.00016593933}
+        outSlope: {x: 0, y: 0, z: -0.018560072, w: -0.00016593933}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.08333349
+        value: {x: 0, y: -0, z: -0.001676342, w: 0.9999986}
+        inSlope: {x: 0, y: 0, z: -0.09121808, w: -0.00035691194}
+        outSlope: {x: 0, y: 0, z: -0.09121808, w: -0.00035691194}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.25000024
+        value: {x: 0, y: -0, z: -0.086908504, w: 0.9962163}
+        inSlope: {x: 0, y: 0, z: -1.1085446, w: -0.10458348}
+        outSlope: {x: 0, y: 0, z: -1.1085446, w: -0.10458348}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.41666675
+        value: {x: 0, y: -0, z: -0.35521355, w: 0.9347852}
+        inSlope: {x: 0, y: 0, z: -1.8113894, w: -0.68831897}
+        outSlope: {x: 0, y: 0, z: -1.8113894, w: -0.68831897}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.62500024
+        value: {x: 0, y: -0, z: -0.62772846, w: 0.7784324}
+        inSlope: {x: 0, y: 0, z: -0.6111998, w: -0.4860286}
+        outSlope: {x: 0, y: 0, z: -0.6111998, w: -0.4860286}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.8333335
+        value: {x: 0, y: 0, z: -0.6649399, w: 0.7471144}
+        inSlope: {x: 0, y: 0, z: 0.031572342, w: 0.01888752}
+        outSlope: {x: 0, y: 0, z: 0.031572342, w: 0.01888752}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: hands:r_hand_world/hands:b_r_hand/hands:b_r_ring1_G/hands:b_r_ring1/hands:b_r_ring2_G/hands:b_r_ring2/hands:b_r_ring3_G
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: 0, y: -0, z: -0, w: 1}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.8333335
+        value: {x: 0, y: -0, z: -0, w: 1}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: hands:r_hand_world/hands:b_r_hand/hands:b_r_ring1_G/hands:b_r_ring1/hands:b_r_ring2_G/hands:b_r_ring2/hands:b_r_ring3_G/hands:b_r_ring3/hands:b_r_ring_ignore_G
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: -0.001229995, y: 0.0032091797, z: 0.0018456248, w: 1.0000417}
+        inSlope: {x: 0.004506135, y: -0.007061498, z: -0.0021386435, w: -0.0001029968}
+        outSlope: {x: 0.004506135, y: -0.007061498, z: -0.0021386435, w: -0.0001029968}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.12500024
+        value: {x: 0.00071949314, y: -0.0029089644, z: -0.0021374985, w: 0.99999326}
+        inSlope: {x: 0.022262394, y: -0.091743365, z: -0.0672011, w: -0.0006523153}
+        outSlope: {x: 0.022262394, y: -0.091743365, z: -0.0672011, w: -0.0006523153}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.37500024
+        value: {x: 0.018018592, y: -0.107885085, z: -0.07492909, w: 0.9911719}
+        inSlope: {x: 0.06077178, y: -0.72358537, z: -0.47193867, w: -0.11648242}
+        outSlope: {x: 0.06077178, y: -0.72358537, z: -0.47193867, w: -0.11648242}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.62500024
+        value: {x: 0.013398055, y: -0.25952107, z: -0.16478102, w: 0.9514812}
+        inSlope: {x: -0.042931214, y: -0.29354462, z: -0.1560821, w: -0.10535149}
+        outSlope: {x: -0.042931214, y: -0.29354462, z: -0.1560821, w: -0.10535149}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.8333335
+        value: {x: 0.010124171, y: -0.28030533, z: -0.17570874, w: 0.9438349}
+        inSlope: {x: 0.0016443733, y: 0.021124637, z: 0.011994931, w: 0.006427647}
+        outSlope: {x: 0.0016443733, y: 0.021124637, z: 0.011994931, w: 0.006427647}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: hands:r_hand_world/hands:b_r_hand/hands:b_r_middle1_G
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: 0, y: 0, z: 0.00021761423, w: 1.0001317}
+        inSlope: {x: 0, y: 0, z: 0.006579058, w: 0.0057393922}
+        outSlope: {x: 0, y: 0, z: 0.006579058, w: 0.0057393922}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.29166675
+        value: {x: 0, y: -0, z: -0.069605045, w: 0.9975746}
+        inSlope: {x: 0, y: 0, z: -0.7097094, w: -0.05176235}
+        outSlope: {x: 0, y: 0, z: -0.7097094, w: -0.05176235}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.50000024
+        value: {x: 0, y: -0, z: -0.25485903, w: 0.9669782}
+        inSlope: {x: 0, y: 0, z: -0.8165149, w: -0.21313426}
+        outSlope: {x: 0, y: 0, z: -0.8165149, w: -0.21313426}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.75000024
+        value: {x: 0, y: -0, z: -0.35164768, w: 0.93613243}
+        inSlope: {x: 0, y: 0, z: -0.04236421, w: -0.015859354}
+        outSlope: {x: 0, y: 0, z: -0.04236421, w: -0.015859354}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.8333335
+        value: {x: 0, y: 0, z: -0.35432282, w: 0.9351307}
+        inSlope: {x: 0, y: 0, z: -0.022557687, w: -0.008450364}
+        outSlope: {x: 0, y: 0, z: -0.022557687, w: -0.008450364}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: hands:r_hand_world/hands:b_r_hand/hands:b_r_middle1_G/hands:b_r_middle1/hands:b_r_middle2_G
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: 0, y: 0, z: 0.003184561, w: 1.0000266}
+        inSlope: {x: 0, y: 0, z: -0.020604039, w: -0.00020074844}
+        outSlope: {x: 0, y: 0, z: -0.020604039, w: -0.00020074844}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.08333349
+        value: {x: 0, y: -0, z: -0.001879721, w: 0.9999983}
+        inSlope: {x: 0, y: 0, z: -0.10228469, w: -0.00044917976}
+        outSlope: {x: 0, y: 0, z: -0.10228469, w: -0.00044917976}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.25000024
+        value: {x: 0, y: -0, z: -0.097420864, w: 0.99524325}
+        inSlope: {x: 0, y: 0, z: -1.2415029, w: -0.13143781}
+        outSlope: {x: 0, y: 0, z: -1.2415029, w: -0.13143781}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.41666675
+        value: {x: 0, y: -0, z: -0.39603996, w: 0.9182333}
+        inSlope: {x: 0, y: 0, z: -1.9946308, w: -0.8602973}
+        outSlope: {x: 0, y: 0, z: -1.9946308, w: -0.8602973}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.5833335
+        value: {x: 0, y: -0, z: -0.6569943, w: 0.7538956}
+        inSlope: {x: 0, y: 0, z: -0.9476448, w: -0.8127557}
+        outSlope: {x: 0, y: 0, z: -0.9476448, w: -0.8127557}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.75000024
+        value: {x: 0, y: 0, z: -0.72602284, w: 0.6876706}
+        inSlope: {x: 0, y: 0, z: -0.070525594, w: -0.07408471}
+        outSlope: {x: 0, y: 0, z: -0.070525594, w: -0.07408471}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.8333335
+        value: {x: 0, y: 0, z: -0.7297411, w: 0.6837635}
+        inSlope: {x: 0, y: 0, z: -0.021855513, w: -0.022984505}
+        outSlope: {x: 0, y: 0, z: -0.021855513, w: -0.022984505}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: hands:r_hand_world/hands:b_r_hand/hands:b_r_middle1_G/hands:b_r_middle1/hands:b_r_middle2_G/hands:b_r_middle2/hands:b_r_middle3_G
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: 0, y: -0, z: -0, w: 1}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.8333335
+        value: {x: 0, y: -0, z: -0, w: 1}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: hands:r_hand_world/hands:b_r_hand/hands:b_r_middle1_G/hands:b_r_middle1/hands:b_r_middle2_G/hands:b_r_middle2/hands:b_r_middle3_G/hands:b_r_middle3/hands:b_r_middle_ignore_G
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: -0.002622384, y: 0.0022380864, z: -0.00036813994, w: 1.0003482}
+        inSlope: {x: -0.013258353, y: 0.0148233995, z: -0.0027106386, w: 0.0040028575}
+        outSlope: {x: -0.013258353, y: 0.0148233995, z: -0.0027106386, w: 0.0040028575}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.29166675
+        value: {x: 0.019967658, y: -0.03922353, z: -0.007951603, w: 0.9989993}
+        inSlope: {x: 0.19975445, y: -0.40221497, z: -0.07218955, w: -0.02126384}
+        outSlope: {x: 0.19975445, y: -0.40221497, z: -0.07218955, w: -0.02126384}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.5833335
+        value: {x: 0.08383076, y: -0.17956546, z: -0.022709208, w: 0.9799046}
+        inSlope: {x: 0.12876225, y: -0.31267166, z: -0.009456109, w: -0.067756765}
+        outSlope: {x: 0.12876225, y: -0.31267166, z: -0.009456109, w: -0.067756765}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.8333335
+        value: {x: 0.0946721, y: -0.20630789, z: -0.023230167, w: 0.9738128}
+        inSlope: {x: -0.008050621, y: 0.017549912, z: 0.0019122412, w: 0.0023790996}
+        outSlope: {x: -0.008050621, y: 0.017549912, z: 0.0019122412, w: 0.0023790996}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: hands:r_hand_world/hands:b_r_hand/hands:b_r_index1_G
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: 0, y: 0, z: 0.002016664, w: 1.0000206}
+        inSlope: {x: 0, y: 0, z: -0.01896224, w: -0.00033345216}
+        outSlope: {x: 0, y: 0, z: -0.01896224, w: -0.00033345216}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.08333349
+        value: {x: 0, y: -0, z: -0.0009598456, w: 0.9999996}
+        inSlope: {x: 0, y: 0, z: -0.052230306, w: -0.00011658647}
+        outSlope: {x: 0, y: 0, z: -0.052230306, w: -0.00011658647}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.3333335
+        value: {x: 0, y: -0, z: -0.118029244, w: 0.9930101}
+        inSlope: {x: 0, y: 0, z: -0.9671776, w: -0.11764361}
+        outSlope: {x: 0, y: 0, z: -0.9671776, w: -0.11764361}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.54166675
+        value: {x: 0, y: -0, z: -0.32917008, w: 0.9442707}
+        inSlope: {x: 0, y: 0, z: -0.77678585, w: -0.2676261}
+        outSlope: {x: 0, y: 0, z: -0.77678585, w: -0.2676261}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.8333335
+        value: {x: 0, y: -0, z: -0.4039755, w: 0.9147698}
+        inSlope: {x: 0, y: 0, z: -0.00071596965, w: -0.00031614242}
+        outSlope: {x: 0, y: 0, z: -0.00071596965, w: -0.00031614242}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: hands:r_hand_world/hands:b_r_hand/hands:b_r_index1_G/hands:b_r_index1/hands:b_r_index2_G
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: -0.000012608502, y: 0.00012304596, z: 0.0030325586, w: 1.0000235}
+        inSlope: {x: 0.000058206726, y: -0.0005142389, z: -0.0191985, w: -0.00016307831}
+        outSlope: {x: 0.000058206726, y: -0.0005142389, z: -0.0191985, w: -0.00016307831}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.08333349
+        value: {x: 0.000010913887, y: -0.00009642098, z: -0.0018258872, w: 0.99999833}
+        inSlope: {x: 0.00055870705, y: -0.0052506584, z: -0.09935516, w: -0.0004248611}
+        outSlope: {x: 0.00055870705, y: -0.0052506584, z: -0.09935516, w: -0.0004248611}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.25000024
+        value: {x: 0.00009949693, y: -0.005036129, z: -0.09463527, w: 0.99549925}
+        inSlope: {x: -0.005825122, y: -0.064468846, z: -1.2062219, w: -0.12436606}
+        outSlope: {x: -0.005825122, y: -0.064468846, z: -1.2062219, w: -0.12436606}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.41666675
+        value: {x: -0.005829354, y: -0.02019471, z: -0.38517374, w: 0.9226047}
+        inSlope: {x: -0.073632285, y: -0.09514119, z: -1.9454628, w: -0.8147448}
+        outSlope: {x: -0.073632285, y: -0.09514119, z: -1.9454628, w: -0.8147448}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.5833335
+        value: {x: -0.02033051, y: -0.030908758, z: -0.64082193, w: 0.7667976}
+        inSlope: {x: -0.072210565, y: -0.0299302, z: -0.9339434, w: -0.7714655}
+        outSlope: {x: -0.072210565, y: -0.0299302, z: -0.9339434, w: -0.7714655}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.75000024
+        value: {x: -0.026195817, y: -0.03274216, z: -0.70906097, w: 0.7038993}
+        inSlope: {x: -0.006535533, y: -0.0015401233, z: -0.06991691, w: -0.070398994}
+        outSlope: {x: -0.006535533, y: -0.0015401233, z: -0.06991691, w: -0.070398994}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.8333335
+        value: {x: -0.026540484, y: -0.032823294, z: -0.71274716, w: 0.7001866}
+        inSlope: {x: -0.0020274967, y: -0.00047588348, z: -0.021667799, w: -0.02184105}
+        outSlope: {x: -0.0020274967, y: -0.00047588348, z: -0.021667799, w: -0.02184105}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: hands:r_hand_world/hands:b_r_hand/hands:b_r_index1_G/hands:b_r_index1/hands:b_r_index2_G/hands:b_r_index2/hands:b_r_index3_G
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: 0, y: -0, z: -0, w: 1}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.8333335
+        value: {x: 0, y: -0, z: -0, w: 1}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: hands:r_hand_world/hands:b_r_hand/hands:b_r_index1_G/hands:b_r_index1/hands:b_r_index2_G/hands:b_r_index2/hands:b_r_index3_G/hands:b_r_index3/hands:b_r_index_ignore_G
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: 0.0026479876, y: 0.00068431103, z: 0.0019712485, w: 1.0000854}
+        inSlope: {x: -0.022963982, y: -0.011073021, z: -0.021497082, w: -0.0013608932}
+        outSlope: {x: -0.022963982, y: -0.011073021, z: -0.021497082, w: -0.0013608932}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.08333349
+        value: {x: -0.0010827706, y: 0.00017647108, z: -0.0004350862, w: 0.99999934}
+        inSlope: {x: -0.058903813, y: 0.009696767, z: -0.02363705, w: -0.00017666783}
+        outSlope: {x: -0.058903813, y: 0.009696767, z: -0.02363705, w: -0.00017666783}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.29166675
+        value: {x: -0.09001125, y: 0.017981853, z: -0.03497815, w: 0.9951639}
+        inSlope: {x: -0.9088354, y: 0.21855354, z: -0.33850774, w: -0.10239746}
+        outSlope: {x: -0.9088354, y: 0.21855354, z: -0.33850774, w: -0.10239746}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.4583335
+        value: {x: -0.27554786, y: 0.07689819, z: -0.09711484, w: 0.95327264}
+        inSlope: {x: -1.0952437, y: 0.4379287, z: -0.31609067, w: -0.38155532}
+        outSlope: {x: -1.0952437, y: 0.4379287, z: -0.31609067, w: -0.38155532}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.66666675
+        value: {x: -0.41886595, y: 0.14496496, z: -0.13099864, w: 0.8867784}
+        inSlope: {x: -0.24749395, y: 0.13626504, z: -0.044069134, w: -0.14429595}
+        outSlope: {x: -0.24749395, y: 0.13626504, z: -0.044069134, w: -0.14429595}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.8333335
+        value: {x: -0.4332446, y: 0.15295239, z: -0.1334988, w: 0.878281}
+        inSlope: {x: 0.01925243, y: -0.010011329, z: 0.0039274683, w: 0.010274748}
+        outSlope: {x: 0.01925243, y: -0.010011329, z: 0.0039274683, w: 0.010274748}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: hands:r_hand_world/hands:b_r_hand/hands:b_r_thumb1_G
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: 0, y: 0, z: 3.389149e-13, w: 1}
+        inSlope: {x: 0, y: 0, z: 1.6101979e-11, w: 0}
+        outSlope: {x: 0, y: 0, z: 1.6101979e-11, w: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.8333335
+        value: {x: 0, y: 0, z: 8.845745e-11, w: 1}
+        inSlope: {x: 0, y: -0, z: 1.2898228e-10, w: 0}
+        outSlope: {x: 0, y: -0, z: 1.2898228e-10, w: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: hands:r_hand_world/hands:b_r_hand/hands:b_r_thumb1_G/hands:b_r_thumb1/hands:b_r_thumb2_G
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: 0, y: 0, z: 8.514178e-13, w: 1}
+        inSlope: {x: 0, y: 0, z: 4.045119e-11, w: 0}
+        outSlope: {x: 0, y: 0, z: 4.045119e-11, w: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.8333335
+        value: {x: 0, y: 0, z: 2.2222173e-10, w: 1}
+        inSlope: {x: 0, y: -0, z: 3.2402772e-10, w: 0}
+        outSlope: {x: 0, y: -0, z: 3.2402772e-10, w: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: hands:r_hand_world/hands:b_r_hand/hands:b_r_thumb1_G/hands:b_r_thumb1/hands:b_r_thumb2_G/hands:b_r_thumb2/hands:b_r_thumb3_G
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: 0, y: -0, z: -0, w: 1}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.8333335
+        value: {x: 0, y: -0, z: -0, w: 1}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: hands:r_hand_world/hands:b_r_hand/hands:b_r_thumb1_G/hands:b_r_thumb1/hands:b_r_thumb2_G/hands:b_r_thumb2/hands:b_r_thumb3_G/hands:b_r_thumb3/hands:b_r_thumb_ignore_G
+  m_CompressedRotationCurves: []
+  m_EulerCurves: []
+  m_PositionCurves: []
+  m_ScaleCurves: []
+  m_FloatCurves: []
+  m_PPtrCurves: []
+  m_SampleRate: 24
+  m_WrapMode: 0
+  m_Bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  m_ClipBindingConstant:
+    genericBindings: []
+    pptrCurveMapping: []
+  m_AnimationClipSettings:
+    serializedVersion: 2
+    m_AdditiveReferencePoseClip: {fileID: 0}
+    m_AdditiveReferencePoseTime: 0
+    m_StartTime: 0
+    m_StopTime: 0.8333335
+    m_OrientationOffsetY: 0
+    m_Level: 0
+    m_CycleOffset: 0
+    m_HasAdditiveReferencePose: 0
+    m_LoopTime: 0
+    m_LoopBlend: 0
+    m_LoopBlendOrientation: 0
+    m_LoopBlendPositionY: 0
+    m_LoopBlendPositionXZ: 0
+    m_KeepOriginalOrientation: 0
+    m_KeepOriginalPositionY: 1
+    m_KeepOriginalPositionXZ: 0
+    m_HeightFromFeet: 0
+    m_Mirror: 0
+  m_EditorCurves: []
+  m_EulerEditorCurves: []
+  m_HasGenericRootTransform: 0
+  m_HasMotionFloatCurves: 0
+  m_Events: []

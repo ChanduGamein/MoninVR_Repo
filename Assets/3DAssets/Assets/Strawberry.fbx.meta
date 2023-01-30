@@ -1,19 +1,9 @@
 fileFormatVersion: 2
-guid: 791c6f92c8dc73542830ba94f4c6d39b
+guid: 79cd58ed7a5d221428fbe7c2c2549f3c
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Flav04_Le_Fruit_de_MONIN_Strawberry
-    second: {fileID: 2100000, guid: 6fd8c55ee0ed2e84bb989f5df38c02aa, type: 2}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: flavoring_1001_BaseColor
-    second: {fileID: 2800000, guid: de4ca7b422627fa4297fd36a755cc773, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

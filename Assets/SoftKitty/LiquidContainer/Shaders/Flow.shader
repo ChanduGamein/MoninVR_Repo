@@ -4,12 +4,10 @@ Shader "SoftKitty/Flow"
 	Properties
 	{
 		_WaveTexture("Wave Texture", 2D) = "white" {}
-		_BlendLine("BlendLine", Range( -1 , 1)) = -0.2411765
 		[HDR]_ColorTop("Color Top", Color) = (0.2249199,0.735849,0.3968853,1)
 		[HDR]_ColorBottom("Color Bottom", Color) = (0.2235294,0.5833746,0.7372549,1)
-		_ColorBlend("ColorBlend", Range( 0 , 1)) = 0.5
 		_TopOpacity("TopOpacity", Range( 0 , 1)) = 0
-		_BottomOpacity("BottomOpacity", Range( 0 , 1)) = 0
+		_BottomOpacity("BottomOpacity", Range( 0 , 1)) = 1
 		_MaskTexture("Mask Texture", 2D) = "white" {}
 		_NormalTexture("Normal Texture", 2D) = "white" {}
 		_Specular("Specular", Range( 0 , 1)) = 0.5
@@ -40,7 +38,6 @@ Shader "SoftKitty/Flow"
 		{
 			float2 uv_texcoord;
 			float4 screenPos;
-			float3 worldPos;
 		};
 
 		struct SurfaceOutputStandardSpecularCustom
@@ -62,8 +59,6 @@ Shader "SoftKitty/Flow"
 		ASE_DECLARE_SCREENSPACE_TEXTURE( _GrabTexture )
 		uniform float4 _ColorTop;
 		uniform float4 _ColorBottom;
-		uniform float _BlendLine;
-		uniform float _ColorBlend;
 		uniform float _Specular;
 		uniform float _Smoothness;
 		uniform float _TopOpacity;
@@ -128,17 +123,13 @@ Shader "SoftKitty/Flow"
 			float4 ase_grabScreenPos = ASE_ComputeGrabScreenPos( ase_screenPos );
 			float4 ase_grabScreenPosNorm = ase_grabScreenPos / ase_grabScreenPos.w;
 			float4 screenColor56 = UNITY_SAMPLE_SCREENSPACE_TEXTURE(_GrabTexture,( ase_grabScreenPosNorm * lerpResult64 ).xy);
-			float3 ase_vertex3Pos = mul( unity_WorldToObject, float4( i.worldPos , 1 ) );
-			float4 transform32 = mul(unity_ObjectToWorld,float4( ase_vertex3Pos , 0.0 ));
-			float temp_output_34_0 = pow( ( _BlendLine - transform32.y ) , ( _ColorBlend * 2.0 ) );
-			float4 lerpResult33 = lerp( _ColorTop , _ColorBottom , temp_output_34_0);
+			float4 lerpResult33 = lerp( _ColorTop , _ColorBottom , 1.0);
 			o.Albedo = ( tex2D( _SpecularTexture, ( float4( uv_TexCoord82, 0.0 , 0.0 ) * lerpResult64 ).rg ) + ( ( ( screenColor56 + lerpResult33 ) / 2.0 ) + ( _ColorTop * 0.2 ) ) ).rgb;
-			float3 temp_cast_10 = (_Specular).xxx;
-			o.Specular = temp_cast_10;
+			float3 temp_cast_9 = (_Specular).xxx;
+			o.Specular = temp_cast_9;
 			o.Smoothness = _Smoothness;
 			o.Transmission = lerpResult33.rgb;
-			float clampResult38 = clamp( temp_output_34_0 , 0.0 , 1.0 );
-			float lerpResult40 = lerp( _TopOpacity , _BottomOpacity , clampResult38);
+			float lerpResult40 = lerp( _TopOpacity , _BottomOpacity , 1.0);
 			float2 uv_MaskTexture = i.uv_texcoord * _MaskTexture_ST.xy + _MaskTexture_ST.zw;
 			float4 clampResult47 = clamp( ( lerpResult40 * ( tex2D( _MaskTexture, uv_MaskTexture ) * _Opacity * 10.0 ) ) , float4( 0,0,0,0 ) , float4( 1,1,1,1 ) );
 			o.Alpha = clampResult47.r;
@@ -216,7 +207,6 @@ Shader "SoftKitty/Flow"
 				surfIN.uv_texcoord = IN.customPack1.xy;
 				float3 worldPos = IN.worldPos;
 				half3 worldViewDir = normalize( UnityWorldSpaceViewDir( worldPos ) );
-				surfIN.worldPos = worldPos;
 				surfIN.screenPos = IN.screenPos;
 				SurfaceOutputStandardSpecularCustom o;
 				UNITY_INITIALIZE_OUTPUT( SurfaceOutputStandardSpecularCustom, o )
@@ -232,5 +222,5 @@ Shader "SoftKitty/Flow"
 		}
 	}
 	Fallback "Diffuse"
-	CustomEditor "ASEMaterialInspector"
+	
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5049575501317614136}
   - component: {fileID: 7059187235863518962}
   - component: {fileID: 5906931091297346061}
+  - component: {fileID: -3390890582233618942}
   m_Layer: 0
   m_Name: Lemon Wedges
   m_TagString: Untagged
@@ -27,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8860754287327870759}
   m_LocalRotation: {x: -0.7873981, y: -0.02488604, z: -0.0071699833, w: 0.6159006}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.48715955, y: 0.48715955, z: 0.48715955}
+  m_LocalPosition: {x: 0.0050534, y: -0.00223, z: 0.013045}
+  m_LocalScale: {x: 1.3750079, y: 1.3750079, z: 1.3750079}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -94,7 +95,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a5ecaace4d0e584a8d140eebd718aa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layer:
-    serializedVersion: 2
-    m_Bits: 2048
-  hand: {fileID: 0}
+  itemType: 6
+  tweezers: {fileID: 0}
+--- !u!65 &-3390890582233618942
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8860754287327870759}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.012131898, y: 0.02640958, z: 0.012131899}
+  m_Center: {x: -0.006224069, y: 0.01336939, z: 0.0060915793}

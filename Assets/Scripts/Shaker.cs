@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.XR.Interaction.Toolkit;
-using SoftKitty.LiquidContainer;
-
+using LiquidVolumeFX;
 public class Shaker : Holder
 {
     public GameObject dummyLid;
@@ -12,20 +11,27 @@ public class Shaker : Holder
     public bool PourToGlass;
     public Transform pourPosition;
     [SerializeField] LayerMask targetLayer;
-    [SerializeField] GlassDrink glassDrink;
+    [SerializeField] HolderGlass glassDrink;
     RaycastHit hit;
     public List<GameObject> iceCubes = new List<GameObject>();
-    [SerializeField] LiquidControl liquidVolume;
-    [SerializeField] Color topColor, botttomColor;
-    public void IncreaseLiquid(float value)
+    [SerializeField] GameObject StrainerDummy;
+    [SerializeField] float amountToAdd;
+    [SerializeField] float shakeSpeed=3.5f;
+    public void AddStrainer()
     {
-        liquidVolume.FillInLiquid(value,topColor,botttomColor);
-        hand.GetComponent<XRController>().SendHapticImpulse(.5f,.5f);
+        StrainerDummy.SetActive(true);
+        SceneController.instance.InvokeCurrentStep();
     }
-    public void DecreaseLiquid(float value)
+
+    public override void Grab()
     {
-        if(liquidVolume.Volumn>0)
-        liquidVolume.Volumn -= value;
+        base.Grab();
+        if(callTutoral)
+        if(!picked)
+        {
+            SceneController.instance.InvokeCurrentStep();
+            picked = true;
+        }
     }
     public void SetPourToGlass()
     {
@@ -34,13 +40,13 @@ public class Shaker : Holder
     public void Shake()
     {
         dummyLid.SetActive(true);
-        transform.DOShakePosition(9.5f, 1.2f).OnComplete(() => FinishShake());
+        transform.DOShakePosition(shakeSpeed, 10).OnComplete(() => FinishShake());
     }
     public void FinishShake()
     {
        dummyLid.SetActive(false);
 
-      //  AudioManagerMain.instance.StopSound("shakerMixerOpen");
+        AudioManagerMain.instance.StopSound("shakerSound");
         AudioManagerMain.instance.PlaySFX("shakerMixerOpen");
         //  transform.parent = transform.parent.parent;
         // shaker.GetComponent<Rigidbody>().isKinematic = false;
@@ -57,14 +63,15 @@ public class Shaker : Holder
                 Debug.DrawRay(pourPosition.position, Vector3.down,Color.green);
             if (Physics.Raycast(pourPosition.position, Vector3.down, out hit, 10, targetLayer))
             {
-                    if (Counter < .4f)
+                    if (liquidVolume.level > 0)
                     {
-                        glassDrink.IncreaseLiquid(.01f);
-                        Counter += .01f;
-                        DecreaseLiquid(.1f);
+                        glassDrink.IncreaseLiquid(amountToAdd * Time.deltaTime);
+                        liquidVolume.level -= .1f * Time.deltaTime;
+
                     }
                     else
                     {
+
                         PourToGlass = false;
                         SceneController.instance.InvokeCurrentStep();
                     }

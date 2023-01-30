@@ -5,15 +5,9 @@ using UnityEngine;
 public class GarnishItem : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] LayerMask layer;
-    RaycastHit hit;
-    Rigidbody _rb;
     [SerializeField] items itemType;
     public Tweezers tweezers;
-    void Start()
-    {
-        _rb = GetComponent<Rigidbody>();
-    }
+
 
     // Update is called once per frame
     void Update()
@@ -32,34 +26,28 @@ public class GarnishItem : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag=="Cup")
+        if(other.gameObject.tag=="Cup"|| other.gameObject.tag == "LongGlass")
         {
-            GlassDrink glass = other.GetComponent<GlassDrink>();
+            HolderGlass glass = other.GetComponent<HolderGlass>();
             int rnd = Random.Range(0, glass.garnishPositions.Count);
             glass.SetGarnishTransform(this.transform);
             tweezers.hasGarnish = false;
-            for (int i = 0; i < SceneController.instance.currentRecipe.RecipeItems.Count; i++)
-            {
+            tweezers.hand.hasGrarnish = false;
+            tweezers.gameObject.SetActive(false);
+            tweezers._garnish = null;
 
-                if (SceneController.instance.currentRecipe.RecipeItems[i].itemType == itemType)
+                if (SceneController.instance.currentRecipe.RecipeItems[SceneController.instance.recipeStepIndex].itemType == itemType)
                 {
-                    SceneController.instance.currentRecipe.RecipeItems[i].numberOfItemsRequired -= 1;
-                    if (SceneController.instance.currentRecipe.RecipeItems[i].numberOfItemsRequired <= 0)
+                    Debug.Log("nammme "+SceneController.instance.currentRecipe.RecipeItems[SceneController.instance.recipeStepIndex].itemType+"    "+ itemType);
+                    SceneController.instance.currentRecipe.RecipeItems[SceneController.instance.recipeStepIndex].numberOfItemsRequired -= 1;
+                    if (SceneController.instance.currentRecipe.RecipeItems[SceneController.instance.recipeStepIndex].numberOfItemsRequired <= 0)
                     {
                         SceneController.instance.InvokeCurrentStep();
-
-                        //  UIManager.instance.pumpButton.SetActive(false);
-
-
-                        //   Invoke(nameof(ReturnObjectToOriginalTransform),.5f);
+                        Debug.Log("invoke garnish");
                     }
                 }
             }
-        }
+        
     }
-    public void LeaveHAnd()
-    {
-       // _rb.isKinematic = false;
 
-    }
 }

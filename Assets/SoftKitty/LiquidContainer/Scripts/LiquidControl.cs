@@ -21,6 +21,7 @@ namespace SoftKitty.LiquidContainer
     public class LiquidControl : MonoBehaviour
     {
         #region Settings
+        public bool isMobile = false;
         public bool ShowOpenningHelper = true;
         public bool Opened = false;
         public Vector2 WaterLineOffset = Vector2.zero;
@@ -337,7 +338,7 @@ namespace SoftKitty.LiquidContainer
                     {
                         if (!PondingObj)
                         {
-                            PondingObj = Instantiate(Resources.Load<GameObject>("LiquidContainer/Ponding"), flow_hit.point, Quaternion.identity) as GameObject;
+                            PondingObj = Instantiate(Resources.Load<GameObject>("LiquidContainer/"+ (isMobile? "PondingMobile" : "Ponding")), flow_hit.point, Quaternion.identity) as GameObject;
                             PondingObj.transform.up = flow_hit.normal;
                             PondingObj.GetComponent<MeshRenderer>().material.SetColor("_TopColor", colorTop);
                             PondingObj.GetComponent<MeshRenderer>().material.SetColor("_BottomColor", colorBottom);
@@ -461,7 +462,7 @@ namespace SoftKitty.LiquidContainer
             {
                 if (LiquidFlow == null)
                 {
-                    GameObject LiquidObj = Instantiate(Resources.Load<GameObject>("LiquidContainer/Flow"), transform) as GameObject;
+                    GameObject LiquidObj = Instantiate(Resources.Load<GameObject>("LiquidContainer/"+(isMobile? "FlowMobile" : "Flow")), transform) as GameObject;
                     LiquidObj.transform.localPosition = Vector3.zero;
                     LiquidObj.transform.localEulerAngles = Vector3.zero;
                     LiquidObj.transform.localScale = Vector3.one;

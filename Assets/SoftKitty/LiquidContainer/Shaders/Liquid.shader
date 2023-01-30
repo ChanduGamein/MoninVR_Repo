@@ -282,5 +282,4 @@ Shader "SoftKitty/Liquid"
 		}
 	}
 	Fallback "Diffuse"
-	CustomEditor "ASEMaterialInspector"
 }

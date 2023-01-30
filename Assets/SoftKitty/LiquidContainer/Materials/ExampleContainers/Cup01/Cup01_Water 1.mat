@@ -8,12 +8,12 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Cup01_Water 1
-  m_Shader: {fileID: 4800000, guid: 6344b01e5384cb74b97e0c4160b8217f, type: 3}
+  m_Shader: {fileID: 4800000, guid: 9dd70a135498867479a3f0f4c4bd9039, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2998
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -88,7 +88,7 @@ Material:
     - _OpacityBottom: 1
     - _OpacityTop: 1
     - _Parallax: 0.02
-    - _Size: 0.060334682
+    - _Size: 0.21917665
     - _SmoothnessTextureChannel: 0
     - _Specular: 0
     - _SpecularHighlights: 1
@@ -102,11 +102,11 @@ Material:
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:
-    - _BottomColor: {r: 1, g: 0.62471724, b: 0.069811285, a: 1}
+    - _BottomColor: {r: 0.104948364, g: 0.31386435, b: 0.8301887, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EdgeColor: {r: 1, g: 0.7978561, b: 0, a: 1}
+    - _EdgeColor: {r: 0.2924528, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GlowColor: {r: 1, g: 0.8690865, b: 0.1641509, a: 1}
-    - _SpecColor: {r: 0.8584906, g: 0.7385588, b: 0.027536433, a: 1}
-    - _TopColor: {r: 1, g: 0.60322535, b: 0.032075405, a: 0.9647059}
+    - _GlowColor: {r: 0.16037738, g: 0, b: 0, a: 1}
+    - _SpecColor: {r: 1, g: 1, b: 1, a: 1}
+    - _TopColor: {r: 0.093342766, g: 0.36712056, b: 0.8679245, a: 0.9647059}
   m_BuildTextureStacks: []

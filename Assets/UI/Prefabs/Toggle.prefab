@@ -67,7 +67,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 9f36a8c755a0a704e83035b7f3838f41, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -144,7 +144,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: dbcd9969dfb83594991ffe474c8b6a1d, type: 3}
     m_FontSize: 43
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 62
     m_Alignment: 0
@@ -266,9 +266,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df03116bdbbba3445b36c303b785415e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
   toggle: {fileID: 0}
   drinkSprite: {fileID: 21300000, guid: 828a87bec613815468a9d1846631f5ab, type: 3}
   drinkName: MOCKTAIL
+  drinkImage: {fileID: 4219950254868967924}
+  drinkTxt: {fileID: 4219950255682720535}
 --- !u!1 &4219950256241550354
 GameObject:
   m_ObjectHideFlags: 0

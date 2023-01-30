@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
@@ -14,6 +15,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] RecipeStepUI recipeStepUI;
     [SerializeField] Transform stepsParent;
     public GameObject tutorialStepsPanel;
+    public int drinkId;
 
     #region testing
     public GameObject grabButton;
@@ -24,17 +26,28 @@ public class UIManager : MonoBehaviour
     public GameObject pourSparklinButton;
     public Transform handTransform;
     public Transform itemToGrab;
+    public Transform itemToGrabRight;
+    public Transform itemToGrabLeft;
     Pump pump;
     public HandHolder handHolder;
+    public GameObject pointerTutorial;
     public bool canGrab;
     #endregion
+    public void Reload()
+    {
+
+        SceneManager.LoadScene(0);
+    }
     // Start is called before the first frame update
     private void Awake()
     {
         instance = this;
 
     }
-
+    public void OnClickStartPrepare()
+    {
+        SceneController.instance.ChooseRecipe(drinkId);
+    }
     #region SideSteps
     List<RecipeStepUI> currentRecipeSteps = new List<RecipeStepUI>();
     int currentStepIndex=0;
@@ -65,6 +78,7 @@ public class UIManager : MonoBehaviour
     }
     #endregion
     #region Turorial
+
     public void SetTutorialText(string instruction)
     {
         tutorialStepsPanel.SetActive(true);
@@ -98,60 +112,57 @@ public class UIManager : MonoBehaviour
         itemToGrab = _itemToGrab;
         handHolder = _handHolder;
         triggerName = _triggerName;
+        if(handHolder.handType==HandType.left)
+        {
+            itemToGrabLeft = itemToGrab;
+        }
+        else
+        {
+            itemToGrabRight = itemToGrab;
+        }
     }
     public void ResetGrabbedItems()
     {
 
     }
-    //public void ActivatePump(Pump _pump)
-    //{
-    //    pumpButton.SetActive(true);
-    //    pump = _pump;
-    //}
 
-    //public void OnClickPump()
-    //{
-    //    pump.PlayPumpAnimation();
-    //}
     bool called = false;
     public void OnClickGrab(bool isLeft)
     {
         if (handHolder != null)
         {
-            if (handHolder.handType == HandType.right && !isLeft)
+            if (handHolder.handType == HandType.right && !isLeft &&!handHolder.triggerGarnish)
             {
-                if (canGrab)
-                {
-                    Grab();
-                }
+                if(!handHolder.hasGrarnish)
+                //if (canGrab)
+                //{
+                if(itemToGrabRight!=null)
+                    Grab(itemToGrabRight);
+              //  }
             }
-            if (handHolder.handType == HandType.left && isLeft)
+            if (handHolder.handType == HandType.left && isLeft &&!handHolder.triggerGarnish)
             {
+                if (!handHolder.hasGrarnish)
+                    //if (canGrab)
+                    //{
+                    if (itemToGrabLeft != null)
 
-                    if (canGrab)
-                {
-                    Grab();
-                }
+                        Grab(itemToGrabLeft);
+               // }
             }
         }
     }
-    public void Grab()
+    public void Grab(Transform _itemToGrab)
     {
-        if (itemToGrab.TryGetComponent(out Shaker _shaker) && !called)
-        {
-            called = true;
-            SetTutorialText("Add Base MONIN Cloudy Lemonade Concentrate");
-        }
-        Debug.Log("clicked");
-        itemToGrab.parent = handTransform;
-        itemToGrab.localPosition = Vector3.zero;
-        itemToGrab.localRotation = Quaternion.identity;
-        itemToGrab.GetComponent<Holder>().hand = handHolder;
-        itemToGrab.GetComponent<Holder>().grabed = true;
+        _itemToGrab.parent = handTransform;
+        _itemToGrab.localPosition = Vector3.zero;
+        _itemToGrab.localRotation = Quaternion.identity;
+        _itemToGrab.GetComponent<Holder>().hand = handHolder;
+        _itemToGrab.GetComponent<Holder>().grabed = true;
+        _itemToGrab.GetComponent<Holder>().Grab ();
         //    handHolder.handCollider.enabled = false;
         handHolder.grabbing = true;
         handHolder.SetAnimatorTigger(triggerName);
-        handHolder.currentHolder = itemToGrab.GetComponent<Holder>();
-        // grabButton.SetActive(false);
+        handHolder.currentHolder = _itemToGrab.GetComponent<Holder>();
     }
 }

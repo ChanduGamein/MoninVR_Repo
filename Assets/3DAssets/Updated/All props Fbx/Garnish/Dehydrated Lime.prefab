@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1010577206339415599}
   - component: {fileID: 3018183420735347429}
   - component: {fileID: 5007252621265244847}
+  - component: {fileID: 5642022222342010627}
   m_Layer: 0
   m_Name: Dehydrated Lime
   m_TagString: Untagged
@@ -27,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3666565222304906032}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.48715955, y: 0.48715955, z: 0.48715955}
+  m_LocalPosition: {x: -0, y: 0, z: 0.0142}
+  m_LocalScale: {x: 1.0308295, y: 1.0308295, z: 1.0308295}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -94,7 +95,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a5ecaace4d0e584a8d140eebd718aa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layer:
-    serializedVersion: 2
-    m_Bits: 64
-  hand: {fileID: 0}
+  itemType: 6
+  tweezers: {fileID: 0}
+--- !u!65 &5642022222342010627
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3666565222304906032}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.02878663, y: 0.029310387, z: 0.0013911803}
+  m_Center: {x: 0.000045834575, y: 0.014655193, z: 0}

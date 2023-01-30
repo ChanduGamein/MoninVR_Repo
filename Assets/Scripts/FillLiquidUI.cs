@@ -32,10 +32,10 @@ public class FillLiquidUI : MonoBehaviour
         }
         
     }
-    public void SetFillAmount(float currentLevel,float fullLevel)
+    public void SetFillAmount(float currentLevel,float fullLevel,float multiplayer)
     {
         fillImage.fillAmount = (currentLevel / (float)fullLevel);
-        currentAmount.text = ((int)(currentLevel*200)).ToString();
+        currentAmount.text = ((int)(fillImage.fillAmount*multiplayer)).ToString();
 
     }
     public void ResetValues()

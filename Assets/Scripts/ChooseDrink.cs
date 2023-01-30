@@ -9,9 +9,13 @@ public class ChooseDrink : MonoBehaviour
     [SerializeField]Toggle toggle;
     [SerializeField] Sprite drinkSprite;
     [SerializeField] string drinkName;
+    [SerializeField] Image drinkImage;
+    [SerializeField] Text drinkTxt;
     void Start()
     {
         toggle = GetComponent<Toggle>();
+        drinkImage.sprite = drinkSprite;
+        drinkTxt.text = drinkName;
     }
 
     public void OnClickDrink()
@@ -21,7 +25,8 @@ public class ChooseDrink : MonoBehaviour
             Debug.Log("onn");
             UIManager.instance.ActivatePrepareBtn();
             UIManager.instance.SetInGameRecipeImage(drinkSprite,drinkName);
-            SceneController.instance.ChooseRecipe(id);
+            UIManager.instance.drinkId = id;
+          //  SceneController.instance.ChooseRecipe(id);
         }
         else
         {

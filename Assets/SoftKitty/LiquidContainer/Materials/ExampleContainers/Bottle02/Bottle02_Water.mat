@@ -14,7 +14,7 @@ Material:
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2998
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -90,7 +90,7 @@ Material:
     - _OpacityBottom: 0
     - _OpacityTop: 0.601
     - _Parallax: 0.02
-    - _Size: 0.30934846
+    - _Size: 0.3093485
     - _SmoothnessTextureChannel: 0
     - _Specular: 1
     - _SpecularHighlights: 1

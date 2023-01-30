@@ -13,6 +13,13 @@ TagManager:
   - IceBox
   - Shaker
   - Scoop
+  - LongGlass
+  - BottleFridge
+  - Opener
+  - BottleCap
+  - Jigger
+  - IceBoxSmall
+  - Soda
   layers:
   - Default
   - TransparentFX
@@ -27,9 +34,9 @@ TagManager:
   - Postprocessing
   - Cup
   - Shaker
-  - 
-  - 
-  - 
+  - LongGlass
+  - Jigger
+  - Hand
   - 
   - 
   - 

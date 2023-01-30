@@ -6,21 +6,18 @@ public class ShakerLid : Holder
 {
     [SerializeField] Transform shakerClosePosition;
     [SerializeField] Transform shaker;
+    public void SetShaker(Transform _shaker)
+    {
+        shaker = _shaker;
+    }
     public void Shake()
     {
-        _rb.isKinematic = true;
         shaker.GetComponent<Rigidbody>().isKinematic = true;
-        // UIManager.instance.shakeButton.SetActive(false);
         UnGrab();
-
         shaker.GetComponent<Shaker>().Shake();
         AudioManagerMain.instance.PlaySFX("shakerSound");
         GetComponent<BoxCollider>().enabled = false;
         gameObject.SetActive(false);
-
-      //  transform.parent = shaker.transform;
-       // transform.DOMove(shakerClosePosition.position,1);
-       // transform.DORotate(shakerClosePosition.rotation.eulerAngles, 1).OnComplete(() =>
     }
     public void FinishShake()
     {

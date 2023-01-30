@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class EventToggleGroup : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] GameObject mocktailPanel, LemonadePanel, iceTeaPanel;
-    [SerializeField] Toggle mocktailBtn,lemonadeBtn,iceteaBtn;
+    [SerializeField] GameObject mocktailPanel, LemonadePanel, iceTeaPanel,whiteTeaPanel,mojitoPanel;
+    [SerializeField] Toggle mocktailBtn,lemonadeBtn,iceteaBtn,WhiteTeaBTn,mojitoBtn;
     [SerializeField] ToggleGroup[] drinksToggleGroup;
     public void ResetDrinksToggleToOff()
     {
@@ -26,6 +26,8 @@ public class EventToggleGroup : MonoBehaviour
             mocktailPanel.SetActive(true);
             LemonadePanel.SetActive(false);
             iceTeaPanel.SetActive(false);
+            whiteTeaPanel.SetActive(false);
+            mojitoPanel.SetActive(false);
         }
         else
         {
@@ -42,6 +44,9 @@ public class EventToggleGroup : MonoBehaviour
             mocktailPanel.SetActive(false);
             LemonadePanel.SetActive(true);
             iceTeaPanel.SetActive(false);
+            whiteTeaPanel.SetActive(false);
+            mojitoPanel.SetActive(false);
+
         }
         else
         {
@@ -59,14 +64,53 @@ public class EventToggleGroup : MonoBehaviour
             iceTeaPanel.SetActive(true);
             mocktailPanel.SetActive(false);
             LemonadePanel.SetActive(false);
+            whiteTeaPanel.SetActive(false);
+            mojitoPanel.SetActive(false);
+
         }
         else
         {
 
             iceTeaPanel.SetActive(false);
         }
+    }
+    public void OnValueChangedIceTeaWhite()
+    {
+        ResetDrinksToggleToOff();
 
+        if (WhiteTeaBTn.isOn)
+        {
+            whiteTeaPanel.SetActive(true);
+            mocktailPanel.SetActive(false);
+            LemonadePanel.SetActive(false);
+            iceTeaPanel.SetActive(false);
+            mojitoPanel.SetActive(false);
 
+        }
+        else
+        {
+
+            whiteTeaPanel.SetActive(false);
+        }
+    }
+    public void OnValueChangedMojito()
+    {
+        ResetDrinksToggleToOff();
+
+        if (mojitoBtn.isOn)
+        {
+            whiteTeaPanel.SetActive(false);
+            mocktailPanel.SetActive(false);
+            LemonadePanel.SetActive(false);
+            iceTeaPanel.SetActive(false);
+            mojitoPanel.SetActive(true);
+
+        }
+        else
+        {
+
+            mojitoPanel.SetActive(false);
+        }
     }
 
 }

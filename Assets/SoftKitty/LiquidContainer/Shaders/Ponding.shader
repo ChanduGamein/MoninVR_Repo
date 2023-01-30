@@ -294,5 +294,4 @@ Shader "SoftKitty/Ponding"
 		}
 	}
 	Fallback "Diffuse"
-	CustomEditor "ASEMaterialInspector"
 }

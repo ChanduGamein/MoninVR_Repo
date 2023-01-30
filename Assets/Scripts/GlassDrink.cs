@@ -3,60 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
-using SoftKitty.LiquidContainer;
-
-public class GlassDrink : Holder
+using LiquidVolumeFX;
+public class GlassDrink : HolderGlass
 {
-    public TextMeshProUGUI amountTxt;
-    [SerializeField] Transform shakerPourPosition;
     [SerializeField]Transform shaker;
     bool poured;
-    public List<Transform> garnishPositions = new List<Transform>();
-    public LiquidControl liquidVolume;
-    int counter = 0;
-    [SerializeField] Transform drinkServingPosition;
-    [SerializeField] Color topColor, botttomColor;
 
-    public void SetGarnishTransform(Transform garnish)
-    {
-        if (counter < garnishPositions.Count)
-        {
-            garnish.parent = transform;
-            garnish.position = garnishPositions[counter].position;
-            garnish.rotation = garnishPositions[counter].rotation;
-            garnish.localScale = garnishPositions[counter].localScale;
-            counter++;
-        }
-    }
+
+
     //public override void UnGrab()
     //{
     //    base.UnGrab();
 
     //}
-    public void IncreaseLiquid(float value)
+    public override void IncreaseLiquid(float value)
     {
-        Debug.Log("increase");
-       // liquidVolume.GetComponent<MeshRenderer>().enabled=true;
-        liquidVolume.FillInLiquid(value,topColor,botttomColor);
-
+        base.IncreaseLiquid(value);
+        liquidVolume.GetComponent<MeshRenderer>().enabled=true;
     }
 
     bool called;
-    public void IncreseLiquidGradually(float maxAddedAmount)
-    {
-        if(liquid.localScale.y<maxAddedAmount)
-        IncreaseLiquidScale(.01f);
-        else
-        {
-            shaker.GetComponent<Shaker>().PourToGlass = false;
-            if (!called)
-            {
-                SceneController.instance.InvokeCurrentStep();
-                called = true;
-            }
 
-        }
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -64,6 +31,7 @@ public class GlassDrink : Holder
         {
             UnGrab();
         }
+        if(!grabed)
             if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
             {
                 hand = other.GetComponent<HandHolder>();
@@ -73,10 +41,7 @@ public class GlassDrink : Holder
             }
 
     }
-    private void OnCollisionEnter(Collision other)
-    {
 
-    }
     private void OnTriggerExit(Collider other)
     {
 
