@@ -46,6 +46,7 @@ public class LongGlass : HolderGlass
                 Debug.Log("invoke Mint");
                 SceneController.instance.InvokeCurrentStep();
                 mint = false;
+                hand.triggerGarnish = false;
             }
         }
     }
@@ -64,6 +65,7 @@ public class LongGlass : HolderGlass
 
                 SceneController.instance.InvokeCurrentStep();
                 mojito=false ;
+                hand.triggerGarnish = false;
             }
         }
     }

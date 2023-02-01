@@ -35,12 +35,12 @@ public class SmallBottle : Holder
                     holder.liquidVolume.level += .2f * Time.deltaTime;
                     if(liquidUI!=null)
                     {
-                        liquidUI.gameObject.SetActive(true);
-                        liquidUI.SetAmount(itemName, liquidMLFullAmount);
+                      //  liquidUI.gameObject.SetActive(true);
+                      //  liquidUI.SetAmount(itemName, liquidMLFullAmount);
                         SceneController.instance.fillLiquidStatic.SetAmount(itemName, liquidMLFullAmount);
                         // SceneController.instance.SetShakerLiquidAmount(itemName, liquidMLFullAmount, .1f);
 
-                        liquidUI.SetFillAmount(holder.liquidVolume.level, liquidLevel, liquidMLFullAmount);
+                     //   liquidUI.SetFillAmount(holder.liquidVolume.level, liquidLevel, liquidMLFullAmount);
                         SceneController.instance.fillLiquidStatic.SetFillAmount(holder.liquidVolume.level, liquidLevel, liquidMLFullAmount);
                         SceneController.instance.fillLiquidStatic.gameObject.SetActive(true);
                     }
@@ -52,7 +52,7 @@ public class SmallBottle : Holder
                     liquidParticle.gameObject.SetActive(false);
 
                     holder.haveLiquid = true;
-                    SceneController.instance.fillLiquidUI.gameObject.SetActive(false);
+                   // SceneController.instance.fillLiquidUI.gameObject.SetActive(false);
                     SceneController.instance.fillLiquidStatic.gameObject.SetActive(false);
                     SceneController.instance.InvokeCurrentStep();
                 }

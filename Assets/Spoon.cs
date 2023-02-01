@@ -30,10 +30,12 @@ public class Spoon : Holder
         {
             UnGrab();
         }
+        if(grabed)
         if(other.gameObject.tag=="LongGlass")
         {
             UnGrab();
             longGlass.Stir();
+            GetComponent<BoxCollider>().enabled = false;
             gameObject.SetActive(false);
         }
     }

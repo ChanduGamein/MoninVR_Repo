@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class EventToggleGroup : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] GameObject mocktailPanel, LemonadePanel, iceTeaPanel,whiteTeaPanel,mojitoPanel;
-    [SerializeField] Toggle mocktailBtn,lemonadeBtn,iceteaBtn,WhiteTeaBTn,mojitoBtn;
+    [SerializeField] GameObject mocktailPanel, LemonadePanel, iceTeaPanel,whiteTeaPanel,mojitoPanel,fizzyLemonadePanel;
+    [SerializeField] Toggle mocktailBtn,lemonadeBtn,iceteaBtn,WhiteTeaBTn,mojitoBtn,fizzyLemonadeBtn;
     [SerializeField] ToggleGroup[] drinksToggleGroup;
     public void ResetDrinksToggleToOff()
     {
@@ -28,6 +28,8 @@ public class EventToggleGroup : MonoBehaviour
             iceTeaPanel.SetActive(false);
             whiteTeaPanel.SetActive(false);
             mojitoPanel.SetActive(false);
+            fizzyLemonadePanel.SetActive(false);
+
         }
         else
         {
@@ -46,7 +48,7 @@ public class EventToggleGroup : MonoBehaviour
             iceTeaPanel.SetActive(false);
             whiteTeaPanel.SetActive(false);
             mojitoPanel.SetActive(false);
-
+            fizzyLemonadePanel.SetActive(false);
         }
         else
         {
@@ -66,6 +68,7 @@ public class EventToggleGroup : MonoBehaviour
             LemonadePanel.SetActive(false);
             whiteTeaPanel.SetActive(false);
             mojitoPanel.SetActive(false);
+            fizzyLemonadePanel.SetActive(false);
 
         }
         else
@@ -85,6 +88,7 @@ public class EventToggleGroup : MonoBehaviour
             LemonadePanel.SetActive(false);
             iceTeaPanel.SetActive(false);
             mojitoPanel.SetActive(false);
+            fizzyLemonadePanel.SetActive(false);
 
         }
         else
@@ -104,6 +108,27 @@ public class EventToggleGroup : MonoBehaviour
             LemonadePanel.SetActive(false);
             iceTeaPanel.SetActive(false);
             mojitoPanel.SetActive(true);
+            fizzyLemonadePanel.SetActive(false);
+
+        }
+        else
+        {
+
+            mojitoPanel.SetActive(false);
+        }
+    }
+    public void OnValueChangedFizzyLemonade()
+    {
+        ResetDrinksToggleToOff();
+
+        if (fizzyLemonadeBtn.isOn)
+        {
+            whiteTeaPanel.SetActive(false);
+            mocktailPanel.SetActive(false);
+            LemonadePanel.SetActive(false);
+            iceTeaPanel.SetActive(false);
+            mojitoPanel.SetActive(false);
+            fizzyLemonadePanel.SetActive(true);
 
         }
         else

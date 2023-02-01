@@ -50,6 +50,7 @@ public class HandHolder : MonoBehaviour
     {
         if (triggerGarnish)
         {
+            triggerGarnish = false;
             hasTweezer = true;
             hasGrarnish = true;
             tweezers.gameObject.SetActive(true);
@@ -82,6 +83,7 @@ public class HandHolder : MonoBehaviour
 
         if (other.gameObject.tag=="Garnish")
         {
+            
             triggerGarnish = true;
             garnish = other.GetComponent<Garnish>();
         }

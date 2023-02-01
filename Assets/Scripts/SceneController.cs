@@ -42,7 +42,7 @@ public class SceneController : MonoBehaviour
     public Recipe currentRecipe;
     public int currentAddedAmount = 0;
     public HandHolder handHolderLeft, handHolderRigh;
-    [SerializeField]int recipeIndex;
+    public int recipeIndex;
     public int recipeStepIndex = 0;
     public FillLiquidUI fillLiquidUI;
     public FillLiquidUI fillLiquidStatic;
@@ -69,7 +69,7 @@ public class SceneController : MonoBehaviour
     {
         if (!setLiquidAmount)
         {
-            fillLiquidUI.gameObject.SetActive(true);
+          //  fillLiquidUI.gameObject.SetActive(true);
             fillLiquidUI.SetAmount(drinkName, fullAmount);
             fillLiquidStatic.gameObject.SetActive(true);
             fillLiquidStatic.SetAmount(drinkName, fullAmount);

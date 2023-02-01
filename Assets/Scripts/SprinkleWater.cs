@@ -14,7 +14,7 @@ public class SprinkleWater : Holder
     [SerializeField] Image fillImage;
     [SerializeField]LayerMask targetLayer;
     RaycastHit hit;
-    [SerializeField] FillLiquidUI liquidUI;
+  //  [SerializeField] FillLiquidUI liquidUI;
     [SerializeField] Holder _liquidVolume;
     [SerializeField] float speed;
 
@@ -55,14 +55,14 @@ public class SprinkleWater : Holder
                 _liquidVolume.IncreaseLiquid(.01f * Time.deltaTime *10);
 
 
-                liquidUI.gameObject.SetActive(true);
-                liquidUI.SetAmount(itemName,liquidMLFullAmount);
+              //  liquidUI.gameObject.SetActive(true);
+               // liquidUI.SetAmount(itemName,liquidMLFullAmount);
                 SceneController.instance.fillLiquidStatic.SetAmount(itemName,liquidMLFullAmount);
                 // SceneController.instance.SetShakerLiquidAmount(itemName, liquidMLFullAmount, .1f);
                 if(counter<=liquidMLFullAmount)
                 {
 
-                    liquidUI.SetFillAmount(counter, liquidMLFullAmount, liquidMLFullAmount);
+                  //  liquidUI.SetFillAmount(counter, liquidMLFullAmount, liquidMLFullAmount);
                     SceneController.instance.fillLiquidStatic.SetFillAmount(counter, liquidMLFullAmount, liquidMLFullAmount);
                     counter+= (_liquidVolume.liquidVolume.level-curreentliquidAmount)*(.731f*speed);
                 }
@@ -75,7 +75,7 @@ public class SprinkleWater : Holder
                     grabed = false;
                     liquidParticle.gameObject.SetActive(false);
                     SceneController.instance.InvokeCurrentStep();
-                    SceneController.instance.fillLiquidUI.gameObject.SetActive(false);
+                   // SceneController.instance.fillLiquidUI.gameObject.SetActive(false);
                     SceneController.instance.fillLiquidStatic.gameObject.SetActive(false);
 
                 }

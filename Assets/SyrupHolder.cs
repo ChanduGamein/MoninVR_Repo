@@ -10,7 +10,7 @@ public class SyrupHolder : Holder
     [SerializeField] float liquidLevel;
     RaycastHit hit;
     bool checkPouring = true;
-    [SerializeField] FillLiquidUI liquidUI;
+    //[SerializeField] FillLiquidUI liquidUI;
     public int liquidMLPerPump;
     public int liquidMLFullAmount;
     public string itemName;
@@ -41,12 +41,12 @@ public class SyrupHolder : Holder
                 if (jigger.liquidVolume.level < liquidLevel)
                 {
                     jigger.liquidVolume.level += .1f * Time.deltaTime;
-                    liquidUI.gameObject.SetActive(true);
-                    liquidUI.SetAmount(itemName, liquidMLFullAmount);
+                //    liquidUI.gameObject.SetActive(true);
+               //     liquidUI.SetAmount(itemName, liquidMLFullAmount);
                     SceneController.instance.fillLiquidStatic.SetAmount(itemName, liquidMLFullAmount);
                     // SceneController.instance.SetShakerLiquidAmount(itemName, liquidMLFullAmount, .1f);
 
-                    liquidUI.SetFillAmount(jigger.liquidVolume.level, liquidLevel, liquidMLFullAmount);
+                //    liquidUI.SetFillAmount(jigger.liquidVolume.level, liquidLevel, liquidMLFullAmount);
                     SceneController.instance.fillLiquidStatic.SetFillAmount(jigger.liquidVolume.level, liquidLevel, liquidMLFullAmount);
 
                     SceneController.instance.fillLiquidStatic.gameObject.SetActive(true);
@@ -57,7 +57,7 @@ public class SyrupHolder : Holder
                     checkPouring = false;
                   //  jigger.shakerLevel = shakerLevel;
                     jigger.haveLiquid = true;
-                    SceneController.instance.fillLiquidUI.gameObject.SetActive(false);
+                 //   SceneController.instance.fillLiquidUI.gameObject.SetActive(false);
                     SceneController.instance.fillLiquidStatic.gameObject.SetActive(false);
                     SceneController.instance.InvokeCurrentStep();
                     liquidParticle.gameObject.SetActive(false);

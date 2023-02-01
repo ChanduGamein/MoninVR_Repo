@@ -35,7 +35,7 @@ public class GarnishItem : MonoBehaviour
             tweezers.hand.hasGrarnish = false;
             tweezers.gameObject.SetActive(false);
             tweezers._garnish = null;
-
+            if (!(SceneController.instance.recipeStepIndex > SceneController.instance.userSelectedRecipe[SceneController.instance.recipeIndex].RecipeItems.Count - 1))
                 if (SceneController.instance.currentRecipe.RecipeItems[SceneController.instance.recipeStepIndex].itemType == itemType)
                 {
                     Debug.Log("nammme "+SceneController.instance.currentRecipe.RecipeItems[SceneController.instance.recipeStepIndex].itemType+"    "+ itemType);

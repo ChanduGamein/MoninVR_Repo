@@ -894,6 +894,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5118713039008270390, guid: b084cee75defe274fa7f1a0e752a544d,
         type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5118713039008270390, guid: b084cee75defe274fa7f1a0e752a544d,
+        type: 3}
       propertyPath: ShapeModule.type
       value: 0
       objectReference: {fileID: 0}

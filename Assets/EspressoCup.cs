@@ -19,7 +19,7 @@ public class EspressoCup : Holder
                 if (liquidVolume.level > 0)
                 {
                     shaker.liquidVolume.level += value * Time.deltaTime;
-                    liquidVolume.level -= .1f * Time.deltaTime;
+                    liquidVolume.level -= .4f * Time.deltaTime;
                     liquidParticle.gameObject.SetActive(true);
                 }
                 else

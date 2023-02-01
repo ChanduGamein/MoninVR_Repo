@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.XR.Interaction.Toolkit;
+
 public class Pump : MonoBehaviour
 {
     public int liquidMLPerPump;
@@ -50,9 +52,9 @@ public class Pump : MonoBehaviour
     bool called = false;
     IEnumerator PumpAnimation()
     {
-       // objectCollider.enabled = false;
+        objectCollider.enabled = false;
 
-          bottlePump.DOLocalMoveY(pumpPressedPositionY, .8f).OnComplete (() => bottlePump.DOLocalMoveY(pumpOriginalPosition, .8f));
+          bottlePump.DOLocalMoveY(pumpPressedPositionY, .6f).OnComplete (() => bottlePump.DOLocalMoveY(pumpOriginalPosition, .6f).OnComplete(()=>ActivateCollider()));
         //currentAddedAmount += liquidMLPerPump;
         //SceneController.instance.shakerCountTXT.text = currentAddedAmount.ToString();
         //    SceneController.instance.AddTextAmount(liquidMLPerPump);
@@ -71,7 +73,7 @@ public class Pump : MonoBehaviour
                     SceneController.instance.InvokeCurrentStep();
                     called = true;
                     //  UIManager.instance.pumpButton.SetActive(false);
-                    yield return new WaitForSeconds(.8f);
+                    yield return new WaitForSeconds(.7f);
 
                     SceneController.instance.ResetShakerLiquidUI();
 
@@ -100,7 +102,8 @@ public class Pump : MonoBehaviour
         {
             PlayPumpAnimation();
             SceneController.instance.SetShakerLiquidAmount(itemName, liquidMLFullAmount, liquidMLPerPump);
-           // UIManager.instance.ActivatePump(this);
+          //  other.GetComponent<XRController>().SendHapticImpulse(.5f, .5f);
+            // UIManager.instance.ActivatePump(this);
         }
     }
     private void OnTriggerExit(Collider other)

@@ -45,7 +45,7 @@ public class Jigger : Holder
                 if (liquidVolume.level > 0)
                 {
                     shaker.liquidVolume.level += value * Time.deltaTime;
-                    liquidVolume.level -= .1f * Time.deltaTime;
+                    liquidVolume.level -= .6f * Time.deltaTime;
                     liquidParticle.gameObject.SetActive(true);
                 }
                 else
