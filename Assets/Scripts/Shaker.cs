@@ -78,7 +78,7 @@ public class Shaker : Holder
                         glassDrink.IncreaseLiquid(amountToAdd * Time.deltaTime);
                         liquidVolume.level -= .1f * Time.deltaTime;
                         liquidParticle.gameObject.SetActive(true);
-
+     
                     }
                     else
                     {
@@ -95,6 +95,9 @@ public class Shaker : Holder
 
                 }
             }
+        else
+                liquidParticle.gameObject.SetActive(false);
+
 
     }
     private void OnTriggerEnter(Collider other)
@@ -106,6 +109,15 @@ public class Shaker : Holder
                 UIManager.instance.ActivateGrab(hand.shakerPositon, hand, this.transform,"Shaker");
                 //   UIManager.instance.grabButton.SetActive(true);
                 UIManager.instance.canGrab = true;
+                if(hand.handType==HandType.right)
+                {
+                    liquidParticle.transform.localPosition = poringRight.localPosition;
+                }
+                else
+                {
+                   liquidParticle.transform.localPosition = poringLeft.localPosition;
+
+                }
             }
         if (other.tag == "end")
         {

@@ -14,12 +14,20 @@ public enum items { IceCubes, LemonFlavor,LemonBase, Water,shakerLid,sparklingWa
     public int numberOfItemsRequired=1;
     public bool itemCollected;
     public UnityEvent myEvent;
-    [TextArea]
-    public string myText;
+    public Sprite itemSprite;
+    public string itemName;
+    public string actionName;
+    public string quantity;
+    public bool isQuantity;
+
+    
     public void NeXtStep()
     {
         SceneController.instance.recipeStepIndex += 1;
-        UIManager.instance.SetTutorialText(myText);
+     //   UIManager.instance.SetTutorialText(myText);
+        UIManager.instance.SetStepNumber("Step#" + (SceneController.instance.recipeStepIndex+1).ToString());
+        UIManager.instance.SetTutorial(itemSprite, itemName, actionName, quantity, isQuantity);
+
     }
 
 }
@@ -31,8 +39,13 @@ public class Recipe
     public int numOfSteps;
     public List<GameObject> itemsToUseinRecipe = new List<GameObject>();
     public Holder firstItem;
-    [TextArea]
-    public string myText;
+
+    public Sprite itemSprite;
+    public string itemName;
+    public string actionName;
+    public string quantity;
+    public bool isQuantity;
+
 }
 
 public class SceneController : MonoBehaviour
@@ -110,11 +123,13 @@ public class SceneController : MonoBehaviour
         {
             userSelectedRecipe[id].itemsToUseinRecipe[i].SetActive(true);
         }
-        UIManager.instance.SetStepsUI(currentRecipe.numOfSteps);
+      //  UIManager.instance.SetStepsUI(currentRecipe.numOfSteps);
         userSelectedRecipe[id].firstItem.callTutoral = true;
-      //  InvokeCurrentStep();
-      //  UIManager.instance.SetTutorialText("Pick Up Shaker");
-        UIManager.instance.SetTutorialText(userSelectedRecipe[id].myText);
+        //  InvokeCurrentStep();
+        //  UIManager.instance.SetTutorialText("Pick Up Shaker");
+        //   UIManager.instance.SetTutorialText(userSelectedRecipe[id].myText);
+        UIManager.instance.SetTutorial(userSelectedRecipe[id].itemSprite, userSelectedRecipe[id].itemName, userSelectedRecipe[id].actionName, userSelectedRecipe[id].quantity, userSelectedRecipe[id].isQuantity);
+
     }
     public void InvokeCurrentStep()
     {
@@ -122,7 +137,7 @@ public class SceneController : MonoBehaviour
         {
             userSelectedRecipe[recipeIndex].RecipeItems[recipeStepIndex].myEvent.Invoke();
             userSelectedRecipe[recipeIndex].RecipeItems[recipeStepIndex].NeXtStep();
-            UIManager.instance.SetCurrentStepCompleted();
+          //  UIManager.instance.SetCurrentStepCompleted();
         }
     }
     public void OnClickUnGrabLeft()

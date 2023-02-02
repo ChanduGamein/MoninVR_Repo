@@ -16,14 +16,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] Transform stepsParent;
     public GameObject tutorialStepsPanel;
     public int drinkId;
-
+    public Text stepNumber;
     #region testing
-    public GameObject grabButton;
-    public GameObject pumpButton;
-    public GameObject PickUpIceButton;
-    public GameObject shakeButton;
-    public GameObject pourButton;
-    public GameObject pourSparklinButton;
+   
     public Transform handTransform;
     public Transform itemToGrab;
     public Transform itemToGrabRight;
@@ -32,11 +27,33 @@ public class UIManager : MonoBehaviour
     public HandHolder handHolder;
     public GameObject pointerTutorial;
     public bool canGrab;
+    public Image itemImage;
+    public Text itemName, action, quantity;
+    public GameObject quantityParent;
     #endregion
+    public void SetTutorial(Sprite img,string _name,string _Action,string _quantity="30 ml",bool isQuantity=false)
+    {
+        itemImage.sprite = img;
+        itemName.text = _name;
+        action.text = _Action;
+        quantity.text = _quantity;
+        if(isQuantity)
+        {
+            quantityParent.gameObject.SetActive(true);
+        }
+        else
+        {
+            quantityParent.gameObject.SetActive(false);
+        }
+    }
     public void Reload()
     {
 
         SceneManager.LoadScene(0);
+    }
+    public void SetStepNumber(string _txt)
+    {
+        stepNumber.text = _txt;
     }
     // Start is called before the first frame update
     private void Awake()
@@ -47,6 +64,7 @@ public class UIManager : MonoBehaviour
     public void OnClickStartPrepare()
     {
         SceneController.instance.ChooseRecipe(drinkId);
+        SetStepNumber("Step#1");
     }
     #region SideSteps
     List<RecipeStepUI> currentRecipeSteps = new List<RecipeStepUI>();
@@ -68,12 +86,12 @@ public class UIManager : MonoBehaviour
     }
     public void SetCurrentStepCompleted()
     {
-        currentRecipeSteps[currentStepIndex].SetStepCompleted();
-        if (currentStepIndex < currentRecipeSteps.Count-1)
-        {
-            currentStepIndex += 1;
-            SetCurrentRecipce();
-        }
+        //currentRecipeSteps[currentStepIndex].SetStepCompleted();
+        //if (currentStepIndex < currentRecipeSteps.Count-1)
+        //{
+        //    currentStepIndex += 1;
+        //    SetCurrentRecipce();
+        //}
 
     }
     #endregion

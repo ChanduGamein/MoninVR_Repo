@@ -14,7 +14,7 @@ public class Holder : MonoBehaviour
     public items itemType;
     //[SerializeField] Colider parentColider;
     [SerializeField]Transform originalParent;
-    [HideInInspector]
+    
     public HandHolder hand;
     // Start is called before the first frame update
     public LiquidVolume liquidVolume;
@@ -24,6 +24,7 @@ public class Holder : MonoBehaviour
     public bool callTutoral;
     public bool haveLiquid;
     public ParticleSystem liquidParticle;
+    public Transform poringRight, poringLeft;
     public virtual void IncreaseLiquid(float value)
     {
         liquidVolume.level += value;

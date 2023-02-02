@@ -5,11 +5,7 @@ using UnityEngine;
 public class NickAndNorah : GlassDrink
 {
 
-    public override void IncreaseLiquid(float value)
-    {
-        base.IncreaseLiquid(value);
-        liquidVolume.GetComponent<MeshRenderer>().enabled = true;
-    }
+
 
     private void OnTriggerEnter(Collider other)
     {

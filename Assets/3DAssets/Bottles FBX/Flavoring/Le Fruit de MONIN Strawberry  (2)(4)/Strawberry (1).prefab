@@ -489,6 +489,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2128451735283627701}
     m_Modifications:
+    - target: {fileID: 2809807664749384617, guid: cf15508b84aa22b42a92dfc9b0408ea5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 44fa7e955e76edf4392d5eeaffa9aef1, type: 2}
     - target: {fileID: 4717048893663729486, guid: cf15508b84aa22b42a92dfc9b0408ea5,
         type: 3}
       propertyPath: playOnAwake
