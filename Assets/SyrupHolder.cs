@@ -40,9 +40,8 @@ public class SyrupHolder : Holder
 
                 if (jigger.liquidVolume.level < liquidLevel)
                 {
-                    jigger.liquidVolume.level += .1f * Time.deltaTime;
-                //    liquidUI.gameObject.SetActive(true);
-               //     liquidUI.SetAmount(itemName, liquidMLFullAmount);
+                    jigger.IncreaseLiquid( .1f * Time.deltaTime);
+
                     SceneController.instance.fillLiquidStatic.SetAmount(itemName, liquidMLFullAmount);
                     // SceneController.instance.SetShakerLiquidAmount(itemName, liquidMLFullAmount, .1f);
 
@@ -69,6 +68,11 @@ public class SyrupHolder : Holder
                 liquidParticle.gameObject.SetActive(false);
 
             }
+
+        }
+        else
+        {
+            liquidParticle.gameObject.SetActive(false);
 
         }
     }

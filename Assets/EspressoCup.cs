@@ -16,9 +16,9 @@ public class EspressoCup : Holder
             if (Physics.Raycast(spellPoint.position, Vector3.down, out hit, 20, targetLayer))
             {
 
-                if (liquidVolume.level > 0)
+                if (liquidVolume.level > .15)
                 {
-                    shaker.liquidVolume.level += value * Time.deltaTime;
+                    shaker.IncreaseLiquid ( value * Time.deltaTime);
                     liquidVolume.level -= .4f * Time.deltaTime;
                     liquidParticle.gameObject.SetActive(true);
                 }
@@ -40,6 +40,11 @@ public class EspressoCup : Holder
                 liquidParticle.gameObject.SetActive(false);
 
             }
+
+        }
+        else
+        {
+            liquidParticle.gameObject.SetActive(false);
 
         }
     }

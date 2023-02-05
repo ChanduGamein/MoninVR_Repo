@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class Jigger : Holder
 {
@@ -9,6 +10,16 @@ public class Jigger : Holder
     [SerializeField] LayerMask targetLayer;
     [SerializeField] float value;
     RaycastHit hit;
+    public void Haptics()
+    {
+        if (hand != null && grabed)
+            hand.GetComponent<XRController>().SendHapticImpulse(.5f, .5f);
+    }
+    public void SetPickUp()
+    {
+        callTutoral = true;
+
+    }
     public override void Grab()
     {
         base.Grab();
@@ -44,7 +55,7 @@ public class Jigger : Holder
 
                 if (liquidVolume.level > 0)
                 {
-                    shaker.liquidVolume.level += value * Time.deltaTime;
+                    shaker.IncreaseLiquid(value*Time.deltaTime);
                     liquidVolume.level -= .6f * Time.deltaTime;
                     liquidParticle.gameObject.SetActive(true);
                 }

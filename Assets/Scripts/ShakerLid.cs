@@ -12,11 +12,14 @@ public class ShakerLid : Holder
     }
     public void Shake()
     {
-        shaker.GetComponent<Rigidbody>().isKinematic = true;
-        UnGrab();
-        shaker.GetComponent<Shaker>().Shake();
-        GetComponent<BoxCollider>().enabled = false;
-        gameObject.SetActive(false);
+        if (shaker.GetComponent<Holder>().grabed)
+        {
+            shaker.GetComponent<Rigidbody>().isKinematic = true;
+            UnGrab();
+            shaker.GetComponent<Shaker>().Shake();
+            GetComponent<BoxCollider>().enabled = false;
+            gameObject.SetActive(false);
+        }
     }
     public void FinishShake()
     {

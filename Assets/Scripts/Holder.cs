@@ -28,7 +28,7 @@ public class Holder : MonoBehaviour
     public virtual void IncreaseLiquid(float value)
     {
         liquidVolume.level += value;
-        if(hand!=null)
+        if(hand!=null &&grabed)
         hand.GetComponent<XRController>().SendHapticImpulse(.5f, .5f);
     }
     public void DecreaseLiquid(float value)
@@ -43,7 +43,6 @@ public class Holder : MonoBehaviour
     //}
     public virtual void Grab()
     {
-
     }
     void Start()
     {
@@ -99,7 +98,9 @@ public class Holder : MonoBehaviour
         grabed = false;
         UIManager.instance.canGrab = false;
         hand.handCollider.enabled = true;
-     //   StartCoroutine(ReturnBottle());
+       // hand = null;
+
+        //   StartCoroutine(ReturnBottle());
     }
 
 }

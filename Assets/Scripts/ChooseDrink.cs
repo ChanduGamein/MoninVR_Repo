@@ -15,7 +15,7 @@ public class ChooseDrink : MonoBehaviour
     {
         toggle = GetComponent<Toggle>();
         drinkImage.sprite = drinkSprite;
-        drinkTxt.text = drinkName;
+     //   drinkTxt.text = drinkName;
     }
 
     public void OnClickDrink()
@@ -24,7 +24,7 @@ public class ChooseDrink : MonoBehaviour
         {
             Debug.Log("onn");
             UIManager.instance.ActivatePrepareBtn();
-            UIManager.instance.SetInGameRecipeImage(drinkSprite,drinkName);
+          //  UIManager.instance.SetInGameRecipeImage(drinkSprite,drinkName);
             UIManager.instance.drinkId = id;
           //  SceneController.instance.ChooseRecipe(id);
         }

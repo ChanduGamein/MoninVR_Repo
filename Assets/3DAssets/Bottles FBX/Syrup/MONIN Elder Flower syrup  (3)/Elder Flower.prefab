@@ -779,7 +779,7 @@ MonoBehaviour:
     m_Bits: 8192
   pumpPressedPositionY: 0.2829
   pumpOriginalPosition: 0.3355079
-  objectCollider: {fileID: 8851087181288912029}
+  objectCollider: {fileID: 0}
 --- !u!1 &8851087179517224155
 GameObject:
   m_ObjectHideFlags: 0

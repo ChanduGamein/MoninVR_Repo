@@ -32,7 +32,7 @@ public class SmallBottle : Holder
                 if (holder.liquidVolume.level < liquidLevel)
                 {
                     liquidParticle.gameObject.SetActive(true);
-                    holder.liquidVolume.level += .2f * Time.deltaTime;
+                    holder.IncreaseLiquid(.2f * Time.deltaTime);
                     if(liquidUI!=null)
                     {
                       //  liquidUI.gameObject.SetActive(true);

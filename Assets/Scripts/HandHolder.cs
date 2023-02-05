@@ -72,6 +72,7 @@ public class HandHolder : MonoBehaviour
         //    tweezers.SpawnGarnish(garnish.garnish);
           //  grabbing = true;
         }
+        animator.SetTrigger("Idle");
         //currentHolder.UnGrab();
         
         //grabbing = false;

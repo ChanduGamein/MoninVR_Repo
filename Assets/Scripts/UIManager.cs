@@ -14,11 +14,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] Text tutorialPickUpTxt;
     [SerializeField] RecipeStepUI recipeStepUI;
     [SerializeField] Transform stepsParent;
+    [SerializeField] GameObject finalText, tutorialPanel;
     public GameObject tutorialStepsPanel;
     public int drinkId;
     public Text stepNumber;
+    public GameObject controllerTut1, controllerTut2, controllerTut3;
+    bool tut1,tut2,tut3;
     #region testing
-   
+
     public Transform handTransform;
     public Transform itemToGrab;
     public Transform itemToGrabRight;
@@ -31,6 +34,29 @@ public class UIManager : MonoBehaviour
     public Text itemName, action, quantity;
     public GameObject quantityParent;
     #endregion
+    public void OnClickGrabTut()
+    {
+        if (!tut1)
+        {
+            tut1 = true;
+            controllerTut1.SetActive(false);
+            controllerTut2.SetActive(true);
+        }
+    }
+    public void OnClickSelectTut()
+    {
+        if (!tut2&&tut1) 
+        {
+            tut2 = true;
+            controllerTut2.SetActive(false);
+            controllerTut3.SetActive(true);
+        }
+    }
+    public void DisplayWellDone()
+    {
+        finalText.SetActive(true);
+        tutorialPanel.SetActive(false);
+    }
     public void SetTutorial(Sprite img,string _name,string _Action,string _quantity="30 ml",bool isQuantity=false)
     {
         itemImage.sprite = img;

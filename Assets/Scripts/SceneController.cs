@@ -139,6 +139,10 @@ public class SceneController : MonoBehaviour
             userSelectedRecipe[recipeIndex].RecipeItems[recipeStepIndex].NeXtStep();
           //  UIManager.instance.SetCurrentStepCompleted();
         }
+        else
+        {
+            UIManager.instance.DisplayWellDone();
+        }
     }
     public void OnClickUnGrabLeft()
     {

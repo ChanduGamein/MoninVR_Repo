@@ -17,7 +17,7 @@ public class SprinkleWater : Holder
   //  [SerializeField] FillLiquidUI liquidUI;
     [SerializeField] Holder _liquidVolume;
     [SerializeField] float speed;
-
+    [SerializeField]float value = .731f;
 
     float counter = 0;
     float curreentliquidAmount;
@@ -55,8 +55,6 @@ public class SprinkleWater : Holder
                 _liquidVolume.IncreaseLiquid(.01f * Time.deltaTime *10);
 
 
-              //  liquidUI.gameObject.SetActive(true);
-               // liquidUI.SetAmount(itemName,liquidMLFullAmount);
                 SceneController.instance.fillLiquidStatic.SetAmount(itemName,liquidMLFullAmount);
                 // SceneController.instance.SetShakerLiquidAmount(itemName, liquidMLFullAmount, .1f);
                 if(counter<=liquidMLFullAmount)
@@ -66,18 +64,16 @@ public class SprinkleWater : Holder
                     SceneController.instance.fillLiquidStatic.SetFillAmount(counter, liquidMLFullAmount, liquidMLFullAmount);
                     counter+= (_liquidVolume.liquidVolume.level-curreentliquidAmount)*(.731f*speed);
                 }
-                 //liquidUI.SetFillAmount(_liquidVolume.liquidVolume.level, .731f,liquidMLFullAmount);
-                 //SceneController.instance.fillLiquidStatic.SetFillAmount(_liquidVolume.liquidVolume.level, .731f,liquidMLFullAmount);
-                
+
                 SceneController.instance.fillLiquidStatic.gameObject.SetActive(true) ;
-                if (_liquidVolume.liquidVolume.level>=.731f)
+                if (_liquidVolume.liquidVolume.level>=value)
                 {
                     grabed = false;
                     liquidParticle.gameObject.SetActive(false);
                     SceneController.instance.InvokeCurrentStep();
                    // SceneController.instance.fillLiquidUI.gameObject.SetActive(false);
                     SceneController.instance.fillLiquidStatic.gameObject.SetActive(false);
-
+                    GetComponent<BoxCollider>().enabled = false;
                 }
             }
             else
