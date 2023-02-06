@@ -60,6 +60,15 @@ public class EspressoCup : Holder
             hand = other.GetComponent<HandHolder>();
             UIManager.instance.ActivateGrab(hand.cupPosition, hand, this.transform, "Opener");
             UIManager.instance.canGrab = true;
+            if (hand.handType == HandType.right)
+            {
+                liquidParticle.transform.localPosition = poringRight.localPosition;
+            }
+            else
+            {
+                liquidParticle.transform.localPosition = poringLeft.localPosition;
+
+            }
         }
 
     }

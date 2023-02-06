@@ -39,6 +39,15 @@ public class Jigger : Holder
                 UIManager.instance.ActivateGrab(hand.jiggerPosition, hand, this.transform, "Jigger");
                 //   UIManager.instance.grabButton.SetActive(true);
                 UIManager.instance.canGrab = true;
+                if (hand.handType == HandType.right)
+                {
+                    liquidParticle.transform.localPosition = poringRight.localPosition;
+                }
+                else
+                {
+                    liquidParticle.transform.localPosition = poringLeft.localPosition;
+
+                }
             }
         if (other.tag == "end")
         {
