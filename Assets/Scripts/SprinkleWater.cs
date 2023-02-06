@@ -43,6 +43,8 @@ public class SprinkleWater : Holder
                 _liquidVolume = hit.collider.GetComponent<Holder>();
                 if (!called)
                 {
+                    AudioManagerMain.instance.PlaySFX("pouringLiquid");
+
                     curreentliquidAmount = _liquidVolume.liquidVolume.level;
                     called = true;
                 }
@@ -78,12 +80,14 @@ public class SprinkleWater : Holder
             }
             else
             {
+                AudioManagerMain.instance.StopSound("pouringLiquid");
                 liquidParticle.gameObject.SetActive(false);
             }
         }
         else
         {
             liquidParticle.gameObject.SetActive(false);
+            AudioManagerMain.instance.StopSound("pouringLiquid");
 
         }
     }

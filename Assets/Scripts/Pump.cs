@@ -53,7 +53,7 @@ public class Pump : MonoBehaviour
     IEnumerator PumpAnimation()
     {
         objectCollider.enabled = false;
-
+        AudioManagerMain.instance.PlaySFX("Pump");
           bottlePump.DOLocalMoveY(pumpPressedPositionY, .6f).OnComplete (() => bottlePump.DOLocalMoveY(pumpOriginalPosition, .6f).OnComplete(()=>ActivateCollider()));
         //currentAddedAmount += liquidMLPerPump;
         //SceneController.instance.shakerCountTXT.text = currentAddedAmount.ToString();

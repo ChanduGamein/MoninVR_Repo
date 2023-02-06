@@ -48,6 +48,8 @@ public class HandHolder : MonoBehaviour
     }
     public void OnclickGrab()
     {
+        if(currentHolder==null)
+        animator.SetTrigger("IceScoop");
         if (triggerGarnish)
         {
             triggerGarnish = false;

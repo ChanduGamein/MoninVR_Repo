@@ -177,22 +177,24 @@ public class UIManager : MonoBehaviour
         {
             if (handHolder.handType == HandType.right && !isLeft &&!handHolder.triggerGarnish)
             {
-                if(!handHolder.hasGrarnish)
-                //if (canGrab)
-                //{
-                if(itemToGrabRight!=null)
-                    Grab(itemToGrabRight);
-              //  }
+                if (!handHolder.hasGrarnish)
+
+                    if (itemToGrabRight != null)
+                    {
+                        Grab(itemToGrabRight);
+                    }
+
+
             }
             if (handHolder.handType == HandType.left && isLeft &&!handHolder.triggerGarnish)
             {
                 if (!handHolder.hasGrarnish)
-                    //if (canGrab)
-                    //{
-                    if (itemToGrabLeft != null)
 
+                    if (itemToGrabLeft != null)
+                    {
                         Grab(itemToGrabLeft);
-               // }
+                    }
+
             }
         }
     }

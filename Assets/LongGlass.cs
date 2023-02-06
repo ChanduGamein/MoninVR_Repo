@@ -72,6 +72,7 @@ public class LongGlass : HolderGlass
     public void Stir()
     {
         dummySpoon.SetActive(true);
+        AudioManagerMain.instance.PlaySFX("stirGlass");
         dummySpoon.transform.DOLocalRotate(new Vector3(0,180,0),.2f).SetLoops(11).SetEase(Ease.Linear).OnComplete(()=> ActvateSpoon());
     }
 
@@ -79,6 +80,7 @@ public class LongGlass : HolderGlass
     {
         spoon.SetActive(true);
         dummySpoon.SetActive(false);
+        AudioManagerMain.instance.StopSound("stirGlass");
         SceneController.instance.InvokeCurrentStep();
     }
     public override void Grab()

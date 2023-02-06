@@ -7,10 +7,17 @@ public class Soda : SprinkleWater
     public bool isCapRemoved;
     public GameObject cap;
     // Start is called before the first frame update
+    bool calledSound;
     public void RemoveCap()
     {
         cap.gameObject.SetActive(false);
         isCapRemoved = true;
+        if(!calledSound)
+        {
+            calledSound = true;
+            AudioManagerMain.instance.PlaySFX("Cap");
+
+        }
     }
     protected override void Update()
     {

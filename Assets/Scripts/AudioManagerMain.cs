@@ -16,6 +16,7 @@ public class SoundClips
     // public bool PlayOnAwake;
     //public bool loopClip;
     /*[Range(0.1f,3f)] public float pitch =1;  // not needed now future plans*/
+    public bool looping;
 
     [HideInInspector]
     public AudioSource audioSource;
@@ -88,6 +89,10 @@ public class AudioManagerMain : MonoBehaviour
             //s.audioSource.playOnAwake = s.PlayOnAwake;
             //s.audioSource.pitch = s.pitch;
             s.audioSource.volume = s.Volume;
+            if(s.looping)
+            {
+                s.audioSource.loop = true;
+            }
         }
 
 

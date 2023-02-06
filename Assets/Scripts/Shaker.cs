@@ -65,39 +65,50 @@ public class Shaker : Holder
 
     }
     float Counter;
+    bool calledSound;
     private void Update()
     {
-        if(PourToGlass)
-        if (grabed)
-        {
-                Debug.DrawRay(pourPosition.position, Vector3.down,Color.green);
-            if (Physics.Raycast(pourPosition.position, Vector3.down, out hit, 10, targetLayer))
+        if (PourToGlass)
+            if (grabed)
             {
+                Debug.DrawRay(pourPosition.position, Vector3.down, Color.green);
+                if (Physics.Raycast(pourPosition.position, Vector3.down, out hit, 10, targetLayer))
+                {
                     if (liquidVolume.level > 0)
                     {
+                        if(!calledSound)
+                        {
+                            calledSound = true;
+                            AudioManagerMain.instance.PlaySFX("PouringSmall");
+                            Debug.Log("Pourrrr");
+                        }
                         glassDrink.IncreaseLiquid(amountToAdd * Time.deltaTime);
                         liquidVolume.level -= .1f * Time.deltaTime;
                         liquidParticle.gameObject.SetActive(true);
-     
+
                     }
                     else
                     {
 
                         PourToGlass = false;
                         liquidParticle.gameObject.SetActive(false);
+                        AudioManagerMain.instance.StopSound("PouringSmall");
 
                         SceneController.instance.InvokeCurrentStep();
                     }
-            }
-            else
+                }
+                else
                 {
                     liquidParticle.gameObject.SetActive(false);
-
+                    AudioManagerMain.instance.StopSound("PouringSmall");
                 }
             }
-        else
+            else
+            {
                 liquidParticle.gameObject.SetActive(false);
+                AudioManagerMain.instance.StopSound("PouringSmall");
 
+            }
 
     }
     private void OnTriggerEnter(Collider other)

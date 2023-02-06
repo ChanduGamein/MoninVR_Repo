@@ -12,6 +12,7 @@ public class BottleCap : MonoBehaviour
         {
             smallBottle.isCapRemoved = true;
             gameObject.SetActive(false);
+            AudioManagerMain.instance.PlaySFX("Cap");
         }
     }
 }
