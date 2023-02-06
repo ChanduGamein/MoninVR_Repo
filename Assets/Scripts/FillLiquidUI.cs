@@ -9,7 +9,7 @@ public class FillLiquidUI : MonoBehaviour
     [SerializeField] Text fullAmount;
     [SerializeField] float totalAmount;
     [SerializeField] Text drinkName;
-    [SerializeField] Image fillImage;
+    public Image fillImage;
     float calculatedAmount = 0;
     public void SetAmount(string _drinkName,float _fullAmount)
     {

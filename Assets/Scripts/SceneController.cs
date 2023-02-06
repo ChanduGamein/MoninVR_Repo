@@ -61,6 +61,7 @@ public class SceneController : MonoBehaviour
     public FillLiquidUI fillLiquidStatic;
     public GlassDrink glassDrink;
     public bool isFridgeOpen;
+    public bool firstShot = true;
     private void Awake()
     {
         instance = this;
