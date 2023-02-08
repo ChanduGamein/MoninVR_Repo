@@ -76,7 +76,7 @@ public class AudioManagerMain : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        DontDestroyOnLoad(this.gameObject);
+      //  DontDestroyOnLoad(this.gameObject);
 
         // intialize each clip with audiosoure
         foreach (SoundClips s in soundClips)
@@ -143,7 +143,7 @@ public class AudioManagerMain : MonoBehaviour
             return;
         }
         currentPlaying = s.audioSource;
-        s.audioSource.Play();
+        currentPlaying.Play();
     }
 
 

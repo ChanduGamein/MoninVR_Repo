@@ -7,14 +7,14 @@ public class Soda : SprinkleWater
     public bool isCapRemoved;
     public GameObject cap;
     // Start is called before the first frame update
-    bool calledSound;
+    bool _calledSound;
     public void RemoveCap()
     {
         cap.gameObject.SetActive(false);
         isCapRemoved = true;
-        if(!calledSound)
+        if(!_calledSound)
         {
-            calledSound = true;
+            _calledSound = true;
             AudioManagerMain.instance.PlaySFX("Cap");
 
         }
@@ -31,11 +31,14 @@ public class Soda : SprinkleWater
             UnGrab();
         }
         if (SceneController.instance.isFridgeOpen)
-            if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
         {
-            hand = other.GetComponent<HandHolder>();
-            UIManager.instance.ActivateGrab(hand.smallBottlePosition, hand, this.transform, "SmallBottle");
-            UIManager.instance.canGrab = true;
+            if(!grabed)
+            if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
+            {
+                hand = other.GetComponent<HandHolder>();
+                UIManager.instance.ActivateGrab(hand.smallBottlePosition, hand, this.transform, "SmallBottle");
+                UIManager.instance.canGrab = true;
+            }
         }
     }
 

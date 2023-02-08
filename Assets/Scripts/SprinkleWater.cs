@@ -33,6 +33,7 @@ public class SprinkleWater : Holder
         liquidParticle.gameObject.SetActive(true);
 
     }
+    bool calledSound;
     protected virtual void Update()
     {
         if(grabed)
@@ -41,6 +42,11 @@ public class SprinkleWater : Holder
             if (Physics.Raycast(spellPoint.position,Vector3.down,out hit,20,targetLayer))
             {
                 _liquidVolume = hit.collider.GetComponent<Holder>();
+                if(!calledSound)
+                {
+                    AudioManagerMain.instance.PlaySFX("pouringLiquid");
+                    calledSound = true;
+                }
                 if (!called)
                 {
                     AudioManagerMain.instance.PlaySFX("pouringLiquid");
@@ -54,12 +60,12 @@ public class SprinkleWater : Holder
 
                 Debug.Log(hit.transform.gameObject.name);
                 //   glassDrink.IncreseLiquidGradually(1);
-                _liquidVolume.IncreaseLiquid(.01f * Time.deltaTime *10);
+                _liquidVolume.IncreaseLiquid(.01f * Time.deltaTime *25);
 
 
                 SceneController.instance.fillLiquidStatic.SetAmount(itemName,liquidMLFullAmount);
                 // SceneController.instance.SetShakerLiquidAmount(itemName, liquidMLFullAmount, .1f);
-                if(counter<=liquidMLFullAmount)
+                if(counter<=liquidMLFullAmount+1)
                 {
 
                   //  liquidUI.SetFillAmount(counter, liquidMLFullAmount, liquidMLFullAmount);
@@ -82,6 +88,7 @@ public class SprinkleWater : Holder
             {
                 AudioManagerMain.instance.StopSound("pouringLiquid");
                 liquidParticle.gameObject.SetActive(false);
+                calledSound = false;
             }
         }
         else
@@ -97,13 +104,13 @@ public class SprinkleWater : Holder
         {
             UnGrab();
         }
-
-            if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
-            {
-                hand = other.GetComponent<HandHolder>();
-                UIManager.instance.ActivateGrab(hand.waterBottlePosition, hand, this.transform, "Shaker");
-                UIManager.instance.canGrab = true;
-            }
+        if(!grabed)
+        if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
+        {
+            hand = other.GetComponent<HandHolder>();
+            UIManager.instance.ActivateGrab(hand.waterBottlePosition, hand, this.transform, "Shaker");
+            UIManager.instance.canGrab = true;
+        }
         if (other.gameObject.tag == "Cup")
         {
             // UIManager.instance.pourSparklinButton.SetActive(true);

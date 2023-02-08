@@ -136,13 +136,7 @@ public class IceScoop : Holder
             UnGrab();
         }
     }
-    private void OnCollisionEnter(Collision other)
-    {
 
-    }
-    private void OnCollisionExit(Collision other)
-    {
-    }
     private void OnTriggerExit(Collider other)
     {
 

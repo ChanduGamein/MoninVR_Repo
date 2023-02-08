@@ -46,8 +46,12 @@ public class Pump : MonoBehaviour
     }
     public void ActivateCollider()
     {
-        if(!called)
-        objectCollider.enabled = true;
+        if (!called)
+        {
+            objectCollider.enabled = true;
+            addPump = true;
+
+        }
     }
     bool called = false;
     IEnumerator PumpAnimation()
@@ -88,10 +92,12 @@ public class Pump : MonoBehaviour
 
         //   SceneController.instance.shakerCountTXT.gameObject.SetActive(false);
     }
+    bool addPump=true;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
         {
+            if(!(other.GetComponent<HandHolder>().grabbing))
             handOnItem = true;
         }
         //if (other.gameObject.tag=="Shaker")
@@ -100,8 +106,13 @@ public class Pump : MonoBehaviour
         //}
         if(handOnItem&&shakerInPlace)
         {
-            PlayPumpAnimation();
-            SceneController.instance.SetShakerLiquidAmount(itemName, liquidMLFullAmount, liquidMLPerPump);
+            if (addPump)
+            {
+                handOnItem = false;
+                addPump = false;
+                PlayPumpAnimation();
+                SceneController.instance.SetShakerLiquidAmount(itemName, liquidMLFullAmount, liquidMLPerPump);
+            }
           //  other.GetComponent<XRController>().SendHapticImpulse(.5f, .5f);
             // UIManager.instance.ActivatePump(this);
         }

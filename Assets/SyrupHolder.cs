@@ -31,6 +31,8 @@ public class SyrupHolder : Holder
         }
 
     }
+    [SerializeField]bool calledSound;
+
     private void Update()
     {
         if(grabed&&checkPouring)
@@ -40,7 +42,12 @@ public class SyrupHolder : Holder
 
                 if (jigger.liquidVolume.level < liquidLevel)
                 {
-                    jigger.IncreaseLiquid( .1f * Time.deltaTime);
+                    if (!calledSound)
+                    {
+                        AudioManagerMain.instance.PlaySFX("PouringSmall");
+                        calledSound = true;
+                    }
+                    jigger.IncreaseLiquid( .1f * Time.deltaTime*3);
 
                     SceneController.instance.fillLiquidStatic.SetAmount(itemName, liquidMLFullAmount);
                     // SceneController.instance.SetShakerLiquidAmount(itemName, liquidMLFullAmount, .1f);
@@ -60,13 +67,16 @@ public class SyrupHolder : Holder
                     SceneController.instance.fillLiquidStatic.gameObject.SetActive(false);
                     SceneController.instance.InvokeCurrentStep();
                     liquidParticle.gameObject.SetActive(false);
+                    AudioManagerMain.instance.StopSound("PouringSmall");
+                    calledSound = false;
 
                 }
             }
             else
             {
                 liquidParticle.gameObject.SetActive(false);
-
+                AudioManagerMain.instance.StopSound("PouringSmall");
+                calledSound = false;
             }
 
         }

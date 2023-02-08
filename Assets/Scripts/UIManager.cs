@@ -31,7 +31,7 @@ public class UIManager : MonoBehaviour
     public GameObject pointerTutorial;
     public bool canGrab;
     public Image itemImage;
-    public Text itemName, action, quantity;
+    public Text itemName, action, quantity,instruction;
     public GameObject quantityParent;
     #endregion
     public void OnClickGrabTut()
@@ -57,12 +57,13 @@ public class UIManager : MonoBehaviour
         finalText.SetActive(true);
         tutorialPanel.SetActive(false);
     }
-    public void SetTutorial(Sprite img,string _name,string _Action,string _quantity="30 ml",bool isQuantity=false)
+    public void SetTutorial(Sprite img,string _name,string _Action,string _quantity="30 ml",string _instruction="",bool isQuantity=false)
     {
         itemImage.sprite = img;
         itemName.text = _name;
         action.text = _Action;
         quantity.text = _quantity;
+        instruction.text = _instruction;
         if(isQuantity)
         {
             quantityParent.gameObject.SetActive(true);

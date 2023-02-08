@@ -39,6 +39,7 @@ public class ShakerLid : Holder
         {
             UnGrab();
         }
+        if(!grabed)
         if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
         {
             hand = other.GetComponent<HandHolder>();

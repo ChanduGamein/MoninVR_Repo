@@ -13,7 +13,7 @@ public class NickAndNorah : GlassDrink
         {
             UnGrab();
         }
-
+        if(!grabed)
         if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
         {
             hand = other.GetComponent<HandHolder>();

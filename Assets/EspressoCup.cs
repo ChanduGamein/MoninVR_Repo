@@ -9,6 +9,7 @@ public class EspressoCup : Holder
     [SerializeField] Shaker shaker;
     RaycastHit hit;
     bool called;
+    bool calledSound;
     private void Update()
     {
         if (grabed)
@@ -18,6 +19,11 @@ public class EspressoCup : Holder
 
                 if (liquidVolume.level > .15)
                 {
+                    if (!calledSound)
+                    {
+                        calledSound = true;
+                        AudioManagerMain.instance.PlaySFX("PouringSmall");
+                    }
                     shaker.IncreaseLiquid ( value * Time.deltaTime);
                     liquidVolume.level -= .4f * Time.deltaTime;
                     liquidParticle.gameObject.SetActive(true);
@@ -30,6 +36,8 @@ public class EspressoCup : Holder
                         SceneController.instance.InvokeCurrentStep();
                         liquidVolume.GetComponent<MeshRenderer>().enabled = false;
                         liquidParticle.gameObject.SetActive(false);
+                        calledSound = false;
+                        AudioManagerMain.instance.StopSound("PouringSmall");
 
                     }
 
@@ -38,6 +46,8 @@ public class EspressoCup : Holder
             else
             {
                 liquidParticle.gameObject.SetActive(false);
+                calledSound = false;
+                AudioManagerMain.instance.StopSound("PouringSmall");
 
             }
 
@@ -54,7 +64,7 @@ public class EspressoCup : Holder
         {
             UnGrab();
         }
-
+        if(!grabed)
         if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
         {
             hand = other.GetComponent<HandHolder>();

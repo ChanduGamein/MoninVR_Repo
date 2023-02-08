@@ -22,7 +22,9 @@ public class SmallBottle : Holder
         //if(!isCapRemoved)
         //UIManager.instance.pointerTutorial.SetActive(true);
     }
-    protected  void Update()
+    bool calledSound;
+
+    protected void Update()
     {
         if (grabed && checkPouring&& isCapRemoved)
         {
@@ -31,8 +33,13 @@ public class SmallBottle : Holder
 
                 if (holder.liquidVolume.level < liquidLevel)
                 {
+                    if (!calledSound)
+                    {
+                        AudioManagerMain.instance.PlaySFX("pouringLiquid");
+                        calledSound = true;
+                    }
                     liquidParticle.gameObject.SetActive(true);
-                    holder.IncreaseLiquid(.2f * Time.deltaTime);
+                    holder.IncreaseLiquid(.2f * Time.deltaTime*3);
                     if(liquidUI!=null)
                     {
                       //  liquidUI.gameObject.SetActive(true);
@@ -50,7 +57,8 @@ public class SmallBottle : Holder
                 {
                     checkPouring = false;
                     liquidParticle.gameObject.SetActive(false);
-
+                    AudioManagerMain.instance.StopSound("pouringLiquid");
+                    calledSound = false;
                     holder.haveLiquid = true;
                    // SceneController.instance.fillLiquidUI.gameObject.SetActive(false);
                     SceneController.instance.fillLiquidStatic.gameObject.SetActive(false);
@@ -59,7 +67,9 @@ public class SmallBottle : Holder
             }
             else
             {
+                calledSound = false;
                 liquidParticle.gameObject.SetActive(false);
+                AudioManagerMain.instance.StopSound("pouringLiquid");
 
 
             }

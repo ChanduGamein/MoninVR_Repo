@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Events;
-
+using UnityEngine.SceneManagement;
 public enum items { IceCubes, LemonFlavor,LemonBase, Water,shakerLid,sparklingWater,garnich,pourIntoGlass,Shaker,LongGlass,LemonBase2,Jigger }
 
  [System.Serializable]
@@ -18,6 +18,7 @@ public enum items { IceCubes, LemonFlavor,LemonBase, Water,shakerLid,sparklingWa
     public string itemName;
     public string actionName;
     public string quantity;
+    public string instruction;
     public bool isQuantity;
 
     
@@ -26,7 +27,7 @@ public enum items { IceCubes, LemonFlavor,LemonBase, Water,shakerLid,sparklingWa
         SceneController.instance.recipeStepIndex += 1;
      //   UIManager.instance.SetTutorialText(myText);
         UIManager.instance.SetStepNumber("Step#" + (SceneController.instance.recipeStepIndex+1).ToString());
-        UIManager.instance.SetTutorial(itemSprite, itemName, actionName, quantity, isQuantity);
+        UIManager.instance.SetTutorial(itemSprite, itemName, actionName, quantity, instruction,isQuantity);
 
     }
 
@@ -44,6 +45,7 @@ public class Recipe
     public string itemName;
     public string actionName;
     public string quantity;
+    public string instruction;
     public bool isQuantity;
 
 }
@@ -62,6 +64,7 @@ public class SceneController : MonoBehaviour
     public GlassDrink glassDrink;
     public bool isFridgeOpen;
     public bool firstShot = true;
+    [SerializeField] ParticleSystem confetti;
     private void Awake()
     {
         instance = this;
@@ -129,7 +132,8 @@ public class SceneController : MonoBehaviour
         //  InvokeCurrentStep();
         //  UIManager.instance.SetTutorialText("Pick Up Shaker");
         //   UIManager.instance.SetTutorialText(userSelectedRecipe[id].myText);
-        UIManager.instance.SetTutorial(userSelectedRecipe[id].itemSprite, userSelectedRecipe[id].itemName, userSelectedRecipe[id].actionName, userSelectedRecipe[id].quantity, userSelectedRecipe[id].isQuantity);
+        UIManager.instance.SetTutorial(userSelectedRecipe[id].itemSprite, userSelectedRecipe[id].itemName, userSelectedRecipe[id].actionName,
+            userSelectedRecipe[id].quantity, userSelectedRecipe[id].instruction, userSelectedRecipe[id].isQuantity);
 
     }
     public void InvokeCurrentStep()
@@ -140,18 +144,41 @@ public class SceneController : MonoBehaviour
             userSelectedRecipe[recipeIndex].RecipeItems[recipeStepIndex].NeXtStep();
           //  UIManager.instance.SetCurrentStepCompleted();
         }
-        else
+        int lastIndex = recipeStepIndex + 1;
+        if((lastIndex)> userSelectedRecipe[recipeIndex].RecipeItems.Count)
         {
             UIManager.instance.DisplayWellDone();
+            AudioManagerMain.instance.PlaySFX("WellDone");
+            confetti.gameObject.SetActive(true);
+            confetti.Play();
+            Invoke("Reload",7);
         }
+    }
+    public void Reload()
+    {
+
+        SceneManager.LoadSceneAsync(0);
     }
     public void OnClickUnGrabLeft()
     {
         if (handHolderLeft.currentHolder != null)
         {
-            handHolderLeft.currentHolder.UnGrab();
-            handHolderLeft.currentHolder = null;
-            UIManager.instance.itemToGrabLeft = null;
+            if (handHolderLeft.currentHolder.TryGetComponent<Shaker>(out Shaker _shaker))
+            {
+                if (!(_shaker.shaking))
+                {
+                    handHolderLeft.currentHolder.UnGrab();
+                    handHolderLeft.currentHolder = null;
+                    UIManager.instance.itemToGrabLeft = null;
+                }
+            }
+            else
+            {
+                handHolderLeft.currentHolder.UnGrab();
+                handHolderLeft.currentHolder = null;
+                UIManager.instance.itemToGrabLeft = null;
+
+            }
         }
 
     } 
@@ -159,9 +186,21 @@ public class SceneController : MonoBehaviour
     {
         if (handHolderRigh.currentHolder != null)
         {
-            handHolderRigh.currentHolder.UnGrab();
-            handHolderRigh.currentHolder = null;
-            UIManager.instance.itemToGrabRight = null;
+            if (handHolderRigh.currentHolder.TryGetComponent<Shaker>(out Shaker _shaker))
+            {
+              if(!(_shaker.shaking))
+                {
+                    handHolderRigh.currentHolder.UnGrab();
+                    handHolderRigh.currentHolder = null;
+                    UIManager.instance.itemToGrabRight = null;
+                }
+            }
+            else
+            {
+                handHolderRigh.currentHolder.UnGrab();
+                handHolderRigh.currentHolder = null;
+                UIManager.instance.itemToGrabRight = null;
+            }
 
         }
     }

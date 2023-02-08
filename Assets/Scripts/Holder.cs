@@ -47,7 +47,7 @@ public class Holder : MonoBehaviour
     void Start()
     {
        // _rb = GetComponent<Rigidbody>();
-        originalPosition = transform.position;
+        originalPosition = transform.localPosition;
         originalRotation = transform.rotation;
         if(transform.parent!=null)
         originalParent = transform.parent.transform;
@@ -93,7 +93,7 @@ public class Holder : MonoBehaviour
         {
             transform.parent = null;
         }
-        transform.position = originalPosition;
+        transform.localPosition = originalPosition;
         transform.rotation = originalRotation;
         grabed = false;
         UIManager.instance.canGrab = false;

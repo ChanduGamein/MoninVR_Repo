@@ -55,6 +55,7 @@ public class Jigger : Holder
         }
 
     }
+    bool calledSound;
     private void Update()
     {
         if (grabed&&haveLiquid)
@@ -64,6 +65,12 @@ public class Jigger : Holder
 
                 if (liquidVolume.level > 0)
                 {
+                    if (!calledSound)
+                    {
+                        calledSound = true;
+
+                        AudioManagerMain.instance.PlaySFX("PouringSmall");
+                    }
                     shaker.IncreaseLiquid(value*Time.deltaTime);
                     liquidVolume.level -= .6f * Time.deltaTime;
                     liquidParticle.gameObject.SetActive(true);
@@ -73,13 +80,15 @@ public class Jigger : Holder
                     haveLiquid = false;
                     SceneController.instance.InvokeCurrentStep();
                     liquidParticle.gameObject.SetActive(false);
-
+                    AudioManagerMain.instance.StopSound("PouringSmall");
+                    calledSound = false;
                 }
             }
             else
             {
                 liquidParticle.gameObject.SetActive(false);
-
+                AudioManagerMain.instance.StopSound("PouringSmall");
+                calledSound = false;
             }
 
         }

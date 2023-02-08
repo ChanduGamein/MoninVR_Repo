@@ -22,7 +22,7 @@ public class Shaker : Holder
         StrainerDummy.SetActive(true);
         SceneController.instance.InvokeCurrentStep();
     }
-
+    public bool shaking;
     public override void Grab()
     {
         base.Grab();
@@ -37,6 +37,11 @@ public class Shaker : Holder
     {
         called = false;
     }
+    public override void UnGrab()
+    {
+        if(!shaking)
+        base.UnGrab();
+    }
     public void SetPourToGlass()
     {
         PourToGlass = true;
@@ -49,20 +54,22 @@ public class Shaker : Holder
     }
     public void ShakerAnimation()
     {
+        shaking = true;
          transform.DOShakePosition(shakeSpeed, 10).OnComplete(() => FinishShake());
 
     }
     public void FinishShake()
     {
        dummyLid.SetActive(false);
-
+        shaking = false;
         AudioManagerMain.instance.StopSound("shakerSound");
         AudioManagerMain.instance.PlaySFX("shakerMixerOpen");
         //  transform.parent = transform.parent.parent;
         // shaker.GetComponent<Rigidbody>().isKinematic = false;
         SceneController.instance.InvokeCurrentStep();
         shakerLid.SetActive(true);
-
+        UnGrab();
+        hand.animator.SetTrigger("Idle");
     }
     float Counter;
     bool calledSound;
@@ -80,10 +87,9 @@ public class Shaker : Holder
                         {
                             calledSound = true;
                             AudioManagerMain.instance.PlaySFX("PouringSmall");
-                            Debug.Log("Pourrrr");
                         }
-                        glassDrink.IncreaseLiquid(amountToAdd * Time.deltaTime);
-                        liquidVolume.level -= .1f * Time.deltaTime;
+                        glassDrink.IncreaseLiquid(amountToAdd * Time.deltaTime*5);
+                        liquidVolume.level -= .1f * Time.deltaTime*5;
                         liquidParticle.gameObject.SetActive(true);
 
                     }
@@ -93,7 +99,7 @@ public class Shaker : Holder
                         PourToGlass = false;
                         liquidParticle.gameObject.SetActive(false);
                         AudioManagerMain.instance.StopSound("PouringSmall");
-
+                        calledSound = false;
                         SceneController.instance.InvokeCurrentStep();
                     }
                 }
@@ -101,12 +107,15 @@ public class Shaker : Holder
                 {
                     liquidParticle.gameObject.SetActive(false);
                     AudioManagerMain.instance.StopSound("PouringSmall");
+                    calledSound = false;
+
                 }
             }
             else
             {
                 liquidParticle.gameObject.SetActive(false);
                 AudioManagerMain.instance.StopSound("PouringSmall");
+                calledSound = false;
 
             }
 
