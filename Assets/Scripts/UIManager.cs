@@ -61,17 +61,10 @@ public class UIManager : MonoBehaviour
     {
         itemImage.sprite = img;
         itemName.text = _name;
-        action.text = _Action;
-        quantity.text = _quantity;
+       // action.text = _Action;
+      //  quantity.text = _quantity;
         instruction.text = _instruction;
-        if(isQuantity)
-        {
-            quantityParent.gameObject.SetActive(true);
-        }
-        else
-        {
-            quantityParent.gameObject.SetActive(false);
-        }
+
     }
     public void Reload()
     {

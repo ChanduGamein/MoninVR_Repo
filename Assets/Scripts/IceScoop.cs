@@ -21,7 +21,6 @@ public class IceScoop : Holder
     public void ActivatePhysicsOnCubesShaker()
     {
         //transform.GetChild(0).parent = null;
-        AudioManagerMain.instance.PlaySFX("IceIntoGlass");
 
         placeICeTarget.gameObject.SetActive(false);
 

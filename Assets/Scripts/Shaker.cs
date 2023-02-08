@@ -146,6 +146,8 @@ public class Shaker : Holder
         if (other.tag == "Ice")
         {
             // shaker.hand.GetComponent<XRController>().SendHapticImpulse(.5f,.5f);
+            AudioManagerMain.instance.PlaySFX("IceIntoGlass");
+
             if (iceCubes.Count > 0)
             {
                 iceCubes[0].SetActive(true);

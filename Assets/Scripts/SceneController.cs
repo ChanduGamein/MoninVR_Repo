@@ -18,6 +18,7 @@ public enum items { IceCubes, LemonFlavor,LemonBase, Water,shakerLid,sparklingWa
     public string itemName;
     public string actionName;
     public string quantity;
+    [TextArea]
     public string instruction;
     public bool isQuantity;
 
@@ -45,6 +46,7 @@ public class Recipe
     public string itemName;
     public string actionName;
     public string quantity;
+    [TextArea]
     public string instruction;
     public bool isQuantity;
 
