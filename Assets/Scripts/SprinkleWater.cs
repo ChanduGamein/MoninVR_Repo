@@ -18,7 +18,7 @@ public class SprinkleWater : Holder
     [SerializeField] Holder _liquidVolume;
     [SerializeField] float speed;
     [SerializeField]float value = .731f;
-
+    [SerializeField] bool displayAmountUI = true;
     float counter = 0;
     float curreentliquidAmount;
     bool called;
@@ -62,18 +62,20 @@ public class SprinkleWater : Holder
                 //   glassDrink.IncreseLiquidGradually(1);
                 _liquidVolume.IncreaseLiquid(.01f * Time.deltaTime *25);
 
-
-                SceneController.instance.fillLiquidStatic.SetAmount(itemName,liquidMLFullAmount);
-                // SceneController.instance.SetShakerLiquidAmount(itemName, liquidMLFullAmount, .1f);
-                if(counter<=liquidMLFullAmount+1)
+                if (displayAmountUI)
                 {
+                    SceneController.instance.fillLiquidStatic.SetAmount(itemName, liquidMLFullAmount);
+                    // SceneController.instance.SetShakerLiquidAmount(itemName, liquidMLFullAmount, .1f);
+                    if (counter <= liquidMLFullAmount + 1)
+                    {
 
-                  //  liquidUI.SetFillAmount(counter, liquidMLFullAmount, liquidMLFullAmount);
-                    SceneController.instance.fillLiquidStatic.SetFillAmount(counter, liquidMLFullAmount, liquidMLFullAmount);
-                    counter+= (_liquidVolume.liquidVolume.level-curreentliquidAmount)*(.731f*speed);
+                        //  liquidUI.SetFillAmount(counter, liquidMLFullAmount, liquidMLFullAmount);
+                        SceneController.instance.fillLiquidStatic.SetFillAmount(counter, liquidMLFullAmount, liquidMLFullAmount);
+                        counter += (_liquidVolume.liquidVolume.level - curreentliquidAmount) * (.731f * speed);
+                    }
+
+                    SceneController.instance.fillLiquidStatic.gameObject.SetActive(true);
                 }
-
-                SceneController.instance.fillLiquidStatic.gameObject.SetActive(true) ;
                 if (_liquidVolume.liquidVolume.level>=value)
                 {
                     grabed = false;

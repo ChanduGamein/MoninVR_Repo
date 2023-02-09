@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4938131049205314706}
   - component: {fileID: 7778543474550000858}
   - component: {fileID: 9010918017298954056}
-  - component: {fileID: 4761208769454188382}
   m_Layer: 0
   m_Name: Bottle_glass
   m_TagString: Untagged
@@ -82,19 +81,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4761208769454188382
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 23809117990448944}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 5.0463104, y: 17.824263, z: 5.3227696}
-  m_Center: {x: -1.6940659e-20, y: 8.912131, z: 0.000001311302}
 --- !u!1 &1067039180986599636
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,8 +92,6 @@ GameObject:
   - component: {fileID: 5368676829201200484}
   - component: {fileID: 7965557935157688419}
   - component: {fileID: 8133442998600367568}
-  - component: {fileID: 5059486934967676206}
-  - component: {fileID: 1937901913558197821}
   m_Layer: 0
   m_Name: Bottle_cap
   m_TagString: Untagged
@@ -178,32 +162,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5059486934967676206
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1067039180986599636}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.132996, y: 0.19496918, z: 2.248589}
-  m_Center: {x: -0.000030517578, y: 0.09748459, z: 0.0000038146973}
---- !u!114 &1937901913558197821
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1067039180986599636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ff4c47c4a0c951469fff2f5133254b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smallBottle: {fileID: 3185391310290535037}
 --- !u!1 &5018704743863413432
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,11 +171,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5687437145304444930}
-  - component: {fileID: 3185391310290535037}
   - component: {fileID: 6102450483096759967}
+  - component: {fileID: 7499214350274098833}
+  - component: {fileID: 3852172431975196361}
   m_Layer: 0
   m_Name: Gingerale (3)
-  m_TagString: Untagged
+  m_TagString: Soda
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -242,41 +201,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &3185391310290535037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5018704743863413432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23b6cfaecf7094741a8a594acc04ec8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grabed: 0
-  itemType: 0
-  originalParent: {fileID: 0}
-  hand: {fileID: 0}
-  liquidVolume: {fileID: 0}
-  picked: 0
-  callTutoral: 0
-  haveLiquid: 0
-  liquidParticle: {fileID: 8452369723420651542}
-  poringRight: {fileID: 0}
-  poringLeft: {fileID: 0}
-  isCapRemoved: 0
-  pourPoint: {fileID: 5045517414046864833}
-  holder: {fileID: 0}
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 2048
-  liquidLevel: 1
-  shakerLevel: 0
-  liquidUI: {fileID: 0}
-  liquidMLPerPump: 1
-  liquidMLFullAmount: 20
-  itemName: 'Intense ginger '
 --- !u!54 &6102450483096759967
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -293,6 +217,55 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &7499214350274098833
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5018704743863413432}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 3.729815, y: 18.511045, z: 4.4001994}
+  m_Center: {x: -0.039932325, y: 8.755523, z: 0.021803183}
+--- !u!114 &3852172431975196361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5018704743863413432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 223042d562a434640a36bf9622306453, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabed: 0
+  itemType: 0
+  originalParent: {fileID: 0}
+  hand: {fileID: 0}
+  liquidVolume: {fileID: 0}
+  picked: 0
+  callTutoral: 0
+  haveLiquid: 0
+  liquidParticle: {fileID: 8452369723420651542}
+  poringRight: {fileID: 0}
+  poringLeft: {fileID: 0}
+  spellPoint: {fileID: 5045517414046864833}
+  liquidMLPerPump: 1
+  liquidMLFullAmount: 20
+  itemName: Intense Ginger
+  fillImage: {fileID: 0}
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  _liquidVolume: {fileID: 0}
+  speed: 15
+  value: 0.731
+  isCapRemoved: 0
+  cap: {fileID: 1067039180986599636}
 --- !u!1 &5043990297435318970
 GameObject:
   m_ObjectHideFlags: 0

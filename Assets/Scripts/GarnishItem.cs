@@ -26,27 +26,30 @@ public class GarnishItem : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag=="Cup"|| other.gameObject.tag == "LongGlass")
+        if (other.gameObject.tag == "Cup" || other.gameObject.tag == "LongGlass")
         {
-            HolderGlass glass = other.GetComponent<HolderGlass>();
-            int rnd = Random.Range(0, glass.garnishPositions.Count);
-            glass.SetGarnishTransform(this.transform);
-            tweezers.hasGarnish = false;
-            tweezers.hand.hasGrarnish = false;
-            tweezers.gameObject.SetActive(false);
-            tweezers._garnish = null;
-            if (!(SceneController.instance.recipeStepIndex > SceneController.instance.userSelectedRecipe[SceneController.instance.recipeIndex].RecipeItems.Count - 1))
-                if (SceneController.instance.currentRecipe.RecipeItems[SceneController.instance.recipeStepIndex].itemType == itemType)
-                {
-                    Debug.Log("nammme "+SceneController.instance.currentRecipe.RecipeItems[SceneController.instance.recipeStepIndex].itemType+"    "+ itemType);
-                    SceneController.instance.currentRecipe.RecipeItems[SceneController.instance.recipeStepIndex].numberOfItemsRequired -= 1;
-                    if (SceneController.instance.currentRecipe.RecipeItems[SceneController.instance.recipeStepIndex].numberOfItemsRequired <= 0)
+            if (other.TryGetComponent<HolderGlass>(out HolderGlass glass))
+            {
+                
+                int rnd = Random.Range(0, glass.garnishPositions.Count);
+                glass.SetGarnishTransform(this.transform);
+                tweezers.hasGarnish = false;
+                tweezers.hand.hasGrarnish = false;
+                tweezers.gameObject.SetActive(false);
+                tweezers._garnish = null;
+                if (!(SceneController.instance.recipeStepIndex > SceneController.instance.userSelectedRecipe[SceneController.instance.recipeIndex].RecipeItems.Count - 1))
+                    if (SceneController.instance.currentRecipe.RecipeItems[SceneController.instance.recipeStepIndex].itemType == itemType)
                     {
-                        SceneController.instance.InvokeCurrentStep();
-                        Debug.Log("invoke garnish");
+                        Debug.Log("nammme " + SceneController.instance.currentRecipe.RecipeItems[SceneController.instance.recipeStepIndex].itemType + "    " + itemType);
+                        SceneController.instance.currentRecipe.RecipeItems[SceneController.instance.recipeStepIndex].numberOfItemsRequired -= 1;
+                        if (SceneController.instance.currentRecipe.RecipeItems[SceneController.instance.recipeStepIndex].numberOfItemsRequired <= 0)
+                        {
+                            SceneController.instance.InvokeCurrentStep();
+                            Debug.Log("invoke garnish");
+                        }
                     }
-                }
             }
+        }
         
     }
 
