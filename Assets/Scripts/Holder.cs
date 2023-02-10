@@ -7,7 +7,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class Holder : MonoBehaviour
 {
-    [HideInInspector]
+   
     public bool grabed;
     Vector3 originalPosition;
     Quaternion originalRotation;
@@ -25,6 +25,12 @@ public class Holder : MonoBehaviour
     public bool haveLiquid;
     public ParticleSystem liquidParticle;
     public Transform poringRight, poringLeft;
+    [SerializeField] BoxCollider boxCollider;
+    public void ActivateItem()
+    {
+       // boxCollider.enabled = true;
+        LookAtTargetUI.instance.PointAtTarget(this.transform);
+    }
     public virtual void IncreaseLiquid(float value)
     {
         liquidVolume.level += value;
@@ -43,8 +49,9 @@ public class Holder : MonoBehaviour
     //}
     public virtual void Grab()
     {
+      //  LookAtTargetUI.instance.DeactivateArrow();
     }
-    void Start()
+    protected virtual void Start()
     {
        // _rb = GetComponent<Rigidbody>();
         originalPosition = transform.localPosition;
@@ -56,29 +63,7 @@ public class Holder : MonoBehaviour
             originalParent = null;
         }
     }
-    IEnumerator ReturnBottle()
-    {
-        yield return new WaitForSeconds(0);
-      //  _rb.isKinematic = true;
-         hand.handCollider.enabled = true;
-        hand.grabbing = false;
-        //  hand.transform.rotation= new Quaternion(0,0,0,0);
-        if (originalParent != null)
-        {
-            transform.parent = originalParent;
-        }
-        else
-        {
-            transform.parent = null;
-        }
-        transform.position = originalPosition;
-        transform.rotation = originalRotation;
-        grabed = false;
-        UIManager.instance.canGrab = false;
-        hand.handCollider.enabled = true;
 
-        //  _rb.isKinematic = false;
-    }
     public virtual void UnGrab()
     {
       //  _rb.isKinematic = true;

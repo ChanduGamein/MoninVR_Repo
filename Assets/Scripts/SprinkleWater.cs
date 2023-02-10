@@ -22,6 +22,11 @@ public class SprinkleWater : Holder
     float counter = 0;
     float curreentliquidAmount;
     bool called;
+    protected override void Start()
+    {
+        base.Start();
+        calledSound = false;
+    }
     IEnumerator ParticleEffect()
     {
         liquidParticle.gameObject.SetActive(true);
@@ -38,35 +43,31 @@ public class SprinkleWater : Holder
     {
         if(grabed)
         {
-            Debug.DrawRay(spellPoint.position,Vector3.down,Color.green);
-            if (Physics.Raycast(spellPoint.position,Vector3.down,out hit,20,targetLayer))
+            if (Physics.Raycast(spellPoint.position,Vector3.down,out hit,10,targetLayer))
             {
                 _liquidVolume = hit.collider.GetComponent<Holder>();
                 if(!calledSound)
                 {
-                    AudioManagerMain.instance.PlaySFX("pouringLiquid");
                     calledSound = true;
+                    AudioManagerMain.instance.PlaySFX("PouringSmall");
                 }
                 if (!called)
                 {
-                    AudioManagerMain.instance.PlaySFX("pouringLiquid");
+                    // AudioManagerMain.instance.PlaySFX("pouringLiquid");
 
                     curreentliquidAmount = _liquidVolume.liquidVolume.level;
                     called = true;
                 }
                 liquidParticle.gameObject.SetActive(true);
 
-              //  StartCoroutine(ParticleEffect());
 
-                Debug.Log(hit.transform.gameObject.name);
-                //   glassDrink.IncreseLiquidGradually(1);
                 _liquidVolume.IncreaseLiquid(.01f * Time.deltaTime *25);
 
                 if (displayAmountUI)
                 {
                     SceneController.instance.fillLiquidStatic.SetAmount(itemName, liquidMLFullAmount);
                     // SceneController.instance.SetShakerLiquidAmount(itemName, liquidMLFullAmount, .1f);
-                    if (counter <= liquidMLFullAmount + 1)
+                    if (counter <= (liquidMLFullAmount + 2))
                     {
 
                         //  liquidUI.SetFillAmount(counter, liquidMLFullAmount, liquidMLFullAmount);
@@ -88,7 +89,7 @@ public class SprinkleWater : Holder
             }
             else
             {
-                AudioManagerMain.instance.StopSound("pouringLiquid");
+                AudioManagerMain.instance.StopSound("PouringSmall");
                 liquidParticle.gameObject.SetActive(false);
                 calledSound = false;
             }
@@ -96,7 +97,8 @@ public class SprinkleWater : Holder
         else
         {
             liquidParticle.gameObject.SetActive(false);
-            AudioManagerMain.instance.StopSound("pouringLiquid");
+          //  AudioManagerMain.instance.StopSound("PouringSmall");
+         //   calledSound = false;
 
         }
     }

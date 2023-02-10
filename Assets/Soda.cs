@@ -37,7 +37,7 @@ public class Soda : SprinkleWater
             {
                 hand = other.GetComponent<HandHolder>();
                 UIManager.instance.ActivateGrab(hand.smallBottlePosition, hand, this.transform, "SmallBottle");
-                UIManager.instance.canGrab = true;
+               // UIManager.instance.canGrab = true;
             }
         }
     }

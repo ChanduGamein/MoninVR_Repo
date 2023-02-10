@@ -89,9 +89,10 @@ public class AudioManagerMain : MonoBehaviour
             //s.audioSource.playOnAwake = s.PlayOnAwake;
             //s.audioSource.pitch = s.pitch;
             s.audioSource.volume = s.Volume;
+            s.audioSource.playOnAwake = false;
             if(s.looping)
             {
-                s.audioSource.loop = true;
+             //   s.audioSource.loop = true;
             }
         }
 
@@ -142,13 +143,20 @@ public class AudioManagerMain : MonoBehaviour
             Debug.Log("Sound " + name + " not Found");
             return;
         }
-        currentPlaying = s.audioSource;
-        currentPlaying.Play();
+        //if (s.looping)
+        //{
+        //    s.audioSource.loop = true;
+        //}
+        s.audioSource.enabled = true;
+
+        s.audioSource.Play();
+
     }
 
 
     public void StopCurrent()
     {
+        
         currentPlaying.Stop();
     }
     public void PlayRandomized(string name)
@@ -163,7 +171,6 @@ public class AudioManagerMain : MonoBehaviour
             return;
         }
         s.audioSource.clip = s.clips[Random.Range(0, s.clips.Length)];
-        s.audioSource.Play();
     }
 
     public void StopSound(string name) // for stooping looping sounds
@@ -174,7 +181,8 @@ public class AudioManagerMain : MonoBehaviour
             Debug.Log("Sound " + name + " not Found");
             return;
         }
-        s.audioSource.Stop();
+        s.audioSource.enabled = false;
+
     }
 
     public void StopMainMusic()

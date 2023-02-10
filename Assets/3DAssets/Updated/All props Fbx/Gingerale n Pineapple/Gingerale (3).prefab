@@ -253,6 +253,7 @@ MonoBehaviour:
   liquidParticle: {fileID: 8452369723420651542}
   poringRight: {fileID: 0}
   poringLeft: {fileID: 0}
+  boxCollider: {fileID: 0}
   spellPoint: {fileID: 5045517414046864833}
   liquidMLPerPump: 1
   liquidMLFullAmount: 20
@@ -264,6 +265,7 @@ MonoBehaviour:
   _liquidVolume: {fileID: 0}
   speed: 15
   value: 0.731
+  displayAmountUI: 1
   isCapRemoved: 0
   cap: {fileID: 1067039180986599636}
 --- !u!1 &5043990297435318970
@@ -783,17 +785,17 @@ PrefabInstance:
     - target: {fileID: 3105623596328195271, guid: 476836f8d2cc6ef40be6a900ef187d00,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.8401888
+      value: 0.9242077
       objectReference: {fileID: 0}
     - target: {fileID: 3105623596328195271, guid: 476836f8d2cc6ef40be6a900ef187d00,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.8611087
+      value: 0.9472196
       objectReference: {fileID: 0}
     - target: {fileID: 3105623596328195271, guid: 476836f8d2cc6ef40be6a900ef187d00,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.84018916
+      value: 0.9242081
       objectReference: {fileID: 0}
     - target: {fileID: 3105623596328195271, guid: 476836f8d2cc6ef40be6a900ef187d00,
         type: 3}

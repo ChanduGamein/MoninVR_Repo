@@ -49,6 +49,7 @@ public class Recipe
     [TextArea]
     public string instruction;
     public bool isQuantity;
+    public UnityEvent myEvent;
 
 }
 
@@ -136,6 +137,7 @@ public class SceneController : MonoBehaviour
         //   UIManager.instance.SetTutorialText(userSelectedRecipe[id].myText);
         UIManager.instance.SetTutorial(userSelectedRecipe[id].itemSprite, userSelectedRecipe[id].itemName, userSelectedRecipe[id].actionName,
             userSelectedRecipe[id].quantity, userSelectedRecipe[id].instruction, userSelectedRecipe[id].isQuantity);
+        userSelectedRecipe[id].myEvent.Invoke();
 
     }
     public void InvokeCurrentStep()

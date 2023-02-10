@@ -30,9 +30,11 @@ public class SmallBottle : Holder
         {
             if (Physics.Raycast(pourPoint.position, Vector3.down, out hit, 20, targetLayer))
             {
-
+                Debug.Log(itemName+"hitttttt");
                 if (holder.liquidVolume.level < liquidLevel)
                 {
+                    Debug.Log(itemName + "Liquid");
+
                     if (!calledSound)
                     {
                         AudioManagerMain.instance.PlaySFX("pouringLiquid");
