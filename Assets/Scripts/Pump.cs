@@ -4,16 +4,16 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class Pump : MonoBehaviour
+public class Pump : Holder
 {
     public int liquidMLPerPump;
     public int liquidMLFullAmount;
-    public items itemType;
+    //public items itemType;
     public bool handOnItem;
     public bool shakerInPlace;
     public string itemName;
     [SerializeField] Transform bottlePump;
-    [SerializeField] ParticleSystem liquidParticle;
+   // [SerializeField] ParticleSystem liquidParticle;
     [SerializeField] Holder itemToFill;
     [SerializeField] float amountToAdd;
     [SerializeField] Transform spellPoint;
@@ -22,10 +22,7 @@ public class Pump : MonoBehaviour
     [SerializeField] float pumpOriginalPosition;
     [SerializeField] Collider objectCollider;
     // Update is called once per frame
-    private void Start()
-    {
-        
-    }
+
     void Update()
     {
         Debug.DrawRay(spellPoint.position, Vector3.down,Color.green);
@@ -56,12 +53,14 @@ public class Pump : MonoBehaviour
     bool called = false;
     IEnumerator PumpAnimation()
     {
+        if(isPointer)
+        {
+            outline.enabled = false;
+        }
         objectCollider.enabled = false;
         AudioManagerMain.instance.PlaySFX("Pump");
           bottlePump.DOLocalMoveY(pumpPressedPositionY, .6f).OnComplete (() => bottlePump.DOLocalMoveY(pumpOriginalPosition, .6f).OnComplete(()=>ActivateCollider()));
-        //currentAddedAmount += liquidMLPerPump;
-        //SceneController.instance.shakerCountTXT.text = currentAddedAmount.ToString();
-        //    SceneController.instance.AddTextAmount(liquidMLPerPump);
+
          liquidParticle.Play();
         itemToFill.IncreaseLiquid(amountToAdd);
         for (int i = 0; i < SceneController.instance.currentRecipe.RecipeItems.Count; i++)
@@ -72,25 +71,15 @@ public class Pump : MonoBehaviour
                 SceneController.instance.currentRecipe.RecipeItems[i].numberOfItemsRequired -= 1;
                 if (SceneController.instance.currentRecipe.RecipeItems[i].numberOfItemsRequired <= 0)
                 {
-                  //  GetComponent<Collider>().enabled = false;
                     SceneController.instance.currentAddedAmount = 0;
                     SceneController.instance.InvokeCurrentStep();
                     called = true;
-                    //  UIManager.instance.pumpButton.SetActive(false);
                     yield return new WaitForSeconds(.7f);
-
                     SceneController.instance.ResetShakerLiquidUI();
-
-                    //   Invoke(nameof(ReturnObjectToOriginalTransform),.5f);
                 }
             }
         }
-        //yield return new WaitForSeconds(1.4f);
-        //objectCollider.enabled = true;
 
-        //  yield return new WaitForSeconds(.5f);
-
-        //   SceneController.instance.shakerCountTXT.gameObject.SetActive(false);
     }
     bool addPump=true;
     private void OnTriggerEnter(Collider other)
@@ -100,10 +89,7 @@ public class Pump : MonoBehaviour
             if(!(other.GetComponent<HandHolder>().grabbing))
             handOnItem = true;
         }
-        //if (other.gameObject.tag=="Shaker")
-        //{
-        //    shakerInPlace = true;
-        //}
+
         if(handOnItem&&shakerInPlace)
         {
             if (addPump)
@@ -113,8 +99,7 @@ public class Pump : MonoBehaviour
                 PlayPumpAnimation();
                 SceneController.instance.SetShakerLiquidAmount(itemName, liquidMLFullAmount, liquidMLPerPump);
             }
-          //  other.GetComponent<XRController>().SendHapticImpulse(.5f, .5f);
-            // UIManager.instance.ActivatePump(this);
+
         }
     }
     private void OnTriggerExit(Collider other)
@@ -126,11 +111,6 @@ public class Pump : MonoBehaviour
         if (other.gameObject.tag == "Shaker")
         {
             shakerInPlace = false;
-        }
-        if (!handOnItem || !shakerInPlace)
-        {
-        //    UIManager.instance.pumpButton.SetActive(false);
-           // UIManager.instance.ActivatePump(this);
         }
     }
 

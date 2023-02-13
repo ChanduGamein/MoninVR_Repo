@@ -38,6 +38,7 @@ public class UIManager : MonoBehaviour
     {
         if (!tut1)
         {
+            AudioManagerMain.instance.PlaySFX("Click");
             tut1 = true;
             controllerTut1.SetActive(false);
             controllerTut2.SetActive(true);
@@ -47,6 +48,8 @@ public class UIManager : MonoBehaviour
     {
         if (!tut2&&tut1) 
         {
+            AudioManagerMain.instance.PlaySFX("Click");
+
             tut2 = true;
             controllerTut2.SetActive(false);
             controllerTut3.SetActive(true);

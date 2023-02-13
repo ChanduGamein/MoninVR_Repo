@@ -26,6 +26,26 @@ public class Holder : MonoBehaviour
     public ParticleSystem liquidParticle;
     public Transform poringRight, poringLeft;
     [SerializeField] BoxCollider boxCollider;
+    public bool isPointer;
+    protected Outline outline;
+    [SerializeField] Color color;
+    public void PointAtItem()
+    {
+        if(outline==null)
+        {
+            CreateOutline();
+        }
+        isPointer = true;
+        outline.enabled = true;
+    }
+    public void CreateOutline()
+    {
+        outline = gameObject.AddComponent<Outline>();
+        outline.enabled = false;
+        outline.OutlineWidth = 6;
+        if (ColorUtility.TryParseHtmlString("#FFCD0D", out color))
+            outline.OutlineColor = color;
+    }
     public void ActivateItem()
     {
        // boxCollider.enabled = true;
@@ -49,11 +69,22 @@ public class Holder : MonoBehaviour
     //}
     public virtual void Grab()
     {
-      //  LookAtTargetUI.instance.DeactivateArrow();
+        if(isPointer)
+        {
+            isPointer = false;
+            outline.enabled = false;
+
+        }
+        //  LookAtTargetUI.instance.DeactivateArrow();
+    }
+    private void Awake()
+    {
+        CreateOutline();
     }
     protected virtual void Start()
     {
-       // _rb = GetComponent<Rigidbody>();
+        // _rb = GetComponent<Rigidbody>();
+
         originalPosition = transform.localPosition;
         originalRotation = transform.rotation;
         if(transform.parent!=null)
