@@ -377,6 +377,11 @@ MonoBehaviour:
   callTutoral: 0
   haveLiquid: 0
   liquidParticle: {fileID: 0}
+  poringRight: {fileID: 0}
+  poringLeft: {fileID: 0}
+  boxCollider: {fileID: 0}
+  isPointer: 0
+  color: {r: 0, g: 0, b: 0, a: 0}
   garnishPositions:
   - {fileID: 9111942272510556992}
   - {fileID: 4518466076822717136}
@@ -583,7 +588,7 @@ GameObject:
   - component: {fileID: 6030560800449522687}
   - component: {fileID: 5086488946904056280}
   - component: {fileID: 1306106813702908748}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Glass2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

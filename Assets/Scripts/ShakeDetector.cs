@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShakeDetector : MonoBehaviour
 {
     public bool Detectshake,detected;
-    [SerializeField] float inity;
+    public float inity;
     Shaker shaker;
     // Start is called before the first frame update
     void Start()
@@ -22,13 +22,15 @@ public class ShakeDetector : MonoBehaviour
             inity = this.transform.localPosition.y;
 
         }
-        if (Mathf.Abs(inity - this.transform.localPosition.y) > 0.06f && inity != 0)
+        if (Mathf.Abs(inity - this.transform.localPosition.y) > 0.06f && inity != 0&&shaker.grabed)
         {
             detected = true;
             AudioManagerMain.instance.PlaySFX("shakerSound");
             shaker.ShakerAnimation();
             inity = 0;
         }
+
+
     }
     public void SetShaker(Shaker _shaker)
     {

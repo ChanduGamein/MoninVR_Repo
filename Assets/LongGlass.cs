@@ -86,7 +86,9 @@ public class LongGlass : HolderGlass
     public override void Grab()
     {
         base.Grab();
-        if (!picked)
+        if (callTutoral)
+
+            if (!picked)
         {
             SceneController.instance.InvokeCurrentStep();
             picked = true;
@@ -135,6 +137,7 @@ public class LongGlass : HolderGlass
         {
             //   UIManager.instance.grabButton.SetActive(false);
             UIManager.instance.canGrab = false;
+           // UIManager.instance.ExitTrigger();
 
         }
     }

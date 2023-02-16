@@ -19,6 +19,14 @@ public class Soda : SprinkleWater
 
         }
     }
+    public override void Grab()
+    {
+        base.Grab();
+        if(!isCapRemoved)
+        {
+            SceneController.instance.opener.PointAtItem();
+        }
+    }
     protected override void Update()
     {
         if(isCapRemoved)
@@ -41,5 +49,6 @@ public class Soda : SprinkleWater
             }
         }
     }
+
 
 }

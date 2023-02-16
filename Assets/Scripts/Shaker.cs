@@ -32,6 +32,13 @@ public class Shaker : Holder
             SceneController.instance.InvokeCurrentStep();
             picked = true;
         }
+        if(lidPlaced)
+        {
+            hand.GetComponent<ShakeDetector>().SetShaker(this);
+
+            hand.GetComponent<ShakeDetector>().Detectshake = true;
+
+        }
     }
         public void SetCalled()
     {
@@ -39,6 +46,12 @@ public class Shaker : Holder
     }
     public override void UnGrab()
     {
+        if (hand != null)
+        {
+            hand.GetComponent<ShakeDetector>().Detectshake = false;
+            hand.GetComponent<ShakeDetector>().inity = 0;
+
+        }
         if(!shaking)
         base.UnGrab();
     }
@@ -46,16 +59,22 @@ public class Shaker : Holder
     {
         PourToGlass = true;
     }
+    bool lidPlaced = false;
     public void Shake()
     {
         dummyLid.SetActive(true);
-        hand.GetComponent<ShakeDetector>().Detectshake = true;
+        lidPlaced = true;
         hand.GetComponent<ShakeDetector>().SetShaker(this);
+
+        hand.GetComponent<ShakeDetector>().Detectshake = true;
     }
     public void ShakerAnimation()
     {
+        lidPlaced = false;
+
         shaking = true;
-         transform.DOShakePosition(shakeSpeed, 10).OnComplete(() => FinishShake());
+
+        transform.DOShakePosition(shakeSpeed, 10).OnComplete(() => FinishShake());
 
     }
     public void FinishShake()
@@ -174,7 +193,7 @@ public class Shaker : Holder
         {
          //   UIManager.instance.grabButton.SetActive(false);
             UIManager.instance.canGrab = false;
-
+        //    UIManager.instance.ExitTrigger();
         }
     }
 

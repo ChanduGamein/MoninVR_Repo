@@ -87,6 +87,7 @@ public class UIManager : MonoBehaviour
     public void OnClickStartPrepare()
     {
         SceneController.instance.ChooseRecipe(drinkId);
+        AudioManagerMain.instance.PlaySFX("Click");
         SetStepNumber("Step#1");
     }
     #region SideSteps
@@ -147,6 +148,21 @@ public class UIManager : MonoBehaviour
         inActivePrepareBtn.SetActive(true);
     }
     string triggerName;
+    public void ExitTrigger()
+    {
+        handTransform = null;
+        itemToGrab = null;
+        handHolder = null;
+      //  triggerName = null;
+        if (handHolder.handType == HandType.left)
+        {
+            itemToGrabLeft = null;
+        }
+        else
+        {
+            itemToGrabRight = null;
+        }
+    }
     public void ActivateGrab(Transform _handTransform, HandHolder _handHolder, Transform _itemToGrab,string _triggerName)
     {
         handTransform = _handTransform;

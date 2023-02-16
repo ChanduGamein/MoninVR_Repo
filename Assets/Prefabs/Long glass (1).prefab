@@ -293,7 +293,7 @@ GameObject:
   - component: {fileID: 2760946853089427897}
   - component: {fileID: 8122777768065987168}
   - component: {fileID: 6856576031817096390}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -562,8 +562,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8378298910446343253}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.0085, z: 0}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_Children:
   - {fileID: 4826730798726699315}
   m_Father: {fileID: 8344900752660734910}
@@ -653,7 +653,7 @@ GameObject:
   - component: {fileID: 2244462855992984312}
   - component: {fileID: 942536308557700659}
   - component: {fileID: 6021444886170169904}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -748,7 +748,7 @@ GameObject:
   - component: {fileID: 2574604649949994554}
   - component: {fileID: 1082267876962221119}
   - component: {fileID: 1424189920668108323}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -927,6 +927,11 @@ MonoBehaviour:
   callTutoral: 0
   haveLiquid: 0
   liquidParticle: {fileID: 0}
+  poringRight: {fileID: 0}
+  poringLeft: {fileID: 0}
+  boxCollider: {fileID: 0}
+  isPointer: 0
+  color: {r: 0, g: 0, b: 0, a: 0}
   garnishPositions:
   - {fileID: 5614901800234728768}
   - {fileID: 5614901801013872194}
@@ -956,7 +961,7 @@ GameObject:
   - component: {fileID: 1279772570908143070}
   - component: {fileID: 2476073050490188495}
   - component: {fileID: 1186261234934290371}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Cube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1051,7 +1056,7 @@ GameObject:
   - component: {fileID: 3583777579440111502}
   - component: {fileID: 1156627348892860830}
   - component: {fileID: 5493135130279930442}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

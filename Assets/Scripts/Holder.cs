@@ -18,7 +18,7 @@ public class Holder : MonoBehaviour
     public HandHolder hand;
     // Start is called before the first frame update
     public LiquidVolume liquidVolume;
-    [HideInInspector]
+    
     public bool picked;
     [HideInInspector]
     public bool callTutoral;
@@ -46,11 +46,11 @@ public class Holder : MonoBehaviour
         if (ColorUtility.TryParseHtmlString("#FFCD0D", out color))
             outline.OutlineColor = color;
     }
-    public void ActivateItem()
-    {
-       // boxCollider.enabled = true;
-        LookAtTargetUI.instance.PointAtTarget(this.transform);
-    }
+    //public void ActivateItem()
+    //{
+    //   // boxCollider.enabled = true;
+    //    LookAtTargetUI.instance.PointAtTarget(this.transform);
+    //}
     public virtual void IncreaseLiquid(float value)
     {
         liquidVolume.level += value;
@@ -69,13 +69,18 @@ public class Holder : MonoBehaviour
     //}
     public virtual void Grab()
     {
-        if(isPointer)
+
+        DeactivateOutline();
+        //  LookAtTargetUI.instance.DeactivateArrow();
+    }
+    public void DeactivateOutline()
+    {
+        if (isPointer)
         {
             isPointer = false;
             outline.enabled = false;
 
         }
-        //  LookAtTargetUI.instance.DeactivateArrow();
     }
     private void Awake()
     {

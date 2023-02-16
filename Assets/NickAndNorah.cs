@@ -17,7 +17,7 @@ public class NickAndNorah : GlassDrink
         if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
         {
             hand = other.GetComponent<HandHolder>();
-            UIManager.instance.ActivateGrab(hand.coupePosition, hand, this.transform, "Spoon");
+            UIManager.instance.ActivateGrab(hand.coupePosition, hand, this.transform, "Glass");
             UIManager.instance.canGrab = true;
         }
 

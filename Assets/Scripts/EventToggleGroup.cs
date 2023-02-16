@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class EventToggleGroup : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] GameObject mocktailPanel, LemonadePanel, iceTeaPanel;
+    [SerializeField] GameObject mocktailPanel, LemonadePanel, iceTeaPanel, mojitoPanel;
     [SerializeField] Toggle mocktailBtn,lemonadeBtn,iceteaBtn,WhiteTeaBTn,mojitoBtn,fizzyLemonadeBtn;
     [SerializeField] ToggleGroup[] drinksToggleGroup;
     public void ResetDrinksToggleToOff()
@@ -26,6 +26,7 @@ public class EventToggleGroup : MonoBehaviour
             mocktailPanel.SetActive(true);
             LemonadePanel.SetActive(false);
             iceTeaPanel.SetActive(false);
+            mojitoPanel.SetActive(false);
 
 
         }
@@ -44,6 +45,7 @@ public class EventToggleGroup : MonoBehaviour
             mocktailPanel.SetActive(false);
             LemonadePanel.SetActive(true);
             iceTeaPanel.SetActive(false);
+            mojitoPanel.SetActive(false);
 
         }
         else
@@ -62,6 +64,7 @@ public class EventToggleGroup : MonoBehaviour
             iceTeaPanel.SetActive(true);
             mocktailPanel.SetActive(false);
             LemonadePanel.SetActive(false);
+            mojitoPanel.SetActive(false);
 
 
         }
@@ -80,6 +83,7 @@ public class EventToggleGroup : MonoBehaviour
             mocktailPanel.SetActive(false);
             LemonadePanel.SetActive(false);
             iceTeaPanel.SetActive(false);
+            mojitoPanel.SetActive(false);
 
         }
         else
@@ -96,7 +100,7 @@ public class EventToggleGroup : MonoBehaviour
             mocktailPanel.SetActive(false);
             LemonadePanel.SetActive(false);
             iceTeaPanel.SetActive(false);
-
+            mojitoPanel.SetActive(true);
 
         }
         else

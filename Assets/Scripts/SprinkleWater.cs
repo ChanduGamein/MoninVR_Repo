@@ -43,55 +43,60 @@ public class SprinkleWater : Holder
     {
         if(grabed)
         {
-            if (Physics.Raycast(spellPoint.position,Vector3.down,out hit,10,targetLayer))
+            if (Physics.Raycast(spellPoint.position, Vector3.down, out hit, 10, targetLayer))
             {
-                _liquidVolume = hit.collider.GetComponent<Holder>();
-                if(!calledSound)
+                if (hit.collider.TryGetComponent(out Holder holder))
                 {
-                    calledSound = true;
-                    AudioManagerMain.instance.PlaySFX("PouringSmall");
-                }
-                if (!called)
-                {
-                    // AudioManagerMain.instance.PlaySFX("pouringLiquid");
+                    _liquidVolume = holder;
 
-                    curreentliquidAmount = _liquidVolume.liquidVolume.level;
-                    called = true;
-                }
-                liquidParticle.gameObject.SetActive(true);
-
-
-                _liquidVolume.IncreaseLiquid(.01f * Time.deltaTime *25);
-
-                if (displayAmountUI)
-                {
-                    SceneController.instance.fillLiquidStatic.SetAmount(itemName, liquidMLFullAmount);
-                    // SceneController.instance.SetShakerLiquidAmount(itemName, liquidMLFullAmount, .1f);
-                    if (counter <= (liquidMLFullAmount + 2))
+                    //_liquidVolume = hit.collider.GetComponent<Holder>();
+                    if (!calledSound)
                     {
-
-                        //  liquidUI.SetFillAmount(counter, liquidMLFullAmount, liquidMLFullAmount);
-                        SceneController.instance.fillLiquidStatic.SetFillAmount(counter, liquidMLFullAmount, liquidMLFullAmount);
-                        counter += (_liquidVolume.liquidVolume.level - curreentliquidAmount) * (.731f * speed);
+                        calledSound = true;
+                        AudioManagerMain.instance.PlaySFX("PouringSmall");
                     }
+                    if (!called)
+                    {
+                        // AudioManagerMain.instance.PlaySFX("pouringLiquid");
 
-                    SceneController.instance.fillLiquidStatic.gameObject.SetActive(true);
+                        curreentliquidAmount = _liquidVolume.liquidVolume.level;
+                        called = true;
+                    }
+                    liquidParticle.gameObject.SetActive(true);
+
+
+                    _liquidVolume.IncreaseLiquid(.01f * Time.deltaTime * 25);
+
+                    if (displayAmountUI)
+                    {
+                        SceneController.instance.fillLiquidStatic.SetAmount(itemName, liquidMLFullAmount);
+                        // SceneController.instance.SetShakerLiquidAmount(itemName, liquidMLFullAmount, .1f);
+                        if (counter <= (liquidMLFullAmount + 2))
+                        {
+
+                            //  liquidUI.SetFillAmount(counter, liquidMLFullAmount, liquidMLFullAmount);
+                            SceneController.instance.fillLiquidStatic.SetFillAmount(counter, liquidMLFullAmount, liquidMLFullAmount);
+                            counter += (_liquidVolume.liquidVolume.level - curreentliquidAmount) * (.731f * speed);
+                        }
+
+                        SceneController.instance.fillLiquidStatic.gameObject.SetActive(true);
+                    }
+                    if (_liquidVolume.liquidVolume.level >= value)
+                    {
+                        grabed = false;
+                        liquidParticle.gameObject.SetActive(false);
+                        SceneController.instance.InvokeCurrentStep();
+                        // SceneController.instance.fillLiquidUI.gameObject.SetActive(false);
+                        SceneController.instance.fillLiquidStatic.gameObject.SetActive(false);
+                        GetComponent<BoxCollider>().enabled = false;
+                    }
                 }
-                if (_liquidVolume.liquidVolume.level>=value)
+                else
                 {
-                    grabed = false;
+                    AudioManagerMain.instance.StopSound("PouringSmall");
                     liquidParticle.gameObject.SetActive(false);
-                    SceneController.instance.InvokeCurrentStep();
-                   // SceneController.instance.fillLiquidUI.gameObject.SetActive(false);
-                    SceneController.instance.fillLiquidStatic.gameObject.SetActive(false);
-                    GetComponent<BoxCollider>().enabled = false;
+                    calledSound = false;
                 }
-            }
-            else
-            {
-                AudioManagerMain.instance.StopSound("PouringSmall");
-                liquidParticle.gameObject.SetActive(false);
-                calledSound = false;
             }
         }
         else

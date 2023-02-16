@@ -82,6 +82,7 @@ public class Jigger : Holder
                     liquidParticle.gameObject.SetActive(false);
                     AudioManagerMain.instance.StopSound("PouringSmall");
                     calledSound = false;
+                    shaker.DeactivateOutline();
                 }
             }
             else
@@ -100,6 +101,8 @@ public class Jigger : Holder
         {
             //   UIManager.instance.grabButton.SetActive(false);
             UIManager.instance.canGrab = false;
+         //   UIManager.instance.ExitTrigger();
+
 
         }
     }
