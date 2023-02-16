@@ -373,6 +373,8 @@ MonoBehaviour:
   poringRight: {fileID: 0}
   poringLeft: {fileID: 0}
   boxCollider: {fileID: 0}
+  isPointer: 0
+  color: {r: 0, g: 0, b: 0, a: 0}
   spellPoint: {fileID: 2211649403500804411}
   liquidMLPerPump: 1
   liquidMLFullAmount: 20

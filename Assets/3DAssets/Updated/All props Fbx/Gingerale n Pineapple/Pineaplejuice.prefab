@@ -522,6 +522,8 @@ MonoBehaviour:
   poringRight: {fileID: 0}
   poringLeft: {fileID: 0}
   boxCollider: {fileID: 0}
+  isPointer: 0
+  color: {r: 0, g: 0, b: 0, a: 0}
   spellPoint: {fileID: 8687772772792555440}
   liquidMLPerPump: 1
   liquidMLFullAmount: 60
@@ -596,7 +598,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1171364574987828479
 Transform:
   m_ObjectHideFlags: 0
