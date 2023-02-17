@@ -41,19 +41,19 @@ public class UIManager : MonoBehaviour
             AudioManagerMain.instance.PlaySFX("Click");
             tut1 = true;
             controllerTut1.SetActive(false);
-            controllerTut2.SetActive(true);
+            controllerTut3.SetActive(true);
         }
     }
     public void OnClickSelectTut()
     {
-        if (!tut2&&tut1) 
-        {
-            AudioManagerMain.instance.PlaySFX("Click");
+        //if (!tut2&&tut1) 
+        //{
+        //    AudioManagerMain.instance.PlaySFX("Click");
 
-            tut2 = true;
-            controllerTut2.SetActive(false);
-            controllerTut3.SetActive(true);
-        }
+        //    tut2 = true;
+        //    controllerTut2.SetActive(false);
+        //    controllerTut3.SetActive(true);
+        //}
     }
     public void DisplayWellDone()
     {
