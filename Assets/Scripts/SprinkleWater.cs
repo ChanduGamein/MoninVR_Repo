@@ -27,17 +27,6 @@ public class SprinkleWater : Holder
         base.Start();
         calledSound = false;
     }
-    IEnumerator ParticleEffect()
-    {
-        liquidParticle.gameObject.SetActive(true);
-
-        yield return new WaitForSeconds(.1f);
-        liquidParticle.gameObject.SetActive(false);
-        yield return new WaitForSeconds(.1f);
-
-        liquidParticle.gameObject.SetActive(true);
-
-    }
     bool calledSound;
     protected virtual void Update()
     {
@@ -45,6 +34,8 @@ public class SprinkleWater : Holder
         {
             if (Physics.Raycast(spellPoint.position, Vector3.down, out hit, 10, targetLayer))
             {
+                if (!_liquidVolume.grabed)
+                    _liquidVolume.PointAtItem();
                 if (hit.collider.TryGetComponent(out Holder holder))
                 {
                     _liquidVolume = holder;
@@ -95,6 +86,7 @@ public class SprinkleWater : Holder
                 else
                 {
                     AudioManagerMain.instance.StopSound("PouringSmall");
+                    _liquidVolume.DeactivateOutline();
                     liquidParticle.gameObject.SetActive(false);
                     calledSound = false;
                 }

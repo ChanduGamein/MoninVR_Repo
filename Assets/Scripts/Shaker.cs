@@ -117,6 +117,7 @@ public class Shaker : Holder
 
                         PourToGlass = false;
                         liquidParticle.gameObject.SetActive(false);
+                        glassDrink.DeactivateOutline();
                         AudioManagerMain.instance.StopSound("PouringSmall");
                         calledSound = false;
                         SceneController.instance.InvokeCurrentStep();
