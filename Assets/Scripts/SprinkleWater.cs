@@ -15,7 +15,7 @@ public class SprinkleWater : Holder
     [SerializeField]LayerMask targetLayer;
     RaycastHit hit;
   //  [SerializeField] FillLiquidUI liquidUI;
-    [SerializeField] Holder _liquidVolume;
+    public Holder _liquidVolume;
     [SerializeField] float speed;
     [SerializeField]float value = .731f;
     [SerializeField] bool displayAmountUI = true;
@@ -89,6 +89,7 @@ public class SprinkleWater : Holder
                         // SceneController.instance.fillLiquidUI.gameObject.SetActive(false);
                         SceneController.instance.fillLiquidStatic.gameObject.SetActive(false);
                         GetComponent<BoxCollider>().enabled = false;
+                        _liquidVolume.DeactivateOutline();
                     }
                 }
                 else

@@ -10,13 +10,17 @@ public class Soda : SprinkleWater
     bool _calledSound;
     public void RemoveCap()
     {
-        cap.gameObject.SetActive(false);
-        isCapRemoved = true;
-        if(!_calledSound)
+        if (!isCapRemoved)
         {
-            _calledSound = true;
-            AudioManagerMain.instance.PlaySFX("Cap");
+            cap.gameObject.SetActive(false);
+            _liquidVolume.PointAtItem();
+            isCapRemoved = true;
+            if (!_calledSound)
+            {
+                _calledSound = true;
+                AudioManagerMain.instance.PlaySFX("Cap");
 
+            }
         }
     }
     public override void Grab()
@@ -25,7 +29,9 @@ public class Soda : SprinkleWater
         if(!isCapRemoved)
         {
             SceneController.instance.opener.PointAtItem();
+            _liquidVolume.DeactivateOutline();
         }
+
     }
     protected override void Update()
     {
