@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class Strainer : Holder
 {
-
+    public override void Grab()
+    {
+        base.Grab();
+        if(!SceneController.instance._shaker.grabed)
+        SceneController.instance._shaker.PointAtItem();
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (!grabed)
@@ -24,6 +29,7 @@ public class Strainer : Holder
             other.GetComponent<Shaker>().AddStrainer();
             UnGrab();
             GetComponent<BoxCollider>().enabled = false;
+            SceneController.instance._shaker.DeactivateOutline();
             gameObject.SetActive(false);
         }
     }

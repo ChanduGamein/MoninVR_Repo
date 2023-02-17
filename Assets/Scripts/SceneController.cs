@@ -68,6 +68,7 @@ public class SceneController : MonoBehaviour
     public bool isFridgeOpen;
     public bool firstShot = true;
     [SerializeField] ParticleSystem confetti;
+    public Shaker _shaker;
     public Opener opener;
     private void Awake()
     {

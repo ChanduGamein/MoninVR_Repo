@@ -23,6 +23,10 @@ public class Shaker : Holder
         SceneController.instance.InvokeCurrentStep();
     }
     public bool shaking;
+    private void OnEnable()
+    {
+        SceneController.instance._shaker = this;
+    }
     public override void Grab()
     {
         base.Grab();
