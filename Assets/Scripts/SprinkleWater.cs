@@ -28,14 +28,19 @@ public class SprinkleWater : Holder
         calledSound = false;
     }
     bool calledSound;
+    public override void Grab()
+    {
+        base.Grab();
+        if (!_liquidVolume.grabed)
+            _liquidVolume.PointAtItem();
+    }
     protected virtual void Update()
     {
         if(grabed)
         {
             if (Physics.Raycast(spellPoint.position, Vector3.down, out hit, 10, targetLayer))
             {
-                if (!_liquidVolume.grabed)
-                    _liquidVolume.PointAtItem();
+
                 if (hit.collider.TryGetComponent(out Holder holder))
                 {
                     _liquidVolume = holder;
@@ -79,16 +84,19 @@ public class SprinkleWater : Holder
                         SceneController.instance.InvokeCurrentStep();
                         // SceneController.instance.fillLiquidUI.gameObject.SetActive(false);
                         SceneController.instance.fillLiquidStatic.gameObject.SetActive(false);
-                        GetComponent<BoxCollider>().enabled = false;
+                       // GetComponent<BoxCollider>().enabled = false;
                         _liquidVolume.DeactivateOutline();
+                        GetComponent<BoxCollider>().enabled = false;
+                        this.enabled = false;
                     }
                 }
                 else
                 {
                     AudioManagerMain.instance.StopSound("PouringSmall");
-                    _liquidVolume.DeactivateOutline();
+                   // _liquidVolume.DeactivateOutline();
                     liquidParticle.gameObject.SetActive(false);
                     calledSound = false;
+
                 }
             }
         }
