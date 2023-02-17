@@ -90,6 +90,7 @@ public class SyrupHolder : Holder
     public override void Grab()
     {
         base.Grab();
+        if(!jigger.grabed)
         jigger.PointAtItem();
     }
     private void OnTriggerExit(Collider other)
