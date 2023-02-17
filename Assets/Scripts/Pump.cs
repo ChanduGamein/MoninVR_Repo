@@ -53,10 +53,7 @@ public class Pump : Holder
     bool called = false;
     IEnumerator PumpAnimation()
     {
-        if(isPointer)
-        {
-            outline.enabled = false;
-        }
+
         objectCollider.enabled = false;
         AudioManagerMain.instance.PlaySFX("Pump");
           bottlePump.DOLocalMoveY(pumpPressedPositionY, .6f).OnComplete (() => bottlePump.DOLocalMoveY(pumpOriginalPosition, .6f).OnComplete(()=>ActivateCollider()));
@@ -73,6 +70,7 @@ public class Pump : Holder
                 {
                     SceneController.instance.currentAddedAmount = 0;
                     SceneController.instance.InvokeCurrentStep();
+                    DeactivateOutline();
                     called = true;
                     yield return new WaitForSeconds(.7f);
                     SceneController.instance.ResetShakerLiquidUI();
