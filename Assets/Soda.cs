@@ -8,11 +8,13 @@ public class Soda : SprinkleWater
     public GameObject cap;
     // Start is called before the first frame update
     bool _calledSound;
+    [SerializeField] bool requireFridge = true;
     public void RemoveCap()
     {
         if (!isCapRemoved)
         {
             cap.gameObject.SetActive(false);
+            if(!_liquidVolume.grabed)
             _liquidVolume.PointAtItem();
             isCapRemoved = true;
             if (!_calledSound)
@@ -44,15 +46,28 @@ public class Soda : SprinkleWater
         {
             UnGrab();
         }
-        if (SceneController.instance.isFridgeOpen)
+        if (requireFridge)
         {
-            if(!grabed)
-            if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
+            if (SceneController.instance.isFridgeOpen)
             {
-                hand = other.GetComponent<HandHolder>();
-                UIManager.instance.ActivateGrab(hand.smallBottlePosition, hand, this.transform, "SmallBottle");
-               // UIManager.instance.canGrab = true;
+                if (!grabed)
+                    if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
+                    {
+                        hand = other.GetComponent<HandHolder>();
+                        UIManager.instance.ActivateGrab(hand.smallBottlePosition, hand, this.transform, "SmallBottle");
+                        // UIManager.instance.canGrab = true;
+                    }
             }
+        }
+        else
+        {
+            if (!grabed)
+                if (other.gameObject.tag == "Rhand" || other.gameObject.tag == "Lhand")
+                {
+                    hand = other.GetComponent<HandHolder>();
+                    UIManager.instance.ActivateGrab(hand.smallBottlePosition, hand, this.transform, "SmallBottle");
+                    // UIManager.instance.canGrab = true;
+                }
         }
     }
 
