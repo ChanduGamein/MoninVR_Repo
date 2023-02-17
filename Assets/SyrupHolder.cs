@@ -61,7 +61,8 @@ public class SyrupHolder : Holder
                 else
                 {
                     checkPouring = false;
-                  //  jigger.shakerLevel = shakerLevel;
+                    //  jigger.shakerLevel = shakerLevel;
+                    jigger.DeactivateOutline();
                     jigger.haveLiquid = true;
                  //   SceneController.instance.fillLiquidUI.gameObject.SetActive(false);
                     SceneController.instance.fillLiquidStatic.gameObject.SetActive(false);
@@ -85,6 +86,11 @@ public class SyrupHolder : Holder
             liquidParticle.gameObject.SetActive(false);
 
         }
+    }
+    public override void Grab()
+    {
+        base.Grab();
+        jigger.PointAtItem();
     }
     private void OnTriggerExit(Collider other)
     {
