@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2960186968336509868}
   - component: {fileID: 658766512054687358}
   - component: {fileID: 377240075472939186}
-  - component: {fileID: 7130126774929666395}
   m_Layer: 0
   m_Name: Icecube (16)
   m_TagString: Ice
@@ -96,7 +95,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -113,16 +112,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.2667542, y: 2.354835, z: 2.302719}
   m_Center: {x: 0, y: 1.124805, z: 0}
---- !u!114 &7130126774929666395
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8338416077284888413}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 243cf6f8842ea2140a7b6e9fc54151e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnObject: 0
