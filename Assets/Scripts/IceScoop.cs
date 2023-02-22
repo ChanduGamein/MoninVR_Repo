@@ -21,7 +21,7 @@ public class IceScoop : Holder
     public void ActivatePhysicsOnCubesShaker()
     {
         //transform.GetChild(0).parent = null;
-
+        if(placeICeTarget!=null)
         placeICeTarget.gameObject.SetActive(false);
 
         //if (!called)
@@ -30,13 +30,7 @@ public class IceScoop : Holder
         //    called = true;
         //}
         pickedIce = false;
-        //if(shaker.iceCubes.Count>=4)
-        //for (int i = 0; i < 4; i++)
-        //{
-        //        shaker.hand.GetComponent<XRController>().SendHapticImpulse(.5f,.5f);
-        //    shaker.iceCubes[0].SetActive(true);
-        //    shaker.iceCubes.RemoveAt(0);
-        //}
+        shaker.ActivateIce();
     }
     public void ActivatePhysicsOnCubesLongGlass()
     {
@@ -63,14 +57,18 @@ public class IceScoop : Holder
     public override void UnGrab()
     {
         base.UnGrab();
-        placeICeTarget.gameObject.SetActive(false);
+        if (placeICeTarget != null)
+
+            placeICeTarget.gameObject.SetActive(false);
         pickedIce = false;
 
 
     }
     public void PickUpIce()
     {
-      //  placeICeTarget.gameObject.SetActive(true);
+        if (placeICeTarget != null)
+
+            placeICeTarget.gameObject.SetActive(true);
         hand.GetComponent<XRController>().SendHapticImpulse(.5f, .5f);
 
         GetComponent<SpawnerManager>().Spawn();

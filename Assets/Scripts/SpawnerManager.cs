@@ -43,7 +43,7 @@ public class SpawnerManager : MonoBehaviour
     //}
     IEnumerator DelayActivation()
     {
-        yield return new WaitForSeconds(.4f);
+        yield return new WaitForSeconds(.6f);
         for (int i = 0; i < Poolingmanager.instance.prefablist.Count; i++)
         {
             Poolingmanager.instance.prefablist[i].SetActive(true);

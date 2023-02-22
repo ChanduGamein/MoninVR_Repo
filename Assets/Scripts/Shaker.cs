@@ -144,6 +144,21 @@ public class Shaker : Holder
             }
 
     }
+    public void ActivateIce()
+    {
+        if (iceCubes.Count >= 4)
+            for (int i = 0; i < 4; i++)
+            {
+                // shaker.hand.GetComponent<XRController>().SendHapticImpulse(.5f, .5f);
+                iceCubes[0].SetActive(true);
+                iceCubes.RemoveAt(0);
+                if (!called)
+                {
+                    called = true;
+                    SceneController.instance.InvokeCurrentStep();
+                }
+            }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (!grabed)
