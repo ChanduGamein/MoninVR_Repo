@@ -26,6 +26,7 @@ public class Strainer : Holder
         }
         if (other.gameObject.tag == "Shaker")
         {
+            if(grabed)
             other.GetComponent<Shaker>().AddStrainer();
             UnGrab();
             GetComponent<BoxCollider>().enabled = false;

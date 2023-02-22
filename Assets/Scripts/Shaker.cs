@@ -96,6 +96,8 @@ public class Shaker : Holder
     }
     float Counter;
     bool calledSound;
+    bool called=false;
+
     private void Update()
     {
         if (PourToGlass)
@@ -205,7 +207,6 @@ public class Shaker : Holder
             }
         }
     }
-    bool called;
     private void OnTriggerExit(Collider other)
     {
 
