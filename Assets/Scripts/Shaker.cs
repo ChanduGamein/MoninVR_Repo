@@ -153,12 +153,12 @@ public class Shaker : Holder
             {
                 // shaker.hand.GetComponent<XRController>().SendHapticImpulse(.5f, .5f);
                 iceCubes[0].SetActive(true);
-                iceCubes.RemoveAt(0);
                 if (!calledIce)
                 {
                     calledIce = true;
                     SceneController.instance.InvokeCurrentStep();
                 }
+                iceCubes.RemoveAt(0);
             }
     }
     private void OnTriggerEnter(Collider other)

@@ -23,10 +23,8 @@ public class IceScoop : Holder
         //transform.GetChild(0).parent = null;
         if(placeICeTarget!=null)
         placeICeTarget.gameObject.SetActive(false);
-
-
-        pickedIce = false;
         shaker.ActivateIce();
+        pickedIce = false;
     }
     public void ActivatePhysicsOnCubesLongGlass()
     {
