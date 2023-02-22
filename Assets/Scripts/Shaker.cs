@@ -46,7 +46,7 @@ public class Shaker : Holder
     }
         public void SetCalled()
     {
-        called = false;
+     //   called = false;
     }
     public override void UnGrab()
     {
@@ -96,7 +96,7 @@ public class Shaker : Holder
     }
     float Counter;
     bool calledSound;
-    bool called=false;
+    bool calledIce=false;
 
     private void Update()
     {
@@ -154,9 +154,9 @@ public class Shaker : Holder
                 // shaker.hand.GetComponent<XRController>().SendHapticImpulse(.5f, .5f);
                 iceCubes[0].SetActive(true);
                 iceCubes.RemoveAt(0);
-                if (!called)
+                if (!calledIce)
                 {
-                    called = true;
+                    calledIce = true;
                     SceneController.instance.InvokeCurrentStep();
                 }
             }
@@ -194,9 +194,9 @@ public class Shaker : Holder
                 iceCubes[0].SetActive(true);
                 iceCubes.RemoveAt(0);
                 other.gameObject.SetActive(false);
-                if(!called)
+                if(!calledIce)
                 {
-                    called = true;
+                    calledIce = true;
                     SceneController.instance.InvokeCurrentStep();
                 }
             }
