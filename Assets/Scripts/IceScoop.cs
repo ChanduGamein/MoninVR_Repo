@@ -34,7 +34,21 @@ public class IceScoop : Holder
         AudioManagerMain.instance.PlaySFX("IceIntoGlass");
 
         placeICeTarget.gameObject.SetActive(false);
+        placeICeTargetSmall.gameObject.SetActive(false);
 
+        if (!called)
+        {
+            SceneController.instance.InvokeCurrentStep();
+            called = true;
+        }
+        pickedIce = false;
+        if (longGlass.iceCubes.Count >= 3)
+            for (int i = 0; i < 3; i++)
+            {
+                //   longGlass.hand.GetComponent<XRController>().SendHapticImpulse(.5f,.5f);
+                longGlass.iceCubes[0].SetActive(true);
+                longGlass.iceCubes.RemoveAt(0);
+            }
     }
     public override void UnGrab()
     {
@@ -53,7 +67,7 @@ public class IceScoop : Holder
             placeICeTarget.gameObject.SetActive(true);
         hand.GetComponent<XRController>().SendHapticImpulse(.5f, .5f);
 
-        GetComponent<SpawnerManager>().Spawn();
+      //  GetComponent<SpawnerManager>().Spawn();
         AudioManagerMain.instance.PlaySFX("iceBucketScoop");
 
         pickedIce = true;
