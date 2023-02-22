@@ -11,6 +11,8 @@ public class LongGlass : HolderGlass
     [SerializeField] List<Transform> limeWedges = new List<Transform>();
     public bool mojito;
     [SerializeField]bool mint=true;
+    bool called;
+
     public override void SetGarnishTransform(Transform garnish)
     {
         if (mojito)
@@ -94,7 +96,6 @@ public class LongGlass : HolderGlass
             picked = true;
         }
     }
-    bool called;
     private void OnTriggerEnter(Collider other)
     {
         if (!grabed)

@@ -17,7 +17,11 @@ public class Shaker : Holder
     [SerializeField] GameObject StrainerDummy;
     [SerializeField] float amountToAdd;
     [SerializeField] float shakeSpeed=3.5f;
-        public void AddStrainer()
+    float Counter;
+    bool calledSound;
+    public bool calledIce = false;
+    public bool calledIce2 = false;
+    public void AddStrainer()
     {
         StrainerDummy.SetActive(true);
         SceneController.instance.InvokeCurrentStep();
@@ -87,16 +91,12 @@ public class Shaker : Holder
         shaking = false;
         AudioManagerMain.instance.StopSound("shakerSound");
         AudioManagerMain.instance.PlaySFX("shakerMixerOpen");
-        //  transform.parent = transform.parent.parent;
-        // shaker.GetComponent<Rigidbody>().isKinematic = false;
         SceneController.instance.InvokeCurrentStep();
         shakerLid.SetActive(true);
         UnGrab();
         hand.animator.SetTrigger("Idle");
     }
-    float Counter;
-    bool calledSound;
-    bool calledIce=false;
+
 
     private void Update()
     {
@@ -157,6 +157,7 @@ public class Shaker : Holder
                 if (!calledIce)
                 {
                     calledIce = true;
+                    calledIce2 = true;
                     SceneController.instance.InvokeCurrentStep();
                 }
             }
@@ -194,8 +195,9 @@ public class Shaker : Holder
                 iceCubes[0].SetActive(true);
                 iceCubes.RemoveAt(0);
                 other.gameObject.SetActive(false);
-                if(!calledIce)
+                if(!calledIce2)
                 {
+                    calledIce2 = true;
                     calledIce = true;
                     SceneController.instance.InvokeCurrentStep();
                 }
