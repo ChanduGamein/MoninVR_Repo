@@ -26,12 +26,14 @@ public class Strainer : Holder
         }
         if (other.gameObject.tag == "Shaker")
         {
-            if(grabed)
-            other.GetComponent<Shaker>().AddStrainer();
-            UnGrab();
-            GetComponent<BoxCollider>().enabled = false;
-            SceneController.instance._shaker.DeactivateOutline();
-            gameObject.SetActive(false);
+            if (grabed)
+            {
+                other.GetComponent<Shaker>().AddStrainer();
+                UnGrab();
+                GetComponent<BoxCollider>().enabled = false;
+                SceneController.instance._shaker.DeactivateOutline();
+                gameObject.SetActive(false);
+            }
         }
     }
     private void OnTriggerExit(Collider other)

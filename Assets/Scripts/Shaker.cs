@@ -44,7 +44,7 @@ public class Shaker : Holder
 
         }
     }
-        public void SetCalled()
+    public void SetCalled()
     {
      //   called = false;
     }
